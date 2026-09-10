@@ -1,0 +1,22 @@
+export const state = {
+  stations: [],
+  meters: [],
+  summary: {},
+  alerts: [],
+  seu: [],
+  reports: [],
+  charts: [],
+  alertPage: 1,
+  readingPage: 1,
+  selectedAlert: '1',
+  selectedMeter: 'MT-001',
+  mapScope: 'all',
+  loadMetric: 'power',
+  reportTab: 'Định kỳ',
+  seuTab: 'Tổng quan',
+  dataTab: 'Dữ liệu lịch sử',
+  timer: null,
+  realtime: null,
+  polling: false,
+  toastTimer: null
+};

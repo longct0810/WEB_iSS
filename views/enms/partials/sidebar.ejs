@@ -1,0 +1,18 @@
+<aside class="sidebar" id="sidebar">
+  <a class="brand" href="/enms/<%= preview ? 'preview/' : '' %>overview" aria-label="Lam Thạch II · Tổng quan">
+    <svg viewBox="0 0 76 42" aria-hidden="true"><path fill="currentColor" d="M0 39 24 13l12 13L24 26 12 39zm26-27L38 0l13 13-12 13zm13 17 13-14 24 24H62L51 28l-6 7z"/></svg>
+    <span><b>LAM THẠCH II</b><small>CEMENT PLANT</small></span>
+  </a>
+  <nav aria-label="Menu chính">
+    <% menu.forEach(item => { %>
+      <a href="/enms/<%= preview ? 'preview/' : '' %><%= item.id %>"
+         class="nav-item <%= item.id === page ? 'active' : '' %>"
+         <%- item.id === page ? 'aria-current="page"' : '' %>>
+        <i class="bi bi-<%= item.icon %>"></i><span><%= item.title %></span>
+        <% if(item.id==='alerts'){ %><b class="notification">3</b><% } %>
+      </a>
+    <% }) %>
+  </nav>
+  <div class="sidebar-bottom"><i class="bi bi-tree-fill"></i><span>Tiết kiệm năng lượng<br>Vì phát triển bền vững</span></div>
+  <div class="version">EnMS <span>v1.0.1</span></div>
+</aside>

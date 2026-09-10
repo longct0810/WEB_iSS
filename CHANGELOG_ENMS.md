@@ -1,5 +1,18 @@
 # Changelog EnMS
 
+## 1.0.1 - 2026-09-10
+
+- Refactor giao diện EnMS sang kiến trúc module, không thay đổi contract nghiệp vụ.
+- Tách shell EJS thành partial dùng chung: head, sidebar, topbar, page header, statusbar, dialog và scripts.
+- Tách 7 màn hình nghiệp vụ thành thư mục view riêng; các màn hình lớn tiếp tục chia section partial.
+- Tách JavaScript nguyên khối thành `core/`, `components/` và `pages/`, sử dụng ES modules.
+- Tách API client, state, DOM helper, chart helper và HES realtime adapter khỏi page controller.
+- Tách CSS core và CSS đặc thù theo page.
+- Loại bỏ các file frontend nguyên khối cũ `public/enms/app.js`, `public/enms/api.js`, `public/enms/realtime.js`.
+- Giữ nguyên login JWT và HES WebSocket ticket/device ACL.
+- Giữ nguyên API `/api/enms/v1/*`, dữ liệu mock và cấu hình database.
+- Cập nhật version lên `1.0.1` và bổ sung kiểm thử kiến trúc module.
+
 ## 1.0.0 - 2026-09-10
 
 - Chuyển shell giao diện sang EnMS theo bộ ảnh Lam Thạch II.

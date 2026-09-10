@@ -1,12 +1,14 @@
 # Lam Thạch II EnMS
 
-Phiên bản hiện tại: **1.0.0**
+Phiên bản hiện tại: **1.0.1**
 
-Hệ thống quản lý năng lượng nhà máy được chuyển đổi trên nền kiến trúc project SMARTGRID hiện có: Node.js + Express + EJS + PostgreSQL, giữ nguyên luồng login JWT và HES WebSocket ticket/ACL.
+Hệ thống quản lý năng lượng nhà máy được chuyển đổi trên nền kiến trúc project hiện có: Node.js + Express + EJS + PostgreSQL, giữ nguyên luồng login JWT và HES WebSocket ticket/ACL.
 
-## EnMS v1.0.0
+## EnMS v1.0.1
 
-Bản đầu tiên cung cấp 7 màn hình nghiệp vụ theo bộ giao diện mẫu:
+v1.0.1 là bản **Frontend Modularization**. Bảy màn hình nghiệp vụ của v1.0.0 được giữ nguyên nhưng view, JavaScript và CSS được tách thành module theo từng page/section.
+
+Các màn hình nghiệp vụ:
 
 - Tổng quan
 - Giám sát thời gian thực
@@ -25,7 +27,7 @@ npm install
 npm start
 ```
 
-Sau khi đăng nhập, truy cập `/enms/overview`. Route `/` và `/dashboard` được chuyển về màn hình Tổng quan EnMS.
+Sau khi đăng nhập, truy cập `/enms/overview`.
 
 ## Preview giao diện không cần database
 
@@ -45,6 +47,10 @@ Mặc định:
 ENMS_DATA_SOURCE=mock
 ```
 
-Frontend đã sử dụng API `/api/enms/v1/*`. Khi hoàn tất ánh xạ database thật, chỉ thay provider dữ liệu và đặt `ENMS_DATA_SOURCE=database`; cấu hình `DB_*` hiện có không thay đổi.
+Frontend tiếp tục sử dụng API `/api/enms/v1/*`. Khi hoàn tất ánh xạ database thật, chỉ thay provider dữ liệu và đặt `ENMS_DATA_SOURCE=database`; cấu hình `DB_*` hiện có không thay đổi.
 
-Xem chi tiết tại `docs/ENMS_V1.0.0.md` và `CHANGELOG_ENMS.md`.
+Xem `docs/ENMS_V1.0.1.md` và `CHANGELOG_ENMS.md`.
+
+## File cấu hình triển khai
+
+Gói source bàn giao không đóng gói `.env` hoặc private key. Khi nâng cấp trên server, giữ nguyên `.env`, `HES_WS_PRIVATE_KEY_PATH` và các khóa/certificate riêng đang dùng tại môi trường hiện tại.

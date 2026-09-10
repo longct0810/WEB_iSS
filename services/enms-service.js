@@ -16,6 +16,6 @@ async function request(user, method, resource, params) {
     if (workspaces.size >= 500) workspaces.delete(workspaces.keys().next().value);
     workspaces.set(key, createStore());
   }
-  return {data: workspaces.get(key).request(method, resource, params), meta:{source:'mock',version:'1.0.0',generatedAt:new Date().toISOString()}};
+  return {data: workspaces.get(key).request(method, resource, params), meta:{source:'mock',version:'1.0.1',generatedAt:new Date().toISOString()}};
 }
 module.exports = { request };

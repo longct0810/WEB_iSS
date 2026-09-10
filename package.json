@@ -1,6 +1,6 @@
 {
   "name": "lam-thach-enms",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Hệ thống quản lý năng lượng nhà máy Lam Thạch II – EnMS",
   "main": "index.js",
   "scripts": {

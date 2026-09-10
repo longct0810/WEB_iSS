@@ -14,7 +14,7 @@ pages.get('/vendor/xlsx.js',(req,res)=>res.sendFile(require.resolve('xlsx/dist/x
 function render(req,res) {
   const page=req.params.page||'overview';
   if(!menu.some(item=>item.id===page)) return res.status(404).send('Không tìm thấy trang EnMS');
-  res.render('enms/index',{page,menu,preview:req.path.startsWith('/preview'),title:menu.find(x=>x.id===page).title});
+  res.render('enms/index',{page,menu,preview:req.path.startsWith('/preview'),title:menu.find(x=>x.id===page).title,viewPage:`pages/${page}/index`});
 }
 pages.get('/preview/:page?',render);
 pages.get('/:page?',render);

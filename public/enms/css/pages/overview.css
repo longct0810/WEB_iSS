@@ -1,0 +1,3 @@
+body[data-page=overview] .main-grid>section:first-child{display:flex;flex-direction:column}
+body[data-page=overview] .main-grid .factory{flex:1}
+body[data-page=overview] #station-list{max-height:340px;overflow:auto}
