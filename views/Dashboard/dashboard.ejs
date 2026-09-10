@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <link rel="stylesheet" href="/css/dashboard-kpi-thd.css" />
+  <link rel="stylesheet" href="/css/power-ai-dashboard.css?v=1.4.1" />
+  <link rel="stylesheet" href="/css/dashboard_smartgrid.css" />
+  <link rel="stylesheet" href="/icons/font-awesome/css/all.min.css" />
+  <style>
+    .metric {
+      position: relative !important;
+    }
+
+    .metric.loading::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(5, 15, 35, 0.75);
+      border-radius: inherit;
+      z-index: 10;
+    }
+
+.metric.loading::before {
+    content: "Đang tải..." !important;
+    position: absolute;
+    inset: 0;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    color: #00e5ff;
+    font-size: 16px;
+    font-weight: bold;
+    background: rgba(0,0,0,.5);
+}
+
+    /* @keyframes loadingMove {
+      from {
+        background-position: 200% 0;
+      }
+
+      to {
+        background-position: -200% 0;
+      }
+    } */
+  </style>
+</head>
+
+
+
+<body>
+  <a class="dashboard-skip-link" href="#dashboardMain">Bỏ qua menu, tới nội dung chính</a>
+  <div class="app-shell">
+    <%- include('../menu_form/sidebar') %>
+      <main class="main" id="dashboardMain" tabindex="-1">
+        <%- include('../menu_form/topbar') %>
+
+          <section class="metric-grid" aria-label="Thông số điện tổng quan">
+            <article class="metric green" data-metric-type="voltage" aria-label="Điện áp ba pha">
+              <div class="metric-head">
+                <span class="metric-title"><i class="fas fa-bolt"></i> Điện áp</span>
+                <span class="metric-unit">V</span>
+              </div>
+              <table class="voltage-table metric-table">
+                <tr>
+                  <td><span class="phase_header phaseA">Ua </span> </td>
+                  <td><span class="phase_header phaseB">Ub </span> </td>
+                  <td><span class="phase_header phaseC">Uc </span> </td>
+                </tr>
+                <tr id="dienap_ctotong" class="metric-data-row"></tr>
+              </table>
+              <div class="metric-footer" aria-live="polite"><span class="metric-state">Chờ dữ liệu</span><time>--:--:--</time></div>
+            </article>
+            <article class="metric purple" data-metric-type="current" aria-label="Dòng điện ba pha">
+              <div class="metric-head">
+                <span class="metric-title"><i class="fas fa-wave-square"></i> Dòng điện</span>
+                <span class="metric-unit">A</span>
+              </div>
+              <table class="voltage-table metric-table">
+                <tr>
+                  <td><span class="phase_header phaseA">Ia </span> </td>
+                  <td><span class="phase_header phaseB">Ib </span> </td>
+                  <td><span class="phase_header phaseC">Ic </span> </td>
+                </tr>
+                <tr id="dongdien_ctotong" class="metric-data-row"></tr>
+              </table>
+              <div class="metric-footer" aria-live="polite"><span class="metric-state">Chờ dữ liệu</span><time>--:--:--</time></div>
+            </article>
+            <span id="tbl_value_ioa_366621_13" data-id-thietbi="366621" data-ioa="13" data-scale="1"
+              class="phase phaseB" style="display:none"></span>
+            <article class="metric blue" data-metric-type="active-power" aria-label="Công suất tác dụng">
+              <div class="metric-head">
+                <span class="metric-title"><i class="fas fa-tachometer-alt"></i> Công suất tác dụng</span>
+                <span class="metric-unit">kW</span>
+              </div>
+              <table class="voltage-table metric-table">
+                <tr>
+                  <td><span class="phase_header phaseA">Pa </span> </td>
+                  <td><span class="phase_header phaseB">Pb </span> </td>
+                  <td><span class="phase_header phaseC">Pc </span> </td>
+                </tr>
+                <tr id="p_congtotong" class="metric-data-row"></tr>
+              </table>
+              <div class="metric-footer" aria-live="polite"><span class="metric-state">Chờ dữ liệu</span><time>--:--:--</time></div>
+            </article>
+            <article class="metric amber" data-metric-type="reactive-power" aria-label="Công suất phản kháng">
+              <div class="metric-head">
+                <span class="metric-title"><i class="fas fa-sync-alt"></i> Công suất phản kháng</span>
+                <span class="metric-unit">kVAR</span>
+              </div>
+              <table class="voltage-table metric-table">
+                <tr>
+                  <td><span class="phase_header phaseA">Qa </span> </td>
+                  <td><span class="phase_header phaseB">Qb </span> </td>
+                  <td><span class="phase_header phaseC">Qc </span> </td>
+                </tr>
+                <tr id="q_congtotong" class="metric-data-row"></tr>
+              </table>
+              <div class="metric-footer" aria-live="polite"><span class="metric-state">Chờ dữ liệu</span><time>--:--:--</time></div>
+            </article>
+            <article class="metric cyan" data-metric-type="power-factor" aria-label="Hệ số công suất ba pha">
+              <div class="metric-head">
+                <span class="metric-title"><i class="fas fa-adjust"></i> Hệ số công suất</span>
+                <span class="metric-unit">cosφ</span>
+              </div>
+              <table class="voltage-table metric-table">
+                <tr>
+                  <td><span class="phase_header phaseA">A</span> </td>
+                  <td><span class="phase_header phaseB">B</span> </td>
+                  <td><span class="phase_header phaseC">C</span> </td>
+                </tr>
+                <tr id="cos_congtotong" class="metric-data-row"></tr>
+              </table>
+              <div class="metric-footer" aria-live="polite"><span class="metric-state">Chờ dữ liệu</span><time>--:--:--</time></div>
+            </article>
+          </section>
+
+          <section class="content-grid" aria-label="Sơ đồ và trạng thái vận hành">
+            <div class="panel diagram-panel">
+              <div class="panel-head">
+                <h3>SƠ ĐỒ MỘT SỢI <span class="live-pill">IEC104 LIVE</span></h3>
+                <!-- <div class="diagram-tools">
+                  <button type="button" id="zoomOut">−</button>
+                  <button type="button" id="zoomReset">100%</button>
+                  <button type="button" id="zoomIn">+</button>
+                  <button type="button" id="fitDiagram">Fit</button>
+                  <button type="button" id="fullScreen">⛶</button>
+                </div> -->
+              </div>
+              <div id="SVGViewport" style="margin-top: 5px;">
+                <div class="svg-float-toolbar collapsed" id="svgFloatToolbar">
+                  <button id="btnToggleToolbar" class="toolbar-toggle" title="Mở/ẩn công cụ">
+                    <i class="fa fa-cog"></i>
+                  </button>
+
+                  <div class="toolbar-actions">
+                    <button id="btnSvgZoomIn" title="Phóng to">
+                      <i class="fa fa-plus"></i>
+                    </button>
+
+                    <button id="btnSvgZoomOut" title="Thu nhỏ">
+                      <i class="fa fa-minus"></i>
+                    </button>
+
+                    <button id="btnSvgReset" title="Reset">
+                      <i class="fa fa-retweet"></i>
+                    </button>
+
+                    <button id="btnSvgFit" title="Vừa màn hình">
+                      <i class="fa fa-expand"></i>
+                    </button>
+
+                    <button id="btnSvgBack" title="Quay lại">
+                      <i class="fa fa-arrow-left"></i>
+                    </button>
+
+                    <button id="btnSvgBg" title="Đổi nền">
+                      <i class="fa fa-adjust"></i>
+                    </button>
+
+                    <button id="btnSvgTheme" title="Tùy chỉnh màu">
+                      <i class="fa fa-paint-brush"></i>
+                    </button>
+                  </div>
+                </div>
+                <div id="svgThemePanel" class="svg-theme-panel hidden">
+                  <div class="theme-panel-title">Tùy chỉnh màu SVG</div>
+
+                  <div class="theme-row">
+                    <label>Dây điện</label>
+                    <input type="color" data-svg-group="daydien" value="#8b0000">
+                  </div>
+
+                  <div class="theme-row">
+                    <label>Text</label>
+                    <input type="color" data-svg-group="gtext" value="#006d77">
+                  </div>
+
+                  <div class="theme-row">
+                    <label>Khung</label>
+                    <input type="color" data-svg-group="khung" value="#006d77">
+                  </div>
+
+                  <div class="theme-row">
+                    <label>Bảng tên</label>
+                    <input type="color" data-svg-group="bangten" value="#ffffff">
+                  </div>
+
+                  <button type="button" id="btnResetSvgTheme">Reset màu</button>
+                </div>
+                <div id="SVGContainer"></div>
+              </div>
+
+
+
+
+
+
+
+            </div>
+
+            <aside class="right-stack">
+
+
+              <div class="panel leak-state low-voltage-panel">
+                <div class="panel-head">
+                  <h3><i class="fas fa-bolt" aria-hidden="true"></i>KHOANG HẠ THẾ</h3>
+                </div>
+
+                <div class="leak-list">
+                  <table id="tblHaThe" class="low-voltage-table">
+
+                  </table>
+                </div>
+                <div class="low-voltage-status-panel">
+                  <table class="low-voltage-status-table">
+                  <tr id="line4_hathe">
+                  </tr>
+                  <tr id="line5_hathe">
+
+                  </tr>
+                  <tr id="line6_hathe">
+
+                  </tr>
+                  </table>
+                </div>
+                <div class="power-ai-lv-analysis" aria-live="polite">
+                  <div class="power-ai-lv-analysis-title">
+                    <i class="fas fa-brain" aria-hidden="true"></i>
+                    <b>PHÂN TÍCH ĐIỆN–NHIỆT</b>
+                  </div>
+                  <div class="power-ai-lv-analysis-grid">
+                    <article id="powerAiLvAssessment"
+                      class="power-ai-lv-analysis-item power-ai-lv-assessment">
+                      <i class="fas fa-shield-alt"></i>
+                      <div><small>Đánh giá điện–nhiệt</small><b>Đang chờ dữ liệu</b></div>
+                      <strong>--</strong>
+                    </article>
+                    <article id="powerAiLvTrend"
+                      class="power-ai-lv-analysis-item power-ai-lv-trend">
+                      <i class="fas fa-chart-line"></i>
+                      <div><small>Xu hướng nhiệt</small><b>Đang tích lũy mẫu</b></div>
+                    </article>
+                    <article id="powerAiLvAlert"
+                      class="power-ai-lv-analysis-item power-ai-lv-diagnosis">
+                      <i class="fas fa-stethoscope"></i>
+                      <div><small>Chẩn đoán</small><b>Chưa có kết quả phân tích</b></div>
+                    </article>
+                  </div>
+                  <p id="powerAiLvRecommendation" class="power-ai-lv-recommendation">
+                    Chờ dữ liệu U, I, COS và nhiệt độ khoang hạ thế đồng bộ.
+                  </p>
+                </div>
+              </div>
+            </aside>
+          </section>
+
+          <section class="panel recent-alerts-panel" aria-labelledby="recentAlertsTitle">
+            <div class="panel-head recent-alerts-head">
+              <h3 id="recentAlertsTitle">
+                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                CẢNH BÁO GẦN NHẤT
+              </h3>
+              <div class="recent-alerts-actions">
+                <button type="button" id="powerAiObservationToggle" class="power-ai-alert-history-toggle"
+                  aria-pressed="false" title="Dành cho kỹ sư: hiển thị tín hiệu AI chưa đủ bằng chứng phân loại">
+                  <i class="fas fa-eye" aria-hidden="true"></i>
+                  Hiện quan sát AI
+                </button>
+                <button type="button" id="powerAiAlertHistoryToggle" class="power-ai-alert-history-toggle"
+                  aria-pressed="false">
+                  <i class="fas fa-history" aria-hidden="true"></i>
+                  Xem lịch sử
+                </button>
+                <b id="powerAiAlertCount" class="power-ai-count">0</b>
+              </div>
+            </div>
+            <div class="power-ai-table-wrap">
+              <table class="power-ai-alert-table">
+                <thead>
+                  <tr>
+                    <th>Thời gian</th>
+                    <th>Loại cảnh báo</th>
+                    <th>Mức độ</th>
+                    <th>Nguồn</th>
+                    <th>Chi tiết cảnh báo</th>
+                  </tr>
+                </thead>
+                <tbody id="powerAiAlerts">
+                  <tr>
+                    <td colspan="5" class="power-ai-empty">Chưa có cảnh báo.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="bottom-grid" aria-label="Biểu đồ chất lượng điện năng">
+            <div class="panel chart-card thd-card">
+              <div class="thd-card-head">
+                <div>
+                  <span class="thd-eyebrow">CHẤT LƯỢNG ĐIỆN NĂNG</span>
+                  <h3>THD điện áp</h3>
+                </div>
+                <span class="thd-limit">Tham chiếu ≤ 5%</span>
+              </div>
+              <div class="thd-stats">
+                <span>Trung bình <b id="thdUAvg">--</b></span>
+                <span>Cao nhất <b id="thdUMax">--</b></span>
+                <span class="thd-chart-status" id="thdUStatus">Chờ dữ liệu</span>
+              </div>
+              <div class="card-body" id="chartLineChart">
+                <canvas id="myLineChart" style="height: 300px;" role="img"
+                  aria-label="Biểu đồ THD điện áp ba pha">
+                  Trình duyệt không hỗ trợ biểu đồ THD điện áp.
+                </canvas>
+              </div>
+              <div class="thd-card-footer">
+                <span><i class="fas fa-clock"></i> Dữ liệu gần nhất</span>
+                <time id="thdUUpdated">--</time>
+              </div>
+            </div>
+            <div class="panel chart-card thd-card">
+              <div class="thd-card-head">
+                <div>
+                  <span class="thd-eyebrow">CHẤT LƯỢNG ĐIỆN NĂNG</span>
+                  <h3>THD dòng điện</h3>
+                </div>
+                <span class="thd-limit">Tham chiếu ≤ 8%</span>
+              </div>
+              <div class="thd-stats">
+                <span>Trung bình <b id="thdIAvg">--</b></span>
+                <span>Cao nhất <b id="thdIMax">--</b></span>
+                <span class="thd-chart-status" id="thdIStatus">Chờ dữ liệu</span>
+              </div>
+              <div class="card-body" id="chartLineChart_I">
+                <canvas id="myLineChart_I" style="height: 300px;" role="img"
+                  aria-label="Biểu đồ THD dòng điện ba pha">
+                  Trình duyệt không hỗ trợ biểu đồ THD dòng điện.
+                </canvas>
+              </div>
+              <div class="thd-card-footer">
+                <span><i class="fas fa-clock"></i> Dữ liệu gần nhất</span>
+                <time id="thdIUpdated">--</time>
+              </div>
+            </div>
+          </section>
+
+          <section class="bottom-grid realtime-electrical-grid" aria-label="Biểu đồ điện realtime">
+            <div class="panel chart-card thd-card realtime-electrical-card">
+              <div class="thd-card-head">
+                <div>
+                  <span class="thd-eyebrow">DỮ LIỆU THỜI GIAN THỰC</span>
+                  <h3>Điện áp ba pha</h3>
+                </div>
+                <span class="thd-limit">Đơn vị V</span>
+              </div>
+              <div class="thd-stats realtime-phase-stats">
+                <span>UA <b id="realtimeUA">--</b></span>
+                <span>UB <b id="realtimeUB">--</b></span>
+                <span>UC <b id="realtimeUC">--</b></span>
+                <span class="thd-chart-status" id="realtimeUStatus">Chờ dữ liệu</span>
+              </div>
+              <div class="card-body">
+                <canvas id="realtimeVoltageChart" role="img"
+                  aria-label="Biểu đồ điện áp realtime ba pha"></canvas>
+              </div>
+              <div class="thd-card-footer">
+                <span><i class="fas fa-broadcast-tower"></i> Cập nhật từ socket</span>
+                <time id="realtimeUUpdated">--</time>
+              </div>
+            </div>
+
+            <div class="panel chart-card thd-card realtime-electrical-card">
+              <div class="thd-card-head">
+                <div>
+                  <span class="thd-eyebrow">DỮ LIỆU THỜI GIAN THỰC</span>
+                  <h3>Dòng điện ba pha</h3>
+                </div>
+                <span class="thd-limit">Đơn vị A</span>
+              </div>
+              <div class="thd-stats realtime-phase-stats">
+                <span>IA <b id="realtimeIA">--</b></span>
+                <span>IB <b id="realtimeIB">--</b></span>
+                <span>IC <b id="realtimeIC">--</b></span>
+                <span class="thd-chart-status" id="realtimeIStatus">Chờ dữ liệu</span>
+              </div>
+              <div class="card-body">
+                <canvas id="realtimeCurrentChart" role="img"
+                  aria-label="Biểu đồ dòng điện realtime ba pha"></canvas>
+              </div>
+              <div class="thd-card-footer">
+                <span><i class="fas fa-broadcast-tower"></i> Cập nhật từ socket</span>
+                <time id="realtimeIUpdated">--</time>
+              </div>
+            </div>
+          </section>
+
+          <!-- dữ liệu và biểu đồ sóng hài -->
+          <!-- <section class="bottom-grid" hidden>
+            <div class="panel chart-card">
+              <h3>BIỂU ĐỒ PHỤ TẢI</h3>
+              <div style="margin:10px 0 0 0" id="modal_chart_bdpt">
+                <canvas id="canvas" style="height:300px"></canvas>
+              </div>
+              <div class="row">
+                <form>
+                  <div class="mb-3 mb-0">
+                    <label class="radio-inline me-3"><input type="radio" value="PTongGiao" name="charttype_bdpt" checked
+                        id="rdPTongGiao" onclick="chartTypeChange_bdpt()"> P tổng giao (kW)</label>
+                    <label class="radio-inline me-3"><input type="radio" value="PTongNhan" name="charttype_bdpt"
+                        id="rdPTongNhan" onchange="chartTypeChange_bdpt()"> P tổng nhận (kW)</label>
+                    <label class="radio-inline me-3"><input type="radio" value="QTongGiao" name="charttype_bdpt"
+                        id="rdQTongGiao" onchange="chartTypeChange_bdpt()"> Q tổng giao (kVAR)</label>
+                    <label class="radio-inline me-3"><input type="radio" value="QTongNhan" name="charttype_bdpt"
+                        id="rdQTongNhan" onchange="chartTypeChange_bdpt()"> Q tổng nhận (kVAR)</label>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+            <div class="panel table-card bdpt-small" style="margin-top: 12px;">
+              <div class="bdpt-head">
+                <h3>BẢNG THỐNG KÊ PHỤ TẢI</h3>
+                <div id="bdptDate" class="bdpt-date"></div>
+              </div>
+
+              <table class="bdpt-table">
+                <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>Thời gian</th>
+                    <th>P tổng giao(kW)</th>
+                    <th>P tổng nhận(kW)</th>
+                    <th>Q tổng giao(kVar)</th>
+                    <th>Q tổng nhận(kVar)</th>
+                  </tr>
+                </thead>
+                <tbody id="bdptBody">
+                  <tr>
+                    <td colspan="6">Đang tải dữ liệu...</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="bdpt-footer">
+                <div id="bdptInfo" class="bdpt-info"></div>
+                <div class="bdpt-pagination">
+                  <button id="bdptPrev">Trước</button>
+                  <button id="bdptPageText">1</button>
+                  <button id="bdptNext">Tiếp</button>
+                </div>
+              </div>
+          </section> -->
+
+      </main>
+  </div>
+
+  <div id="powerAiAlertBackdrop" class="power-ai-alert-backdrop" aria-hidden="true"></div>
+  <aside id="powerAiAlertDetail" class="power-ai-alert-detail" aria-hidden="true"
+    aria-labelledby="powerAiAlertDetailTitle" role="dialog" aria-modal="true">
+    <div class="power-ai-alert-detail-head">
+      <div>
+        <span class="power-ai-eyebrow">SỰ KIỆN POWERAI</span>
+        <h3 id="powerAiAlertDetailTitle">Chi tiết cảnh báo</h3>
+      </div>
+      <button type="button" id="powerAiAlertDetailClose" aria-label="Đóng chi tiết cảnh báo">×</button>
+    </div>
+    <div id="powerAiAlertDetailBody" class="power-ai-alert-detail-body"></div>
+  </aside>
+
+  <div id="powerAiForecastBackdrop" class="power-ai-alert-backdrop" aria-hidden="true"></div>
+  <aside id="powerAiForecastDetail" class="power-ai-alert-detail power-ai-forecast-detail"
+    aria-hidden="true" aria-labelledby="powerAiForecastDetailTitle"
+    role="dialog" aria-modal="true">
+    <div class="power-ai-alert-detail-head">
+      <div>
+        <span class="power-ai-eyebrow">PHÂN TÍCH POWERAI</span>
+        <h3 id="powerAiForecastDetailTitle">Diễn giải dự báo 24 giờ</h3>
+      </div>
+      <button type="button" id="powerAiForecastDetailClose" aria-label="Đóng diễn giải dự báo">×</button>
+    </div>
+    <div id="powerAiForecastDetailBody" class="power-ai-alert-detail-body"></div>
+  </aside>
+
+  <div id="powerAiHealthBackdrop" class="power-ai-alert-backdrop" aria-hidden="true"></div>
+  <aside id="powerAiHealthDetail" class="power-ai-alert-detail power-ai-health-detail-modal"
+    aria-hidden="true" aria-labelledby="powerAiHealthDetailTitle"
+    role="dialog" aria-modal="true">
+    <div class="power-ai-alert-detail-head">
+      <div>
+        <span class="power-ai-eyebrow">PHÂN TÍCH POWERAI</span>
+        <h3 id="powerAiHealthDetailTitle">Diễn giải sức khỏe thiết bị</h3>
+      </div>
+      <button type="button" id="powerAiHealthDetailClose" aria-label="Đóng diễn giải sức khỏe">×</button>
+    </div>
+    <div id="powerAiHealthDetailBody" class="power-ai-alert-detail-body"></div>
+  </aside>
+
+  <button type="button" id="powerAiChatToggle" class="power-ai-chat-toggle"
+    aria-label="Mở trợ lý PowerAI" aria-expanded="false">
+    <i class="fas fa-robot"></i>
+    <span>Trợ lý AI</span>
+  </button>
+
+  <aside id="powerAiChatPanel" class="power-ai-chat-panel" aria-hidden="true"
+    role="dialog" aria-labelledby="powerAiChatTitle">
+    <div class="power-ai-chat-head">
+      <div>
+        <i class="fas fa-robot"></i>
+        <span>
+          <b id="powerAiChatTitle">Trợ lý AI iSS</b>
+          <small><span id="ollamaChatStatus" class="ollama-chat-status checking">Đang kiểm tra AI</span> · <span id="powerAiChatDevice">Chưa chọn thiết bị</span></small>
+        </span>
+      </div>
+      <div class="power-ai-chat-head-actions">
+        <button type="button" id="powerAiChatReset" title="Xóa hội thoại" aria-label="Xóa hội thoại"><i class="fas fa-redo-alt"></i></button>
+        <button type="button" id="powerAiChatClose" aria-label="Đóng trợ lý">×</button>
+      </div>
+    </div>
+
+    <div id="powerAiChatMessages" class="power-ai-chat-messages" aria-live="polite">
+      <div class="power-ai-message assistant power-ai-chat-welcome">
+        <span class="power-ai-chat-message-label"><i class="fas fa-robot"></i> Trợ lý AI</span>
+        <b>Xin chào, tôi có thể hỗ trợ bạn</b>
+        <span>Kiểm tra nhanh tình trạng vận hành của thiết bị đang chọn.</span>
+      </div>
+    </div>
+
+    <div class="power-ai-chat-suggestions">
+      <button type="button" data-question="Sức khỏe thiết bị hiện tại thế nào?"><i class="fas fa-heartbeat"></i> Sức khỏe</button>
+      <button type="button" data-question="Thiết bị có cảnh báo hoặc bất thường nào?"><i class="fas fa-bell"></i> Cảnh báo</button>
+      <button type="button" data-question="Cho tôi biết thông số điện mới nhất"><i class="fas fa-tachometer-alt"></i> Thông số</button>
+      <button type="button" data-question="Dự báo rủi ro sự cố trong 24 giờ"><i class="fas fa-chart-line"></i> Dự báo</button>
+    </div>
+
+    <form id="powerAiChatForm" class="power-ai-chat-form">
+      <label class="sr-only" for="powerAiChatInput">Câu hỏi dành cho trợ lý PowerAI</label>
+      <input id="powerAiChatInput" type="text" maxlength="1000"
+        placeholder="Nhập câu hỏi về thiết bị..." autocomplete="off">
+      <button type="submit" aria-label="Gửi câu hỏi">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </form>
+  </aside>
+
+  <script src="/vendor/global/global.min.js"></script>
+  <script src="/javascripts/giamsat/SVGPanZoom.js"></script>
+  <script src="../javascripts/moment.js"></script>
+  <script src="vendor/chart.js/Chart.bundle.min.js"></script>
+  <script src="/vendor/apexchart/apexchart.js"></script>
+  <script src="/vendor/nouislider/nouislider.min.js"></script>
+  <script src="../javascripts/dashboard/render.js?v=0.4.0"></script>
+  <script src="../javascripts/dashboard/dashboard.js?v=1.4.1"></script>
+  <script src="../javascripts/dashboard/toggleSidebar.js"></script>
+
+  <script src="./javascripts/dashboard/dashboard_sodomotsoi.js"></script>
+  <script src="/runtime-config.js"></script>
+  <script src="/javascripts/socket.js"></script>
+  <script src="/javascripts/socket-data-watchdog.js"></script>
+
+
+
+</body>
+
+</html>

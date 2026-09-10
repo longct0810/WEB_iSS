@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="box-default">
+        <div class="box-body">
+            <div class="row align-items-center">
+                <div class="col-lg-2" style="padding: 10px; ">
+                    <div class="input-group input-primary">
+                        <span class="input-group-text">Từ ngày</span>
+                        <input name="datepicker" class="datepicker-default form-control" id="txttungay_csct_ct">
+
+                    </div>
+                </div>
+                <div class="col-lg-2" style="padding: 10px; ">
+                    <div class="input-group input-primary">
+                        <span class="input-group-text">Đến ngày</span>
+                        <input name="datepicker" class="datepicker-default form-control" id="txtdenngay_csct_ct">
+
+                    </div>
+                </div>
+                <div class="col-lg-2" style="padding: 10px; ">
+                    <div class="input-group input-primary">
+                        <span class="input-group-text"> Số công tơ</span>
+                        <select class="form-control" id="slsocongto_ct">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-2" style="padding: 10px; ">
+                    <div class="input-group input-primary">
+                        <span class="input-group-text"> Loại chỉ số</span>
+                        <select class="form-control" id="slloaichiso_ct">
+                            <option value="2">Chỉ số từng thời điểm</option>
+                            <option value="3">Chỉ số chốt ngày</option>
+                            <option value="4">Chỉ số chốt tháng</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-xl-4" style="padding: 10px;">
+                    <div class="gap-2">
+                        <input type="hidden" id="hdMeterid_csct" />
+                        <input type="hidden" id="hdloaicongto_csct" />
+                        <button class="btn btn-primary" type="button" id="btnthuchien_ct"><i
+                                class="flaticon-013-checkmark"></i>
+                            Thực hiện</button>
+                        <button class="btn btn-success" type="button" id="btnExportExcelCsct_ct">
+                            <i class="fa fa-file-excel-o"></i> Xuất Excel
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+                <div class="alert  alert-danger" id="messageerror_csctchitiet" style="display:none">
+                </div>
+                <table id="tbl_xemchitiet_csct" class="table table-bordered table-striped w-100">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+    </div>
+</div>
+<style>
+    #tbl_xemchitiet_csct {
+        width: 100% !important;
+    }
+
+    #tbl_xemchitiet_csct th,
+    #tbl_xemchitiet_csct td {
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+</style>

@@ -1,0 +1,50 @@
+<div class="modal fade" id="modal_DIEUKHIEN_NAPTIEN_TOKEN">
+    <div class="modal-dialog" style="width: 50%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    NẠP SẢN LƯỢNG QUA TOKEN<label><span class="text-blue" id="laber_imei_dong"> </span> </label>
+                    <span id="id_overlay_nt_token"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div id="thongbao_naptien_token" style="text-align:center; margin:10px; font-size: 17px;"
+                        class="text-blue">
+                    </div>
+
+                </div>
+                <div class="row">
+
+
+                    <div class="form-group col-lg-5">
+                        <label>
+                            Sản lượng nạp
+                            <span class="text-danger">(*)</span>
+                        </label>
+
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="id_sanluong_token" maxlength="5" value="10">
+                            <span class="input-group-addon" style="margin-left: 5px;"> <i class="text-blue">kWh</i>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="ThucHien_NapTien_QuaToKen()" id="btnDong">Thực
+                    hiện</button>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.modal-content -->
+</div>

@@ -1,0 +1,445 @@
+<!-- Modal Add Category -->
+<div class="modal fade bd-example-modal-lg" id="thongtinnhadat_modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>Thông tin nhà đất</strong></h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="profile card-body px-3 pt-3 pb-0">
+                            <div class="row">
+
+                                <div class="tab-content">
+                                    <div id="type_nhadat-1" class="tab-pane active">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Thành phố
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="select_tp_modal"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Quận
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="select_quan_modal"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Phường
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="select_phuong_modal"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Địa chỉ
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="txtdiachi_dat"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Giá bán
+
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="txt_giaban_dat"></span> (Tỷ)
+                                                        -
+                                                        <span class="text-danger" id="txt_giabantext_dat"> xxx
+                                                            Triệu / m<sup>2</sup></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Diện tích trên sổ
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span
+                                                            id="txt_dientich_trenso_dat"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Diện tích thực tế
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span
+                                                            id="txt_dientich_thucte_dat"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Đường trước nhà - Lòng đường (m)
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span
+                                                            id="txt_kichthuoc_longduong_dat"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Đường trước nhà - Vỉa hè (m)
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="txt_kichthuoc_viave"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Loại đường
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="cbo_loaiduong_dat"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">HÌnh thái thửa đất
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span
+                                                            id="cbo_hinhthai_thuadat_dat"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Hướng
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="txt_huong_dat"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Số mặt tiền
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="txt_somattien_dat"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Kích thước (m)
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="txt_kichthuoc_mattien_dat"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Khoảng cách đến đường Ô tô (m)
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="txt_khoangcach_duonglon_dat"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Tình trạng công trình
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="txt_tinhtrang_congtrinh_dat"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Nở hậu
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="cb_nohau_dat"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Đã giao dịch
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="cb_trangthai_dat"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Nguồn tin
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="cbo_nguontin_dat"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Thời điểm
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="dt_thoidiem_dat"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Mô tả
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="txt_mota_dat"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="type_nhadat-2" class="tab-pane">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Thành phố
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="select_tp_nha_modal"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Quận
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span
+                                                            id="select_quan_nha_modal"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Phường
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span
+                                                            id="select_phuong_nha_modal"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Địa chỉ
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="txtdiachi_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Giá bán
+
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="txt_giaban_nha"></span> (Tỷ)
+                                                        -
+                                                        <span class="text-danger" id="txt_giabantext_nha"> xxx
+                                                            Triệu / m<sup>2</sup></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Diện tích trên sổ
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="txt_dientich_so_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Diện tích thực tế
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span
+                                                            id="txt_dientich_thucte_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Số tầng
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="txt_sotang_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Loại mái
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="txt_loaimai_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Đường trước nhà - Lòng đường (m)
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span
+                                                            id="txt_kichthuoc_longduong_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Đường trước nhà - Vỉa hè (m)
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span
+                                                            id="txt_kichthuoc_viahe_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Loại đường
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="cbo_loaiduong_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">HÌnh thái thửa đất
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span
+                                                            id="cbo_hinhthai_thuadat_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Hướng
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="txt_huong_nha"></span>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Số mặt tiền
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="txt_somattien_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Kích thước (m)
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="txt_kichthuoc_matien_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Khoảng cách đến đường Ô tô (m)
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="txt_kichthuoc_duonglon_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Sử dụng
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="cbo_sudungdat_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Tình trạng công trình
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="txt_tinhtrang_congtrinh_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Nở hậu
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="cb_nohau_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Đã giao dịch
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="cb_trangthai_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Nguồn tin
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="cbo_nguontin_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Thời điểm
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6">
+                                                        <span id="dt_thoidiem_nha"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-4">
+                                                    <div class="col-sm-5 col-6">
+                                                        <h5 class="f-w-500">Mô tả
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-sm-7 col-6"> <span id="txt_mota_nha"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

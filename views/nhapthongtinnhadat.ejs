@@ -1,0 +1,564 @@
+<%- include('head.ejs') %>
+
+    <%- include('preloader.ejs') %>
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+        Nav header start
+    ***********************************-->
+            <%- include('navheader.ejs') %>
+                <!--**********************************
+        Nav header end
+    ***********************************-->
+                <!--**********************************
+            Chat box start
+        ***********************************-->
+                <%- include('chatbox.ejs') %>
+                    <!--**********************************
+            Chat box End
+        ***********************************-->
+                    <!--**********************************
+            Header start
+        ***********************************-->
+                    <%- include('header.ejs') %>
+                        <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+                        <!--**********************************
+        Sidebar start
+    ***********************************-->
+                        <%- include('dlanav.ejs') %>
+                            <!--**********************************
+        Sidebar end
+    ***********************************-->
+                            <!--**********************************
+            Content body start
+        ***********************************-->
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-12 card">
+                                            <div class="card-header">
+                                                <h4 class="card-title">Vị trí</h4>
+                                            </div>
+                                            <div class="profile card-body px-3 pt-3 pb-0">
+                                                <div class="row">
+                                                    <div class="col-xl-2 col-xxl-2 col-lg-2">
+                                                        <select id="select_tp">
+                                                            <option value="-1">-- Chọn thành phố --</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xl-2 col-xxl-2 col-lg-2">
+                                                        <select id="select_quan">
+                                                            <option value="-1">-- Chọn Quận --</option>
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-xl-2 col-xxl-2 col-lg-2">
+                                                        <select id="select_phuong">
+                                                            <option value="-1">-- Chọn Phường--</option>
+
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                        <input type="text" id="txtdiachi_dat"
+                                                            class="form-control input-rounded" placeholder="Địa chỉ"
+                                                            maxlength="255">
+                                                    </div>
+                                                </div>
+                                                <div class="row pt-3 pb-3">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 card">
+                                            <div class="profile card-body px-3 pt-3 pb-0">
+                                                <div class="row">
+                                                    <ul class="nav nav-pills justify-content-end mb-4">
+                                                        <li class=" nav-item">
+                                                            <a href="#type_nhadat-1" class="nav-link active"
+                                                                data-bs-toggle="tab" aria-expanded="false">Đất</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a href="#type_nhadat-2" class="nav-link"
+                                                                data-bs-toggle="tab" aria-expanded="false">Nhà</a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <div id="type_nhadat-1" class="tab-pane active">
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="mb-3">
+                                                                        <label class="text-label form-label"
+                                                                            >Diện tích
+                                                                            (m<sup>2</sup>) </label>
+                                                                        <div class="input-group input-primary">
+                                                                            <span class="input-group-text"> Trên sổ
+                                                                            </span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_dientich_trenso_dat" min="0">
+                                                                            <span class="input-group-text"> Thực tế
+                                                                            </span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_dientich_thucte_dat" min="0">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="text-label form-label"
+                                                                            >Đường trước
+                                                                            nhà</label>
+                                                                        <div class="input-group input-primary">
+                                                                            <span class="input-group-text"> Lòng đường
+                                                                                (m) </span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_kichthuoc_longduong_dat"
+                                                                                min="0">
+                                                                            <span class="input-group-text"> Vỉa hè
+                                                                                (m) </span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_kichthuoc_viave" min="0">
+                                                                            <span class="input-group-text"> Loại đường
+                                                                            </span>
+                                                                            <select
+                                                                                class="me-sm-2 default-select form-control wide"
+                                                                                id="cbo_loaiduong_dat">
+                                                                                <option value="0">Đường bê tông</option>
+                                                                                <option value="1">Đường đất</option>
+                                                                                <option value="2">Đường nhựa</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="text-label form-label"
+                                                                            >Phong
+                                                                            thủy</label>
+                                                                        <div class="input-group input-primary">
+                                                                            <span class="input-group-text">HÌnh thái
+                                                                                thửa đất</span>
+                                                                            <select
+                                                                                class="me-sm-2 default-select form-control wide"
+                                                                                id="cbo_hinhthai_thuadat_dat">
+                                                                                <option value="0">Vuông vức</option>
+                                                                                <option value="1">Hình chữ L</option>
+                                                                                <option value="2">Tương đối vuông vức
+                                                                                </option>
+                                                                            </select>
+                                                                            <span class="input-group-text"> Hướng
+                                                                            </span>
+                                                                            <input type="text" class="form-control"
+                                                                                id="txt_huong_dat" maxlength="255">
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label class="text-label form-label"
+                                                                            >Mô tả</label>
+                                                                        <div class="input-group input-primary">
+                                                                            <textarea class="form-control" rows="6"
+                                                                                id="txt_mota_dat"
+                                                                                maxlength="255"></textarea>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="mb-3">
+                                                                        <label class="text-label form-label"
+                                                                            >Mặt
+                                                                            tiền</label>
+                                                                        <div class="input-group input-primary">
+                                                                            <span class="input-group-text"> Số mặt tiền
+                                                                            </span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_somattien_dat" min="0">
+                                                                            <span class="input-group-text"> Kích thước
+                                                                                (m) </span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_kichthuoc_mattien_dat" min="0">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="text-label form-label"
+                                                                            >&nbsp;</label>
+                                                                        <div class="input-group input-primary">
+                                                                            <span class="input-group-text"> Khoảng cách
+                                                                                đến đường Ô tô (m)</span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_khoangcach_duonglon_dat"
+                                                                                min="0">
+                                                                            <span class="input-group-text">Tình trạng
+                                                                                công trình</span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_tinhtrang_congtrinh_dat"
+                                                                                min="0">
+
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="mb-3 row">
+                                                                        <div class="col-lg-3">
+
+                                                                            <div class="input-group input-primary">
+                                                                                <div
+                                                                                    class="form-check custom-checkbox mt-3 checkbox-primary check-xl">
+                                                                                    <input type="checkbox"
+                                                                                        class="form-check-input"
+                                                                                        id="cb_nohau_dat" required="">
+                                                                                    <label class="pt-2 form-check-label"
+                                                                                        >Nở
+                                                                                        hậu</label>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="form-check custom-checkbox  checkbox-primary check-xl">
+                                                                                    <input type="checkbox"
+                                                                                        class="form-check-input"
+                                                                                        id="cb_trangthai_dat"
+                                                                                        required="">
+                                                                                    <label class="pt-2 form-check-label"
+                                                                                        >Đã giao
+                                                                                        dịch</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-lg-4">
+                                                                            <label class="text-label form-label"
+                                                                                >&nbsp;</label>
+                                                                            <div class="input-group input-primary">
+                                                                                <span class="input-group-text"> Giá bán
+                                                                                    (Tỷ)</span>
+                                                                                <input type="number"
+                                                                                    class="form-control"
+                                                                                    id="txt_giaban_dat" min="0">
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-3">
+                                                                            <label class="text-label form-label"
+                                                                                >&nbsp;</label>
+                                                                            <div class="pt-3 input-group input-danger">
+                                                                                <span class="input-group-text"
+                                                                                    id="txt_giabantext_dat"> xxx
+                                                                                    Triệu / m<sup>2</sup></span>
+
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <label class="text-label form-label"
+                                                                                    >&nbsp;</label>
+                                                                                <div class="input-group input-primary">
+                                                                                    <span class="input-group-text">
+                                                                                        Nguồn
+                                                                                        thông tin</span>
+                                                                                    <select
+                                                                                        class="me-sm-2 default-select form-control wide"
+                                                                                        id="cbo_nguontin_dat">
+                                                                                        <option value="0">Trực tiếp
+                                                                                        </option>
+                                                                                        <option value="1">Internet
+                                                                                        </option>
+                                                                                    </select>
+
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <label class="text-label form-label"
+                                                                                    >&nbsp;</label>
+                                                                                <div class="input-group input-primary">
+                                                                                    <span class="input-group-text"> Thời
+                                                                                        điểm</span>
+                                                                                    <input name="datepicker"
+                                                                                        class="datepicker-default form-control"
+                                                                                        id="dt_thoidiem_dat">
+
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="input-group mt-3">
+                                                                            <input type="text" class="form-control"
+                                                                                disabled value="Cao Thanh Long">
+                                                                            <button class="btn btn-warning"
+                                                                                type="button"
+                                                                                id="btn_luuthongtin_dat"><i
+                                                                                    class="flaticon-013-checkmark"></i>
+                                                                                Lưu thông tin</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="type_nhadat-2" class="tab-pane">
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="mb-3">
+                                                                        <label class="text-label form-label"
+                                                                            >Diện tích
+                                                                            (m<sup>2</sup>) </label>
+                                                                        <div class="input-group input-primary">
+                                                                            <span class="input-group-text"> Trên sổ
+                                                                            </span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_dientich_so_nha" min="0">
+                                                                            <span class="input-group-text"> Thực tế
+                                                                            </span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_dientich_thucte_nha" min="0">
+                                                                            <span class="input-group-text"> Số
+                                                                                tầng
+                                                                            </span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_sotang_nha" min="0">
+                                                                            <span class="input-group-text"> Loại mái
+                                                                            </span>
+                                                                            <select
+                                                                                class="me-sm-2 default-select form-control wide"
+                                                                                id="cbo_loaimai_nha">
+                                                                                <option value="0">Mái ngói</option>
+                                                                                <option value="1">Mái bằng</option>
+                                                                            </select>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="text-label form-label"
+                                                                            >Đường trước
+                                                                            nhà</label>
+                                                                        <div class="input-group input-primary">
+                                                                            <span class="input-group-text"> Lòng đường
+                                                                                (m) </span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_kichthuoc_longduong_nha"
+                                                                                min="0">
+                                                                            <span class="input-group-text"> Vỉa hè
+                                                                                (m) </span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_kichthuoc_viahe_nha" min="0">
+                                                                            <span class="input-group-text"> Loại đường
+                                                                            </span>
+                                                                            <select
+                                                                                class="me-sm-2 default-select form-control wide"
+                                                                                id="cbo_loaiduong_nha">
+                                                                                <option value="0">Đường bê tông</option>
+                                                                                <option value="1">Đường đất</option>
+                                                                                <option value="2">Đường nhựa</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="text-label form-label"
+                                                                            >Phong
+                                                                            thủy</label>
+                                                                        <div class="input-group input-primary">
+                                                                            <span class="input-group-text">HÌnh thái
+                                                                                thửa đất</span>
+                                                                            <select
+                                                                                class="me-sm-2 default-select form-control wide"
+                                                                                id="cbo_hinhthai_thuadat_nha">
+                                                                                <option value="0">Vuông vức</option>
+                                                                                <option value="1">Hình chữ L</option>
+                                                                                <option value="2">Tương đối vuông vức
+                                                                                </option>
+                                                                            </select>
+                                                                            <span class="input-group-text"> Hướng
+                                                                            </span>
+                                                                            <input type="text" class="form-control"
+                                                                                id="txt_huong_nha" maxlength="255">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="text-label form-label"
+                                                                            >Mô tả</label>
+                                                                        <div class="input-group input-primary">
+                                                                            <textarea class="form-control" rows="6"
+                                                                                id="txt_mota_nha"
+                                                                                maxlength="255"></textarea>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="mb-3">
+                                                                        <label class="text-label form-label"
+                                                                            >Mặt
+                                                                            tiền</label>
+                                                                        <div class="input-group input-primary">
+                                                                            <span class="input-group-text"> Số mặt tiền
+                                                                            </span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_somattien_nha" min="0">
+                                                                            <span class="input-group-text"> Kích thước
+                                                                                (m) </span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_kichthuoc_matien_nha" min="0">
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="text-label form-label"
+                                                                            >&nbsp;</label>
+                                                                        <div class="input-group input-primary">
+                                                                            <span class="input-group-text"> Khoảng cách
+                                                                                đến đường Ô tô (m)</span>
+                                                                            <input type="number" class="form-control"
+                                                                                id="txt_kichthuoc_duonglon_nha" min="0">
+                                                                            <span class="input-group-text"> Sử
+                                                                                dụng</span>
+                                                                            <select
+                                                                                class="me-sm-2 default-select form-control wide"
+                                                                                id="cbo_sudungdat_nha">
+                                                                                <option value="0">Cho thuê</option>
+                                                                                <option value="1">Kinh doanh</option>
+                                                                                <option value="2">Nhà ở
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3 row">
+                                                                        <div class="col-lg-3">
+
+                                                                            <div class="input-group input-primary">
+                                                                                <div
+                                                                                    class="form-check custom-checkbox mt-3 checkbox-primary check-xl">
+                                                                                    <input type="checkbox"
+                                                                                        class="form-check-input"
+                                                                                        id="cb_nohau_nha" required="">
+                                                                                    <label class="pt-2 form-check-label"
+                                                                                        >Nở
+                                                                                        hậu</label>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="form-check custom-checkbox  checkbox-primary check-xl">
+                                                                                    <input type="checkbox"
+                                                                                        class="form-check-input"
+                                                                                        id="cb_trangthai_nha"
+                                                                                        required="">
+                                                                                    <label class="pt-2 form-check-label"
+                                                                                        >Đã giao
+                                                                                        dịch</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-lg-4">
+                                                                            <label class="text-label form-label"
+                                                                                >&nbsp;</label>
+                                                                            <div class="input-group input-primary">
+                                                                                <span class="input-group-text"> Giá bán
+                                                                                    (Tỷ)</span>
+                                                                                <input type="number"
+                                                                                    class="form-control"
+                                                                                    id="txt_giaban_nha" min="0">
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-3">
+                                                                            <label class="text-label form-label"
+                                                                                >&nbsp;</label>
+                                                                            <div class="pt-3 input-group input-danger">
+                                                                                <span class="input-group-text"
+                                                                                    id="txt_giabantext_nha"> xxx
+                                                                                    Triệu / m<sup>2</sup></span>
+
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <label class="text-label form-label"
+                                                                                    >&nbsp;</label>
+                                                                                <div class="input-group input-primary">
+                                                                                    <span class="input-group-text">
+                                                                                        Nguồn
+                                                                                        thông tin</span>
+                                                                                    <select
+                                                                                        class="me-sm-2 default-select form-control wide"
+                                                                                        id="cbo_nguontin_nha">
+                                                                                        <option value="0">Trực tiếp
+                                                                                        </option>
+                                                                                        <option value="1">Internet
+                                                                                        </option>
+                                                                                    </select>
+
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <label class="text-label form-label"
+                                                                                    >&nbsp;</label>
+                                                                                <div class="input-group input-primary">
+                                                                                    <span class="input-group-text"> Thời
+                                                                                        điểm</span>
+                                                                                    <input name="datepicker"
+                                                                                        class="datepicker-default form-control"
+                                                                                        id="dt_thoidiem_nha">
+
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="input-group mt-3">
+                                                                            <div class="input-group input-primary">
+                                                                                <span class="input-group-text">Tình
+                                                                                    trạng
+                                                                                    công trình</span>
+                                                                                <input type="number"
+                                                                                    class="form-control"
+                                                                                    id="txt_tinhtrang_congtrinh"
+                                                                                    min="0">
+
+                                                                                <button class="btn btn-warning"
+                                                                                    type="button"
+                                                                                    id="btn_luuthongtin_nha">
+                                                                                    <i
+                                                                                        class="flaticon-013-checkmark"></i>
+                                                                                    Lưu thông tin</button>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+        </div>
+        <!--**********************************
+        Content body end
+    ***********************************-->
+        <%- include('footer.ejs') %>
+            </div>
+            <%- include('script.ejs') %>
+                <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                <script src="./vendor/select2/js/select2.full.min.js"></script>
+                <script src="./javascripts/plugins-init/select2-init.js"></script>
+                <script src="./vendor/pickadate/picker.js"></script>
+                <script src="./vendor/pickadate/picker.time.js"></script>
+                <script src="./vendor/pickadate/picker.date.js"></script>
+                <script src="./vendor/toastr/js/toastr.min.js"></script>
+                <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                <script src="./javascripts/nhadat/nhapthongtinnhadat.js"></script>
+                <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">

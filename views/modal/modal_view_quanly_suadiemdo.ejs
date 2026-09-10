@@ -1,0 +1,161 @@
+<!--Sửa thông tin diem do -->
+
+<div class="modal fade col-lg-12" id="modal-x1-editkh">
+    <div class="modal-dialog col-lg-12" style="max-width: 90%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Sửa thông tin diểm đo</h4>
+            </div>
+            <div class="box box-default" style="border-top-style:none">
+                <div class="box-body">
+
+                    <div class="row">
+                        <div class="col-lg-4 col-xl-3">
+                            <div class="form-group">
+                                <label for="edit_Tree">Đơn vị <span class="text-danger">(*)</span></label>
+                                <div class="easy-tree-qldm" id="tree_left_qldmdl_edit">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-xl-8" style="border-left: 1px dashed #808080">
+                            <div class="row">
+                                <div class="col-lg-12"
+                                    style="text-align:center; font-weight:bold; margin:0px 10px 0px 0px">
+                                    THÔNG TIN KHÁCH HÀNG</div>
+                            </div>
+                            <div class="row" style="margin: 10px 0;">
+                                <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12" style="margin: 5px 0;">
+                                    <div class="input-group input-primary">
+                                        <span class="input-group-text"> Mã khách hàng (*)</span>
+                                        <input type="text" class="form-control" id="edit_makhachhang" maxlength="50">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12" style="margin: 5px 0;">
+                                    <div class="input-group input-primary">
+                                        <span class="input-group-text"> Tên khách hàng</span>
+                                        <input type="text" class="form-control" id="edit_tenkhachhang" maxlength="255">
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12" style="margin: 5px 0;">
+                                    <div class="input-group input-primary">
+                                        <span class="input-group-text"> Đối tượng</span>
+                                        <select class="form-control" id="edit_doituongkh">
+                                            <option value="">Chọn đối tượng </option>
+                                            <option value="KHTT">Khách hàng trả trước</option>
+                                            <option value="KHTS">Khách hàng trả sau </option>
+                                            <option value="KHDMT">Khách hàng sử dụng điện mặt trời</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12" style="margin: 5px 0;">
+                                    <div class="input-group input-primary">
+                                        <span class="input-group-text"> Loại khách hàng</span>
+                                        <select id="edit_LoaiKH" class="form-control">
+                                            <option value="SX110KV">Ngành sản xuất cấp điện áp từ 110kV trở lên</option>
+                                            <option value="SX22_110KV">Ngành sản xuất cấp điện áp từ 22kV đến dưới 110kV
+                                            </option>
+                                            <option value="SX6_22KV">Ngành sản xuất cấp điện áp dưới 6kV</option>
+                                            <option value="SX6KV">Khối hành chính sự nghiệp bệnh viện, nhà trẻ, mẫu
+                                                giáo,
+                                                trường PT cấp điện áp từ 6kV trở lên</option>
+                                            <option value="HCNSD6KV">Khối hành chính sự nghiệp bệnh viện, nhà trẻ, mẫu
+                                                giáo,
+                                                trường PT cấp điện áp dưới 6kV</option>
+                                            <option value="HCSNCS6KV">Khối hành chính sự nghiệp chiếu sáng công cộng,
+                                                đơn vị
+                                                HCSN cấp điện áp từ 6 kV trở lên</option>
+                                            <option value="HCSNCSD6KV">Khối hành chính sự nghiệp chiếu sáng công cộng,
+                                                đơn
+                                                vị HCSN cấp điện áp dưới 6 kV</option>
+                                            <option value="SHBL">Đối tượng sinh hoạt: giá bán lẻ điện sinh hoạt</option>
+                                            <option value="SHBLTT">Giá bán lẻ điện sinh hoạt dùng công tơ thẻ trả trước
+                                            </option>
+                                            <option value="KD6_22KV">Ngành kinh doanh cấp điện áp từ 6kV đến dưới 22kV
+                                            </option>
+                                            <option value="KD6KV">Ngành kinh doanh cấp điện áp dưới 6kV</option>
+                                            <option value="DMTN">Dự án điện mặt trời nổi</option>
+                                            <option value="DMTD">Dự án điện mặt trời đất</option>
+                                            <option value="DMTMN">Hệ thống điện mặt trời mái nhà</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                            <hr
+                                style="border-top: dashed 1px;margin-bottom:5px !important; margin-top:5px !important" />
+                            <div class="row">
+                                <div class="col-lg-12"
+                                    style="text-align:center; font-weight:bold; margin:0px 10px 0px 0px">
+                                    THÔNG TIN ĐIỂM ĐO</div>
+                            </div>
+                            <div class="row" style="margin: 10px 0;">
+                                <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12" style="margin: 5px 0;">
+                                    <div class="input-group input-primary">
+                                        <span class="input-group-text"> Mã điểm đo (*)</span>
+                                        <input type="text" pattern="^[a-zA-Z0-9_.-]*$" trim class="form-control"
+                                            id="edit_MaDiemDo" maxlength="255">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group  col-lg-6 col-xl-6 col-md-12 col-sm-12" style="margin:5px 0;">
+                                    <div class="input-group input-primary">
+                                        <span class="input-group-text" style="width: 120px;">Loại pha</span>
+                                        <select id="edit_LoaiPha" class="form-control">
+                                            <option value="1">1 pha 1 giá</option>
+                                            <option value="13">1 pha 3 giá</option>
+                                            <option value="31">3 pha 1 giá</option>
+                                            <option value="3">3 pha 3 giá</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group  col-lg-6 col-xl-6 col-md-12 col-sm-12" style="margin: 5px 0;">
+                                    <div class="input-group input-primary">
+                                        <span class="input-group-text" style="width: 120px;">Mã trạm</span>
+                                        <input type="text" class="form-control" id="edit_matram" maxlength="100">
+                                    </div>
+                                </div>
+                                <div class="form-group  col-lg-6 col-xl-6 col-md-12 col-sm-12" style="margin: 5px 0;">
+                                    <div class="input-group input-primary">
+                                        <span class="input-group-text" style="width: 120px;">Mã cột</span>
+                                        <input type="text" class="form-control" id="edit_macot" maxlength="500">
+                                    </div>
+                                </div>
+                                <div class="form-group  col-lg-6 col-xl-6 col-md-12 col-sm-12" style="margin: 5px 0;">
+                                    <div class="input-group input-primary">
+                                        <span class="input-group-text" style="width: 120px;">Sổ ghi</span>
+                                        <input type="text" class="form-control" id="edit_soghi" maxlength="100">
+                                    </div>
+                                </div>
+                                <div class="form-group  col-lg-6 col-xl-6 col-md-12 col-sm-12" style="margin: 5px 0;">
+                                    <div class="input-group input-primary">
+                                        <span class="input-group-text" style="width: 120px;">Ghi chú</span>
+                                        <input type="text" class="form-control" id="edit_ghichu_kh" maxlength="255">
+                                    </div>
+                                </div>
+                                <div class="form-group  col-lg-6 col-xl-6 col-md-12 col-sm-12" style="margin: 5px 0;">
+                                    <div class="input-group input-primary">
+                                        <span class="input-group-text" style="width: 120px;">DIN điều khiển</span>
+                                        <input type="text" class="form-control" id="edit_din_dk_kh"
+                                            placeholder="Nhập imei" maxlength="16">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="SuaThongTin_diemdo()">Lưu</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>

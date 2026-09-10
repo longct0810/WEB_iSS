@@ -1,0 +1,244 @@
+<div class="row invoice-card-row canhbaoami d-none">
+    <div class="card col-xl-6 col-lg-6 col-md-12 float-left tabcb">
+        <div class="card-header pb-0">
+            <h4 class="card-title">Cảnh báo Vận hành</h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <div class="card warning-card float-left" onclick="showDetailWarning('U_QUA');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/quaap.png"
+                                alt="Điện áp cao"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle" id="dienapcao">0</div>
+                            <p>ĐIỆN ÁP CAO</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card float-left" onclick="showDetailWarning('U_DUOI');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/thapap.png"
+                                alt="Điện áp thấp"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle" id="dienapthap">0</div>
+                            <p>ĐIỆN ÁP THẤP</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card float-left" onclick="showDetailWarning('U_MATCB');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/matcanbangap.png"
+                                alt="Mất căn bằng điện áp"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle" id="matcanbangdienap">0</div>
+                            <p>MẤT CÂN BẰNG ĐIỆN ÁP</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card float-left" onclick="showDetailWarning('I_QUA');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/quadong.png"
+                                alt="quá dòng điện"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle" id="quadongdien">0</div>
+                            <p>QUÁ DÒNG ĐIỆN</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card float-left" onclick="showDetailWarning('I_MATCB');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/matcanbangdong.png"
+                                alt="mất cân bằng dòng điện"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle" id="matcanbangdongdien">0</div>
+                            <p>MẤT CÂN BẰNG DÒNG ĐIỆN</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card warning-card float-left" onclick="showDetailWarning('I_LECH');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/lechpha.png"
+                                alt="lệch pha"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle" id="lechpha">0</div>
+                            <p>LỆCH PHA</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card warning-card float-left" onclick="showDetailWarning('COS');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/hesocongsuat.png"
+                                alt="Hệ số công suất - Cos(φ)"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle" id="hesocongsuatcos">0</div>
+                            <p>Hệ số công suất - Cos(φ)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card warning-card float-left" onclick="showDetailWarning('ANGLE');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/goclechpha.png"
+                                alt="Góc lệch pha (φ)"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle" id="goclechpha">0</div>
+                            <p>Góc lệch pha (φ)</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="card col-xl-6 col-lg-6 col-md-12 float-left">
+        <div class="card-header pb-0">
+            <h4 class="card-title">Cảnh báo Trạng thái</h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <div class="card warning-card incident-card float-left" id="warning-rmu"
+                    onclick="showDetailWarning('OpenMeterBox_OC');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/dongmohom.png"
+                                alt="Đóng/Mở hộp công tơ"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle" id="dongmohopcongto">0</div>
+                            <p>Đóng/Mở hộp công tơ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card incident-card float-left" id="warning-rmu"
+                    onclick="showDetailWarning('ElectrICalLeak_SC');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/rodien.png" alt="rò điện">
+                        </h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle" id="rodien">0</div>
+                            <p>Rò điện</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modal_sukientucthoi_chitiet">
+    <div class="modal-dialog" style="max-width:80%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+                <h4 class="modal-title">
+                    Sự kiện tức thời
+                    <span id="id_overlay_nt"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <table id="tbl_sukientucthoi_chitiet"
+                    class="table table-sk table-bordered table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center">STT</th>
+                            <th class="text-center">Tên</th>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Sự kiện</th>
+                            <th class="text-center">Thời gian bắt đầu
+                            </th>
+                            <th class="text-center">Tên Trạm</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
+
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+
+</div>
+
+<div class="modal fade" id="modal_canhbaovanhanh_chitiet">
+    <div class="modal-dialog" style="max-width:80%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
+                <h4 class="modal-title">
+                    Cảnh báo vận hành
+                    <span id="id_overlay_nt"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <table id="tbl_canhbaovanhanh_chitiet"
+                    class="table table-sk table-bordered table-striped table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Mã điểm đo- Tên khách hàng</th>
+                            <th class="text-center">STT</th>
+                            <th class="text-center" style="display:none">Mã điểm đo</th>
+                            <th class="text-center" style="display:none">Tên khách hàng</th>
+                            <th class="text-center">Thời điểm xảy ra cảnh báo</th>
+                            <th class="text-center">Thời điểm cảnh báo gần nhất</th>
+                            <th class="text-center">Nội dung cảnh báo</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
+
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+
+</div>

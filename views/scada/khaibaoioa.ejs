@@ -1,0 +1,404 @@
+<%- include('../head.ejs') %>
+
+    <%- include('../preloader.ejs') %>
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+        Nav header start
+    ***********************************-->
+            <%- include('../navheader.ejs') %>
+                <!--**********************************
+        Nav header end
+    ***********************************-->
+                <!--**********************************
+            Chat box start
+        ***********************************-->
+                <%- include('../chatbox.ejs') %>
+                    <!--**********************************
+            Chat box End
+        ***********************************-->
+                    <!--**********************************
+            Header start
+        ***********************************-->
+                    <%- include('../header.ejs') %>
+                        <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+                        <!--**********************************
+        Sidebar start
+    ***********************************-->
+                        <%- include('../dlanav.ejs') %>
+                            <!--**********************************
+        Sidebar end
+    ***********************************-->
+                            <!--**********************************
+            Content body start
+        ***********************************-->
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+                                    <div class="wizard-wrap">
+                                        <div class="card wizard-card">
+                                            <div class="wizard-header">
+                                                <h1 class="wizard-title">Thêm thiết bị / cảm biến / IOA</h1>
+
+                                                <div class="step-bar">
+                                                    <div class="step-item active" id="stepIndicator1">Bước 1 - Thiết bị
+                                                    </div>
+                                                    <div class="step-item" id="stepIndicator3">Bước 2 - IOA</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="wizard-body">
+                                                <div id="alertBox" class="alert d-none" role="alert"></div>
+
+                                                <!-- STEP 1 -->
+                                                <div class="step-panel active" id="step1">
+                                                    <div class="section-box">
+                                                        <div class="section-title">Thông tin thiết bị</div>
+
+                                                        <div class="row g-3">
+                                                            <div class="col-md-6">
+                                                                <label class="form-label">Tên thiết bị <span
+                                                                        class="required">*</span></label>
+                                                                <input type="text" class="form-control" id="device_name"
+                                                                    placeholder="Nhập tên thiết bị">
+                                                            </div>
+
+                                                            <div class="col-md-3">
+                                                                <label class="form-label">IP thiết bị <span
+                                                                        class="required">*</span></label>
+                                                                <input type="text" class="form-control" id="device_ip"
+                                                                    placeholder="192.168.1.10">
+                                                            </div>
+
+                                                            <div class="col-md-3">
+                                                                <label class="form-label">Port thiết bị <span
+                                                                        class="required">*</span></label>
+                                                                <input type="number" class="form-control"
+                                                                    id="device_port" placeholder="2404">
+                                                            </div>
+                                                        </div>
+
+                                                        <hr class="my-4">
+
+                                                        <div class="row g-3">
+                                                            <div class="col-md-12">
+                                                                <label class="form-label">Danh mục thiết bị <span
+                                                                        class="required">*</span></label>
+
+                                                                <input type="hidden" id="device_category_id">
+                                                                <input type="hidden" id="device_category_name">
+
+                                                                <div class="mb-2">
+                                                                    <div class="form-control bg-light"
+                                                                        id="selected_category_text">
+                                                                        Chưa chọn danh mục
+                                                                    </div>
+                                                                </div>
+
+                                                                <div id="device_category_tree" class="tree-box"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- STEP 3 -->
+                                                <div class="step-panel" id="step2">
+                                                    <div class="device-summary">
+                                                        <div><strong>Thiết bị vừa tạo:</strong> <span
+                                                                id="summary_device_name"></span></div>
+                                                        <div><strong>IP:</strong> <span id="summary_device_ip"></span>
+                                                        </div>
+                                                        <div><strong>Port:</strong> <span
+                                                                id="summary_device_port"></span></div>
+                                                    </div>
+
+                                                    <div class="section-box">
+                                                        <div class="section-title">Chọn IOA cho cảm biến</div>
+
+                                                        <div class="d-flex gap-2 mb-2 flex-wrap">
+                                                            <button type="button"
+                                                                class="btn btn-outline-secondary btn-sm"
+                                                                id="btnCheckAllIoa">Chọn tất cả</button>
+                                                            <button type="button"
+                                                                class="btn btn-outline-secondary btn-sm"
+                                                                id="btnUncheckAllIoa">Bỏ chọn tất cả</button>
+                                                            <button type="button"
+                                                                class="btn btn-outline-secondary btn-sm"
+                                                                id="btnReloadIoa">Tải lại</button>
+                                                        </div>
+
+                                                        <div class="selected-count mb-2">
+                                                            Đã chọn: <strong id="selectedIoaCount">0</strong> IOA
+                                                        </div>
+
+                                                        <div id="ioaList" class="ioa-list">
+                                                            <div class="empty-box">Chưa có dữ liệu IOA</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="wizard-footer">
+                                                <button class="btn btn-outline-secondary" id="btnPrev" disabled>Quay
+                                                    lại</button>
+
+                                                <div class="d-flex gap-2">
+                                                    <button class="btn btn-outline-danger d-none" id="btnReset">Tạo
+                                                        mới</button>
+                                                    <button class="btn btn-primary" id="btnNext">Next</button>
+                                                    <button class="btn btn-success d-none" id="btnFinish">Hoàn
+                                                        tất</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- DANH SÁCH THIẾT BỊ -->
+                                    <div class="card wizard-card mt-4">
+                                        <div
+                                            class="wizard-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                                            <h2 class="wizard-title mb-0" style="font-size:20px;">Danh sách thiết bị đã
+                                                thêm</h2>
+                                            <button class="btn btn-outline-primary btn-sm" id="btnReloadDeviceList">Tải
+                                                lại danh sách</button>
+                                        </div>
+
+                                        <div class="wizard-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered table-hover align-middle mb-0"
+                                                    id="tbl_device_list">
+                                                    <thead class="table-light">
+                                                        <tr>
+                                                            <th style="width:70px">STT</th>
+                                                            <th>Tên thiết bị</th>
+                                                            <th style="width:180px">IP</th>
+                                                            <th style="width:100px">Port</th>
+                                                            <th>Danh mục</th>
+                                                            <th style="width:260px">Thao tác</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="deviceListBody">
+                                                        <tr>
+                                                            <td colspan="6" class="text-center">Đang tải dữ liệu</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+        </div>
+
+        <!--**********************************
+        Content body end
+    ***********************************-->
+        <%- include('../footer.ejs') %>
+            </div>
+            <%- include('../script.ejs') %>
+                <link rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/npm/jstree@3.3.17/dist/themes/default/style.min.css">
+                <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                <script src="./vendor/select2/js/select2.full.min.js"></script>
+                <script src="./javascripts/plugins-init/select2-init.js"></script>
+                <script src="./vendor/pickadate/picker.js"></script>
+                <script src="./vendor/pickadate/picker.time.js"></script>
+                <script src="./vendor/pickadate/picker.date.js"></script>
+                <script src="./vendor/toastr/js/toastr.min.js"></script>
+                <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                <script src="../javascripts/fnTime.js"></script>
+                <script src="../javascripts/moment.js"></script>
+                <!-- DataTables Buttons JS -->
+                <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+                <script src="./vendor/datatables/js/jszip.min.js"></script>
+                <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+                <!-- Chartist -->
+                <script src="./vendor/chart.js/Chart.bundle.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/jstree@3.3.17/dist/jstree.min.js"></script>
+                <script src="../javascripts/scada/thietbi_cambien.js"></script>
+                <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+                <style>
+                    .wizard-wrap {
+                        max-width: 980px;
+                        margin: 30px auto;
+                    }
+
+                    .wizard-card {
+                        border: none;
+                        border-radius: 16px;
+                        box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+                        overflow: hidden;
+                    }
+
+                    .wizard-header {
+                        background: #fff;
+                        border-bottom: 1px solid #edf2f7;
+                        padding: 20px 24px;
+                    }
+
+                    .wizard-title {
+                        font-size: 24px;
+                        font-weight: 700;
+                        margin: 0;
+                    }
+
+                    .step-bar {
+                        display: flex;
+                        gap: 12px;
+                        flex-wrap: wrap;
+                        margin-top: 16px;
+                    }
+
+                    .step-item {
+                        flex: 1;
+                        min-width: 180px;
+                        background: #eef2f7;
+                        border-radius: 12px;
+                        padding: 12px 14px;
+                        font-weight: 600;
+                        color: #6b7280;
+                        border: 1px solid transparent;
+                    }
+
+                    .step-item.active {
+                        background: #e7f1ff;
+                        color: #0d6efd;
+                        border-color: #b6d4fe;
+                    }
+
+                    .step-item.done {
+                        background: #e8f7ee;
+                        color: #198754;
+                        border-color: #b7e4c7;
+                    }
+
+                    .wizard-body {
+                        background: #fff;
+                        padding: 24px;
+                    }
+
+                    .step-panel {
+                        display: none;
+                    }
+
+                    .step-panel.active {
+                        display: block;
+                    }
+
+                    .section-box {
+                        background: #f8fafc;
+                        border: 1px solid #e5e7eb;
+                        border-radius: 14px;
+                        padding: 18px;
+                    }
+
+                    .section-title {
+                        font-size: 18px;
+                        font-weight: 700;
+                        margin-bottom: 16px;
+                    }
+
+                    .required {
+                        color: #dc3545;
+                    }
+
+                    .device-summary,
+                    .sensor-summary {
+                        background: #f8fafc;
+                        border: 1px dashed #cbd5e1;
+                        border-radius: 12px;
+                        padding: 12px 14px;
+                        margin-bottom: 16px;
+                    }
+
+                    .ioa-list {
+                        border: 1px solid #dee2e6;
+                        border-radius: 12px;
+                        background: #fff;
+                        overflow-y: auto;
+                        padding: 10px;
+                    }
+
+                    .ioa-row {
+                        padding: 10px 12px;
+                        border-radius: 10px;
+                    }
+
+                    .ioa-row:hover {
+                        background: #f8f9fa;
+                    }
+
+                    .wizard-footer {
+                        background: #fff;
+                        border-top: 1px solid #edf2f7;
+                        padding: 16px 24px;
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 12px;
+                    }
+
+                    .empty-box {
+                        text-align: center;
+                        color: #6b7280;
+                        padding: 24px 12px;
+                    }
+
+                    .selected-count {
+                        font-size: 14px;
+                        color: #374151;
+                    }
+
+                    .ioa-tree-wrap {
+                        max-height: 420px;
+                        overflow-y: auto;
+                    }
+
+                    .ioa-tree-row {
+                        transition: all .15s ease;
+                        background: #fff;
+                    }
+
+                    .ioa-tree-row:hover {
+                        background: #f8fafc;
+                    }
+
+                    .ioa-tree-node .form-check-label {
+                        cursor: pointer;
+                    }
+
+                    .ioa-toggle {
+                        font-weight: 700;
+                        line-height: 1;
+                        padding: 2px 6px;
+                    }
+
+                    .card-body,
+                    .step-panel {
+                        overflow: hidden;
+                        /* hoặc bỏ hẳn */
+                    }
+
+                    .tree-box {
+                        min-height: 260px;
+                        max-height: 360px;
+                        overflow-y: auto;
+                        border: 1px solid #dee2e6;
+                        border-radius: 10px;
+                        background: #fff;
+                        padding: 10px;
+                    }
+
+                    #selected_category_text {
+                        font-weight: 500;
+                        color: #374151;
+                    }
+
+                    .btn-action-group {
+                        display: flex;
+                        gap: 8px;
+                        flex-wrap: wrap;
+                    }
+                </style>

@@ -1,0 +1,236 @@
+<%- include('../head.ejs') %>
+
+    <%- include('../preloader.ejs') %>
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+        Nav header start
+    ***********************************-->
+            <%- include('../navheader.ejs') %>
+                <!--**********************************
+        Nav header end
+    ***********************************-->
+                <!--**********************************
+            Chat box start
+        ***********************************-->
+                <%- include('../chatbox.ejs') %>
+                    <!--**********************************
+            Chat box End
+        ***********************************-->
+                    <!--**********************************
+            Header start
+        ***********************************-->
+                    <%- include('../header.ejs') %>
+                        <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+                        <!--**********************************
+        Sidebar start
+    ***********************************-->
+                        <%- include('../dlanav.ejs') %>
+                            <!--**********************************
+        Sidebar end
+    ***********************************-->
+                            <!--**********************************
+            Content body start
+        ***********************************-->
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+
+                                    <!-- Main content -->
+                                    <section class="content mt-2">
+
+                                        <!-- Default box -->
+                                        <div class="card card-info">
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <table id="tbl_thietbitruyenthong"
+                                                        class="table  table-sk table-bordered table-striped table-hover table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width: 50px;">STT</th>
+                                                                <th style="text-align:center">Số imei</th>
+                                                                <th style="text-align:center">Trang thái</th>
+                                                                <th style="width:110px;text-align:center">Cấu hình</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                        <!-- /.card -->
+                                        <!-- /.modal thêm mới người dùng-->
+                                        <div class="modal fade" id="modal-DIEUKHIEN_DONG">
+                                            <div class="modal-dialog modal-xl">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title"> CẤU HÌNH ĐIỀU KHIỂN</h4>
+                                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <div class="box-default">
+                                                            <div class="box-body">
+                                                                <h4>Thông tin hiện tại</h4>
+                                                                <hr style="margin:0px;" />
+                                                                <div class="row">
+
+                                                                    <div id="canhbao_box"
+                                                                        style="color:blue;  text-align:center"> <span
+                                                                            id="id_overlay_nt"><i
+                                                                                class="fa fa-circle-o-notch fa-spin"></i></span><br />
+                                                                        <h5 id="thongbao_dong"></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-5 col-md-5">
+                                                                        <label>
+                                                                            IP1: <span id="ip1_hientai"
+                                                                                style="font-weight:bold"></span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                    <div class="col-lg-4">
+                                                                        <label>
+                                                                            Port 1: <span id="port1_hientai"
+                                                                                style="font-weight:bold"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="col-lg-3"
+                                                                        style="float:right; text-align:right">
+                                                                        <button type="button" class="btn btn-primary"
+                                                                            id="btndoc">Đọc</button>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-lg-5 col-md-5">
+                                                                        <label>
+                                                                            IP2: <span id="ip2_hientai"
+                                                                                style="font-weight:bold"></span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                    <div class="col-lg-4">
+                                                                        <label>
+                                                                            Port 2: <span id="port2_hientai"
+                                                                                style="font-weight:bold"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <h4 style="padding-top: 10px">Thông tin mới</h4>
+                                                                <hr style="margin:0;" />
+                                                                <div class="row">
+
+                                                                    <div id="canhbao_box_th"
+                                                                        style="color:blue;  text-align:center"> <span
+                                                                            id="id_overlay_th_nt"><i
+                                                                                class="fa fa-circle-o-notch fa-spin"></i></span><br />
+                                                                        <h5 id="thongbao_th_dong"></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="form-group col-lg-6">
+                                                                        <label>
+                                                                            IP1:
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="ip_old" maxlength="20" disabled>
+                                                                    </div>
+
+                                                                    <div class="form-group col-lg-4">
+                                                                        <label>
+                                                                            Port 1:
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="port_old" maxlength="20" disabled>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="form-group col-lg-6">
+                                                                        <label>
+                                                                            IP2:
+                                                                            <span class="text-danger">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="ip_new" maxlength="20">
+                                                                    </div>
+
+                                                                    <div class="form-group col-lg-4">
+                                                                        <label>
+                                                                            Port 2:
+                                                                            <span class="text-danger">(*)</span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="port_new" maxlength="20"
+                                                                            onkeypress="return isNumber(event)">
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                            <!-- /.box-body -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary"
+                                                            onclick="ThucHien_Dong()" id="btnDong">Thực hiện</button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+                                        <!-- /.modal -->
+
+                                    </section>
+                                    <!-- /.content -->
+
+                                </div>
+                            </div>
+        </div>
+        <!--**********************************
+        Content body end
+    ***********************************-->
+        <%- include('../footer.ejs') %>
+            </div>
+            <%- include('../script.ejs') %>
+                <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                <script src="./vendor/select2/js/select2.full.min.js"></script>
+                <script src="./javascripts/plugins-init/select2-init.js"></script>
+                <script src="./vendor/pickadate/picker.js"></script>
+                <script src="./vendor/pickadate/picker.time.js"></script>
+                <script src="./vendor/pickadate/picker.date.js"></script>
+                <script src="./vendor/toastr/js/toastr.min.js"></script>
+                <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                <script src="../javascripts/fnTime.js"></script>
+                <!-- DataTables Buttons JS -->
+                <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+                <script src="./vendor/datatables/js/jszip.min.js"></script>
+                <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+                <!-- Chartist -->
+                <script src="../javascripts/jstree.min.js"></script>
+                <script src="../javascripts/quanly/cauhinhthietbitruyenthong.js?v=202312212"></script>
+
+                <link rel="stylesheet" href="./stylesheets/jstree.min.css">
+
+                <!-- <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css"> -->
+                <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+                <style type="text/css">
+                    .text-right {
+                        text-align: right;
+                    }
+                </style>

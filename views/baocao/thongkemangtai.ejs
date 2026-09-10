@@ -1,0 +1,188 @@
+<%- include('../head.ejs') %>
+
+    <%- include('../preloader.ejs') %>
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+        Nav header start
+    ***********************************-->
+            <%- include('../navheader.ejs') %>
+                <!--**********************************
+        Nav header end
+    ***********************************-->
+                <!--**********************************
+            Chat box start
+        ***********************************-->
+                <%- include('../chatbox.ejs') %>
+                    <!--**********************************
+            Chat box End
+        ***********************************-->
+                    <!--**********************************
+            Header start
+        ***********************************-->
+                    <%- include('../header.ejs') %>
+                        <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+                        <!--**********************************
+        Sidebar start
+    ***********************************-->
+                        <%- include('../dlanav.ejs') %>
+                            <!--**********************************
+        Sidebar end
+    ***********************************-->
+                            <!--**********************************
+            Content body start
+        ***********************************-->
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+
+                                    <div class="row">
+                                        <div class="col-lg-12 card">
+                                            <div class="profile card-body px-3 pt-3 pb-0">
+                                                <div class="row">
+
+                                                    <div class="col-lg-3 ngay col-xl-3" style="padding: 10px; ">
+                                                        <div class="input-group input-primary">
+                                                            <span class="input-group-text">Từ ngày</span>
+                                                            <input name="datepicker"
+                                                                class="datepicker-default form-control"
+                                                                id="txttungay_tkmt">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 ngay col-xl-3" style="padding: 10px; ">
+                                                        <div class="input-group input-primary">
+                                                            <span class="input-group-text">Đến ngày</span>
+                                                            <input name="datepicker"
+                                                                class="datepicker-default form-control"
+                                                                id="txtdenngay_tkmt">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3" style="padding: 10px; ">
+                                                        <div class="input-group input-primary">
+                                                            <select class="form-control">
+                                                                <option value="-1" ng-reflect-value="-1"
+                                                                    id="cboloaitai">--
+                                                                    Tất cả --</option>
+                                                                <option value="1" ng-reflect-value="1">Non tải</option>
+                                                                <option value="2" ng-reflect-value="2">Bình thường
+                                                                </option>
+                                                                <option value="3" ng-reflect-value="3">Đầy tải</option>
+                                                                <option value="4" ng-reflect-value="4">Quá tải bình
+                                                                    thường</option>
+                                                                <option value="5" ng-reflect-value="5">Quá tải nặng
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-2" style="padding: 10px; ">
+                                                        <div class="input-group input-primary">
+                                                            <select class="form-control" id="cbo_canpha">
+                                                                <option value="-1" ng-reflect-value="-1">-- Tất cả --
+                                                                </option>
+                                                                <option value="1" ng-reflect-value="1">Cân bằng</option>
+                                                                <option value="2" ng-reflect-value="2">Cân lại pha
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-xl-2" style="padding: 10px; ">
+                                                        <div class="input-group">
+                                                            <button class="btn btn-primary" type="button"
+                                                                id="btnthuchien_tkmt"><i
+                                                                    class="flaticon-013-checkmark"></i>
+                                                                Thực hiện</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <table id="tbl_tkmt"
+                                                        class="table  table-striped table-hover table-bordered  no-footer">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-center">STT</th>
+                                                                <th class="text-center">Tên trạm biến áp</th>
+                                                                <th class="text-center">Số công tơ</th>
+                                                                <th class="text-center">Công suất (KAV)</th>
+                                                                <th class="text-center">U cao (KV)</th>
+                                                                <th class="text-center">U hạ (KV)</th>
+                                                                <th class="text-center">Iđm (A)</th>
+                                                                <th class="text-center">Ia (A)</th>
+                                                                <th class="text-center">Ib (A)</th>
+                                                                <th class="text-center">Ic (A)</th>
+                                                                <th class="text-center">Io (A)</th>
+                                                                <th class="text-center">Imax (A)</th>
+                                                                <th class="text-center">Ua (V)</th>
+                                                                <th class="text-center">Ub (V)</th>
+                                                                <th class="text-center">Uc (V)</th>
+                                                                <th class="text-center">Cos phi</th>
+                                                                <th class="text-center">So sánh Io</th>
+                                                                <th class="text-center">Cần cân pha</th>
+                                                                <th class="text-center">Thời gian</th>
+                                                                <th class="text-center">Mức độ mang tải (%)</th>
+                                                                <th class="text-center">Ghi chú</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                        <tfoot>
+                                                            <tr></tr>
+                                                        </tfoot>
+
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+        </div>
+
+        <!--**********************************
+        Content body end
+    ***********************************-->
+        <%- include('../footer.ejs') %>
+            </div>
+            <%- include('../script.ejs') %>
+                <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                <script src="./vendor/select2/js/select2.full.min.js"></script>
+                <script src="./javascripts/plugins-init/select2-init.js"></script>
+                <script src="./vendor/pickadate/picker.js"></script>
+                <script src="./vendor/pickadate/picker.time.js"></script>
+                <script src="./vendor/pickadate/picker.date.js"></script>
+                <script src="./vendor/toastr/js/toastr.min.js"></script>
+                <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                <script src="../javascripts/fnTime.js"></script>
+                <script src="../javascripts/moment.js"></script>
+                <!-- DataTables Buttons JS -->
+                <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+                <script src="./vendor/datatables/js/jszip.min.js"></script>
+                <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+                <!-- Chartist -->
+                <script src="../javascripts/baocao/thongkemangtai.js"></script>
+
+                <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+                <style type="text/css">
+                    .text-right {
+                        text-align: right;
+                    }
+
+                    #tbl_tkmt::-webkit-scrollbar-thumb {
+                        background-color: var(--primary);
+                        border: 4px solid transparent;
+                        border-radius: 8px;
+                        background-clip: padding-box;
+                    }
+
+                    #tbl_tkmt::-webkit-scrollbar {
+                        width: 16px;
+                    }
+                </style>

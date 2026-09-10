@@ -1,0 +1,81 @@
+<%- include('../head.ejs') %>
+
+    <%- include('../preloader.ejs') %>
+
+        <body class="vh-100">
+            <div class="authincation h-100">
+                <div class="container h-100">
+                    <div class="row justify-content-center h-100 align-items-center">
+                        <div class="col-md-6">
+                            <div class="authincation-content">
+                                <div class="row no-gutters">
+                                    <div class="col-xl-12">
+                                        <div class="auth-form">
+                                            <div class="text-center mb-3">
+                                                <a href="index.html"><img src="images/logo-full.png" alt=""></a>
+                                            </div>
+                                            <h4 class="text-center mb-4"><b>IFC-</b>SMARTGRID</h4>
+                                            <form action="index.html">
+                                                <div class="mb-3">
+                                                    <label class="mb-1" style="color: #ffffff;"><strong>Tài khoản</strong></label>
+                                                    <input type="text" class="form-control" id="txt_tk">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="mb-1" style="color: #ffffff;"><strong>Password</strong></label>
+                                                    <input type="password" class="form-control" id="matkhau">
+                                                </div>
+                                                <div class="row d-flex justify-content-between mt-4 mb-2">
+                                                    <div class="mb-3">
+                                                        <div class="form-check custom-checkbox ms-1">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="remember">
+                                                            <label class="form-check-label" for="remember" style="color: #ffffff;"> Lưu
+                                                                tài khoản</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <a href="page-forgot-password.html">Quên mật khẩu?</a>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="button" class="btn btn-primary btn-block"
+                                                        id="btn_login">Đăng nhập</button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </body>
+        <!--**********************************
+        Content body end
+    ***********************************-->
+        <%- include('../footer.ejs') %>
+            </div>
+            <%- include('../script.ejs') %>
+                <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                <script src="./vendor/toastr/js/toastr.min.js"></script>
+                <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                <!-- <script src="/javascripts/dlabnav-init.js"></script> -->
+                <script src="../javascripts/quanly/login.js"></script>
+
+                <link rel="stylesheet" href="./stylesheets/jstree.min.css">
+                <!-- <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css"> -->
+                <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+                <style type="text/css">
+                    .table thead th {
+                        color: #ffffff;
+                    }
+
+                    .isloginclass {
+                        padding-left: 300px;
+                        padding-right: 600px;
+                        padding-top: 25px;
+                    }
+                </style>

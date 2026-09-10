@@ -1,0 +1,291 @@
+ <!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/icons/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/stylesheets/business-ui.css?v=0.5.1" />
+
+    <%- include('../script.ejs') %>
+</head>
+
+<body class="business-ui business-ui--shell">
+    <div class="app-shell">
+        <%- include('../menu_form/sidebar') %>
+            <main class="main">
+                <%- include('../menu_form/topbar') %>
+
+              <div class="content-body">
+                <!-- row -->
+                <div class="container-fluid">
+
+                  <section class="content col-xl-12">
+
+                    <!-- Default box -->
+                    <div class="card card-info danhsachcanhbao">
+
+                      <div class="card-body p-0">
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding: 10px;">
+                          <table class="table" id="tblcauhinhcanhbao">
+                            <thead>
+                              <tr>
+                                <th>Loại cảm biến</th>
+                                <th>Ngưỡng dưới</th>
+                                <th>Ngưỡng trên</th>
+                                <th>Bật cảnh báo</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                              <tr>
+                                <td>Cảm biến nhiệt</td>
+                                <td><input type="number" id="cambien_nhiet_duoi" /></td>
+                                <td><input type="number" id="cambien_nhiet_tren" /></td>
+                                <td class="text-center py-0 align-middle">
+                                  <input class="custom-control-input" type="checkbox" id="chkcambiennhiet" checked>
+                                  <input class="custom-control-input" type="hidden" id="hdcambiennhiet" value="1">
+                                  <label for="chkcambiennhiet" class="custom-control-label"></label>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Cảm biến độ ẩm</td>
+                                <td><input type="number" id="cambien_doam_duoi" /></td>
+                                <td><input type="number" id="cambien_doam_tren" /></td>
+                                <td class="text-center py-0 align-middle">
+                                  <input class="custom-control-input" type="checkbox" id="chkcambiendoam" checked>
+                                  <input class="custom-control-input" type="hidden" id="hdcambiendoam" value="3">
+                                  <label for="chkcambiendoam" class="custom-control-label"></label>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Nhiệt độ FI</td>
+                                <td><input type="number" id="cambien_nhiet_fi_duoi" /></td>
+                                <td><input type="number" id="cambien_nhiet_fi_tren" /></td>
+                                <td class="text-center py-0 align-middle">
+                                  <input class="custom-control-input" type="checkbox" id="chkcambiennhietdofi" checked>
+                                  <label for="chkcambiennhietdofi" class="custom-control-label"></label>
+                                  <input class="custom-control-input" type="hidden" id="hdcambiennhietdofi" value="2">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Dòng FI</td>
+                                <td><input type="number" id="dong_fi_duoi" /></td>
+                                <td><input type="number" id="dong_fi_tren" /></td>
+                                <td class="text-center py-0 align-middle">
+                                  <input class="custom-control-input" type="checkbox" id="chkcambiendongfi" checked>
+                                  <label for="chkcambiendongfi" class="custom-control-label"></label>
+                                  <input class="custom-control-input" type="hidden" id="hddongfi" value="4">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Cảm biến khí</td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-center py-0 align-middle">
+                                  <input class="custom-control-input" type="checkbox" id="chkcambienkhi" checked>
+                                  <label for="chkcambienkhi" class="custom-control-label"></label>
+                                  <input class="custom-control-input" type="hidden" id="hdcambienkhi" value="0">
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>Điện áp pin</td>
+                                <td></td>
+                                <td></td>
+                                <td class="text-center py-0 align-middle">
+                                  <input class="custom-control-input" type="checkbox" id="chkcambiendienappin" checked>
+                                  <input class="custom-control-input" type="hidden" id="hddienappin" value="5">
+                                  <label for="chkcambiendienappin" class="custom-control-label"></label>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="3"></td>
+                                <td>
+                                  <button type="button" class="btn btn-primary btn-block"
+                                    id="btncapnhat_danhsachcanhbao"
+                                    style="width: 130px;text-align: right;float: right;">Cập nhật</button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <div class="card card-info canhbaovanhanh">
+
+                      <div class="card-body p-0">
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding: 10px;">
+                          <div class="col-lg-2" style="padding: 10px;float: left; ">
+                            <div class="input-group">
+                              <button type="button" class="btn btn-primary btn-block" id="btncapnhat_vanhanh"
+                                style="text-align: center;float: right;">Cập
+                                nhật</button>
+                            </div>
+                          </div>
+                          <div class="col-lg-3" style="padding: 10px;float: left; ">
+                            <div class="form-check custom-checkbox checkbox-primary check-xl">
+                              <input type="checkbox" class="form-check-input" id="cb_macdinh">
+                              <label class="pt-2 form-check-label">Sử dụng mặc định</label>
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding: 10px;">
+                          <table class="table" id="tblcauhinhcanhbaovanhanh">
+                            <thead>
+                              <tr>
+                                <th>Loại cảnh báo</th>
+                                <th>Thông số thiết lập</th>
+                                <th>Bật cảnh báo</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+
+                              <tr class="first-row">
+                                <td class="text-left color-text">
+                                  <b>Cảnh báo điện áp (U)</b>
+                                  <br /> - Cảnh báo quá điện áp
+                                  <br /> - Cảnh báo thấp điện áp
+                                  <br /> - Mất cân bằng điện áp
+                                </td>
+                                <td>
+                                  Tỉ lệ (+)
+                                  <input class="text-center" maxlength="10" style="margin-left: 11px" type="text"
+                                    id="txt_U_QUA"> (%) U định mức
+
+                                  <button class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#thietlapcanhbao_udm" onclick="get_Udm()"
+                                    style="margin-left: 85px; width: 153px;">Xác định
+                                    Udm</button>
+                                  <br> Tỉ lệ (-)
+                                  <input class="text-center" maxlength="10" style="margin-left: 15px" type="text"
+                                    id="txt_U_DUOI"> (%) U
+                                  định mức
+                                  <br> U
+                                  &lt; <input class="text-center" maxlength="5"
+                                    style="margin-left: 35px; margin-top: 8px" type="text" id="txt_U_MATCB">
+                                  (%) Umax
+                                  <br>
+                                </td>
+                                <td class="text-center">
+                                  <input id="CB_U" type="checkbox">
+                                </td>
+                              </tr>
+
+                              <tr class="first-row">
+                                <td class="text-left color-text">
+                                  <b>Cảnh báo dòng điện (I)</b>
+                                  <br> - Cảnh báo quá dòng
+                                  <br> - Mất cân bằng dòng điện
+                                  <br> - Lệch pha
+                                </td>
+                                <td>
+                                  Tỉ lệ (+)
+                                  <input numberonly="" class="text-center" maxlength="10" style="margin-left: 11px"
+                                    type="text" id="txt_I_QUA">
+                                  (%) I định mức
+                                  <button class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#thietlapcanhbao_idm" onclick="get_Idm()"
+                                    style="margin-left: 75px; width: 150px;">Xác định
+                                    Idm</button>
+                                  <br>
+                                  Tỉ lệ (-)
+                                  <input numberonly="" class="text-center" maxlength="10" style="margin-left: 11px"
+                                    trim="" type="text" id="txt_I_MATCB"> (%) I
+                                  định mức
+                                  <br> Io &gt;
+                                  <input numberonly="" class="text-center" maxlength="10"
+                                    style="margin-left: 33px; margin-top: 8px" trim="" type="text" id="txt_I_LECH"> (%)
+                                  (Ia + Ib + Ic)
+                                  <a href="javascript:void(0)">? Ghi chú</a>
+                                  <br>
+                                </td>
+                                <td class="text-center">
+                                  <input id="CB_I" type="checkbox">
+                                </td>
+                              </tr>
+
+                              <tr class="first-row">
+                                <td class="text-left color-text">
+                                  <b>Cảnh báo hệ số công suất - Cos(φ)</b>
+                                </td>
+                                <td>
+                                  CosTB
+                                  &lt; <input class="text-center" maxlength="10" style="margin-left: 8px" type="text"
+                                    id="txt_COS"> thì cảnh báo
+                                </td>
+                                <td class="text-center">
+                                  <input id="CB_CosPhi" type="checkbox">
+                                </td>
+                              </tr>
+
+                              <tr class="first-row">
+                                <td class="text-left color-text">
+                                  <b>Cảnh báo góc lệch pha (φ)</b>
+                                </td>
+                                <td>
+                                  Angle =
+                                  &lt; <input class="text-center" maxlength="10" type="text" id="txt_ANGLE_TREN">
+                                  (Độ) | Angle &gt;=
+                                  <input class="text-center" maxlength="10" type="text" id="txt_ANGLE_DUOI">
+                                  (Độ)
+                                </td>
+                                <td class="text-center">
+                                  <input id="CB_GocLech" type="checkbox">
+                                </td>
+                              </tr>
+
+                            </tbody>
+                          </table>
+                        </div>
+
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                  </section>
+
+                </div>
+              </div>
+    </div>
+    <!--**********************************
+        Content body end
+    ***********************************-->
+    <%- include('../modal/modal_view_khaibaoUdm.ejs') %>
+      <%- include('../modal/modal_view_khaibaoIdm.ejs') %>
+        <%- include('../footer.ejs') %>
+          </div>
+          <%- include('../script.ejs') %>
+            <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+            <script src="./vendor/select2/js/select2.full.min.js"></script>
+            <script src="./javascripts/plugins-init/select2-init.js"></script>
+            <script src="./vendor/pickadate/picker.js"></script>
+            <script src="./vendor/pickadate/picker.time.js"></script>
+            <script src="./vendor/pickadate/picker.date.js"></script>
+            <script src="./vendor/toastr/js/toastr.min.js"></script>
+            <script src="./javascripts/plugins-init/toastr-init.js"></script>
+            <script src="../javascripts/fnTime.js"></script>
+            <!-- DataTables Buttons JS -->
+            <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+            <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+            <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+            <script src="./vendor/datatables/js/jszip.min.js"></script>
+            <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+            <!-- Chartist -->
+            <script src="../javascripts/jstree.min.js"></script>
+            <script src="../javascripts/canhbao/cauhinhcanhbao.js"></script>
+
+            <link rel="stylesheet" href="./stylesheets/jstree.min.css">
+
+            <!-- <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css"> -->
+            <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+
+            </style>

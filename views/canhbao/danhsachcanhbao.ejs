@@ -1,0 +1,172 @@
+<%- include('../head.ejs') %>
+
+  <%- include('../preloader.ejs') %>
+    <div id="main-wrapper" class=" ">
+
+      <!--**********************************
+        Nav header start
+    ***********************************-->
+      <%- include('../navheader.ejs') %>
+        <!--**********************************
+        Nav header end
+    ***********************************-->
+        <!--**********************************
+            Chat box start
+        ***********************************-->
+        <%- include('../chatbox.ejs') %>
+          <!--**********************************
+            Chat box End
+        ***********************************-->
+          <!--**********************************
+            Header start
+        ***********************************-->
+          <%- include('../header.ejs') %>
+            <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+            <!--**********************************
+        Sidebar start
+    ***********************************-->
+            <%- include('../dlanav.ejs') %>
+              <!--**********************************
+        Sidebar end
+    ***********************************-->
+              <!--**********************************
+            Content body start
+        ***********************************-->
+              <div class="content-body">
+                <!-- row -->
+                <div class="container-fluid">
+                  <section class="content">
+
+                    <!-- Default box -->
+                    <div class="card card-info">
+                      <div class="card-header">
+                        <h3 class="card-title">Danh sách cảnh báo</h3>
+                      </div>
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                        <div class="row">
+
+                          <div class="col-lg-3 danhsachcanhbao" style="padding: 10px; ">
+                            <div class="input-group input-primary">
+                              <span class="input-group-text">Từ ngày</span>
+                              <input name="datepicker" class="datepicker-default form-control" id="txttungaydate">
+
+                            </div>
+                          </div>
+                          <div class="col-lg-3 danhsachcanhbao" style="padding: 10px; ">
+                            <div class="input-group input-primary">
+                              <span class="input-group-text">Từ ngày</span>
+                              <input name="datepicker" class="datepicker-default form-control" id="txtdenngaydate">
+
+                            </div>
+                          </div>
+                          <div class="col-lg-8 col-xl-5 canhbaovanhanh" style="padding: 10px; ">
+                            <div class="input-group input-primary">
+                              <span class="input-group-text">Loại cảnh báo</span>
+                              <select class="js-example-disabled-multi" id="cbloaicanhbao" multiple="multiple">
+                                <option value="-1">Lựa chọn</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-lg-3" style="padding: 10px; ">
+                            <div class="input-group">
+                              <button class="btn btn-primary" type="button" id="btnthuchien_dscb"><i
+                                  class="flaticon-013-checkmark"></i>
+                                Thực hiện</button>
+                            </div>
+                          </div>
+
+                        </div>
+                        <div class="row">
+                          <table id="tbl_canhbao" class="table table-bordered table-striped danhsachcanhbao"
+                            style="width:100%">
+                            <thead>
+                              <tr>
+                                <th>STT</th>
+                                <th>Tên thiết bị</th>
+                                <th>Tên cảm biến</th>
+                                <th>Nội dung cảm biến</th>
+                                <th>Thời gian bắt đầu</th>
+                                <th>Thời gian kết thúc</th>
+                                <th>Số lần cảnh báo</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                          </table>
+                          <table id="tbl_canhbao_ami" class="table table-bordered table-striped canhbaovanhanh"
+                            style="width:100%">
+                            <thead>
+                              <tr>
+                                <th>Mã điểm đo - Tên khách hàng</th>
+                                <th>STT</th>
+                                <th style='display:none'>Mã điểm đo</th>
+                                <th style='display:none'>Tên khách hàng</th>
+                                <th>Thời điểm xảy ra cảnh báo</th>
+                                <th>Thời điểm cảnh báo gần nhất</th>
+                                <th>Phân loại cảnh báo</th>
+                                <th>Nội dung cảnh báo</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                  </section>
+
+                </div>
+              </div>
+    </div>
+    <!--**********************************
+        Content body end
+    ***********************************-->
+    <%- include('../footer.ejs') %>
+      </div>
+      <%- include('../script.ejs') %>
+        <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+        <script src="./vendor/select2/js/select2.full.min.js"></script>
+        <script src="./javascripts/plugins-init/select2-init.js"></script>
+        <script src="./vendor/pickadate/picker.js"></script>
+        <script src="./vendor/pickadate/picker.time.js"></script>
+        <script src="./vendor/pickadate/picker.date.js"></script>
+        <script src="./vendor/toastr/js/toastr.min.js"></script>
+        <script src="./javascripts/plugins-init/toastr-init.js"></script>
+        <script src="../javascripts/fnTime.js"></script>
+        <!-- DataTables Buttons JS -->
+        <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+        <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+        <script src="./vendor/datatables/js/jszip.min.js"></script>
+        <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+        <!-- Chartist -->
+        <script src="../javascripts/jstree.min.js"></script>
+        <script src="../javascripts/canhbao/danhsachcanhbao.js"></script>
+
+        <link rel="stylesheet" href="./stylesheets/jstree.min.css">
+
+        <!-- <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css"> -->
+        <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+        <style type="text/css">
+          .text-right {
+            text-align: right;
+          }
+
+          .select2-container {
+            width: 66% !important;
+          }
+
+          .select2-container .select2-selection--multiple {
+            border-radius: 0;
+          }
+
+          .dataTables_scroll {
+            margin-bottom: 10px;
+          }
+        </style>

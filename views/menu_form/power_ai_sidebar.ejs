@@ -1,0 +1,58 @@
+<section class="power-ai-workspace power-ai-sidebar-workspace">
+  <div class="power-ai-workspace-head">
+    <div>
+      <span class="power-ai-eyebrow">VẬN HÀNH POWERAI</span>
+      <h2>Trung tâm vận hành AI</h2>
+    </div>
+    <button type="button" id="powerAiStatusRefresh" class="power-ai-sidebar-refresh"
+      title="Kiểm tra lại PowerAI" aria-label="Kiểm tra lại PowerAI">
+      <i class="fas fa-sync-alt"></i>
+    </button>
+  </div>
+
+  <div id="powerAiSystemStatus" class="power-ai-system-status is-loading" aria-live="polite">
+    <div class="power-ai-system-main">
+      <span class="power-ai-system-dot"></span>
+      <div>
+        <b id="powerAiServiceLabel">Đang kiểm tra PowerAI...</b>
+        <small id="powerAiServiceMeta">Vui lòng chờ</small>
+      </div>
+    </div>
+    <div class="power-ai-system-items">
+      <span><small>Mô hình</small><b id="powerAiModelLabel">--</b></span>
+      <span><small>PowerAI</small><b id="powerAiAppVersion">--</b></span>
+      <span><small>Phiên bản mô hình</small><b id="powerAiVersion">--</b></span>
+      <span><small>Chế độ</small><b id="powerAiMode" class="power-ai-mode-badge">--</b></span>
+      <span><small>Lịch sử</small><b id="powerAiHistoryRows">--</b></span>
+      <span><small>Cập nhật</small><b id="powerAiStatusTime">--</b></span>
+    </div>
+  </div>
+
+  <div class="power-ai-sidebar-sections">
+    <details class="power-ai-sidebar-section" data-power-ai-section="health" open>
+      <summary>
+        <span>
+          <i class="fas fa-heartbeat"></i>
+          Sức khỏe thiết bị
+          <button type="button" id="powerAiRefresh" class="power-ai-section-refresh"
+            title="Làm mới sức khỏe thiết bị" aria-label="Làm mới sức khỏe thiết bị">
+            <i class="fas fa-sync-alt"></i>
+          </button>
+        </span>
+      </summary>
+      <div class="power-ai-sidebar-section-body">
+        <div id="powerAiHealth" class="power-ai-loading">Đang chờ dữ liệu...</div>
+      </div>
+    </details>
+
+    <details class="power-ai-sidebar-section" data-power-ai-section="forecast" open>
+      <summary>
+        <span><i class="fas fa-chart-line"></i> Dự báo vận hành </span>
+      </summary>
+      <div class="power-ai-sidebar-section-body">
+        <div id="powerAiForecast" class="power-ai-loading">Đang chờ đủ dữ liệu...</div>
+      </div>
+    </details>
+
+  </div>
+</section>

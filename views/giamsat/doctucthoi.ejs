@@ -1,0 +1,539 @@
+<%- include('../head.ejs') %>
+    <%- include('../preloader.ejs') %>
+
+        <div id="main-wrapper">
+            <%- include('../navheader.ejs') %>
+                <%- include('../chatbox.ejs') %>
+                    <%- include('../header.ejs') %>
+                        <%- include('../dlanav.ejs') %>
+
+                            <div class="content-body">
+                                <div class="container-fluid page-meter-instant">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="alert alert-danger alert-dismissible fade"
+                                                id="thongbao_doctucthoi" style="display:none;">
+                                                <span class="msg-text">Vui lòng chọn trạm hoặc thiết bị ở cây thư
+                                                    mục</span>
+                                                <button type="button" class="btn-close"
+                                                    data-bs-dismiss="alert"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="page">
+                                        <div class="dashboard">
+                                            <div class="card main-panel">
+                                                <div class="progress-wrap">
+                                                    <div class="progress-top">
+                                                        <div class="ring-box">
+                                                            <div class="ring">
+                                                                <span>00:00:00<small>Sẵn sàng</small></span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="headline-area">
+                                                            <div class="headline-top">
+                                                                <div class="headline-title">Đọc tức thời công tơ</div>
+                                                                <div class="headline-desc">
+                                                                    Theo dõi tiến trình đọc dữ liệu realtime từ DCU và
+                                                                    hiển thị kết quả ngay trên bảng.
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="status-strip">
+                                                                <span class="pill-blue">Sẵn sàng đọc dữ liệu</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="action-box">
+                                                            <button class="btn btn-primary" id="btnDocTucThoi">Đọc tức
+                                                                thời</button>
+                                                            <button id="btnExportExcel" class="btn btn-export"
+                                                                title="Xuất Excel">
+                                                                <i class="fa fa-file-excel-o"></i>
+                                                                <span>Xuất Excel</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="table-toolbar">
+                                                    <div class="table-sub">Đọc thành công 0/0 khách hàng</div>
+
+                                                    <div class="search-box">
+                                                        <input type="text"
+                                                            placeholder="Tìm tên khách hàng / số công tơ" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="table-wrap">
+                                                    <table id="tbl_doctucthoi_khachhang">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width:56px;">
+                                                                    <input class="chk" type="checkbox" id="chk_all" />
+                                                                </th>
+                                                                <th style="width:80px;">STT</th>
+                                                                <th>Mã điểm đo</th>
+                                                                <th>Tên khách hàng</th>
+                                                                <th>IMEI</th>
+                                                                <th style="width:180px;">Số công tơ</th>
+                                                                <th style="width:170px;">Chỉ số (kWh)</th>
+                                                                <th style="width:180px;">Thời gian đọc</th>
+                                                                <th style="width:150px;">Trạng thái</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <%- include('../footer.ejs') %>
+        </div>
+
+        <%- include('../script.ejs') %>
+
+            <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+
+            <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+            <script src="./vendor/select2/js/select2.full.min.js"></script>
+            <script src="./javascripts/plugins-init/select2-init.js"></script>
+            <script src="./vendor/pickadate/picker.js"></script>
+            <script src="./vendor/pickadate/picker.time.js"></script>
+            <script src="./vendor/pickadate/picker.date.js"></script>
+            <script src="./vendor/toastr/js/toastr.min.js"></script>
+            <script src="./javascripts/plugins-init/toastr-init.js"></script>
+            <script src="../javascripts/fnTime.js"></script>
+            <script src="../javascripts/moment.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/jsencrypt/bin/jsencrypt.min.js"></script>
+            <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+            <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+            <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+            <script src="./vendor/datatables/js/jszip.min.js"></script>
+            <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+            <script src="./vendor/chart.js/Chart.bundle.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/exceljs/dist/exceljs.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/file-saver/dist/FileSaver.min.js"></script>
+            <script src="../javascripts/giamsat/doctucthoi.js"></script>
+
+            <style>
+                :root {
+                    --bg: #f3f6fb;
+                    --card: #ffffff;
+                    --line: #e4ebf3;
+                    --primary: #1677ff;
+                    --primary-dark: #0958d9;
+                    --primary-soft: #eaf3ff;
+                    --text: #0f172a;
+                    --muted: #64748b;
+                    --success: #027a48;
+                    --success-bg: #ecfdf3;
+                    --warning: #a16207;
+                    --warning-bg: #fff7e6;
+                    --danger: #b42318;
+                    --danger-bg: #fef3f2;
+                    --empty: #475569;
+                    --empty-bg: #f1f5f9;
+                    --shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+                    --radius: 16px;
+                }
+
+                * {
+                    box-sizing: border-box;
+                }
+
+                .page-meter-instant {
+                    padding-top: 12px;
+                    padding-bottom: 20px;
+                }
+
+                .page {
+                    max-width: 1500px;
+                    margin: 0 auto;
+                    padding: 8px 10px 24px;
+                }
+
+                .dashboard {
+                    display: grid;
+                    gap: 16px;
+                }
+
+                .card.main-panel {
+                    background: var(--card);
+                    border: 1px solid var(--line);
+                    border-radius: var(--radius);
+                    box-shadow: var(--shadow);
+                    overflow: hidden;
+                }
+
+                .progress-wrap {
+                    padding: 20px 20px 14px;
+                    border-bottom: 1px solid var(--line);
+                    background: linear-gradient(180deg, #fbfdff 0%, #f4f8fd 100%);
+                }
+
+                .progress-top {
+                    display: grid;
+                    grid-template-columns: 140px 1fr 220px;
+                    gap: 18px;
+                    align-items: center;
+                }
+
+                .ring-box {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .ring {
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 50%;
+                    background: var(--primary-soft);
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-shadow: inset 0 0 0 1px rgba(22, 119, 255, 0.08);
+                }
+
+                .ring::before {
+                    content: "";
+                    position: absolute;
+                    inset: 10px;
+                    background: #fff;
+                    border-radius: 50%;
+                    border: 1px solid #e6eef8;
+                }
+
+                .ring span {
+                    position: relative;
+                    z-index: 1;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    line-height: 1.15;
+                    font-size: 20px;
+                    font-weight: 800;
+                    color: var(--text);
+                }
+
+                .ring span small {
+                    margin-top: 6px;
+                    font-size: 11px;
+                    font-weight: 600;
+                    color: var(--muted);
+                }
+
+                .headline-area {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                }
+
+                .headline-title {
+                    font-size: 27px;
+                    font-weight: 800;
+                    color: var(--text);
+                    line-height: 1.2;
+                    font-family: auto;
+
+                }
+
+                .headline-desc {
+                    font-size: 14px;
+                    color: var(--muted);
+                    line-height: 1.6;
+                    max-width: 760px;
+                }
+
+                .status-strip {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                }
+
+                .pill-blue {
+                    display: inline-flex;
+                    align-items: center;
+                    min-height: 38px;
+                    padding: 8px 14px;
+                    border-radius: 999px;
+                    font-size: 13px;
+                    font-weight: 700;
+                    background: var(--primary-soft);
+                    color: #1459a6;
+                    border: 1px solid #cfe2ff;
+                }
+
+                .pill-blue.is-running {
+                    background: var(--warning-bg);
+                    color: var(--warning);
+                    border-color: #fde68a;
+                }
+
+                .pill-blue.is-success {
+                    background: var(--success-bg);
+                    color: var(--success);
+                    border-color: #abefc6;
+                }
+
+                .pill-blue.is-error {
+                    background: var(--danger-bg);
+                    color: var(--danger);
+                    border-color: #fecdca;
+                }
+
+                .action-box {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    align-items: stretch;
+                }
+
+                .btn {
+                    height: 42px;
+                    border: 0;
+                    border-radius: 12px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    font-weight: 700;
+                    transition: all 0.2s ease;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+                    padding: 0 16px;
+                }
+
+                .btn-primary {
+                    background: linear-gradient(135deg, var(--primary) 0%, #49a0ff 100%);
+                    color: #fff;
+                }
+
+                .btn-primary:hover {
+                    background: linear-gradient(135deg, var(--primary-dark) 0%, #2b8dff 100%);
+                    transform: translateY(-1px);
+                }
+
+                .btn-export {
+                    background: #28a745;
+                    color: #fff;
+                }
+
+                .btn-export:hover {
+                    background: #218838;
+                    transform: translateY(-1px);
+                }
+
+                .table-toolbar {
+                    padding: 14px 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 12px;
+                    border-bottom: 1px solid var(--line);
+                    background: #fff;
+                }
+
+                .table-sub {
+                    font-weight: 700;
+                    font-size: 15px;
+                    color: #14324a;
+                }
+
+                .search-box {
+                    margin-left: auto;
+                }
+
+                .search-box input {
+                    width: 280px;
+                    height: 40px;
+                    border: 1px solid #d9e2ec;
+                    border-radius: 10px;
+                    padding: 0 12px;
+                    background: #fff;
+                    color: var(--text);
+                    outline: none;
+                    font-size: 14px;
+                    transition: all 0.2s ease;
+                }
+
+                .search-box input:focus {
+                    border-color: var(--primary);
+                    box-shadow: 0 0 0 3px rgba(22, 119, 255, 0.12);
+                }
+
+                .table-wrap {
+                    width: 100%;
+                    overflow: auto;
+                }
+
+                #tbl_doctucthoi_khachhang {
+                    width: 100%;
+                    min-width: 1080px;
+                    border-collapse: collapse;
+                    background: #fff;
+                }
+
+                #tbl_doctucthoi_khachhang thead th {
+                    background: linear-gradient(180deg, #39aaf5 0%, #2697e0 100%);
+                    color: #fff;
+                    padding: 13px 12px;
+                    font-size: 13px;
+                    font-weight: 700;
+                    border-right: 1px solid rgba(255, 255, 255, 0.22);
+                    text-align: center;
+                    white-space: nowrap;
+                }
+
+                #tbl_doctucthoi_khachhang thead th:last-child {
+                    border-right: 0;
+                }
+
+                #tbl_doctucthoi_khachhang tbody td {
+                    padding: 13px 12px;
+                    border-bottom: 1px solid #eaf0f6;
+                    font-size: 14px;
+                    vertical-align: middle;
+                    background: #fff;
+                }
+
+                #tbl_doctucthoi_khachhang tbody tr:hover td {
+                    background: #f8fbff;
+                }
+
+                #tbl_doctucthoi_khachhang tbody tr.selected td {
+                    background: #edf7ff;
+                }
+
+                .chk {
+                    width: 16px;
+                    height: 16px;
+                    accent-color: var(--primary);
+                    cursor: pointer;
+                }
+
+                .meter-name {
+                    font-size: 13px;
+                    color: var(--text);
+                }
+
+                .num {
+                    font-weight: 700;
+                    color: var(--text);
+                }
+
+                .muted {
+                    color: #94a3b8;
+                }
+
+                .badge {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-width: 110px;
+                    padding: 6px 10px;
+                    border-radius: 999px;
+                    font-size: 12px;
+                    font-weight: 700;
+                    white-space: nowrap;
+                }
+
+                .b-success {
+                    background: var(--success-bg);
+                    color: var(--success);
+                }
+
+                .b-running {
+                    background: var(--warning-bg);
+                    color: var(--warning);
+                }
+
+                .b-error {
+                    background: var(--danger-bg);
+                    color: var(--danger);
+                }
+
+                .b-empty {
+                    background: var(--empty-bg);
+                    color: var(--empty);
+                }
+
+                #thongbao_doctucthoi {
+                    border-radius: 12px;
+                }
+
+                @media (max-width: 1200px) {
+                    .progress-top {
+                        grid-template-columns: 120px 1fr;
+                    }
+
+                    .action-box {
+                        grid-column: 1 / -1;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        flex-wrap: wrap;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .page {
+                        padding: 6px 0 20px;
+                    }
+
+                    .progress-wrap {
+                        padding: 16px 14px 12px;
+                    }
+
+                    .progress-top {
+                        grid-template-columns: 1fr;
+                        gap: 14px;
+                    }
+
+                    .ring-box {
+                        justify-content: flex-start;
+                    }
+
+                    .ring {
+                        width: 100px;
+                        height: 100px;
+                    }
+
+                    .ring span {
+                        font-size: 18px;
+                    }
+
+                    .headline-title {
+                        font-size: 20px;
+                    }
+
+                    .table-toolbar {
+                        flex-direction: column;
+                        align-items: stretch;
+                    }
+
+                    .search-box {
+                        margin-left: 0;
+                    }
+
+                    .search-box input {
+                        width: 100%;
+                    }
+
+                    .action-box {
+                        flex-direction: column;
+                    }
+
+                    .btn {
+                        width: 100%;
+                    }
+                }
+            </style>

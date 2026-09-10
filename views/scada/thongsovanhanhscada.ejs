@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/icons/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/stylesheets/business-ui.css?v=0.5.1" />
+    <link rel="stylesheet" href="./vendor/pickadate/themes/default.css">
+    <link rel="stylesheet" href="./vendor/pickadate/themes/default.date.css">
+    <link rel="stylesheet" href="./vendor/select2/css/select2.min.css">
+
+</head>
+
+<body class="business-ui business-ui--shell">
+    <div class="app-shell">
+        <%- include('../menu_form/sidebar') %>
+            <main class="main">
+                <%- include('../menu_form/topbar') %>
+                    <div class="content-body">
+                        <!-- row -->
+
+                        <div class="container-fluid">
+                            <div class="col-lg-12 thongsovanhanhscada tsvh">
+                                <div class="row">
+                                    <div class="col-lg-3 co-xl-3" style="margin: 10px; ">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text">Chọn thiết bị</span>
+                                            <select id="cbo_thietbi" class="form-control select2">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 co-xl-3" style="margin: 10px; ">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text">Từ ngày</span>
+                                            <input name="datepicker" class="datepicker-default form-control"
+                                                id="txttungay_tsvh_scada">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 co-xl-3" style="margin: 10px; ">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text">Đến ngày</span>
+                                            <input name="datepicker" class="datepicker-default form-control"
+                                                id="txtdenngay_tsvh_scada">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-2" style="margin: 10px; ">
+                                        <div class="input-group ">
+                                            <button class="btn btn-primary" type="button" id="btnthuchien_tsvh_scada"><i
+                                                    class="flaticon-013-checkmark"></i>
+                                                Thực hiện</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="default-tab">
+                                    <ul class="nav nav-tabs" id="scada_tabs"></ul>
+                                    <div class="tab-content" id="scada_tab_content"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 thongsovanhanhscada" style="margin-top: 50px;">
+                                <%- include('../scada/cambien.ejs') %>
+                            </div>
+                            <div class="modal fade" id="modalAiPhanTichLoTong" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title"><i class="fa fa-robot me-2"></i>Phân tích AI - Lộ tổng</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div id="ai_lotong_loading" class="text-center py-5" style="display:none;">
+                                                <div class="spinner-border text-primary" role="status"></div>
+                                                <div class="mt-3">AI đang phân tích toàn bộ dữ liệu Lộ tổng...</div>
+                                            </div>
+                                            <div id="ai_lotong_error" class="alert alert-danger" style="display:none;"></div>
+                                            <div id="ai_lotong_meta" class="text-muted mb-3" style="display:none;"></div>
+                                            <div id="ai_lotong_result" style="white-space:pre-wrap; line-height:1.65;"></div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <small class="text-muted me-auto">Kết quả AI mang tính hỗ trợ; cần đối chiếu quy trình và ngưỡng kỹ thuật của nhà máy.</small>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="popupChitietCambienCoday">
+                                <div class="modal-dialog modal-lg" style="max-width: 90%;">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title title_cambien">Chi tiết cảm biến</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <div id="popup-loading" style="display:none;">Đang tải dữ liệu...</div>
+                                            <div class="row">
+                                                <div class="col-lg-2 co-xl-3" style="margin: 10px; ">
+                                                    <div class="input-group input-primary">
+                                                        <span class="input-group-text">Từ ngày</span>
+                                                        <input name="datepicker" class="datepicker-default form-control"
+                                                            id="txttungay_cambien_scada">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 co-xl-3" style="margin: 10px; ">
+                                                    <div class="input-group input-primary">
+                                                        <span class="input-group-text">Đến ngày</span>
+                                                        <input name="datepicker" class="datepicker-default form-control"
+                                                            id="txtdenngay_cambien_scada">
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-lg-5" style="margin: 10px; ">
+                                                    <div class="input-group " style="float: left;width: 160px;">
+                                                        <button class="btn btn-primary" type="button"
+                                                            id="btnthuchien_chitiet_cambien_scada"><i
+                                                                class="flaticon-013-checkmark"></i>
+                                                            Thực hiện</button>
+                                                    </div>
+                                                    <div class="input-group " style="float: left;width: 200px;">
+                                                        <button class="btn btn-success" type="button"
+                                                            id="btnExportExcelChiTietCambien"
+                                                            style="margin-left: 10px;">
+                                                            <i class="fa fa-download"></i> Xuất Excel
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div id="popup-content">
+                                                <table class="table table-bordered" id="tbl_chitiet_cambien_scada">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>STT</th>
+                                                            <th>Thời gian</th>
+                                                            <th>Nhiệt độ</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </main>
+
+    </div>
+
+    <%- include('../script.ejs') %>
+        <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+        <script src="./vendor/select2/js/select2.full.min.js"></script>
+        <script src="./javascripts/plugins-init/select2-init.js"></script>
+        <script src="./vendor/pickadate/picker.js"></script>
+        <script src="./vendor/pickadate/picker.time.js"></script>
+        <script src="./vendor/pickadate/picker.date.js"></script>
+        <script src="./vendor/toastr/js/toastr.min.js"></script>
+        <script src="./javascripts/plugins-init/toastr-init.js"></script>
+        <script src="../javascripts/fnTime.js"></script>
+        <script src="../javascripts/moment.js"></script>
+        <!-- DataTables Buttons JS -->
+        <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+        <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+        <script src="./vendor/datatables/js/jszip.min.js"></script>
+        <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+        <script src="../javascripts/scada/scada_thongsovanhanh.js"></script>
+        <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+
+        <!-- Popup -->
+
+        <style>
+            /* DataTable dark style */
+            .table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                color: #d8e3f0;
+                background: transparent;
+            }
+
+            .table thead th {
+                background: #3f82ea !important;
+                color: #fff !important;
+                text-align: center;
+                font-weight: 700;
+                padding: 14px 10px !important;
+                border: 1px solid #071b33 !important;
+            }
+
+            .table thead tr:nth-child(2) {
+                display: table-row;
+            }
+
+            .table tbody td {
+                padding: 10px 12px !important;
+                border: 1px solid #183455 !important;
+                color: #d8e3f0 !important;
+            }
+
+            .table tbody tr:nth-child(odd) {
+                background: #071b33 !important;
+            }
+
+            .table tbody tr:nth-child(even) {
+                background: #000000 !important;
+            }
+
+            .tbl_thongkestableolieu tbody tr:nth-child(even) td {
+                color: #7f8790 !important;
+            }
+
+            .table tbody tr:hover td {
+                background: #245fa8 !important;
+                color: #fff !important;
+            }
+
+            /* Row group */
+            .table tr.dtrg-group td {
+                background: #245fa8 !important;
+                color: #ffffff !important;
+                font-weight: 500;
+                padding: 10px 12px !important;
+            }
+
+            /* Search, length, info, paging */
+            .dataTables_wrapper {
+                color: #d8e3f0 !important;
+            }
+
+            .dataTables_wrapper .dataTables_filter input,
+            .dataTables_wrapper .dataTables_length select {
+                background: #fff !important;
+                color: #111 !important;
+                border-radius: 6px;
+                border: 1px solid #d6dbe1;
+                padding: 6px 10px;
+            }
+
+            .dataTables_wrapper .dataTables_info,
+            .dataTables_wrapper .dataTables_length,
+            .dataTables_wrapper .dataTables_filter,
+            .dataTables_info {
+                color: #d8e3f0 !important;
+                margin: 8px 0;
+                float: left;
+            }
+
+            .dataTables_wrapper .dataTables_paginate {
+                background: #000;
+                border-radius: 12px;
+                padding: 0px;
+                margin-top: 0px;
+                float: right;
+            }
+
+            .dataTables_paginate .paginate_button {
+                color: #2674ff !important;
+                border: none !important;
+                background: transparent !important;
+                padding: 4px 8px !important;
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+                background: #2674ff !important;
+                color: #fff !important;
+                border-radius: 6px;
+            }
+
+            .dataTables_wrapper .dt-buttons .dt-button {
+                background: #3f82ea !important;
+                color: #fff !important;
+                border: none !important;
+                border-radius: 5px;
+                padding: 6px 12px;
+            }
+
+            .dt-buttons {
+                float: left !important;
+                margin-bottom: 10px;
+            }
+
+            .dt-buttons .dt-button {
+                background: #4d86e3 !important;
+                color: #fff !important;
+                border: 0 !important;
+                border-radius: 6px !important;
+            }
+
+            .dataTables_filter {
+                float: right !important;
+                text-align: right !important;
+                margin-bottom: 10px;
+            }
+
+            .dataTables_filter input {
+                width: 200px !important;
+                border-radius: 6px;
+            }
+
+            .dataTables_wrapper .top {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .dataTables_wrapper .dt-buttons,
+            .dataTables_wrapper .dataTables_filter {
+                float: none !important;
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.previous,
+            .dataTables_wrapper .dataTables_paginate .paginate_button.next {
+                margin-left: 0px;
+                font-size: 15px;
+                margin: 0 2px;
+                border: 0 !important;
+                height: 50px;
+                width: 60px;
+                padding: 0;
+                border-radius: 1rem;
+                line-height: 42px;
+                display: inline-block;
+                color: var(--primary) !important;
+
+            }
+
+            .nav-link {
+                color: #fff;
+            }
+
+            .scada-table-wrap {
+                overflow-x: auto;
+                width: 100%;
+            }
+
+            /* Cho DataTables control không bị cuộn theo table */
+            .scada-table-wrap .dataTables_wrapper {
+                min-width: max-content;
+            }
+
+            /* Thanh trên: Xem bản ghi bên trái, Xuất Excel bên phải */
+            .dataTables_wrapper .row.mb-2 {
+                display: flex;
+                align-items: center;
+                min-width: 100%;
+            }
+
+            .dataTables_wrapper .row.mb-2 .col-sm-6:first-child {
+                width: 50%;
+            }
+
+            .dataTables_wrapper .row.mb-2 .col-sm-6:last-child {
+                width: 50%;
+                text-align: right !important;
+            }
+
+            /* Thanh dưới: Info trái, phân trang phải */
+            .dataTables_wrapper .row.mt-2 {
+                display: flex;
+                align-items: center;
+                min-width: 100%;
+            }
+
+            .dataTables_wrapper .row.mt-2 .col-sm-6:first-child {
+                width: 50%;
+            }
+
+            .dataTables_wrapper .row.mt-2 .col-sm-6:last-child {
+                width: 50%;
+                text-align: right !important;
+            }
+
+            .dataTables_wrapper .dataTables_paginate {
+                float: none !important;
+                text-align: right !important;
+                display: inline-block;
+            }
+
+            .dataTables_wrapper .dt-buttons {
+                float: none !important;
+                display: inline-block;
+            }
+
+            .title_cambien,
+            #tbl_chitiet_cambien_scada_wrapper .dataTables_length,
+            #tbl_chitiet_cambien_scada_wrapper .dataTables_info {
+                color: #000 !important;
+            }
+
+            #tbl_chitiet_cambien_scada_wrapper .dataTables_paginate {
+                float: right !important;
+            }
+
+            .nav-tabs {
+                border-bottom: 1px solid #636466 !important;
+            }
+        </style>

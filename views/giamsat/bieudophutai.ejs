@@ -1,0 +1,157 @@
+<%- include('../head.ejs') %>
+
+    <%- include('../preloader.ejs') %>
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+        Nav header start
+    ***********************************-->
+            <%- include('../navheader.ejs') %>
+                <!--**********************************
+        Nav header end
+    ***********************************-->
+                <!--**********************************
+            Chat box start
+        ***********************************-->
+                <%- include('../chatbox.ejs') %>
+                    <!--**********************************
+            Chat box End
+        ***********************************-->
+                    <!--**********************************
+            Header start
+        ***********************************-->
+                    <%- include('../header.ejs') %>
+                        <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+                        <!--**********************************
+        Sidebar start
+    ***********************************-->
+                        <%- include('../dlanav.ejs') %>
+                            <!--**********************************
+        Sidebar end
+    ***********************************-->
+                            <!--**********************************
+            Content body start
+        ***********************************-->
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+
+                                    <div class="row">
+                                        <div class="col-lg-12 card">
+                                            <div class="profile card-body px-3 pt-3 pb-0">
+                                                <div class="row">
+
+                                                    <div class="col-lg-3" style="padding: 10px;">
+                                                        <div class="input-group input-primary">
+
+                                                            <select class="form-control" id="sllocdulieu_bdpt">
+                                                                <option value="0">Điểm đo có dữ liệu
+                                                                </option>
+                                                                <option value="1">Điểm đo không có dữ liệu
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-3 ngay" style="padding: 10px; ">
+                                                        <div class="input-group input-primary">
+                                                            <span class="input-group-text"> Ngày</span>
+                                                            <input name="datepicker"
+                                                                class="datepicker-default form-control"
+                                                                id="txtngay_bdpt">
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-2 gio" style="padding: 10px; "
+                                                        style="display:none">
+                                                        <div class="input-group input-primary">
+                                                            <select class="form-control" id="slgio_bdpt">
+                                                                <option value="">Tất cả</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3" style="padding: 10px; ">
+                                                        <div class="input-group">
+                                                            <button class="btn btn-primary" type="button"
+                                                                id="btnthuchien_bdpt"><i
+                                                                    class="flaticon-013-checkmark"></i>
+                                                                Thực hiện</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <table id="tbl_bdpt"
+                                                        class="table table-bordered table-striped table-hover table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-center">STT</th>
+                                                                <th class="text-center">Tên khách hàng</th>
+                                                                <th class="text-center">Số công tơ</th>
+                                                                <th class="text-center">Thời điểm</th>
+                                                                <th class="text-center">P tổng giao (kW)
+                                                                </th>
+                                                                <th class="text-center">P tổng nhận (kW)
+                                                                </th>
+                                                                <th class="text-center">Q tổng giao (kVAR)
+                                                                </th>
+                                                                <th class="text-center">Q tổng nhận (kVAR)
+                                                                </th>
+                                                                <!-- <th class="text-center">SL P Giao</th>
+                                                                <th class="text-center">SL P Nhận</th>
+                                                                <th class="text-center">SL Q Giao</th>
+                                                                <th class="text-center">SL Q Nhận</th> -->
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                        <tfoot>
+                                                            <tr></tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+        </div>
+        <%- include('../modal/modal_view_giamsat.ejs') %>
+            <!--**********************************
+        Content body end
+    ***********************************-->
+            <%- include('../footer.ejs') %>
+                </div>
+                <%- include('../script.ejs') %>
+                    <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                    <script src="./vendor/select2/js/select2.full.min.js"></script>
+                    <script src="./javascripts/plugins-init/select2-init.js"></script>
+                    <script src="./vendor/pickadate/picker.js"></script>
+                    <script src="./vendor/pickadate/picker.time.js"></script>
+                    <script src="./vendor/pickadate/picker.date.js"></script>
+                    <script src="./vendor/toastr/js/toastr.min.js"></script>
+                    <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                    <script src="../javascripts/fnTime.js"></script>
+                    <script src="../javascripts/moment.js"></script>
+                    <!-- DataTables Buttons JS -->
+                    <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+                    <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+                    <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+                    <script src="./vendor/datatables/js/jszip.min.js"></script>
+                    <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+                    <script src="../javascripts/giamsat/bieudophutai.js"></script>
+                    <script src="../javascripts/giamsat/bieudophutai_chitiet.js"></script>
+                    <script src="../javascripts/giamsat/giamsat_modal_tabs.js"></script>
+                    <script src="../javascripts/giamsat/chisocongto_chitiet.js"></script>
+                    <script src="../javascripts/giamsat/thongsovanhanh_chitiet.js"></script>
+                    <script src="../javascripts/giamsat/chisopmax_chitiet.js"></script>
+                    <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+                    <style>
+                        .table thead th {
+                            text-transform: none !important;
+                        }
+                    </style>

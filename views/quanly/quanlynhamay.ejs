@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= title %>
+    </title>
+
+    <link rel="stylesheet" href="/icons/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/stylesheets/business-ui.css?v=0.5.1" />
+    <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+</head>
+
+<body class="business-ui business-ui--shell">
+    <div class="app-shell">
+        <%- include('../menu_form/sidebar') %>
+
+        <main class="main">
+            <%- include('../menu_form/topbar') %>
+
+            <div class="content-body">
+                <div class="container-fluid">
+
+                    <section class="content mt-2">
+
+                        <div class="card card-info">
+                            <div class="card-header">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#modal-xl" onclick="ThemMoi()">
+                                    Thêm nhà máy
+                                </button>
+                            </div>
+
+                            <div class="card-body">
+                                <div class="table-responsive user-table-wrap">
+                                    <table id="tbl_danhsachnhamay"
+                                        class="table table-sk table-bordered table-striped table-hover w-100 align-middle mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">STT</th>
+                                                <th class="text-center">Mã nhà máy</th>
+                                                <th class="text-center">Tên nhà máy</th>
+                                                <th class="text-center">Địa chỉ</th>
+                                                <th class="text-center">Kinh độ</th>
+                                                <th class="text-center">Vĩ độ</th>
+                                                <th class="text-center">Ghi chú</th>
+                                                <th class="text-center">Ngày tạo</th>
+                                                <th class="text-center">Chức năng</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal thêm mới -->
+                        <div class="modal fade" id="modal-xl">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Thêm mới nhà máy</h4>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body col-lg-12">
+                                        <div class="row">
+                                            <div class="form-group col-lg-4">
+                                                <label>Mã nhà máy <span class="text-danger">(*)</span></label>
+                                                <input type="text" class="form-control" id="txt_add_ma_nhamay"
+                                                    maxlength="20">
+                                            </div>
+
+                                            <div class="form-group col-lg-8">
+                                                <label>Tên nhà máy <span class="text-danger">(*)</span></label>
+                                                <input type="text" class="form-control" id="txt_add_ten_nhamay"
+                                                    maxlength="200">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-lg-12">
+                                                <label>Địa chỉ</label>
+                                                <input type="text" class="form-control" id="txt_add_diachi"
+                                                    maxlength="1000">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-lg-6">
+                                                <label>Kinh độ</label>
+                                                <input type="text" class="form-control" id="txt_add_kinhdo"
+                                                    maxlength="200">
+                                            </div>
+
+                                            <div class="form-group col-lg-6">
+                                                <label>Vĩ độ</label>
+                                                <input type="text" class="form-control" id="txt_add_vido"
+                                                    maxlength="200">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-lg-12">
+                                                <label>Ghi chú</label>
+                                                <textarea class="form-control" id="txt_add_ghichu" rows="3"
+                                                    maxlength="2000"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-default"
+                                            data-bs-dismiss="modal">Đóng</button>
+
+                                        <button class="btn btn-primary" type="button" id="btnthemnhamay">
+                                            <i class="flaticon-013-checkmark"></i>
+                                            Lưu
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal sửa -->
+                        <div class="modal fade" id="modal-xl-edit">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Sửa thông tin nhà máy</h4>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body col-lg-12">
+                                        <input type="hidden" id="txt_sua_id">
+
+                                        <div class="row">
+                                            <div class="form-group col-lg-4">
+                                                <label>Mã nhà máy <span class="text-danger">(*)</span></label>
+                                                <input type="text" class="form-control" id="txt_sua_ma_nhamay"
+                                                    maxlength="20">
+                                            </div>
+
+                                            <div class="form-group col-lg-8">
+                                                <label>Tên nhà máy <span class="text-danger">(*)</span></label>
+                                                <input type="text" class="form-control" id="txt_sua_ten_nhamay"
+                                                    maxlength="200">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-lg-12">
+                                                <label>Địa chỉ</label>
+                                                <input type="text" class="form-control" id="txt_sua_diachi"
+                                                    maxlength="1000">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-lg-6">
+                                                <label>Kinh độ</label>
+                                                <input type="text" class="form-control" id="txt_sua_kinhdo"
+                                                    maxlength="200">
+                                            </div>
+
+                                            <div class="form-group col-lg-6">
+                                                <label>Vĩ độ</label>
+                                                <input type="text" class="form-control" id="txt_sua_vido"
+                                                    maxlength="200">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="form-group col-lg-12">
+                                                <label>Ghi chú</label>
+                                                <textarea class="form-control" id="txt_sua_ghichu" rows="3"
+                                                    maxlength="2000"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-default"
+                                            data-bs-dismiss="modal">Đóng</button>
+
+                                        <button type="button" class="btn btn-primary" id="btneditnhamay">
+                                            Lưu
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <%- include('../footer.ejs') %>
+
+    <%- include('../script.ejs') %>
+    
+    <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="./vendor/select2/js/select2.full.min.js"></script>
+    <script src="./javascripts/plugins-init/select2-init.js"></script>
+    <script src="./vendor/pickadate/picker.js"></script>
+    <script src="./vendor/pickadate/picker.time.js"></script>
+    <script src="./vendor/pickadate/picker.date.js"></script>
+    <script src="./vendor/toastr/js/toastr.min.js"></script>
+    <script src="./javascripts/plugins-init/toastr-init.js"></script>
+    <script src="../javascripts/fnTime.js"></script>
+
+    <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+    <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+    <script src="./vendor/datatables/js/jszip.min.js"></script>
+    <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+    <script src="../javascripts/quanly/quanlynhamay.js?v=2024062401"></script>
+     <style>
+                    /* DataTable dark style */
+                    #tbl_danhsachnhamay {
+                        width: 100% !important;
+                        border-collapse: collapse !important;
+                        color: #d8e3f0;
+                        background: transparent;
+                    }
+
+                    #tbl_danhsachnhamay thead th {
+                        background: #3f82ea !important;
+                        color: #fff !important;
+                        text-align: center;
+                        font-weight: 700;
+                        border: 1px solid #071b33 !important;
+                    }
+
+
+                    #tbl_danhsachnhamay tbody td {
+                        padding: 10px 12px !important;
+                        border: 1px solid #183455 !important;
+                        color: #d8e3f0 !important;
+                    }
+
+                    #tbl_danhsachnhamay tbody tr:nth-child(odd) {
+                        background: #071b33 !important;
+                    }
+
+                    #tbl_danhsachnhamay tbody tr:nth-child(even) {
+                        background: #000000 !important;
+                    }
+
+                    #tbl_danhsachnhamay tbody tr:nth-child(even) td {
+                        color: #7f8790 !important;
+                    }
+
+                    #tbl_danhsachnhamay tbody tr:hover td {
+                        background: #245fa8 !important;
+                        color: #fff !important;
+                    }
+
+                    /* Row group */
+                    #tbl_danhsachnhamay tr.dtrg-group td {
+                        background: #245fa8 !important;
+                        color: #ffffff !important;
+                        font-weight: 500;
+                        padding: 10px 12px !important;
+                    }
+
+                    /* Search, length, info, paging */
+                    .dataTables_wrapper {
+                        color: #d8e3f0 !important;
+                    }
+
+                    #tbl_danhsachnhamay_wrapper .dataTables_filter input,
+                    #tbl_danhsachnhamay_wrapper .dataTables_length select {
+                        background: #fff !important;
+                        color: #111 !important;
+                        border-radius: 6px;
+                        border: 1px solid #d6dbe1;
+                        padding: 6px 10px;
+                    }
+
+                    .dataTables_wrapper .dataTables_info,
+                    .dataTables_wrapper .dataTables_length,
+                    .dataTables_wrapper .dataTables_filter {
+                        color: #d8e3f0 !important;
+                        margin: 8px 0;
+                        float: left;
+                    }
+
+                    .dataTables_wrapper .dataTables_paginate {
+                        background: #000;
+                        border-radius: 12px;
+                        padding: 0px;
+                        margin-top: 0px;
+                        float: right;
+                    }
+
+                    .dataTables_wrapper .dataTables_paginate .paginate_button {
+                        color: #2674ff !important;
+                        border: none !important;
+                        background: transparent !important;
+                        padding: 4px 8px !important;
+                    }
+
+                    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+                        background: #2674ff !important;
+                        color: #fff !important;
+                        border-radius: 6px;
+                    }
+
+                    .dataTables_wrapper .dt-buttons .dt-button {
+                        background: #3f82ea !important;
+                        color: #fff !important;
+                        border: none !important;
+                        border-radius: 5px;
+                        padding: 6px 12px;
+                    }
+
+                    .dt-buttons {
+                        float: left !important;
+                        margin-bottom: 10px;
+                    }
+
+                    .dt-buttons .dt-button {
+                        background: #4d86e3 !important;
+                        color: #fff !important;
+                        border: 0 !important;
+                        border-radius: 6px !important;
+                    }
+
+                    .dataTables_filter {
+                        float: right !important;
+                        text-align: right !important;
+                        margin-bottom: 10px;
+                    }
+
+                    .dataTables_filter input {
+                        width: 200px !important;
+                        border-radius: 6px;
+                    }
+
+                    .dataTables_wrapper .top {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 10px;
+                    }
+
+                    .dataTables_wrapper .dt-buttons,
+                    .dataTables_wrapper .dataTables_filter {
+                        float: none !important;
+                    }
+
+                    .dataTables_wrapper .dataTables_paginate .paginate_button.previous,
+                    .dataTables_wrapper .dataTables_paginate .paginate_button.next {
+                        margin-left: 0px;
+                        font-size: 15px;
+                        margin: 0 2px;
+                        border: 0 !important;
+                        height: 50px;
+                        width: 60px;
+                        padding: 0;
+                        border-radius: 1rem;
+                        line-height: 42px;
+                        display: inline-block;
+                        color: var(--primary) !important;
+
+                    }
+                </style>
+</body>
+
+</html>

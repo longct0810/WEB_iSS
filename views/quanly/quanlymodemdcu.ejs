@@ -1,0 +1,155 @@
+<%- include('../head.ejs') %>
+
+  <%- include('../preloader.ejs') %>
+    <div id="main-wrapper" class=" ">
+
+      <!--**********************************
+        Nav header start
+    ***********************************-->
+      <%- include('../navheader.ejs') %>
+        <!--**********************************
+        Nav header end
+    ***********************************-->
+        <!--**********************************
+            Chat box start
+        ***********************************-->
+        <%- include('../chatbox.ejs') %>
+          <!--**********************************
+            Chat box End
+        ***********************************-->
+          <!--**********************************
+            Header start
+        ***********************************-->
+          <%- include('../header.ejs') %>
+            <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+            <!--**********************************
+        Sidebar start
+    ***********************************-->
+            <%- include('../dlanav.ejs') %>
+              <!--**********************************
+        Sidebar end
+    ***********************************-->
+              <!--**********************************
+            Content body start
+        ***********************************-->
+              <div class="content-body">
+                <!-- row -->
+                <div class="container-fluid">
+
+                  <!-- Main content -->
+                  <section class="content mt-2">
+                    <!-- <div class="col-md-6 col-lg-6 col-6 col-xl-6" style="margin-top: 31px;">
+                      <button type="button" class="btn btn-primary"  onclick="zzz()">
+                       zzzzzz
+                      </button>
+                    </div> -->
+                    <!-- Default box -->
+                    <div class="card card-info">
+
+                      <div class="card-body">
+
+                        <div class="row">
+                          <table id="tbl_danhsachnguoidung"
+                            class="table  table-sk table-bordered table-striped table-hover table-bordered">
+                            <thead>
+                              <tr>
+                                <th class="text-center">STT</th>
+                                <th class="text-center">IMEI</th>
+                                <th class="text-center">Đơn vị</th>
+                                <th class="text-center">IP</th>
+                                <th class="text-center">PORT</th>
+                                <th class="text-center">Trạng thái</th>
+                                <th class="text-center">Cập nhật công tơ vào DCU</th>
+                                <th class="text-center">Đọc danh sách công tơ</th>
+                                <th class="text-center">Sửa thông tin</th>
+                                <th class="text-center">Thay modem</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+
+                          </table>
+                        </div>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </section>
+                </div>
+
+              </div>
+
+    </div>
+
+
+    <%- include('../modal/modal_view_map_cto.ejs') %>
+      <%- include('../modal/modal_view_sua_tt_dcu.ejs') %>
+        <%- include('../modal/modal_view_map_doc_cto.ejs') %>
+          <%- include('../modal/modal_view_quanly_thaymodemdcu.ejs') %>
+            </div>
+            <!-- /.modal -->
+            </section>
+            <!-- /.content -->
+
+            </div>
+            </div>
+            </div>
+            <!--**********************************
+        Content body end
+    ***********************************-->
+            <%- include('../footer.ejs') %>
+              </div>
+              <%- include('../script.ejs') %>
+                <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                <script src="./vendor/select2/js/select2.full.min.js"></script>
+                <script src="./javascripts/plugins-init/select2-init.js"></script>
+                <script src="./vendor/pickadate/picker.js"></script>
+                <script src="./vendor/pickadate/picker.time.js"></script>
+                <script src="./vendor/pickadate/picker.date.js"></script>
+                <script src="./vendor/toastr/js/toastr.min.js"></script>
+                <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                <script src="../javascripts/fnTime.js"></script>
+                <!-- DataTables Buttons JS -->
+                <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+                <script src="./vendor/datatables/js/jszip.min.js"></script>
+                <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+                <!-- Chartist -->
+                <script src="../javascripts/jstree.min.js"></script>
+
+                <script src="../javascripts/quanly/quanlymodemdcu.js"></script>
+                <script src="../javascripts/quanly/mapcongto_dcu.js"></script>
+                <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+                <style type="text/css">
+                  #tbl_danhsachnguoidung {
+                    width: 100% !important;
+                  }
+
+                  #tbl_danhsachnguoidung th,
+                  #tbl_danhsachnguoidung td {
+                    vertical-align: middle;
+                    white-space: nowrap;
+                  }
+
+                  #tbl_danhsachnguoidung td.text-break {
+                    white-space: normal;
+                    word-break: break-word;
+                    min-width: 140px;
+                  }
+
+                  #tbl_danhsachnguoidung .action-col {
+                    min-width: 80px;
+                  }
+
+                  .dataTables_wrapper {
+                    width: 100%;
+                    overflow-x: auto;
+                  }
+
+                  .table-responsive {
+                    overflow-x: auto;
+                  }
+                </style>

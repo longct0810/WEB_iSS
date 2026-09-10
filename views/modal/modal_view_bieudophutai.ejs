@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="box-default">
+        <div class="box-body">
+            <div style="margin:10px 0 0 0" id="modal_chart_bdpt">
+                <canvas id="canvas" style="height:300px"></canvas>
+            </div>
+            <div class="row">
+                <form>
+                    <div class="mb-3 mb-0">
+                        <label class="radio-inline me-3"><input type="radio" value="PTongGiao" name="charttype_bdpt"
+                                checked id="rdPTongGiao" onclick="chartTypeChange_bdpt()"> P tổng giao (kW)</label>
+                        <label class="radio-inline me-3"><input type="radio" value="PTongNhan" name="charttype_bdpt"
+                                id="rdPTongNhan" onchange="chartTypeChange_bdpt()"> P tổng nhận (kW)</label>
+                        <label class="radio-inline me-3"><input type="radio" value="QTongGiao" name="charttype_bdpt"
+                                id="rdQTongGiao" onchange="chartTypeChange_bdpt()"> Q tổng giao (kVAR)</label>
+                        <label class="radio-inline me-3"><input type="radio" value="QTongNhan" name="charttype_bdpt"
+                                id="rdQTongNhan" onchange="chartTypeChange_bdpt()"> Q tổng nhận (kVAR)</label>
+                        <label class="radio-inline me-3"><input type="radio" value="SLPGiao" name="charttype_bdpt"
+                                id="rdSLPGiao" onchange="chartTypeChange_bdpt()"> SL P Giao</label>
+                        <label class="radio-inline me-3"><input type="radio" value="SLPNhan" name="charttype_bdpt"
+                                id="rdSLPNhan" onchange="chartTypeChange_bdpt()"> SL P Nhận</label>
+                        <label class="radio-inline me-3"><input type="radio" value="SLQGiao" name="charttype_bdpt"
+                                id="rdSLQGiao" onchange="chartTypeChange_bdpt()"> SL Q Giao</label>
+                        <label class="radio-inline me-3"><input type="radio" value="SLQNhan" name="charttype_bdpt"
+                                id="rdSLQNhan" onchange="chartTypeChange_bdpt()"> SL Q Nhận</label>
+
+                    </div>
+                </form>
+
+            </div>
+
+
+            <div class="row align-items-center">
+                <div class="col-lg-2" style="padding: 10px; ">
+                    <div class="input-group input-primary">
+                        <span class="input-group-text">Từ ngày</span>
+                        <input name="datepicker" class="datepicker-default form-control" id="txttungay_bdpt">
+
+                    </div>
+                </div>
+                <div class="col-lg-2" style="padding: 10px; ">
+                    <div class="input-group input-primary">
+                        <span class="input-group-text">Đến ngày</span>
+                        <input name="datepicker" class="datepicker-default form-control" id="txtdenngay_bdpt">
+
+                    </div>
+                </div>
+                <div class="col-lg-2" style="padding: 10px; ">
+                    <div class="input-group input-primary">
+                        <span class="input-group-text"> Số công tơ</span>
+                        <select class="form-control" id="cboSocongto_bdpt">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-lg-2">
+                    <input type="hidden" id="hdMeterid_bdpt" />
+                    <input type="hidden" id="hdLoaiCongTo_bdpt" />
+                    <div class="input-group">
+                        <button class="btn btn-primary" type="button" id="btnthuchien_bdpt_chitiet"><i
+                                class="flaticon-013-checkmark"></i>
+                            Thực hiện</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+                <div class="alert  alert-danger" id="messageerrorchitiet_bdpt" style="display:none">
+                </div>
+                <table class="table table-bordered table-striped table-hover table-bordered dataTable"
+                    id="tbl_chitiet_tspt">
+                    <thead class="bg-gray-active">
+                        <tr>
+                            <th class="text-center">STT</th>
+                            <th class="text-center">Thời gian</th>
+                            <th class="text-center">P tổng giao (kW)</th>
+                            <th class="text-center">P tổng nhận (kW)</th>
+                            <th class="text-center">Q tổng giao (KVAR)</th>
+                            <th class="text-center">Q tổng nhận (KVAR)</th>
+                            <th class="text-center">SL P Giao</th>
+                            <th class="text-center">SL P Nhận</th>
+                            <th class="text-center">SL Q Giao</th>
+                            <th class="text-center">SL Q Nhận</th>
+                        </tr>
+
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+    </div>
+</div>

@@ -1,0 +1,132 @@
+<%- include('../head.ejs') %>
+
+    <%- include('../preloader.ejs') %>
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+        Nav header start
+    ***********************************-->
+            <%- include('../navheader.ejs') %>
+                <!--**********************************
+        Nav header end
+    ***********************************-->
+                <!--**********************************
+            Chat box start
+        ***********************************-->
+                <%- include('../chatbox.ejs') %>
+                    <!--**********************************
+            Chat box End
+        ***********************************-->
+                    <!--**********************************
+            Header start
+        ***********************************-->
+                    <%- include('../header.ejs') %>
+                        <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+                        <!--**********************************
+        Sidebar start
+    ***********************************-->
+                        <%- include('../dlanav.ejs') %>
+                            <!--**********************************
+        Sidebar end
+    ***********************************-->
+                            <!--**********************************
+            Content body start
+        ***********************************-->
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+
+                                    <section class="content">
+
+                                        <!-- Default box -->
+                                        <div class="card card-info">
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <div class="form-group col-lg-4 cold-md-4 col-sm-6"
+                                                        style="margin: 5px 0;">
+                                                        <div class="input-group input-primary">
+                                                            <span class="input-group-text"> Tài Khoản:</span>
+                                                            <select class="form-control select2"
+                                                                id="cb_taikhoan_apquyen"></select>
+
+
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="form-group col-lg-3 cold-md-3 col-sm-6"
+                                                        style="margin: 5px 0;">
+                                                        <div class="input-group input-primary">
+                                                            <button type="button" class="btn btn-primary"
+                                                                id="btn_capnhat_apquyen"
+                                                                style="margin:0px 5px 0px 10px"> <i
+                                                                    class="fa fa-save"></i> LƯU QUYỀN</button>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                </div>
+                                                <br />
+                                                <div class="row">
+                                                    <table class="table table-striped table-bordered" id="tbl_ckbT">
+                                                        <thead class="bg-gray-active">
+                                                            <tr>
+                                                                <th style="text-align:center">STT</th>
+                                                                <th style="text-align:center">Tên chức Năng</th>
+                                                                <th style="text-align:center"><input type="checkbox"
+                                                                        name="xem_apquyen" id="bt_xemq_apquyen"
+                                                                        style="margin-left:30px" /> Cấp quyền</th>
+                                                                <!--<th style="text-align:center"><input type="checkbox" name="them_apquyen" id="bt_themq_apquyen"  style="margin-left:35px" hidden/> Thêm</th>
+                                                    <th style="text-align:center"><input type="checkbox" name="sua_apquyen" id="bt_suaq_apquyen"  style="margin-left:20px"hidden/> Sửa</th>
+                                                    <th style="text-align:center"><input type="checkbox" name="xoa_apquyen" id="bt_xoaq_apquyen" style="margin-left:20px" hidden/> Xóa</th>-->
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="table_apquyen"></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                        <!-- /.card -->
+
+
+
+                                    </section>
+                                    <!-- /.content -->
+
+                                </div>
+                            </div>
+        </div>
+        <!--**********************************
+        Content body end
+    ***********************************-->
+        <%- include('../footer.ejs') %>
+            </div>
+            <%- include('../script.ejs') %>
+                <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                <script src="./vendor/select2/js/select2.full.min.js"></script>
+                <script src="./javascripts/plugins-init/select2-init.js"></script>
+                <script src="./vendor/pickadate/picker.js"></script>
+                <script src="./vendor/pickadate/picker.time.js"></script>
+                <script src="./vendor/pickadate/picker.date.js"></script>
+                <script src="./vendor/toastr/js/toastr.min.js"></script>
+                <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                <script src="../javascripts/fnTime.js"></script>
+                <!-- DataTables Buttons JS -->
+                <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+                <script src="./vendor/datatables/js/jszip.min.js"></script>
+                <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+                <!-- Chartist -->
+                <script src="../javascripts/jstree.min.js"></script>
+                <script src="../javascripts/quanly/quanlyphanquyenchucnang.js"></script>
+
+                <link rel="stylesheet" href="./stylesheets/jstree.min.css">
+
+                <!-- <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css"> -->
+                <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">

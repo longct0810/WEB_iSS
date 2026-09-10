@@ -1,0 +1,236 @@
+<%- include('../head.ejs') %>
+
+    <%- include('../preloader.ejs') %>
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+        Nav header start
+    ***********************************-->
+            <%- include('../navheader.ejs') %>
+                <!--**********************************
+        Nav header end
+    ***********************************-->
+                <!--**********************************
+            Chat box start
+        ***********************************-->
+                <%- include('../chatbox.ejs') %>
+                    <!--**********************************
+            Chat box End
+        ***********************************-->
+                    <!--**********************************
+            Header start
+        ***********************************-->
+                    <%- include('../header.ejs') %>
+                        <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+                        <!--**********************************
+        Sidebar start
+    ***********************************-->
+                        <%- include('../dlanav.ejs') %>
+                            <!--**********************************
+        Sidebar end
+    ***********************************-->
+                            <!--**********************************
+            Content body start
+        ***********************************-->
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+
+                                    <!-- Main content -->
+                                    <section class="content mt-2">
+
+                                        <!-- Default box -->
+                                        <div class="card card-info">
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+
+                                                <div class="row">
+                                                    <table id="tbl_thietbitruyenthong"
+                                                        class="table  table-sk table-bordered table-striped table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width: 50px;">STT</th>
+                                                                <th style="text-align:center">Số IMEI</th>
+                                                                <th style="text-align:center">IP</th>
+                                                                <th style="text-align:center">Port</th>
+                                                                <th style="width:110px;text-align:center">Cấu hình</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                        <!-- /.card -->
+                                        <!-- /.modal thêm mới người dùng-->
+                                        <div class="modal fade" id="modal-DIEUKHIEN_DONG">
+                                            <div class="modal-dialog modal-xl">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title"> CẤU HÌNH ĐIỆN ÁP THẤP</h4>
+                                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <div class="box-default">
+                                                            <div class="box-body">
+                                                                <hr style="margin:0;" />
+                                                                <div class="row">
+
+                                                                    <div id="canhbao_box_th"
+                                                                        style="color:blue;  text-align:center"> <span
+                                                                            id="id_overlay_nt"><i
+                                                                                class="fa fa-circle-o-notch fa-spin"></i></span><br />
+                                                                        <h5 id="thongbao_dong"></h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" style="margin-top: 0px;">
+                                                                    <div class="form-group col-lg-6">
+                                                                        <label>
+                                                                            Thời gian gửi TSVH bình thường (giây)
+                                                                            <span class="text-danger">(*)</span>
+                                                                        </label>
+                                                                        <input type="number"
+                                                                            class="form-control istextbox"
+                                                                            id="id_time_tsvh_bt" maxlength="20">
+                                                                    </div>
+
+                                                                    <div class="form-group col-lg-6">
+                                                                        <label>
+                                                                            Thời gian gửi TSVH khi điện áp cao/thấp
+                                                                            (giây)
+                                                                            <span class="text-danger">(*)</span>
+                                                                        </label>
+                                                                        <input type="number"
+                                                                            class="form-control istextbox"
+                                                                            id="id_time_tsvh_caothap" maxlength="20">
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="row" style="margin-top: 20px;">
+                                                                    <div class="form-group col-lg-6">
+                                                                        <label>
+                                                                            Ngưỡng cảnh báo điện áp thấp (v)
+                                                                            <span class="text-danger">(*)</span>
+                                                                        </label>
+                                                                        <input type="number"
+                                                                            class="form-control istextbox"
+                                                                            id="id_nguong_canhbao_thap" maxlength="20">
+                                                                    </div>
+
+                                                                    <div class="form-group col-lg-6">
+                                                                        <label>
+                                                                            Giá trị delta cảnh báo điện áp thấp (v)
+                                                                            <span class="text-danger">(*)</span>
+                                                                        </label>
+                                                                        <input type="number"
+                                                                            class="form-control istextbox"
+                                                                            id="id_delta_thap" maxlength="20"
+                                                                            onkeypress="return isNumber(event)">
+                                                                    </div>
+
+                                                                </div>
+
+
+                                                                <div class="row" style="margin-top: 20px;">
+                                                                    <div class="form-group col-lg-6">
+                                                                        <label>
+                                                                            Ngưỡng cảnh báo điện áp cao (v)
+                                                                            <span class="text-danger">(*)</span>
+                                                                        </label>
+                                                                        <input type="number"
+                                                                            class="form-control istextbox"
+                                                                            id="id_nguong_canhbao_cao" maxlength="20">
+                                                                    </div>
+
+                                                                    <div class="form-group col-lg-6">
+                                                                        <label>
+                                                                            Giá trị delta cảnh báo điện áp cao (v)
+                                                                            <span class="text-danger">(*)</span>
+                                                                        </label>
+                                                                        <input type="number"
+                                                                            class="form-control istextbox"
+                                                                            id="id_delta_cao" maxlength="20"
+                                                                            onkeypress="return isNumber(event)">
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                            <!-- /.box-body -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <div class="col-lg-3" style="float:right; text-align:right">
+                                                            <button type="button" class="btn btn-primary"
+                                                                id="btndoc">Đọc thông số</button>
+                                                        </div>
+                                                        <button type="button" class="btn btn-primary"
+                                                            onclick="ThucHien_CauHinh()" id="btnDong">Lưu cấu
+                                                            hình</button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
+                                        </div>
+                                        <!-- /.modal -->
+
+                                    </section>
+                                    <!-- /.content -->
+
+                                </div>
+                            </div>
+        </div>
+        <!--**********************************
+        Content body end
+    ***********************************-->
+        <%- include('../footer.ejs') %>
+            </div>
+            <%- include('../script.ejs') %>
+                <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                <script src="./vendor/select2/js/select2.full.min.js"></script>
+                <script src="./javascripts/plugins-init/select2-init.js"></script>
+                <script src="./vendor/pickadate/picker.js"></script>
+                <script src="./vendor/pickadate/picker.time.js"></script>
+                <script src="./vendor/pickadate/picker.date.js"></script>
+                <script src="./vendor/toastr/js/toastr.min.js"></script>
+                <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                <script src="../javascripts/fnTime.js"></script>
+                <!-- DataTables Buttons JS -->
+                <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+                <script src="./vendor/datatables/js/jszip.min.js"></script>
+                <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+                <!-- Chartist -->
+                <script src="../javascripts/jstree.min.js"></script>
+                <script src="../javascripts/quanly/cauhinhdienapthap.js"></script>
+
+                <link rel="stylesheet" href="./stylesheets/jstree.min.css">
+
+                <!-- <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css"> -->
+                <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+                <style type="text/css">
+                    .text-right {
+                        text-align: right;
+                    }
+
+                    .istextbox {
+                        text-align: center;
+                        background-color: #6c6c6c !important
+                    }
+
+                    .dataTables_scroll {
+                        margin-bottom: 10px;
+                    }
+                </style>

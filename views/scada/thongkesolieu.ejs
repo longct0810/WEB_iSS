@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/icons/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/stylesheets/business-ui.css?v=0.5.1" />
+    <link rel="stylesheet" href="./vendor/pickadate/themes/default.css">
+    <link rel="stylesheet" href="./vendor/pickadate/themes/default.date.css">
+    <link rel="stylesheet" href="./vendor/select2/css/select2.min.css">
+
+</head>
+
+<body class="business-ui business-ui--shell">
+    <div class="app-shell">
+        <%- include('../menu_form/sidebar') %>
+            <main class="main">
+                <%- include('../menu_form/topbar') %>
+                    <div class="content-body">
+                        <!-- row -->
+
+                        <div class="container-fluid">
+                            <div class="col-lg-12 card">
+                                <div class="profile card-body px-3 pt-3 pb-0">
+                                    <div class="row">
+                                        <h2> <i class="fa-solid fa-building-circle-arrow-right submenu-icon"></i>
+                                            <span class="menu-text">Thống kê số liệu</span>
+                                        </h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-xl-3 ngay" style="padding: 10px; ">
+                                            <div class="input-group input-primary">
+                                                <span class="input-group-text"> Từ ngày </span>
+                                                <input name="datepicker" class="datepicker-default form-control"
+                                                    id="txttungaydate">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-xl-3 ngay" style="padding: 10px; ">
+                                            <div class="input-group input-primary">
+                                                <span class="input-group-text"> Đến ngày</span>
+                                                <input name="datepicker" class="datepicker-default form-control"
+                                                    id="txtdenngaydate">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 " style="padding: 10px;">
+                                            <div class="input-group input-primary">
+                                                <span class="input-group-text">Chọn IOA</span>
+                                                <select class="multi-select" id="cb_ioa" multiple="multiple">
+                                                    <option value="-1">Lựa chọn</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2" style="padding: 10px; ">
+                                            <div class="input-group">
+                                                <button class="btn btn-primary" type="button" id="btnthuchien_bdpt"><i
+                                                        class="flaticon-013-checkmark"></i>
+                                                    Thực hiện</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row" id="thongkesolieu">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+            </main>
+
+    </div>
+
+    <%- include('../script.ejs') %>
+        <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+        <script src="./vendor/select2/js/select2.full.min.js"></script>
+        <script src="./javascripts/plugins-init/select2-init.js"></script>
+        <script src="./vendor/pickadate/picker.js"></script>
+        <script src="./vendor/pickadate/picker.time.js"></script>
+        <script src="./vendor/pickadate/picker.date.js"></script>
+        <script src="./vendor/toastr/js/toastr.min.js"></script>
+        <script src="./javascripts/plugins-init/toastr-init.js"></script>
+        <script src="../javascripts/fnTime.js"></script>
+        <script src="../javascripts/moment.js"></script>
+        <!-- DataTables Buttons JS -->
+        <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+        <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+        <script src="./vendor/datatables/js/jszip.min.js"></script>
+        <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+        <script src="../javascripts/scada/scada_thongkesolieu.js"></script>
+        <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+        <style>
+            /* ===== KHAI BÁO IOA - THEME ĐỒNG BỘ DASHBOARD SMARTGRID ===== */
+            .select2-container {
+                width: 78% !important;
+            }
+
+            .select2-container .select2-selection--multiple {
+                border-radius: 0rem;
+            }
+
+
+            .text-right {
+                text-align: right;
+            }
+
+            .select2-results__option {
+                color: #171622;
+            }
+
+            /* DataTable dark style */
+            .tbl_thongkesolieu {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                color: #d8e3f0;
+                background: transparent;
+            }
+
+            .tbl_thongkesolieu thead th {
+                background: #3f82ea !important;
+                color: #fff !important;
+                text-align: center;
+                font-weight: 700;
+                padding: 14px 10px !important;
+                border: 1px solid #071b33 !important;
+            }
+
+            .tbl_thongkesolieu thead tr:nth-child(2) {
+                display: table-row;
+            }
+
+            .dataTables_scrollHeadInner table thead tr:nth-child(2),
+            .tbl_thongkesolieu thead tr:nth-child(2) {
+                display: none !important;
+            }
+
+            .tbl_thongkesolieu tbody td {
+                padding: 10px 12px !important;
+                border: 1px solid #183455 !important;
+                color: #d8e3f0 !important;
+            }
+
+            .tbl_thongkesolieu tbody tr:nth-child(odd) {
+                background: #071b33 !important;
+            }
+
+            .tbl_thongkesolieu tbody tr:nth-child(even) {
+                background: #000000 !important;
+            }
+
+            .tbl_thongkesolieu tbody tr:nth-child(even) td {
+                color: #7f8790 !important;
+            }
+
+            .tbl_thongkesolieu tbody tr:hover td {
+                background: #245fa8 !important;
+                color: #fff !important;
+            }
+
+            /* Row group */
+            .tbl_thongkesolieu tr.dtrg-group td {
+                background: #245fa8 !important;
+                color: #ffffff !important;
+                font-weight: 500;
+                padding: 10px 12px !important;
+            }
+
+            /* Search, length, info, paging */
+            .dataTables_wrapper {
+                color: #d8e3f0 !important;
+            }
+
+            .dataTables_wrapper .dataTables_filter input,
+            .dataTables_wrapper .dataTables_length select {
+                background: #fff !important;
+                color: #111 !important;
+                border-radius: 6px;
+                border: 1px solid #d6dbe1;
+                padding: 6px 10px;
+            }
+
+            .dataTables_wrapper .dataTables_info,
+            .dataTables_wrapper .dataTables_length,
+            .dataTables_wrapper .dataTables_filter {
+                color: #d8e3f0 !important;
+                margin: 8px 0;
+                float: left;
+            }
+
+            .dataTables_wrapper .dataTables_paginate {
+                background: #000;
+                border-radius: 12px;
+                padding: 0px;
+                margin-top: 0px;
+                float: right;
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button {
+                color: #2674ff !important;
+                border: none !important;
+                background: transparent !important;
+                padding: 4px 8px !important;
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+                background: #2674ff !important;
+                color: #fff !important;
+                border-radius: 6px;
+            }
+
+            .dataTables_wrapper .dt-buttons .dt-button {
+                background: #3f82ea !important;
+                color: #fff !important;
+                border: none !important;
+                border-radius: 5px;
+                padding: 6px 12px;
+            }
+
+            .dt-buttons {
+                float: left !important;
+                margin-bottom: 10px;
+            }
+
+            .dt-buttons .dt-button {
+                background: #4d86e3 !important;
+                color: #fff !important;
+                border: 0 !important;
+                border-radius: 6px !important;
+            }
+
+            .dataTables_filter {
+                float: right !important;
+                text-align: right !important;
+                margin-bottom: 10px;
+            }
+
+            .dataTables_filter input {
+                width: 200px !important;
+                border-radius: 6px;
+            }
+
+            .dataTables_wrapper .top {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .dataTables_wrapper .dt-buttons,
+            .dataTables_wrapper .dataTables_filter {
+                float: none !important;
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.previous,
+            .dataTables_wrapper .dataTables_paginate .paginate_button.next {
+                margin-left: 0px;
+                font-size: 15px;
+                margin: 0 2px;
+                border: 0 !important;
+                height: 50px;
+                width: 60px;
+                padding: 0;
+                border-radius: 1rem;
+                line-height: 42px;
+                display: inline-block;
+                color: var(--primary) !important;
+
+            }
+        </style>

@@ -1,0 +1,153 @@
+<%- include('../head.ejs') %>
+    <link href="./vendor/clockpicker/css/bootstrap-clockpicker.min.css" rel="stylesheet">
+    <%- include('../preloader.ejs') %>
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+        Nav header start
+    ***********************************-->
+            <%- include('../navheader.ejs') %>
+                <!--**********************************
+        Nav header end
+    ***********************************-->
+                <!--**********************************
+            Chat box start
+        ***********************************-->
+                <%- include('../chatbox.ejs') %>
+                    <!--**********************************
+            Chat box End
+        ***********************************-->
+                    <!--**********************************
+            Header start
+        ***********************************-->
+                    <%- include('../header.ejs') %>
+                        <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+                        <!--**********************************
+        Sidebar start
+    ***********************************-->
+                        <%- include('../dlanav.ejs') %>
+                            <!--**********************************
+        Sidebar end
+    ***********************************-->
+                            <!--**********************************
+            Content body start
+        ***********************************-->
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+
+                                    <div class="row">
+                                        <div class="col-lg-12 card">
+                                            <div class="profile card-body px-3 pt-3 pb-0">
+                                                <div class="row">
+                                                    <div class="col-lg-6 ngay col-xl-6" style="padding: 10px; ">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 ngay col-xl-6" style="padding: 10px; ">
+                                                                <div class="input-group input-primary">
+                                                                    <span class="input-group-text">Chọn ngày</span>
+                                                                    <input name="datepicker"
+                                                                        class="datepicker-default form-control"
+                                                                        id="txtngay_tttl">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 ngay col-xl-3" style="padding: 10px; ">
+                                                                <div class="input-group  input-primary">
+                                                                    <input type="text" class="form-control clockpicker"
+                                                                        id="startingtime" value="00:00"><span
+                                                                        class="input-group-text"><i
+                                                                            class="fa fa-clock"></i></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 ngay col-xl-3" style="padding: 10px; ">
+                                                                <div class="input-group  input-primary">
+                                                                    <input type="text" class="form-control clockpicker"
+                                                                        id="currenttime" value="09:30"><span
+                                                                        class="input-group-text"><i
+                                                                            class="fa fa-clock"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="row thongkehide">
+                                                    <div class="form-group col-lg-12" style="height:300px;"
+                                                        id="modal_bieudo_uoctinh">
+                                                        <canvas id="bieudo_thongkechatluong"
+                                                            style="height:300px"></canvas>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row thongkehide" style="margin-top: 40px;">
+                                                    <div class="form-group col-lg-12">
+                                                        <table class="table table-bordered  table-sm display nowrap"
+                                                            id="tbl_thongkechatluong" style="width: 100%;">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="text-center">STT</th>
+                                                                    <th class="text-center">Đơn vị</th>
+                                                                    <th class="text-center">Đọc thành công</th>
+                                                                    <th class="text-center">Chưa có dữ liệu</th>
+                                                                    <th class="text-center">Tổng điểm đo</th>
+                                                                    <th class="text-center">Tỷ lệ đọc thành công</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+        </div>
+        <%- include('../modal/modal_view_thongkechatluong_loi.ejs') %>
+            <!--**********************************
+        Content body end
+    ***********************************-->
+            <%- include('../footer.ejs') %>
+                </div>
+                <%- include('../script.ejs') %>
+                    <link rel="stylesheet" href="./vendor/chartist/css/chartist.min.css">
+                    <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                    <script src="./vendor/select2/js/select2.full.min.js"></script>
+                    <script src="./vendor/pickadate/picker.js"></script>
+                    <script src="./vendor/pickadate/picker.time.js"></script>
+                    <script src="./vendor/pickadate/picker.date.js"></script>
+                    <script src="./vendor/toastr/js/toastr.min.js"></script>
+                    <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                    <script src="./vendor/clockpicker/js/bootstrap-clockpicker.min.js"></script>
+                    <!-- DataTables Buttons JS -->
+                    <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+                    <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+                    <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+                    <script src="./vendor/datatables/js/jszip.min.js"></script>
+                    <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+                    <!-- Chartist -->
+                    <script src="./vendor/chart.js/Chart.bundle.min.js"></script>
+                    <script src="./javascripts/baocao/thongkechatluong.js"></script>
+
+                    <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+                    <style type="text/css">
+                        .table-container {
+                            overflow-x: auto;
+                            width: 100%;
+                        }
+
+                        .form-check-input {
+                            margin-top: 0px;
+                        }
+
+                        .text-right {
+                            text-align: right;
+                        }
+                    </style>

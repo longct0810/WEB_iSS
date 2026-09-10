@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/icons/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/stylesheets/business-ui.css?v=0.5.1" />
+
+</head>
+
+<body class="business-ui business-ui--shell">
+    <div class="app-shell">
+        <%- include('../menu_form/sidebar') %>
+            <main class="main">
+                <%- include('../menu_form/topbar') %>
+
+                    <div class="content-body">
+                        <!-- row -->
+                        <div class="container-fluid">
+
+                            <!-- Main content -->
+                            <section class="content mt-2">
+
+                                <!-- Default box -->
+                                <div class="card card-info">
+                                    <div class="card-header">
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#modal-xl" onclick="ThemMoi()">
+                                            Thêm người dùng
+                                        </button>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <div class="table-responsive user-table-wrap">
+                                            <table id="tbl_danhsachnguoidung"
+                                                class="table table-sk table-bordered table-striped table-hover w-100 align-middle mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center">STT</th>
+                                                        <th class="text-center">Tài khoản</th>
+                                                        <th class="text-center">Tên người dùng</th>
+                                                        <th class="text-center">Số điện thoại</th>
+                                                        <th class="text-center">Email</th>
+                                                        <th class="text-center">Địa chỉ</th>
+                                                        <th class="text-center">Ngày tạo</th>
+                                                        <th class="text-center">Chức năng</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+                                </div>
+                                <!-- /.card -->
+                                <!-- /.modal thêm mới người dùng-->
+                                <div class="modal fade" id="modal-xl">
+                                    <div class="modal-dialog modal-xl">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Thêm mới người dùng</h4>
+                                                <button type="button" class="close" data-bs-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body col-lg-12">
+                                                <div class="col-lg-4"
+                                                    style="float: left; padding: 0px 0 20px 20px; border-right: 1px dashed #808080;">
+                                                    <div class="panel-qldmdl box box-info">
+                                                        <label>Chọn nhà máy<span class="text-danger">(*)</span></label>
+                                                        <div>
+                                                                <select class="form-select" id="cb_nhamay" style="margin-top: 10px;">
+                                                                    <option value="-1">Lựa chọn</option>
+                                                                    <option value="all">Tất cả</option>
+                                                                    
+                                                                </select>
+                                                        </div>
+                                                        <!-- <div class="tree-filter-qldm">
+                                                            <div class="easy-tree-qldm" id="tree_left_qldmdl">
+                                                            </div>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8" style=" float: left;padding: 0 20px;">
+                                                    <div class="row">
+                                                        <div class="form-group col-lg-6">
+                                                            <label>Tên đăng nhập<span
+                                                                    class="text-danger">(*)</span></label>
+                                                            <input type="text" class="form-control"
+                                                                id="txt_add_mataikhoan" maxlength="50">
+                                                        </div>
+
+                                                        <div class="form-group col-lg-6">
+                                                            <label>
+                                                                Tên người dùng
+
+                                                            </label>
+                                                            <input type="text" class="form-control"
+                                                                id="txt_add_tennguoidung" maxlength="50">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group col-lg-6">
+                                                            <label>
+                                                                Mật khẩu
+                                                                <span class="text-danger">(*)</span>
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <input type="password" id="password_add"
+                                                                    class="form-control" maxlength="50">
+
+                                                                <div class="input-group-append">
+                                                                    <button
+                                                                        class="btn btn-outline-secondary toggle-password"
+                                                                        type="button" data-target="#password_add">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <div id="password-strength-status" style="color:red"> (Mật
+                                                                khẩu hợp lệ gồm chữ hoa,
+                                                                chữ thường, số, ký tự đặc biệt và ít nhất 6 ký
+                                                                tự)</div>
+                                                        </div>
+                                                        <div class="form-group col-lg-6">
+                                                            <label>
+                                                                Nhập lại khẩu
+                                                                <span class="text-danger">(*)</span>
+                                                            </label>
+                                                            <div class="input-group">
+                                                                <input type="password" id="re_password_add"
+                                                                    class="form-control" maxlength="50">
+
+                                                                <div class="input-group-append">
+                                                                    <button
+                                                                        class="btn btn-outline-secondary toggle-password"
+                                                                        type="button" data-target="#re_password_add">
+                                                                        <i class="fa fa-eye"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group col-lg-6">
+                                                            <label>
+                                                                Số điện thoại
+                                                            </label>
+                                                            <input type="text" class="form-control" id="txt_add_sdt"
+                                                                maxlength="12">
+                                                        </div>
+
+                                                        <div class="form-group col-lg-6">
+                                                            <label>
+                                                                Email
+                                                            </label>
+                                                            <input type="text" class="form-control" id="txt_add_email"
+                                                                maxlength="100">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+
+                                                        <div class="form-group col-lg-6">
+                                                            <label>
+                                                                Địa chỉ
+                                                            </label>
+                                                            <input type="text" class="form-control" id="txt_add_diachi"
+                                                                maxlength="500">
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn btn-default"
+                                                    data-bs-dismiss="modal">Đóng</button>
+                                                <!-- <button type="button" class="btn btn-primary"
+                                                            id="btnthemnguoidung">Lưu</button> -->
+
+                                                <button class="btn btn-primary" type="button" id="btnthemnguoidung"><i
+                                                        class="flaticon-013-checkmark"></i>
+                                                    Lưu</button>
+
+
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <!-- /.modal -->
+                                <!-- /.modal edit người dùng-->
+                                <div class="modal fade" id="modal-xl-edit">
+                                    <div class="modal-dialog modal-xl">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Sửa thông tin người dùng</h4>
+                                                <button type="button" class="close" data-bs-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body col-lg-12">
+                                                <div class="col-lg-4"
+                                                    style="float: left; padding: 0px 0 20px 20px; border-right: 1px dashed #808080;">
+                                                    <div class="panel-qldmdl box box-info">
+                                                        <label>Chọn đơn vị<span class="text-danger">(*)</span></label>
+                                                        <div class="tree-filter-qldm">
+
+                                                            <div class="easy-tree-qldm" id="tree_left_sua_qldmdl">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8" style=" float: left;padding: 0 20px;">
+                                                    <div class="row">
+                                                        <div class="form-group col-lg-6">
+                                                            <label>Tên đăng nhập<span
+                                                                    class="text-danger">(*)</span></label>
+                                                            <input type="text" class="form-control"
+                                                                id="txt_sua_mataikhoan" maxlength="50" readonly>
+                                                        </div>
+
+                                                        <div class="form-group col-lg-6">
+                                                            <label>
+                                                                Tên người dùng
+
+                                                            </label>
+                                                            <input type="text" class="form-control"
+                                                                id="txt_sua_tennguoidung" maxlength="50">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group col-lg-6">
+                                                            <label>
+                                                                Số điện thoại
+                                                            </label>
+                                                            <input type="text" class="form-control" id="txt_sua_sdt"
+                                                                maxlength="12">
+                                                        </div>
+
+                                                        <div class="form-group col-lg-6">
+                                                            <label>
+                                                                Email
+                                                            </label>
+                                                            <input type="text" class="form-control" id="txt_sua_email"
+                                                                maxlength="100">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+
+                                                        <div class="form-group col-lg-6">
+                                                            <label>
+                                                                Địa chỉ
+                                                            </label>
+                                                            <input type="text" class="form-control" id="txt_sua_diachi"
+                                                                maxlength="500">
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn btn-default"
+                                                    data-bs-dismiss="modal">Đóng</button>
+                                                <button type="button" class="btn btn-primary"
+                                                    id="btneditnguoidung">Lưu</button>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                                <!-- /.modal -->
+
+                                <!-- /.modal đổi mật khẩu -->
+                                <div class="modal fade" id="modal-doimatkhau">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Đổi mật khẩu người dùng</h4>
+                                                <button type="button" class="close" data-bs-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+
+                                            <div class="modal-body">
+                                                <input type="hidden" id="txt_reset_mataikhoan">
+
+                                                <div class="form-group mb-3">
+                                                    <label>Tài khoản</label>
+                                                    <input type="text" class="form-control" id="txt_reset_taikhoan"
+                                                        readonly>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label>Mật khẩu mới <span class="text-danger">(*)</span></label>
+                                                    <div class="input-group">
+                                                        <input type="password" id="txt_reset_matkhau"
+                                                            class="form-control" maxlength="50">
+
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-secondary toggle-password"
+                                                                type="button" data-target="#txt_reset_matkhau">
+                                                                <i class="fa fa-eye"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <small class="text-danger">
+                                                        Mật khẩu gồm chữ hoa, chữ thường, số, ký tự đặc biệt và
+                                                        ít nhất 6 ký tự
+                                                    </small>
+                                                </div>
+
+                                                <div class="form-group mb-3">
+                                                    <label>Nhập lại mật khẩu mới <span
+                                                            class="text-danger">(*)</span></label>
+                                                 
+                                                    <div class="input-group">
+                                                        <input type="password" id="txt_reset_nhaplai"
+                                                            class="form-control" maxlength="50">
+
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-secondary toggle-password"
+                                                                type="button" data-target="#txt_reset_nhaplai">
+                                                                <i class="fa fa-eye"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn btn-default"
+                                                    data-bs-dismiss="modal">Đóng</button>
+                                                <button type="button" class="btn btn-warning" id="btndoimatkhau">Đổi mật
+                                                    khẩu</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <!-- /.content -->
+
+                        </div>
+                    </div>
+    </div>
+    <!--**********************************
+        Content body end
+    ***********************************-->
+    <%- include('../footer.ejs') %>
+        </div>
+        <%- include('../script.ejs') %>
+
+            <link rel="stylesheet" href="./stylesheets/jstree.min.css">
+            <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+            <script src="./vendor/toastr/js/toastr.min.js"></script>
+            <script src="./javascripts/plugins-init/toastr-init.js"></script>
+            <script src="../javascripts/fnTime.js"></script>
+            <!-- DataTables Buttons JS -->
+            <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+            <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+            <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+            <script src="./vendor/datatables/js/jszip.min.js"></script>
+            <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+            <!-- Chartist -->
+            <script src="../javascripts/jstree.min.js"></script>
+            <script src="/javascripts/dlabnav-init.js"></script>
+
+            <script src="../javascripts/quanly/quanlynguoidung.js?v=202312212"></script>
+
+
+
+
+            <style>
+                /* DataTable dark style */
+                #tbl_danhsachnguoidung {
+                    width: 100% !important;
+                    border-collapse: collapse !important;
+                    color: #d8e3f0;
+                    background: transparent;
+                }
+
+                #tbl_danhsachnguoidung thead th {
+                    background: #3f82ea !important;
+                    color: #fff !important;
+                    text-align: center;
+                    font-weight: 700;
+                    border: 1px solid #071b33 !important;
+                }
+
+
+                #tbl_danhsachnguoidung tbody td {
+                    padding: 10px 12px !important;
+                    border: 1px solid #183455 !important;
+                    color: #d8e3f0 !important;
+                }
+
+                #tbl_danhsachnguoidung tbody tr:nth-child(odd) {
+                    background: #071b33 !important;
+                }
+
+                #tbl_danhsachnguoidung tbody tr:nth-child(even) {
+                    background: #000000 !important;
+                }
+
+                #tbl_danhsachnguoidung tbody tr:nth-child(even) td {
+                    color: #7f8790 !important;
+                }
+
+                #tbl_danhsachnguoidung tbody tr:hover td {
+                    background: #245fa8 !important;
+                    color: #fff !important;
+                }
+
+                /* Row group */
+                #tbl_danhsachnguoidung tr.dtrg-group td {
+                    background: #245fa8 !important;
+                    color: #ffffff !important;
+                    font-weight: 500;
+                    padding: 10px 12px !important;
+                }
+
+                /* Search, length, info, paging */
+                .dataTables_wrapper {
+                    color: #d8e3f0 !important;
+                }
+
+                #tbl_danhsachnguoidung_wrapper .dataTables_filter input,
+                #tbl_danhsachnguoidung_wrapper .dataTables_length select {
+                    background: #fff !important;
+                    color: #111 !important;
+                    border-radius: 6px;
+                    border: 1px solid #d6dbe1;
+                    padding: 6px 10px;
+                }
+
+                .dataTables_wrapper .dataTables_info,
+                .dataTables_wrapper .dataTables_length,
+                .dataTables_wrapper .dataTables_filter {
+                    color: #d8e3f0 !important;
+                    margin: 8px 0;
+                    float: left;
+                }
+
+                .dataTables_wrapper .dataTables_paginate {
+                    background: #000;
+                    border-radius: 12px;
+                    padding: 0px;
+                    margin-top: 0px;
+                    float: right;
+                }
+
+                .dataTables_wrapper .dataTables_paginate .paginate_button {
+                    color: #2674ff !important;
+                    border: none !important;
+                    background: transparent !important;
+                    padding: 4px 8px !important;
+                }
+
+                .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+                    background: #2674ff !important;
+                    color: #fff !important;
+                    border-radius: 6px;
+                }
+
+                .dataTables_wrapper .dt-buttons .dt-button {
+                    background: #3f82ea !important;
+                    color: #fff !important;
+                    border: none !important;
+                    border-radius: 5px;
+                    padding: 6px 12px;
+                }
+
+                .dt-buttons {
+                    float: left !important;
+                    margin-bottom: 10px;
+                }
+
+                .dt-buttons .dt-button {
+                    background: #4d86e3 !important;
+                    color: #fff !important;
+                    border: 0 !important;
+                    border-radius: 6px !important;
+                }
+
+                .dataTables_filter {
+                    float: right !important;
+                    text-align: right !important;
+                    margin-bottom: 10px;
+                }
+
+                .dataTables_filter input {
+                    width: 200px !important;
+                    border-radius: 6px;
+                }
+
+                .dataTables_wrapper .top {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-bottom: 10px;
+                }
+
+                .dataTables_wrapper .dt-buttons,
+                .dataTables_wrapper .dataTables_filter {
+                    float: none !important;
+                }
+
+                .dataTables_wrapper .dataTables_paginate .paginate_button.previous,
+                .dataTables_wrapper .dataTables_paginate .paginate_button.next {
+                    margin-left: 0px;
+                    font-size: 15px;
+                    margin: 0 2px;
+                    border: 0 !important;
+                    height: 50px;
+                    width: 60px;
+                    padding: 0;
+                    border-radius: 1rem;
+                    line-height: 42px;
+                    display: inline-block;
+                    color: var(--primary) !important;
+
+                }
+            </style>

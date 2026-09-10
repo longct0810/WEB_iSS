@@ -1,0 +1,170 @@
+<div class="modal fade col-lg-12" id="modal-editcongto">
+    <div class="modal-dialog col-lg-12" style="max-width: 90%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Sửa thông tin công tơ</h4>
+            </div>
+            <div class="box box-default" style="border-top-style:none">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-12" style="text-align:center; font-weight:bold; margin:10px 10px 0px 0px">
+                            THÔNG TIN CÔNG TƠ</div>
+                    </div>
+                    <!-- /.row SỐ CÔNG TƠ -->
+                    <div class="row" style="margin: 10px 0;">
+                        <div class="form-group col-lg-3 cold-md-3 col-sm-6" style="margin: 5px 0;">
+                            <div class="input-group input-primary">
+                                <span class="input-group-text" style="width: 150px;"> Số công tơ (*)</span>
+                                <input type="text" class="form-control" id="sua_SCT" onkeypress="return isNumber(event)"
+                                    disabled readonly>
+
+                            </div>
+
+                        </div>
+                        <div class="form-group col-lg-3 cold-md-3 col-sm-6" style="margin: 5px 0;">
+                            <div class="input-group input-primary">
+                                <span class="input-group-text" style="width: 150px;">Chủng loại công tơ</span>
+                                <select id="sua_chungloaictkh" class="form-control"> </select>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-lg-3 cold-md-3 col-sm-6" style="margin: 5px 0;">
+                            <div class="input-group input-primary">
+                                <span class="input-group-text" style="width: 150px;"> Mật khẩu công tơ</span>
+                                <input type="text" class="form-control" id="sua_makhauctkh">
+                            </div>
+
+                        </div>
+                        <div class="form-group col-lg-3 cold-md-3 col-sm-6" style="margin: 5px 0;">
+                            <div class="input-group input-primary">
+                                <span class="input-group-text" style="width: 150px;"> Outstation</span>
+                                <input type="text" class="form-control" id="sua_Outstation" maxlength="5">
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row ">
+
+                        <div class="form-group col-lg-12" style="padding:10px">
+
+                            <div style="border:1px solid #e6e6e6;    margin: 10px 20px;padding: 10px;border-radius:5px">
+                                <div class="form-group ">
+                                    <input type="radio" value="0" id="rdhsntrong" name="hsn"> Sử
+                                    dụng hệ số nhân trong
+                                </div>
+                                <div class="form-group">
+                                    <label>
+                                        Hệ số trong công tơ đọc về
+                                        (TU|TI|HSN)
+                                    </label>
+                                    <input disabled class="form-control input input-ttct" type="text" name="tuTrongsua"
+                                        maxlength="50" value="1/1"> |
+
+                                    <input disabled class="form-control input input-ttct" type="text" name="tiTrongsua"
+                                        maxlength="50" value="1/1"> |
+
+                                    <input disabled class="form-control input input-ttct" type="text" name="hsnTrongsua"
+                                        maxlength="50" value="1">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group col-lg-12 hesonhanngoaictkh">
+                            <div class="row" style="border:1px solid #ccc;margin: 0px;border-radius:5px">
+                                <div class="form-group col-lg-12">
+                                    Hệ số nhân ngoài
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <input type='checkbox' id="checkbox_TU_edit" style="margin-left:10px"
+                                            disabled />
+                                        <label for="">TU</label>
+                                    </div>
+                                    <div class="row is_TU_edit">
+                                        <div class="col-lg-12">
+                                            <table
+                                                class="table  table-sk table-striped table-hover table-bordered dataTable"
+                                                id="tbl_hsnhanngoai_suacts">
+                                                <thead>
+                                                    <tr>
+                                                        <th>TU No</th>
+                                                        <th>Năm SX</th>
+                                                        <th>Ngày KĐ</th>
+                                                        <th>Loại</th>
+                                                        <th>Tỷ số biến</th>
+                                                        <th>Mã chì</th>
+                                                        <th>Số viên</th>
+                                                        <th>Mã tem</th>
+                                                        <th>Số viên</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <div class="row">
+                                        <input type='checkbox' id="checkbox_TI_edit" style="margin-left:10px" /> <label
+                                            for="">TI</label>
+                                    </div>
+                                    <div class="row is_TI_edit">
+                                        <div class="col-lg-12">
+                                            <table
+                                                class="table  table-sk table-striped table-hover table-bordered dataTable"
+                                                id="tbl_hsnhanngoai_suati">
+                                                <thead>
+                                                    <tr>
+                                                        <th>TI No</th>
+                                                        <th>Năm SX</th>
+                                                        <th>Ngày KĐ</th>
+                                                        <th>Loại</th>
+                                                        <th>Tỷ số biến</th>
+                                                        <th>Mã chì</th>
+                                                        <th>Số viên</th>
+                                                        <th>Mã tem</th>
+                                                        <th>Số viên</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.row THÔNG TIN DCU -->
+                    <hr style="border-top: dashed 1px;margin-bottom:5px !important; margin-top:5px !important" />
+                    <div class="row">
+                        <div class="col-lg-12" style="text-align:center; font-weight:bold; margin:0px 10px 0px 0px">
+                            THÔNG TIN DCU</div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-3 cold-md-3 col-sm-6" style="margin: 10px;">
+                            <div class="input-group input-primary">
+                                <span class="input-group-text"> Imei (*)</span>
+                                <input type="text" class="form-control" id="sua_Imei" placeholder="Imei" readonly
+                                    disabled maxlength="16">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="SuaThongTin_CTO()">Lưu</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>

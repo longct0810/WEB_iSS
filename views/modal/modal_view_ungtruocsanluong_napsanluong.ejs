@@ -1,0 +1,165 @@
+<div class="modal fade" id="modal-DIEUKHIEN_NAPTIEN">
+    <div class="modal-dialog" style="width: 90%;max-width: 70%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    NẠP SẢN LƯỢNG<label><span class="text-blue" id="laber_imei_dong"> </span> </label>
+                    <span id="id_overlay_nt"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div id="thongbao_naptien" style="text-align:center; margin:10px; font-size: 17px;"
+                        class="text-blue">
+                    </div>
+
+                </div>
+                <div class="row">
+
+
+                    <div class="form-group col-lg-12">
+                        <label>
+                            Sản lượng nạp
+                            <span class="text-danger">(*)</span>
+                        </label>
+
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="id_sanluong" maxlength="5" value="70">
+                            <span class="input-group-addon" style="margin-left: 5px;"> <i class="text-blue">Wh</i>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <label>
+                            Ngưỡng cảnh báo sản lượng còn lại lần 1
+                            <span class="text-danger">(*)</span>
+                        </label>
+
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="id_nguong_1" maxlength="5" value="60">
+                            <span class="input-group-addon" style="margin-left: 5px;"> <i class="text-blue">Wh</i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>
+                            Ngưỡng cảnh báo sản lượng còn lại lần 2
+                            <span class="text-danger">(*)</span>
+                        </label>
+
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="id_nguong_2" maxlength="5" value="40">
+                            <span class="input-group-addon" style="margin-left: 5px;"> <i class="text-blue">Wh</i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label>
+                            Ngưỡng cảnh báo sản lượng còn lại lần 3
+                            <span class="text-danger">(*)</span>
+                        </label>
+
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="id_nguong_3" maxlength="5" value="20">
+                            <span class="input-group-addon" style="margin-left: 5px;"> <i class="text-blue">Wh</i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" hidden="">
+                    <div class="form-group col-lg-5" hidden="">
+                        <label>
+                            Mức thấu chi
+                            <span class="text-danger">(*) </span>
+                        </label>
+
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="id_mucthauchi" maxlength="5" value="20">
+                            <span class="input-group-addon" style="margin-left: 5px;"> <i class="text-blue">Wh</i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-5" hidden="">
+                        <label>
+                            Thời gian sử dụng
+                            <span class="text-danger">(*)</span>
+                        </label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="id_thoigian_sudung" maxlength="4"
+                                onkeypress="return isNumber(event)" value="1400">
+                            <span class="input-group-addon"> <i class="text-blue">Phút</i> </span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+
+                </div>
+
+
+                <div class="row" hidden="">
+
+                    <div class="form-group col-lg-5" hidden="">
+                        <label>
+                            Thời gian 1
+                            <span class="text-danger">(*)</span>
+                        </label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="id_thoigian_1" maxlength="4"
+                                onkeypress="return isNumber(event)" value="600">
+                            <span class="input-group-addon"><i class="text-blue">Phút</i> </span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-5" hidden="">
+                        <label>
+                            Thời gian 2
+                            <span class="text-danger">(*)</span>
+                        </label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="id_thoigian_2" maxlength="4"
+                                onkeypress="return isNumber(event)" value="500">
+                            <span class="input-group-addon"><i class="text-blue">Phút</i> </span>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-5" hidden="">
+                        <label>
+                            Thời gian 3
+                            <span class="text-danger">(*)</span>
+                        </label>
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="id_thoigian_3" maxlength="4"
+                                onkeypress="return isNumber(event)" value="400">
+                            <span class="input-group-addon"><i class="text-blue">Phút</i> </span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="ThucHien_NapTien()" id="btnDong">Thực
+                    hiện</button>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.modal-content -->
+</div>

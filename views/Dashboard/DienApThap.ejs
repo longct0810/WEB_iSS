@@ -1,0 +1,195 @@
+<%- include('../head.ejs') %>
+
+    <%- include('../preloader.ejs') %>
+
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+    Nav header start
+***********************************-->
+            <%- include('../navheader.ejs') %>
+                <!--**********************************
+    Nav header end
+***********************************-->
+                <!--**********************************
+        Chat box start
+    ***********************************-->
+                <%- include('../chatbox.ejs') %>
+                    <!--**********************************
+        Chat box End
+    ***********************************-->
+                    <!--**********************************
+        Header start
+    ***********************************-->
+                    <%- include('../header.ejs') %>
+                        <!--**********************************
+    Header end ti-comment-alt
+***********************************-->
+                        <!--**********************************
+    Sidebar start
+***********************************-->
+                        <%- include('../dlanav.ejs') %>
+                            <!--**********************************
+    Sidebar end
+***********************************-->
+                            <!--**********************************
+        Content body start
+    ***********************************-->
+
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+
+
+                                    <div class="row">
+                                        <div class="col-lg-12 card">
+                                            <div class="profile card-body px-3 pt-3 pb-0">
+                                                <div class="row">
+                                                    <div class="col-lg-12 ngay col-xl-12" style="padding: 10px; ">
+
+                                                        <div class="row">
+                                                            <div class="col-lg-2 ngay col-xl-2" style="padding: 10px; ">
+                                                                <div class="input-group input-primary">
+                                                                    <span class="input-group-text">TỪ NGÀY</span>
+                                                                    <input name="datepicker"
+                                                                        class="datepicker-default form-control"
+                                                                        id="txt_tungay_dat">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-2 ngay col-xl-2" style="padding: 10px; ">
+                                                                <div class="input-group input-primary">
+                                                                    <span class="input-group-text">ĐẾN NGÀY</span>
+                                                                    <input name="datepicker"
+                                                                        class="datepicker-default form-control"
+                                                                        id="txt_denngay_dat">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4 ngay col-xl-3" style="padding: 10px; ">
+                                                                <div class="input-group input-primary">
+                                                                    <span class="input-group-text">IMEI</span>
+                                                                    <select class="form-control" id="cb_imei">
+                                                                        <!-- <option value="-1">-- Chọn IMEI --</option> -->
+                                                                        <!-- <option value="8651940600612510">8651940600612510</option> -->
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="">
+
+                                                    <!-- <canvas id="voltageChart" style="display: block; width: 1458px; height: 400px;"></canvas> -->
+
+
+                                                    <div class="card-body" id="is_div_chart">
+                                                        <!--   <canvas id="multiLineChart" style="display: block; width: 1458px; height: 400px;"></canvas>-->
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row thongkehide" style="margin-top: 40px;">
+                                                    <div class="form-group col-lg-12">
+                                                        <table class="table table-bordered  table-sm display nowrap"
+                                                            id="tbl_canhbao_dienapthap" style="width: 100%;">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="text-center">Stt</th>
+                                                                    <th class="text-center">Thời gian</th>
+                                                                    <th class="text-center">Loại cảnh báo</th>
+                                                                    <th class="text-center">Pha</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <!-- <tr>
+                                            <td class="text-center">1</td>
+                                            <td>02/12/2024 14:02:45</td>
+                                            <td>Mất điện</td>
+                                            <td>0 v</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">2</td>
+
+                                            <td>02/12/2024 13:45:54</td>
+                                            <td>Điện áp thấp</td>
+                                            <td>90 v</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">3</td>
+
+                                            <td>02/12/2024 13:45:54</td>
+                                            <td>Mất điện</td>
+                                            <td>0 v</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">4</td>
+
+                                            <td>02/12/2024 13:45:54</td>
+                                            <td>Điện áp thấp</td>
+                                            <td>102 v</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">5</td>
+                                            <td>02/12/2024 13:45:54</td>
+                                            <td>Điện áp thấp</td>
+                                            <td>150 v</td>
+
+                                        </tr> -->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- <div class="">
+            <div id="map"></div>
+        </div> -->
+
+
+                            <!--**********************************
+        Content body end
+    ***********************************-->
+             <%- include('../footer.ejs') %>
+        </div>
+        <%- include('../script.ejs') %>
+
+            <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+            <script src="./vendor/select2/js/select2.full.min.js"></script>
+            <script src="./vendor/pickadate/picker.js"></script>
+            <script src="./vendor/pickadate/picker.time.js"></script>
+            <script src="./vendor/pickadate/picker.date.js"></script>
+            <script src="./vendor/toastr/js/toastr.min.js"></script>
+            <script src="./javascripts/plugins-init/toastr-init.js"></script>
+            <!-- DataTables Buttons JS -->
+            <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+            <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+            <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+            <script src="./vendor/datatables/js/jszip.min.js"></script>
+            <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+
+            <script src="../javascripts/dashboard/dienapthap.js"></script>
+
+            <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+            <style type="text/css">
+                .isChartclass {
+                    height: 300px;
+                }
+
+                #map {
+                    height: 300px;
+                    width: 900px;
+                }
+            </style>

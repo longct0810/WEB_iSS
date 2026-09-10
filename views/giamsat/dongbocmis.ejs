@@ -1,0 +1,494 @@
+<%- include('../head.ejs') %>
+    <%- include('../preloader.ejs') %>
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+      Nav header start
+  ***********************************-->
+            <%- include('../navheader.ejs') %>
+                <!--**********************************
+      Nav header end
+  ***********************************-->
+                <!--**********************************
+          Chat box start
+      ***********************************-->
+                <%- include('../chatbox.ejs') %>
+                    <!--**********************************
+          Chat box End
+      ***********************************-->
+                    <!--**********************************
+          Header start
+      ***********************************-->
+                    <%- include('../header.ejs') %>
+                        <!--**********************************
+      Header end ti-comment-alt
+  ***********************************-->
+                        <!--**********************************
+      Sidebar start
+  ***********************************-->
+                        <%- include('../dlanav.ejs') %>
+                            <!--**********************************
+      Sidebar end
+  ***********************************-->
+                            <!--**********************************
+          Content body start
+      ***********************************-->
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+                                    <section class="content">
+
+                                        <div class="cmis-page" id="dongbocmis">
+                                            <div class="cmis-card">
+                                                <div class="cmis-card-body">
+
+                                                    <div class="cmis-filter-row">
+                                                        <!-- Khối chọn file -->
+                                                        <div class="cmis-panel">
+
+                                                            <div class="form-row">
+                                                                <label>Chọn file Cmis</label>
+                                                                <input type="file" id="btnUploadCmis"
+                                                                    class="upload-input" accept=".xml" />
+                                                            </div>
+
+                                                            <div class="form-row form-inline-wrap">
+                                                                <label>Ngày:</label>
+                                                                <input type="text" name="datepicker"
+                                                                    class="datepicker-default cmis-date form-control"
+                                                                    id="txtNgay">
+                                                                <label>Giờ(24h):</label>
+                                                                <select id="cboGio" class="form-control cmis-hour">
+                                                                    <option value="-1">Tất cả</option>
+                                                                </select>
+
+                                                                <label class="checkbox-label">
+                                                                    <input type="checkbox" id="chkChiaHSN" />
+                                                                    Chia HSN
+                                                                </label>
+
+                                                                <label class="checkbox-label">
+                                                                    <input type="checkbox" id="chkLayTrongNgay"
+                                                                        checked />
+                                                                    Lấy trong ngày
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Khối cấu hình cảnh báo -->
+                                                        <div class="cmis-panel">
+                                                            <div class="form-row form-inline-wrap">
+                                                                <label class="fixed-label">Tỷ lệ cảnh báo trên:</label>
+                                                                <input type="number" id="txtTyLeTren"
+                                                                    class="form-control rate-input" value="35" />
+                                                                <span>%</span>
+                                                            </div>
+
+                                                            <div class="form-row form-inline-wrap">
+                                                                <label class="fixed-label">Tỷ lệ cảnh báo dưới:</label>
+                                                                <input type="number" id="txtTyLeDuoi"
+                                                                    class="form-control rate-input" value="35" />
+                                                                <span>%</span>
+                                                            </div>
+
+                                                            <div class="button-row">
+                                                                <button type="button" class="btn btn-ifc"
+                                                                    id="btnNapDuLieu">Nạp dữ liệu</button>
+                                                                <button type="button" class="btn btn-ifc"
+                                                                    id="btnXuatXml">Xuất XML</button>
+                                                                <button type="button" class="btn btn-ifc"
+                                                                    id="btnXuatExcel">Excel</button>
+                                                                <button type="button" class="btn btn-ifc"
+                                                                    id="btnKiemSoatChiSo">Kiểm soát chỉ số</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Thông báo -->
+                                                    <div class="message-box" id="messageBox" style="display:none;">
+                                                        <div class="alert alert-info">Thông báo xử lý dữ liệu...</div>
+                                                    </div>
+
+                                                    <!-- Thống kê -->
+                                                    <div class="summary-box" id="summaryBox">
+                                                        <p>
+                                                            - <strong id="soLuongKHLayCSMOI">0</strong> /
+                                                            <strong id="countKH">0</strong>
+                                                            khách hàng lấy được CS_MOI: Màu trắng
+                                                        </p>
+                                                        <p>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;+
+                                                            <strong id="soLuongBinhThuong">0</strong>
+                                                            Bộ chỉ số có SL_MOI bình thường
+                                                        </p>
+                                                        <p>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;+
+                                                            <strong id="soLuongQuaTyleTren">0</strong>
+                                                            Bộ chỉ số có SL_MOI &gt; SL_CU <span
+                                                                id="tyLeCbTrenText">0</span>%
+                                                        </p>
+                                                        <p>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;+
+                                                            <strong id="soLuongQuaTyleDuoi">0</strong>
+                                                            Bộ chỉ số có SL_MOI &lt; SL_CU <span
+                                                                id="tyLeCbDuoiText">0</span>%
+                                                        </p>
+                                                        <p>
+                                                            - <strong id="soLuongKgCoCsMoi">0</strong>
+                                                            khách hàng không lấy được CS_MOI: Màu vàng
+                                                        </p>
+                                                        <p>
+                                                            - <strong id="soLuongBatThuong">0</strong>
+                                                            khách hàng có CS_MOI bất thường: Màu đỏ
+                                                        </p>
+                                                    </div>
+
+                                                    <!-- Progress -->
+                                                    <div class="progress-wrap" id="progressWrap" style="display:none;">
+                                                        <div class="progress-line"></div>
+                                                    </div>
+
+                                                    <!-- Bảng dữ liệu -->
+                                                    <div class="table-wrap">
+                                                        <table class="table table-bordered table-striped" id="tblCmis">
+                                                            <thead>
+
+                                                            </thead>
+                                                            <tbody>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+
+                            <!--***********************************-->
+                            <%- include('../footer.ejs') %>
+        </div>
+        <%- include('../script.ejs') %>
+            <script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+            <link rel="stylesheet"
+                href="https://cdn.datatables.net/fixedcolumns/4.3.0/css/fixedColumns.dataTables.min.css">
+
+            <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/fixedcolumns/4.3.0/js/dataTables.fixedColumns.min.js"></script>
+            <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+            <script src="./vendor/select2/js/select2.full.min.js"></script>
+            <script src="./javascripts/plugins-init/select2-init.js"></script>
+            <script src="./vendor/pickadate/picker.js"></script>
+            <script src="./vendor/pickadate/picker.time.js"></script>
+            <script src="./vendor/pickadate/picker.date.js"></script>
+            <script src="./vendor/toastr/js/toastr.min.js"></script>
+            <script src="./javascripts/plugins-init/toastr-init.js"></script>
+            <script src="../javascripts/fnTime.js"></script>
+            <script src="../javascripts/giamsat/dongbocmiss.js"></script>
+
+            <link rel="stylesheet" href="./stylesheets/jstree.min.css">
+
+            <!-- <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css"> -->
+            <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+            <style type="text/css">
+                .cmis-page {
+                    padding: 16px;
+                    background: #f4f6f9;
+                    min-height: 100vh;
+                    font-family: Arial, sans-serif;
+                }
+
+                .cmis-card {
+                    background: #fff;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+                }
+
+                .cmis-card-body {
+                    padding: 16px;
+                }
+
+                .cmis-filter-row {
+                    display: flex;
+                    gap: 14px;
+                    flex-wrap: wrap;
+                    margin-bottom: 14px;
+                }
+
+                .cmis-panel {
+                    flex: 1 1 500px;
+                    min-width: 320px;
+                    border: 1px solid #d7dce2;
+                    border-radius: 8px;
+                    padding: 12px;
+                    background: #fbfcfe;
+                }
+
+                .form-row {
+                    margin-bottom: 10px;
+                }
+
+                .form-row label {
+                    font-weight: 600;
+                    margin-right: 6px;
+                }
+
+                .form-inline-wrap {
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                }
+
+                .form-control {
+                    height: 34px;
+                    border: 1px solid #cfd6df;
+                    border-radius: 5px;
+                    padding: 6px 10px;
+                    outline: none;
+                }
+
+                .form-control:focus {
+                    border-color: #2f80ed;
+                    box-shadow: 0 0 0 2px rgba(47, 128, 237, 0.15);
+                }
+
+                .upload-input {
+                    display: block;
+                    margin-top: 6px;
+                }
+
+                .template-link {
+                    color: #0d6efd;
+                    text-decoration: none;
+                    font-weight: 600;
+                }
+
+                .template-link:hover {
+                    text-decoration: underline;
+                }
+
+                .cmis-date {
+                    width: 150px;
+                }
+
+                .cmis-hour {
+                    width: 110px;
+                }
+
+                .rate-input {
+                    width: 160px;
+                }
+
+                .fixed-label {
+                    width: 145px;
+                }
+
+                .checkbox-label {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 5px;
+                    font-weight: 500 !important;
+                }
+
+                .button-row {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                    margin-top: 12px;
+                }
+
+                .btn {
+                    border: none;
+                    border-radius: 6px;
+                    padding: 7px 13px;
+                    cursor: pointer;
+                    font-weight: 600;
+                }
+
+                .btn-ifc {
+                    background: #1769aa;
+                    color: #fff;
+                }
+
+                .btn-ifc:hover {
+                    background: #0f548a;
+                }
+
+                .btn:disabled {
+                    opacity: 0.55;
+                    cursor: not-allowed;
+                }
+
+                .message-box {
+                    margin-bottom: 12px;
+                }
+
+                .alert {
+                    padding: 10px 12px;
+                    border-radius: 6px;
+                }
+
+                .alert-info {
+                    background: #e8f3ff;
+                    border: 1px solid #b6dcff;
+                    color: #084b83;
+                }
+
+                .summary-box {
+                    margin: 12px 0;
+                    padding: 12px;
+                    background: #fffdf5;
+                    border: 1px solid #f1df9b;
+                    border-radius: 8px;
+                    color: #333;
+                    line-height: 1.55;
+                }
+
+                .summary-box p {
+                    margin: 3px 0;
+                }
+
+                .progress-wrap {
+                    margin-bottom: 12px;
+                    height: 6px;
+                    background: #e9ecef;
+                    border-radius: 999px;
+                    overflow: hidden;
+                }
+
+                .progress-line {
+                    width: 35%;
+                    height: 100%;
+                    background: linear-gradient(90deg, #0d6efd, #66b2ff);
+                    animation: progressMove 1.2s infinite linear;
+                }
+
+                @keyframes progressMove {
+                    0% {
+                        transform: translateX(-120%);
+                    }
+
+                    100% {
+                        transform: translateX(320%);
+                    }
+                }
+
+                .table-wrap {
+                    width: 100%;
+                    overflow: auto;
+                    border: 1px solid #d7dce2;
+                    border-radius: 8px;
+                    background: #fff;
+                }
+
+                .cmis-table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    min-width: 900px;
+                }
+
+                .cmis-table th,
+                .cmis-table td {
+                    border: 1px solid #d7dce2;
+                    padding: 8px 10px;
+                    vertical-align: middle;
+                }
+
+                .cmis-table thead th {
+                    background: #eaf2fb;
+                    color: #1f2d3d;
+                    text-align: center;
+                    font-weight: 700;
+                    white-space: nowrap;
+                }
+
+                .cmis-table tbody tr:hover {
+                    background: #f7fbff;
+                }
+
+                .group-row td {
+                    background: #eef3f8;
+                    font-weight: 700;
+                }
+
+                .warning-row {
+                    background: #fff3cd;
+                }
+
+                .error-row {
+                    background: #f8d7da;
+                }
+
+                .text-left {
+                    text-align: left;
+                }
+
+                .text-center {
+                    text-align: center;
+                }
+
+                .text-right {
+                    text-align: right;
+                }
+
+                @media (max-width: 768px) {
+                    .cmis-page {
+                        padding: 10px;
+                    }
+
+                    .cmis-card-body {
+                        padding: 12px;
+                    }
+
+                    .cmis-filter-row {
+                        flex-direction: column;
+                    }
+
+                    .cmis-panel {
+                        min-width: unset;
+                        width: 100%;
+                    }
+
+                    .form-inline-wrap {
+                        align-items: flex-start;
+                    }
+
+                    .fixed-label {
+                        width: 100%;
+                    }
+
+                    .rate-input,
+                    .cmis-date,
+                    .cmis-hour {
+                        width: 100%;
+                    }
+
+                    .button-row .btn {
+                        flex: 1 1 100%;
+                    }
+                }
+
+                .table-wrap {
+                    width: 100%;
+                    border: 1px solid #d7dce2;
+                    border-radius: 8px;
+                    background: #fff;
+                    overflow: hidden;
+                }
+
+                #tblCmis {
+                    width: 100% !important;
+                }
+
+                .dtfc-fixed-left,
+                .dtfc-fixed-left table,
+                .dtfc-fixed-left th,
+                .dtfc-fixed-left td {
+                    background: #fff !important;
+                    z-index: 5;
+                }
+            </style>

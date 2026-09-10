@@ -1,0 +1,70 @@
+<style type="text/css">
+    .diagram {
+        position: relative;
+        width: 600px;
+        height: 400px;
+        border: 1px solid #000;
+    }
+
+    .busbar,
+    .transformer,
+    .circuit-breaker,
+    .switch {
+        position: absolute;
+        width: 100px;
+        height: 50px;
+        border: 1px solid #000;
+        text-align: center;
+        line-height: 50px;
+    }
+
+    .busbar {
+        top: 50px;
+        left: 250px;
+        background-color: #f0f0f0;
+    }
+
+    .transformer {
+        top: 150px;
+        left: 100px;
+        background-color: #ffcc00;
+    }
+
+    .circuit-breaker {
+        top: 150px;
+        left: 400px;
+        background-color: #ff6666;
+    }
+
+    .switch {
+        top: 250px;
+        left: 250px;
+        background-color: #66cc66;
+    }
+</style>
+<div class="diagram">
+    <div class="busbar"></div>
+    <div class="transformer"></div>
+    <div class="circuit-breaker"></div>
+    <div class="switch"></div>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".busbar").click(function () {
+            alert("This is the busbar.");
+        });
+        $(".transformer").click(function () {
+            alert("This is the transformer.");
+        });
+        $(".circuit-breaker").click(function () {
+            alert("This is the circuit breaker.");
+        });
+        $(".switch").click(function () {
+            alert("This is the switch.");
+        });
+
+        $(".switch").click(function () {
+            alert("This is the switch22222.");
+        });
+    });
+</script>

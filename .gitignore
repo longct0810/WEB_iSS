@@ -1,0 +1,24 @@
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.deb
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+instantclient_21_3/
+node_modules/
+instantclient_21_3/
+.env
+logs/
+*.log
+instantclient_21_3.7z
+
+# WebSocket signing keys: keep the private key out of source control.
+config/keys/*private*.pem

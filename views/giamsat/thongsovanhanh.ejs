@@ -1,0 +1,123 @@
+<%- include('../head.ejs') %>
+
+    <%- include('../preloader.ejs') %>
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+        Nav header start
+    ***********************************-->
+            <%- include('../navheader.ejs') %>
+                <!--**********************************
+        Nav header end
+    ***********************************-->
+                <!--**********************************
+            Chat box start
+        ***********************************-->
+                <%- include('../chatbox.ejs') %>
+                    <!--**********************************
+            Chat box End
+        ***********************************-->
+                    <!--**********************************
+            Header start
+        ***********************************-->
+                    <%- include('../header.ejs') %>
+                        <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+                        <!--**********************************
+        Sidebar start
+    ***********************************-->
+                        <%- include('../dlanav.ejs') %>
+                            <!--**********************************
+        Sidebar end
+    ***********************************-->
+                            <!--**********************************
+            Content body start
+        ***********************************-->
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-12 msg_csct">
+                                            <div class="alert alert-danger alert-dismissible fade" id="thongbao_tsvh"
+                                                style="display:none;">
+                                                <span class="msg-text">Vui lòng chọn thiết bị ở cây thư mục</span>
+                                                <button type="button" class="btn-close"
+                                                    data-bs-dismiss="alert"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="box_tsvh" style="display: none;">
+                                        <%- include('./thongsovanhanh_include.ejs') %>
+                                    </div>
+                                    <div id="box_scada" style="display: none;">
+                                        <%- include('./thongsovanhanhscada.ejs') %>
+                                    </div>
+
+                                </div>
+                            </div>
+        </div>
+        <%- include('../modal/modal_view_giamsat.ejs') %>
+            <!--**********************************
+        Content body end
+    ***********************************-->
+            <%- include('../footer.ejs') %>
+                </div>
+                <%- include('../script.ejs') %>
+                    <link rel="stylesheet"
+                        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                    <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+                    <link rel="stylesheet" href="./vendor/chartist/css/chartist.min.css">
+
+                    <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                    <script src="./vendor/select2/js/select2.full.min.js"></script>
+                    <script src="./javascripts/plugins-init/select2-init.js"></script>
+                    <script src="./vendor/pickadate/picker.js"></script>
+                    <script src="./vendor/pickadate/picker.time.js"></script>
+                    <script src="./vendor/pickadate/picker.date.js"></script>
+                    <script src="./vendor/toastr/js/toastr.min.js"></script>
+                    <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                    <script src="../javascripts/fnTime.js"></script>
+                    <script src="../javascripts/moment.js"></script>
+                    <!-- DataTables Buttons JS -->
+                    <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+                    <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+                    <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+                    <script src="./vendor/datatables/js/jszip.min.js"></script>
+                    <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+                    <!-- Chartist -->
+                    <script src="./vendor/chart.js/Chart.bundle.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
+                    <script src="../javascripts/giamsat/thongsovanhanh.js"></script>
+                    <script src="../javascripts/giamsat/thongsovanhanh_chitiet.js"></script>
+                    <script src="../javascripts/giamsat/giamsat_modal_tabs.js"></script>
+                    <script src="../javascripts/giamsat/chisocongto_chitiet.js"></script>
+                    <script src="../javascripts/giamsat/bieudophutai_chitiet.js"></script>
+                    <script src="../javascripts/giamsat/chisopmax_chitiet.js"></script>
+                    <script src="../javascripts/scada/scada_thongsovanhanh.js"></script>
+                    <style type="text/css">
+                        .text-right {
+                            text-align: right;
+                        }
+
+                        #chitietsvh::-webkit-scrollbar-thumb {
+                            background-color: #5bcfc5;
+                            border: 4px solid transparent;
+                            border-radius: 8px;
+                            background-clip: padding-box;
+                        }
+
+                        #chitietsvh::-webkit-scrollbar {
+                            width: 16px;
+                        }
+
+                        /* Row group giữ nguyên màu (nếu bạn đã có style riêng) */
+                        .table-striped>tbody>tr:nth-of-type(odd)>* {
+                            --bs-table-accent-bg: #ffff !important;
+                            color: none !important;
+                        }
+
+                        .table thead th {
+                            text-transform: none !important;
+                        }
+                    </style>

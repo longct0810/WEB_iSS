@@ -1,0 +1,586 @@
+/*
+ * SMARTGRID Business UI
+ * Giao diện dùng chung cho các màn hình nghiệp vụ ngoài Dashboard SCADA.
+ */
+
+body.business-ui {
+  --business-primary: #2563eb;
+  --business-primary-dark: #1d4ed8;
+  --business-accent: #0891b2;
+  --business-bg: #f4f7fb;
+  --business-surface: #ffffff;
+  --business-text: #172033;
+  --business-muted: #64748b;
+  --business-border: #dfe7f1;
+  --business-radius: 14px;
+  --business-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
+  color: var(--business-text);
+  background: var(--business-bg) !important;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body.business-ui .content-body {
+  background: var(--business-bg) !important;
+}
+
+body.business-ui .content-body > .container-fluid {
+  padding: 24px;
+}
+
+body.business-ui .card,
+body.business-ui .section-box,
+body.business-ui .wizard-card {
+  border: 1px solid var(--business-border) !important;
+  border-radius: var(--business-radius) !important;
+  background: var(--business-surface) !important;
+  box-shadow: var(--business-shadow) !important;
+}
+
+body.business-ui .card {
+  overflow: hidden;
+}
+
+body.business-ui .card-header,
+body.business-ui .wizard-header {
+  min-height: 58px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--business-border) !important;
+  background: linear-gradient(180deg, #fff, #f8fafc) !important;
+}
+
+body.business-ui .card-body,
+body.business-ui .wizard-body {
+  padding: 20px;
+}
+
+body.business-ui .card-title,
+body.business-ui .wizard-title,
+body.business-ui .content-body h1,
+body.business-ui .content-body h2,
+body.business-ui .content-body h3,
+body.business-ui .content-body h4 {
+  color: var(--business-text) !important;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+body.business-ui .content-body h2 {
+  margin: 0 0 18px;
+  font-size: 1.35rem;
+}
+
+body.business-ui label,
+body.business-ui .form-label,
+body.business-ui .input-group-text {
+  color: #334155;
+  font-weight: 600;
+}
+
+body.business-ui .form-control,
+body.business-ui .form-select,
+body.business-ui select,
+body.business-ui textarea,
+body.business-ui .select2-container--default .select2-selection--single,
+body.business-ui .select2-container--default .select2-selection--multiple {
+  min-height: 42px;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 9px !important;
+  color: var(--business-text);
+  background-color: #fff;
+  box-shadow: none !important;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+body.business-ui textarea.form-control {
+  min-height: 92px;
+}
+
+body.business-ui .form-control:focus,
+body.business-ui .form-select:focus,
+body.business-ui select:focus,
+body.business-ui textarea:focus {
+  border-color: var(--business-primary) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .14) !important;
+  outline: 0;
+}
+
+body.business-ui .input-group-text {
+  min-height: 42px;
+  border-color: #cbd5e1;
+  background: #f1f5f9;
+}
+
+body.business-ui .btn {
+  min-height: 40px;
+  padding: 8px 15px;
+  border-radius: 9px !important;
+  font-weight: 650;
+  box-shadow: none !important;
+  transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease;
+}
+
+body.business-ui .btn:hover {
+  transform: translateY(-1px);
+}
+
+body.business-ui .btn-primary {
+  border-color: var(--business-primary) !important;
+  background: var(--business-primary) !important;
+}
+
+body.business-ui .btn-primary:hover {
+  border-color: var(--business-primary-dark) !important;
+  background: var(--business-primary-dark) !important;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, .22) !important;
+}
+
+body.business-ui .btn-success {
+  border-color: #059669 !important;
+  background: #059669 !important;
+}
+
+body.business-ui .table-responsive,
+body.business-ui .table-wrap,
+body.business-ui .user-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--business-border);
+  border-radius: 11px;
+}
+
+body.business-ui .table {
+  width: 100% !important;
+  margin-bottom: 0 !important;
+  color: #334155;
+  background: #fff;
+}
+
+body.business-ui .table > thead > tr > th {
+  padding: 12px 14px !important;
+  border-color: var(--business-border) !important;
+  color: #334155 !important;
+  background: #eef3f9 !important;
+  font-size: .78rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: .035em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+body.business-ui .table > tbody > tr > td {
+  padding: 11px 14px !important;
+  border-color: #e8edf4 !important;
+  vertical-align: middle;
+}
+
+body.business-ui .table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: #fbfdff;
+}
+
+body.business-ui .table-hover > tbody > tr:hover > * {
+  background-color: #eff6ff;
+}
+
+body.business-ui .dataTables_wrapper .dataTables_filter input,
+body.business-ui .dataTables_wrapper .dataTables_length select {
+  min-height: 36px;
+  margin: 0 4px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+}
+
+body.business-ui .dataTables_wrapper .dataTables_paginate .paginate_button {
+  border: 0 !important;
+  border-radius: 8px !important;
+}
+
+body.business-ui .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+body.business-ui .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: #fff !important;
+  background: var(--business-primary) !important;
+}
+
+body.business-ui .modal-content {
+  overflow: hidden;
+  border: 0;
+  border-radius: 16px;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, .22);
+}
+
+body.business-ui .modal-header,
+body.business-ui .modal-footer {
+  padding: 16px 20px;
+  border-color: var(--business-border);
+  background: #f8fafc;
+}
+
+body.business-ui .modal-body {
+  padding: 22px;
+}
+
+body.business-ui .form-group {
+  margin-bottom: 16px;
+}
+
+body.business-ui .alert {
+  border: 0;
+  border-radius: 10px;
+}
+
+/* Menu ngang của các màn hình nghiệp vụ cũ. */
+body.business-ui .header-content {
+  background: linear-gradient(110deg, #183b6b, #1d4ed8) !important;
+}
+
+body.business-ui .header .menu {
+  margin: 0;
+  gap: 2px;
+}
+
+body.business-ui .header .menu > li > a {
+  padding: 10px 11px;
+  border-radius: 8px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+body.business-ui .header .menu > li.active > a,
+body.business-ui .header .menu > li > a:hover {
+  background: rgba(255, 255, 255, .16);
+}
+
+body.business-ui .header .submenu {
+  width: 260px;
+  margin-left: -130px;
+  border: 1px solid var(--business-border);
+  border-radius: 11px;
+  box-shadow: var(--business-shadow);
+}
+
+body.business-ui .header .submenu li,
+body.business-ui .header .submenu a {
+  background: #fff;
+}
+
+body.business-ui .header .submenu a {
+  padding: 10px 13px;
+}
+
+body.business-ui .header .submenu a.active,
+body.business-ui .header .submenu a:hover {
+  color: var(--business-primary-dark) !important;
+  background: #eff6ff !important;
+}
+
+/* Các màn hình dùng app-shell/sidebar mới: giữ nhận diện tối, làm sáng vùng nghiệp vụ. */
+body.business-ui .app-shell {
+  background: #071426;
+}
+
+body.business-ui .app-shell > .main {
+  background: var(--business-bg);
+}
+
+body.business-ui .app-shell .topbar {
+  padding: 0 18px;
+  background: linear-gradient(110deg, #0b2340, #123f70);
+  box-shadow: 0 4px 18px rgba(2, 8, 23, .18);
+}
+
+body.business-ui .app-shell .topbar h1 {
+  color: #fff !important;
+  font-size: 19px;
+  text-shadow: none;
+}
+
+body.business-ui .app-shell .sidebar .submenu a.active {
+  color: #fff;
+  background: linear-gradient(90deg, #1f6faa, #123f70);
+  box-shadow: inset 3px 0 0 #38bdf8;
+}
+
+body.business-ui .wizard-wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+body.business-ui .step-item {
+  border-radius: 8px;
+}
+
+body.business-ui .step-item.active {
+  color: #fff;
+  background: var(--business-primary);
+}
+
+@media (max-width: 1023.98px) {
+  body.business-ui .content-body > .container-fluid {
+    padding: 16px 12px;
+  }
+
+  body.business-ui .card-body,
+  body.business-ui .wizard-body {
+    padding: 16px;
+  }
+
+  body.business-ui .app-shell > .main {
+    padding: 0 10px 10px;
+  }
+
+  body.business-ui .app-shell .topbar {
+    padding: 0 10px;
+  }
+
+  body.business-ui .app-shell .topbar h1 {
+    display: none;
+  }
+
+  body.business-ui .nhamay-wrapper label,
+  body.business-ui .top-actions .bell,
+  body.business-ui .top-actions .user {
+    display: none;
+  }
+
+  body.business-ui .cbo-nhamay {
+    min-width: 150px;
+    max-width: 44vw;
+  }
+}
+
+@media (max-width: 575.98px) {
+  body.business-ui .card-header,
+  body.business-ui .modal-header,
+  body.business-ui .modal-footer {
+    padding: 13px 14px;
+  }
+
+  body.business-ui .btn {
+    width: 100%;
+  }
+
+  body.business-ui .input-group {
+    align-items: stretch;
+  }
+
+  body.business-ui .input-group > .input-group-text {
+    width: 100%;
+    border-radius: 8px 8px 0 0 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.business-ui *,
+  body.business-ui *::before,
+  body.business-ui *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/*
+ * App-shell theme
+ * Các trang dùng sidebar mới phải đồng nhất với ngôn ngữ thị giác của Dashboard.
+ */
+body.business-ui--shell {
+  --business-bg: #071426;
+  --business-surface: #0b2038;
+  --business-text: #e7f2ff;
+  --business-muted: #8eabc8;
+  --business-border: #1b426d;
+  --business-shadow: 0 12px 34px rgba(0, 0, 0, .24);
+  color: var(--business-text);
+  background: #071426 !important;
+}
+
+body.business-ui--shell .app-shell,
+body.business-ui--shell .app-shell > .main,
+body.business-ui--shell .content-body {
+  background:
+    linear-gradient(rgba(31, 71, 112, .09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 71, 112, .09) 1px, transparent 1px),
+    radial-gradient(circle at 45% -15%, #123861 0, #08172a 40%, #050d19 100%) !important;
+  background-size: 64px 64px, 64px 64px, auto !important;
+}
+
+body.business-ui--shell .app-shell > .main {
+  padding: 0 16px 16px;
+}
+
+body.business-ui--shell .content-body > .container-fluid {
+  padding: 18px 20px;
+}
+
+body.business-ui--shell .card,
+body.business-ui--shell .section-box,
+body.business-ui--shell .wizard-card {
+  color: var(--business-text);
+  border-color: var(--business-border) !important;
+  background: linear-gradient(180deg, rgba(13, 39, 68, .98), rgba(8, 27, 49, .98)) !important;
+  box-shadow: var(--business-shadow) !important;
+}
+
+body.business-ui--shell .card-header,
+body.business-ui--shell .wizard-header {
+  border-color: var(--business-border) !important;
+  background: rgba(16, 48, 82, .92) !important;
+}
+
+body.business-ui--shell .card-title,
+body.business-ui--shell .wizard-title,
+body.business-ui--shell .content-body h1,
+body.business-ui--shell .content-body h2,
+body.business-ui--shell .content-body h3,
+body.business-ui--shell .content-body h4 {
+  color: #f1f7ff !important;
+}
+
+body.business-ui--shell label,
+body.business-ui--shell .form-label {
+  color: #b8cee4;
+}
+
+body.business-ui--shell .form-control,
+body.business-ui--shell .form-select,
+body.business-ui--shell select,
+body.business-ui--shell textarea,
+body.business-ui--shell .select2-container--default .select2-selection--single,
+body.business-ui--shell .select2-container--default .select2-selection--multiple {
+  color: #e7f2ff !important;
+  border-color: #315779 !important;
+  background-color: #0b1a2d !important;
+}
+
+body.business-ui--shell .form-control::placeholder,
+body.business-ui--shell textarea::placeholder,
+body.business-ui--shell .select2-selection__placeholder {
+  color: #7894b0 !important;
+}
+
+body.business-ui--shell select option {
+  color: #e7f2ff;
+  background: #0b1a2d;
+}
+
+body.business-ui--shell .input-group-text {
+  color: #eaf5ff;
+  border-color: #3474b8;
+  background: #2266aa;
+}
+
+body.business-ui--shell .form-control:focus,
+body.business-ui--shell .form-select:focus,
+body.business-ui--shell select:focus,
+body.business-ui--shell textarea:focus {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, .16) !important;
+}
+
+body.business-ui--shell .select2-dropdown {
+  overflow: hidden;
+  color: #dcecff;
+  border: 1px solid #315779;
+  border-radius: 9px;
+  background: #0a192b;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .34);
+}
+
+body.business-ui--shell .select2-search--dropdown {
+  padding: 8px;
+  background: #102b49;
+}
+
+body.business-ui--shell .select2-search--dropdown .select2-search__field {
+  color: #fff;
+  border: 1px solid #3d6588;
+  border-radius: 7px;
+  background: #081726;
+}
+
+body.business-ui--shell .select2-results__option {
+  padding: 9px 12px;
+  color: #c9dcef;
+  background: #0a192b;
+}
+
+body.business-ui--shell .select2-results__option--highlighted[aria-selected],
+body.business-ui--shell .select2-results__option[aria-selected="true"] {
+  color: #fff;
+  background: #2563a8 !important;
+}
+
+body.business-ui--shell .select2-container--default .select2-selection--multiple .select2-selection__choice {
+  color: #fff;
+  border: 1px solid #3b82c4;
+  border-radius: 6px;
+  background: #1f5f9d;
+}
+
+body.business-ui--shell .table-responsive,
+body.business-ui--shell .table-wrap,
+body.business-ui--shell .user-table-wrap {
+  border-color: var(--business-border);
+  background: #091a2e;
+}
+
+body.business-ui--shell .table {
+  color: #dcecff !important;
+  background: transparent !important;
+}
+
+body.business-ui--shell .table > thead > tr > th {
+  color: #cce2f7 !important;
+  border-color: #264b70 !important;
+  background: #102c4a !important;
+}
+
+body.business-ui--shell .table > tbody > tr > td {
+  color: #d6e7f7 !important;
+  border-color: #183955 !important;
+  background: #091b30 !important;
+}
+
+body.business-ui--shell .table > tbody > tr:nth-of-type(even) > td {
+  background: #0c223b !important;
+}
+
+body.business-ui--shell .table-hover > tbody > tr:hover > td {
+  background: #153e68 !important;
+}
+
+body.business-ui--shell .nav-tabs {
+  border-color: #315779 !important;
+}
+
+body.business-ui--shell .nav-tabs .nav-link {
+  color: #8eb2d5;
+  border-color: transparent;
+}
+
+body.business-ui--shell .nav-tabs .nav-link.active {
+  color: #66c8ff;
+  border-color: #2c7dc0 #2c7dc0 #0b2038;
+  background: #0b2038;
+}
+
+body.business-ui--shell .alert-danger {
+  color: #fecdd3;
+  background: rgba(190, 24, 93, .24);
+}
+
+body.business-ui--shell .dataTables_wrapper,
+body.business-ui--shell .dataTables_wrapper label,
+body.business-ui--shell .dataTables_wrapper .dataTables_info {
+  color: #aac3db !important;
+}
+
+body.business-ui--shell .modal-content {
+  color: #e7f2ff;
+  border: 1px solid #264b70;
+  background: #0b2038;
+}
+
+body.business-ui--shell .modal-header,
+body.business-ui--shell .modal-footer {
+  border-color: #264b70;
+  background: #102c4a;
+}

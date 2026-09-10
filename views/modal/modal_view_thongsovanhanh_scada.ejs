@@ -1,0 +1,326 @@
+<div class="modal fade col-lg-12" id="modal_thongsovanhanh_scada">
+    <div class="modal-dialog col-lg-12">
+        <div class="modal-content col-lg-12">
+            <div class="modal-header col-lg-12">
+                <h4 class="modal-title" id="lbltitle_giamsat"></h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+            </div>
+            <div class="modal-body col-lg-12" style=" margin: 0; padding-top: 0;">
+                <div class="row">
+
+                    <div class="col-lg-12" id="thongsovanhanh_scada">
+                        <div class="default-tab">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#scada_thongsovanhanh"><i
+                                            class="flaticon-381-calendar-1 me-2"></i>
+                                        Thông số vận hành</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#scada_songhaidongdien"><i
+                                            class="flaticon-381-calendar-1 me-2"></i>Sóng hài dòng
+                                        điện</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#scada_songhaidienap"><i
+                                            class="flaticon-041-graph me-2"></i> Sóng hài điện áp</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#scada_nhanh1"><i
+                                            class="flaticon-041-graph me-2"></i> Nhánh 1</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#scada_nhanh2"><i
+                                            class="flaticon-041-graph me-2"></i> Nhánh 2</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#scada_nhanh3"><i
+                                            class="flaticon-041-graph me-2"></i> Nhánh 3</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#scada_nhanh4"><i
+                                            class="flaticon-041-graph me-2"></i> Nhánh 4</a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane fade tab_giamsat show active" id="scada_thongsovanhanh"
+                                    role="tabpanel">
+                                    <div class="row">
+                                        <h1 class="point_name_on_page">
+                                            <i class="flaticon-050-info"></i>
+                                            Router 2 MBA
+                                        </h1>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-2" style="margin: 10px; ">
+                                            <div class="input-group input-primary">
+                                                <span class="input-group-text">Từ ngày</span>
+                                                <input name="datepicker" class="datepicker-default form-control"
+                                                    id="txttungay_csct_ct">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2" style="margin: 10px; ">
+                                            <div class="input-group input-primary">
+                                                <span class="input-group-text">Đến ngày</span>
+                                                <input name="datepicker" class="datepicker-default form-control"
+                                                    id="txtdenngay_csct_ct">
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-2" style="margin: 10px; ">
+                                            <div class="input-group ">
+                                                <button class="btn btn-primary" type="button" id="btnthuchien_tsvh"><i
+                                                        class="flaticon-013-checkmark"></i>
+                                                    Thực hiện</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="modal_tsvh">
+
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane tab_giamsat fade" id="scada_songhaidongdien">
+                                    <div class="row">
+                                        <h1 class="point_name_on_page">
+                                            <i class="flaticon-050-info"></i>
+                                            Router 2 MBA
+                                        </h1>
+                                    </div>
+                                    <div class="row">
+                                        <div class="chart">
+                                            <canvas id="barChartSonghai"
+                                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane tab_giamsat fade" id="scada_songhaidienap">
+                                    <div class="row">
+                                        <h1 class="point_name_on_page">
+                                            <i class="flaticon-050-info"></i>
+                                            Router 2 MBA
+                                        </h1>
+                                    </div>
+                                    <div class="row">
+                                        <div class="chart">
+                                            <canvas id="barChartSonghaiU"
+                                                style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane tab_giamsat fade" id="scada_nhanh1">
+                                    <div class="row">
+                                        <h1 class="point_name_on_page">
+                                            <i class="flaticon-050-info"></i>
+                                            Router 2 MBA
+                                        </h1>
+                                    </div>
+                                    <div class="row">
+                                        <table id="nhanh1"
+                                            class="table table-bordered table-hover stripe row-border order-column">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tên</th>
+                                                    <th>Giá trị</th>
+                                                    <th>Thời gian</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane tab_giamsat fade" id="scada_nhanh2">
+                                    <div class="row">
+                                        <h1 class="point_name_on_page">
+                                            <i class="flaticon-050-info"></i>
+                                            Router 2 MBA
+                                        </h1>
+                                    </div>
+                                    <div class="row">
+                                        <table id="nhanh2"
+                                            class="table table-bordered table-hover stripe row-border order-column">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tên</th>
+                                                    <th>Giá trị</th>
+                                                    <th>Thời gian</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane tab_giamsat fade" id="scada_nhanh3">
+                                    <div class="row">
+                                        <h1 class="point_name_on_page">
+                                            <i class="flaticon-050-info"></i>
+                                            Router 2 MBA
+                                        </h1>
+                                    </div>
+                                    <div class="row">
+                                        <table id="nhanh3"
+                                            class="table table-bordered table-hover stripe row-border order-column">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tên</th>
+                                                    <th>Giá trị</th>
+                                                    <th>Thời gian</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane tab_giamsat fade" id="scada_nhanh4">
+                                    <div class="row">
+                                        <h1 class="point_name_on_page">
+                                            <i class="flaticon-050-info"></i>
+                                            Router 2 MBA
+                                        </h1>
+                                    </div>
+                                    <div class="row">
+                                        <table id="nhanh4"
+                                            class="table table-bordered table-hover stripe row-border order-column">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tên</th>
+                                                    <th>Giá trị</th>
+                                                    <th>Thời gian</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12">
+                        <%- include('../scada/cambien.ejs') %>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+
+</div>
+<%- include('../script.ejs') %>
+    <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+    <script src="./vendor/select2/js/select2.full.min.js"></script>
+    <script src="./javascripts/plugins-init/select2-init.js"></script>
+    <script src="./vendor/toastr/js/toastr.min.js"></script>
+    <script src="./javascripts/plugins-init/toastr-init.js"></script>
+    <script src="../javascripts/fnTime.js"></script>
+    <script src="../javascripts/moment.js"></script>
+    <!-- DataTables Buttons JS -->
+    <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+    <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+    <script src="./vendor/datatables/js/jszip.min.js"></script>
+    <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+    <!-- Chartist -->
+    <script src="./vendor/chart.js/Chart.bundle.min.js"></script>
+    <script src="../javascripts/scada/scada_thongsovanhanh_sodo.js"></script>
+
+    <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+    <style type="text/css">
+        .text-right {
+            text-align: right;
+        }
+
+        #chitietct::-webkit-scrollbar-thumb {
+            background-color: #5bcfc5;
+            border: 4px solid transparent;
+            border-radius: 8px;
+            background-clip: padding-box;
+        }
+
+        #chitietct::-webkit-scrollbar {
+            width: 16px;
+        }
+
+        .picker__weekday {
+            display: none;
+        }
+
+        #tsvh_modal thead th,
+        #tsvh_modal thead td,
+        .scada thead th,
+        .scada thead td {
+            border: 1px solid #242121 !important;
+            /* border-top: 1px solid #111; */
+            text-align: center;
+            vertical-align: middle;
+            /* background-color: #111 !important */
+        }
+
+        #tsvh_modal tbody td,
+        #tsvh_modal tbody tr,
+        .scada tbody th,
+        .scada tbody td {
+            border-bottom: 1px solid #242121;
+        }
+
+        #tsvh_modal> :not(:first-child),
+        .scada> :not(:first-child) {
+            border-top: none !important;
+        }
+
+        #tsvh_modal tbody tr,
+        .scada tbody tr {
+            background-color: transparent !important
+        }
+
+        div.dt-buttons {
+            float: right;
+        }
+
+        .phaB {
+            color: #20c997;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        .phaC {
+            color: #dc3545;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        .phaA {
+            color: #ffc107;
+            text-align: right;
+            cursor: pointer;
+        }
+
+        .tong td {
+            font-weight: bold;
+        }
+
+        .point_name_on_page {
+            font-size: 17px;
+            padding-top: 12px;
+        }
+
+        #nhanh1 .sorting_1,
+        #nhanh2 .sorting_1,
+        #nhanh3 .sorting_1,
+        #nhanh4 .sorting_1 {
+            background-color: #171622 !important;
+        }
+
+        .modal-dialog {
+            max-width: 90% !important;
+        }
+    </style>

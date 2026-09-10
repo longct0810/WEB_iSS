@@ -1,0 +1,136 @@
+<div class="row">
+    <div class="box-default">
+        <div class="box-body">
+            <div class="row">
+                <div id="chart_container"></div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-2" style="padding: 10px; ">
+                    <div class="input-group input-primary">
+                        <span class="input-group-text">Từ ngày</span>
+                        <input name="datepicker" class="datepicker-default form-control" id="txttungay_tsvh">
+
+                    </div>
+                </div>
+                <div class="col-lg-2" style="padding: 10px; ">
+                    <div class="input-group input-primary">
+                        <span class="input-group-text">Đến ngày</span>
+                        <input name="datepicker" class="datepicker-default form-control" id="txtdenngay_tsvh">
+
+                    </div>
+                </div>
+                <div class="col-lg-2" style="padding: 10px; ">
+                    <div class="input-group input-primary">
+                        <span class="input-group-text"> Số công tơ</span>
+                        <select class="form-control" id="slsocongto_ct_tsvh">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-lg-2">
+                    <input type="hidden" id="hdMeterid_tsvh" />
+                    <input type="hidden" id="hdloaicongto_tsvh" />
+                    <div class="input-group">
+                        <button class="btn btn-primary" type="button" id="btnthuchien_ct_tsvh"><i
+                                class="flaticon-013-checkmark"></i>
+                            Thực hiện</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <form>
+                    <div class="mb-3 mb-0">
+                        <label class="radio-inline me-3"><input type="radio" value="U" name="charttype" checked id="rdU"
+                                onclick="chartTypeChange()"> U(V)</label>
+                        <label class="radio-inline me-3"><input type="radio" value="I" name="charttype" id="rdI"
+                                onchange="chartTypeChange()"> I(A)</label>
+                        <label class="radio-inline me-3"><input type="radio" value="COS" name="charttype" id="rdCOS"
+                                onchange="chartTypeChange()"> CosΦ</label>
+                        <!-- <label class="radio-inline me-3"><input type="radio" value="PGiao" name="charttype" id="rdPGiao"
+                                onchange="chartTypeChange()"> P Giao(kW)</label>
+                        <label class="radio-inline me-3"><input type="radio" value="PNhan" name="charttype" id="rdPNhan"
+                                onchange="chartTypeChange()"> P Nhan(kW)</label>
+                        <label class="radio-inline me-3"><input type="radio" value="QA_Giao" name="charttype"
+                                id="rdQGiao" onchange="chartTypeChange()"> Q Giao(kVAR)</label>
+                        <label class="radio-inline me-3"><input type="radio" value="QB_Giao" name="charttype"
+                                id="rdQNhan" onchange="chartTypeChange()"> Q Nhan(kVAR)</label> -->
+
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+                <div class="alert  alert-danger" id="messageerrorchitiet_tsvh" style="display:none">
+                </div>
+                <table class="table table-bordered table-striped table-hover table-bordered dataTable"
+                    id="tbl_xemchitiet_tsvh">
+                    <thead class="bg-gray-active">
+                        <tr>
+                            <th>STT</th>
+                            <th style="display:none">Mã điểm đo</th>
+                            <th style="display:none">Tên khách hàng</th>
+                            <th>Số công tơ</th>
+                            <th>Loại công tơ</th>
+                            <th>Thời điểm</th>
+                            <th>U (V)</th>
+                            <th>I (A)</th>
+                            <th>Cos φ</th>
+                            <th>P (kW)</th>
+                            <th>Q (kVAR)</th>
+                        </tr>
+
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+    </div>
+</div>
+<style>
+    #tbl_xemchitiet_tsvh {
+        width: 100% !important;
+    }
+
+    #tbl_xemchitiet_tsvh th,
+    #tbl_xemchitiet_tsvh td {
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+
+    /* Màu row theo STT */
+    #tbl_xemchitiet_tsvh tr.row-old td {
+        background-color: #fff8e1;
+    }
+
+    #tbl_xemchitiet_tsvh tr.row-event td {
+        background-color: #eef7ff;
+    }
+
+    /* Màu theo pha */
+    #tbl_xemchitiet_tsvh tr.pha-a td {
+        color: #f58220;
+    }
+
+    #tbl_xemchitiet_tsvh tr.pha-b td {
+        color: #197b30;
+    }
+
+    #tbl_xemchitiet_tsvh tr.pha-c td {
+        color: #bf1e2e;
+    }
+
+    /* HT / CT */
+    .tsvh-ht {
+        color: #0d6efd;
+        margin-left: 6px;
+        display: inline-block;
+    }
+
+    .tsvh-ct {
+        color: #dc3545;
+        display: inline-block;
+    }
+</style>

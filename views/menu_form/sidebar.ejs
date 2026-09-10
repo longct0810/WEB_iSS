@@ -1,0 +1,556 @@
+<% const activePath = typeof currentPath !== 'undefined' ? currentPath : ''; %>
+<aside class="sidebar" id="sidebar" aria-label="Điều hướng chính">
+    <button id="btnCloseSidebar" class="close-sidebar" type="button" aria-label="Đóng menu">
+        ✕
+    </button>
+    <div class="brand">
+        <div class="brand-icon">⚡</div>
+
+        <div>
+            <strong>IFC - SMARTGRID</strong>
+            <span>Giám sát hệ thống điện</span>
+        </div>
+        <!-- <div class="brand-icon"> <button id="toggleSidebar" class="sidebar-toggle">☰
+        <i class="fa fa-bars"></i>
+      </button>
+    </div> -->
+    </div>
+
+    <div class="user-actions">
+        <button type="button" id="btnLogout" class="btn-logout">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Đăng xuất</span>
+        </button>
+    </div>
+    <!-- <nav class="menu">
+    <% ['Tổng quan','Sơ đồ một sợi','Thông số điện','Thiết bị','Cảnh báo - sự kiện','Báo cáo','Lịch sử','Cấu hình','Trạm biến áp','Hệ thống'].forEach((m,i)=>{ %>
+      <a class="<%= i===0 ? 'active' : '' %>" href="#"><span><%= ['⌂','⎇','◌','▦','⚠','▤','◷','⚙','♜','✣'][i] %></span><%= m %></a>
+    <% }) %>
+  </nav> -->
+    <div class="menu">
+
+        <!-- GIÁM SÁT -->
+        <div class="menu-group open">
+
+            <div class="parent-menu" role="button" tabindex="0" aria-expanded="true">
+
+                <div class="menu-icon">
+                    <i class="fas fa-desktop"></i>
+                </div>
+
+                <span class="menu-text">
+                    Giám sát
+                </span>
+
+                <i class="fas fa-chevron-right menu-arrow"></i>
+
+            </div>
+
+            <div class="submenu">
+
+                <a href="/dashboard" class="<%= activePath === '/dashboard' || activePath === '/' ? 'active' : '' %>"
+                    <% if (activePath === '/dashboard' || activePath === '/') { %>aria-current="page"<% } %>>
+                    <i class="fas fa-tachometer-alt submenu-icon"></i>
+                    <span class="menu-text">Bảng điều khiển</span>
+                </a>
+                <a href="/ioa" class="<%= activePath === '/ioa' ? 'active' : '' %>"
+                    <% if (activePath === '/ioa') { %>aria-current="page"<% } %>>
+                    <i class="fas fa-project-diagram submenu-icon"></i>
+                    <span class="menu-text">Khai báo IOA</span>
+                </a>
+
+                <!-- <a href="/giamsat_tba">
+                    <i class="fas fa-building submenu-icon"></i>
+                    <span class="menu-text">Giám sát TBA</span>
+                </a> -->
+                <a href="/thongkesolieu"
+                    class="pmsion-menu <%= activePath === '/thongkesolieu' ? 'active' : '' %>"
+                    data-machucnang="24" <% if (activePath === '/thongkesolieu') { %>aria-current="page"<% } %>>
+                    <i class="fas fa-building submenu-icon"></i>
+                    <span class="menu-text">Thống kê số liệu</span>
+                </a>
+                <a href="/thongsovanhanhscada"
+                    class="pmsion-menu <%= activePath === '/thongsovanhanhscada' ? 'active' : '' %>"
+                    data-machucnang="4" <% if (activePath === '/thongsovanhanhscada') { %>aria-current="page"<% } %>>
+                   <i class="fas fa-wave-square submenu-icon"></i>
+                    <span class="menu-text">Thông số vận hành</span>
+                </a>
+                <!-- <a href="/baocaovanhanhngay" class="pmsion-menu">
+                    <i class="fas fa-file-alt submenu-icon"></i>
+                    <span class="menu-text">Báo cáo vận hành ngày</span>
+                </a> -->
+
+
+                <a href="/quanlynguoidung" class="<%= activePath === '/quanlynguoidung' ? 'active' : '' %>"
+                    <% if (activePath === '/quanlynguoidung') { %>aria-current="page"<% } %>>
+                    <i class="fas fa-project-diagram submenu-icon"></i>
+                    <span class="menu-text">Quản lý người dùng</span>
+                </a>
+                <a href="/thongkedangnhap" class="<%= activePath === '/thongkedangnhap' ? 'active' : '' %>"
+                    <% if (activePath === '/thongkedangnhap') { %>aria-current="page"<% } %>>
+                    <i class="fas fa-bolt submenu-icon"></i>
+                    <span class="menu-text">Nhật ký đăng nhập</span>
+                </a>
+
+                <a href="/quanlynhamay" class="<%= activePath === '/quanlynhamay' ? 'active' : '' %>"
+                    <% if (activePath === '/quanlynhamay') { %>aria-current="page"<% } %>>
+                    <i class="fas fa-bolt submenu-icon"></i>
+                    <span class="menu-text">Quản lý nhà máy</span>
+                </a>
+            </div>
+
+        </div>
+
+
+
+        <!-- KHAI THÁC DỮ LIỆU -->
+        <!-- <div class="menu-group">
+
+            <div class="parent-menu" role="button" tabindex="0" aria-expanded="false">
+
+                <div class="menu-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+
+                <span class="menu-text">
+                    Khai thác dữ liệu
+                </span>
+
+                <i class="fas fa-chevron-right menu-arrow"></i>
+
+            </div>
+
+            <div class="submenu">
+
+                <a href="/dashboard">
+                    <i class="fas fa-microchip submenu-icon"></i>
+                    <span class="menu-text">Chỉ số công tơ</span>
+                </a>
+
+                <a href="/dashboard">
+                    <i class="fas fa-chart-line submenu-icon"></i>
+                    <span class="menu-text">Chỉ số PMAX</span>
+                </a>
+
+                <a href="/dashboard">
+                    <i class="fas fa-sliders-h submenu-icon"></i>
+                    <span class="menu-text">Thông số vận hành</span>
+                </a>
+
+                <a href="/dashboard">
+                    <i class="fas fa-chart-area submenu-icon"></i>
+                    <span class="menu-text">Biểu đồ phụ tải</span>
+                </a>
+
+                <a href="/dashboard">
+                    <i class="fas fa-wave-square submenu-icon"></i>
+                    <span class="menu-text">Dữ liệu sóng hài</span>
+                </a>
+
+                <a href="/dieukhiendongcat">
+                    <i class="fas fa-toggle-on submenu-icon"></i>
+                    <span class="menu-text">Điều khiển đóng cắt</span>
+                </a>
+
+                <a href="/dieukhiendongcatdin">
+                    <i class="fas fa-microchip submenu-icon"></i>
+                    <span class="menu-text">Điều khiển DIN</span>
+                </a>
+
+                <a href="/ungtruocsanluong">
+                    <i class="fas fa-wallet submenu-icon"></i>
+                    <span class="menu-text">Ứng trước sản lượng</span>
+                </a>
+
+            </div>
+
+        </div> -->
+
+    </div>
+
+
+
+    <% if (typeof title !== 'undefined' && title === 'Dashboard SCADA') { %>
+        <%- include('power_ai_sidebar') %>
+    <% } %>
+
+
+
+</aside>
+
+<div id="aiReportModal" class="ai-modal">
+    <div class="ai-modal-content">
+        <div class="ai-modal-header">
+            <span>🤖 Báo cáo thông minh chi tiết</span>
+            <button type="button" id="aiModalClose">×</button>
+        </div>
+
+        <div class="ai-modal-body" id="aiModalBody"></div>
+    </div>
+</div>
+<script>
+    function showBaoCaoAILoading() {
+        $('#aiScore').text('--');
+
+        $('#aiStatus')
+            .removeClass()
+            .addClass('ai-status warning')
+            .html('<i class="fas fa-spinner fa-spin"></i> Đang tải');
+
+        $('#aiSummary').html(`
+        <div class="ai-loading">
+            <div class="ai-skeleton w-90"></div>
+            <div class="ai-skeleton w-75"></div>
+            <div class="ai-skeleton w-60"></div>
+            <div class="ai-skeleton w-90"></div>
+            <div class="ai-skeleton w-45"></div>
+        </div>
+    `);
+    }
+    function toggleSidebar(show) {
+        document.getElementById('sidebar')
+            .classList.toggle('open', show);
+    }
+
+
+    document.getElementById('btnCloseSidebar').addEventListener('click', function () {
+        document.getElementById('sidebar').classList.remove('mobile-open');
+        const toggleButton = document.getElementById('toggleSidebar');
+        if (toggleButton) {
+            toggleButton.setAttribute('aria-expanded', 'false');
+            toggleButton.focus();
+        }
+
+    });
+</script>
+<style>
+    .close-sidebar {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 32px;
+        height: 32px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    /* ==========================
+   AI SMART REPORT
+========================== */
+
+    .ai-report-box {
+        margin-top: 15px;
+        padding: 15px;
+
+        border-radius: 12px;
+
+        background: linear-gradient(180deg,
+                #123d69 0%,
+                #0b2d4e 100%);
+
+        border: 1px solid rgba(0, 180, 255, 0.35);
+
+        box-shadow:
+            0 0 12px rgba(0, 180, 255, 0.15);
+
+        color: #fff;
+
+        overflow: hidden;
+    }
+
+    .ai-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        margin-bottom: 12px;
+
+        font-size: 15px;
+        font-weight: 700;
+
+        color: #ffffff;
+    }
+
+    .ai-header i {
+        color: #00e5ff;
+        font-size: 18px;
+    }
+
+    .ai-score-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-bottom: 12px;
+    }
+
+    .ai-score-label {
+        font-size: 13px;
+        color: #cfe6ff;
+    }
+
+    .ai-score {
+        font-size: 28px;
+        font-weight: 700;
+
+        color: #00ff9c;
+
+        text-shadow:
+            0 0 10px rgba(0, 255, 156, .4);
+    }
+
+    /* ==========================
+   STATUS
+========================== */
+
+    .ai-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+
+        padding: 5px 12px;
+
+        border-radius: 30px;
+
+        font-size: 12px;
+        font-weight: 700;
+
+        margin-bottom: 12px;
+    }
+
+    .ai-status.good {
+        background: rgba(0, 255, 100, .15);
+        color: #57ff8b;
+        border: 1px solid rgba(0, 255, 100, .25);
+    }
+
+    .ai-status.warning {
+        background: rgba(255, 193, 7, .15);
+        color: #ffd54f;
+        border: 1px solid rgba(255, 193, 7, .25);
+    }
+
+    .ai-status.danger {
+        background: rgba(255, 82, 82, .15);
+        color: #ff7b7b;
+        border: 1px solid rgba(255, 82, 82, .25);
+    }
+
+    /* ==========================
+   KPI LIST
+========================== */
+
+    .ai-kpi-list {
+        margin-top: 8px;
+        margin-bottom: 12px;
+    }
+
+    .ai-kpi-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 6px 0;
+
+        border-bottom: 1px dashed rgba(255, 255, 255, .12);
+
+        font-size: 12px;
+    }
+
+    .ai-kpi-item:last-child {
+        border-bottom: none;
+    }
+
+    .ai-kpi-item span {
+        color: #d8ecff;
+    }
+
+    .ai-kpi-item b {
+        color: #00ff9c;
+        font-weight: 700;
+    }
+
+    /* ==========================
+   RECOMMENDATION
+========================== */
+
+    .ai-recommend {
+        margin-top: 10px;
+        padding-top: 10px;
+
+        border-top: 1px solid rgba(0, 229, 255, .2);
+
+        font-size: 12px;
+        line-height: 1.6;
+
+        color: #d8ecff;
+    }
+
+    .ai-recommend-title {
+        color: #ffd54f;
+
+        font-size: 12px;
+        font-weight: 700;
+
+        margin-bottom: 6px;
+    }
+
+    /* ==========================
+   SCROLL
+========================== */
+
+    .ai-summary {
+        /* max-height: 300px; */
+        overflow-y: auto;
+    }
+
+    .ai-summary::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .ai-summary::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, .2);
+        border-radius: 10px;
+    }
+
+    /* ==========================
+   MOBILE
+========================== */
+
+    @media (max-width: 768px) {
+
+        .ai-report-box {
+            padding: 12px;
+        }
+
+        .ai-score {
+            font-size: 24px;
+        }
+
+        .ai-kpi-item {
+            font-size: 11px;
+        }
+
+        .ai-recommend {
+            font-size: 11px;
+        }
+    }
+
+    .ai-recommend-click {
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .ai-recommend-click:hover {
+        background: rgba(0, 229, 255, 0.08);
+        border-radius: 8px;
+    }
+
+    .ai-view-more {
+        margin-top: 6px;
+        color: #00e5ff;
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .ai-modal {
+        display: none;
+        position: fixed;
+        z-index: 99999;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+    }
+
+    .ai-modal-content {
+        width: 520px;
+        max-width: calc(100vw - 30px);
+        margin: 8vh auto;
+        background: linear-gradient(180deg, #103d6b, #06203a);
+        border: 1px solid rgba(0, 229, 255, 0.35);
+        border-radius: 14px;
+        color: #fff;
+        box-shadow: 0 0 25px rgba(0, 180, 255, 0.25);
+        overflow: hidden;
+    }
+
+    .ai-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, .12);
+        font-weight: 700;
+    }
+
+    #aiModalClose {
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .ai-modal-body {
+        padding: 16px;
+        font-size: 13px;
+        line-height: 1.7;
+        max-height: 65vh;
+        overflow-y: auto;
+    }
+
+    .ai-modal-section p {
+        margin: 0 0 10px;
+        color: #dbeeff;
+    }
+
+    .ai-loading {
+        padding: 10px 0;
+    }
+
+    .ai-skeleton {
+        height: 12px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        background: linear-gradient(90deg,
+                rgba(255, 255, 255, .08),
+                rgba(255, 255, 255, .22),
+                rgba(255, 255, 255, .08));
+        background-size: 200% 100%;
+        animation: aiSkeleton 1.2s infinite;
+    }
+
+    .ai-skeleton.w-90 {
+        width: 90%;
+    }
+
+    .ai-skeleton.w-75 {
+        width: 75%;
+    }
+
+    .ai-skeleton.w-60 {
+        width: 60%;
+    }
+
+    .ai-skeleton.w-45 {
+        width: 45%;
+    }
+
+    @keyframes aiSkeleton {
+        0% {
+            background-position: 200% 0;
+        }
+
+        100% {
+            background-position: -200% 0;
+        }
+    }
+
+    .ai-last-update {
+        font-size: 11px;
+        color: #7ea8c7;
+        text-align: right;
+        margin-top: 6px;
+    }
+</style>

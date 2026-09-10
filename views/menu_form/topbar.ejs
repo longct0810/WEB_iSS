@@ -1,0 +1,265 @@
+<header class="topbar">
+  <button class="hamburger" id="toggleSidebar" type="button"
+    aria-label="Mở hoặc thu gọn menu" aria-controls="sidebar" aria-expanded="true">
+    ☰
+  </button>
+
+  <h1 class="page-title">GIÁM SÁT HỆ THỐNG ĐIỆN NHÀ MÁY</h1>
+
+  <!-- <option value="001003001001">Nhà máy 1</option>
+      <option value="001003001002">Nhà máy 2</option> -->
+
+  <div class="nhamay-wrapper">
+    <label for="cbo_nhamay">Nhà máy:</label>
+    <select id="cbo_nhamay" class="cbo-nhamay">
+    </select>
+  </div>
+
+  <div class="top-actions">
+    <div>
+      <b id="clock">--:--:--</b>
+
+    </div>
+
+    <!-- <div class="weather">
+      ☀️ <b>28°C</b>
+      <span>Trời nắng</span>
+    </div> -->
+
+    <div class="bell">🔔<em>0</em></div>
+
+    <div class="user">
+      <span>●</span>
+      <b id="loginRole">admin</b>
+      <!-- <small id="loginRole">Quản trị viên</small> -->
+    </div>
+     <button type="button" id="btnLogout_topbar" class="mobile-menu-logout">
+      <i class="fas fa-sign-out-alt"></i>&nbsp;Đăng xuất
+    </button>
+  </div>
+</header>
+
+
+<style>
+  #clock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    color: #fff;
+    line-height: 1.1;
+  }
+
+  #clock .clock-time {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  #clock .clock-date {
+    font-size: 12px;
+    color: #9fc7ff;
+    margin-top: 2px;
+  }
+</style>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    let user = localStorage.getItem("login_user");
+
+    if (!user) {
+      console.error("Không tìm thấy login_user");
+      return;
+    }
+
+    user = JSON.parse(user);
+
+    document.getElementById("loginRole").innerText =
+      user.taikhoan || "admin";
+
+    const parent_code = user.danhmucid;
+
+    load_child_code(parent_code);
+
+    const btnLogout = document.getElementById("btnLogout_topbar");
+    if (btnLogout) {
+      btnLogout.addEventListener("click", handleLogout);
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  });
+
+  function load_child_code(parent_code) {
+    $.ajax({
+      url: "/api/get_child_codes",
+      type: "POST",
+      contentType: "application/json;charset=utf-8",
+      dataType: "json",
+      data: JSON.stringify({
+        parent_code: parent_code
+      }),
+
+      success: function (result) {
+        console.log("load_child_code result:", result);
+        const cbo = document.getElementById("cbo_nhamay");
+
+        cbo.innerHTML = "";
+
+        const rows = result.child_codes || [];
+
+        rows.forEach(function (item) {
+          const option = document.createElement("option");
+
+          option.value = item.code;
+          option.text = item.tendanhmuc + " - " + item.code;
+          option.dataset.idThietbi = item.id_thietbi;
+          cbo.appendChild(option);
+        });
+
+        let savedCode = localStorage.getItem("code_nhamay");
+        if (!rows.some(x => x.code === savedCode)) {
+          savedCode = rows.length > 0 ? rows[0].code : null;
+        }
+        if (!savedCode && rows.length > 0) {
+          savedCode = rows[0].code;
+        }
+
+        if (savedCode) {
+          cbo.value = savedCode;
+          localStorage.setItem("code_nhamay", savedCode);
+
+          const selectedOption = cbo.options[cbo.selectedIndex];
+          console.log("Selected option>>>>:", selectedOption);
+          if (!selectedOption) return;
+          const id_thietbi = Number(selectedOption.dataset.idThietbi);
+          localStorage.setItem("id_thietbi", id_thietbi);
+          window.dispatchEvent(new CustomEvent("nhamay:changed", {
+            detail: {
+              child_code: savedCode,
+              id_thietbi: id_thietbi
+            }
+          }));
+        }
+
+        cbo.addEventListener("change", function () {
+          const child_code = this.value;
+
+          localStorage.setItem("code_nhamay", child_code);
+          const selectedOption = cbo.options[cbo.selectedIndex];
+
+          if (!selectedOption) return;
+          const id_thietbi = Number(selectedOption.dataset.idThietbi);
+          localStorage.setItem("id_thietbi", id_thietbi);
+
+          window.dispatchEvent(new CustomEvent("nhamay:changed", {
+            detail: {
+              child_code: child_code,
+              id_thietbi: id_thietbi,
+            }
+          }));
+        });
+      },
+
+      error: function (xhr) {
+        console.error("Lỗi load_child_code:", xhr.responseText);
+      }
+    });
+  }
+
+  function handleLogout() {
+    const ok = window.confirm("Đăng xuất khỏi hệ thống");
+    if (!ok) return;
+
+    localStorage.clear();
+    window.location.href = "/login";
+  }
+
+  function updateClock() {
+    const now = new Date();
+
+    const date =
+      String(now.getDate()).padStart(2, "0") + "/" +
+      String(now.getMonth() + 1).padStart(2, "0") + "/" +
+      now.getFullYear();
+
+    const time =
+      String(now.getHours()).padStart(2, "0") + ":" +
+      String(now.getMinutes()).padStart(2, "0") + ":" +
+      String(now.getSeconds()).padStart(2, "0");
+
+    const el = document.getElementById("clock");
+
+    if (el) {
+      el.innerHTML = `
+      <span class="clock-time">${time}</span>
+      <small class="clock-date">${date}</small>
+    `;
+    }
+  }
+
+</script>
+<style>
+  .nhamay-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nhamay-wrapper label {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .cbo-nhamay {
+    min-width: 260px;
+    max-width: 320px;
+    height: 36px;
+
+    padding: 0 35px 0 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition: all .25s ease;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5l6.5 6 6.5-6'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+  }
+
+  .cbo-nhamay:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .cbo-nhamay:focus {
+    border-color: #00d4ff;
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, .25);
+  }
+
+  .cbo-nhamay option {
+    background: #1d2b36;
+    color: #ffffff;
+  }
+</style>

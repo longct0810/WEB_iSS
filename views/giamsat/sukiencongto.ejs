@@ -1,0 +1,237 @@
+<%- include('../head.ejs') %>
+
+    <%- include('../preloader.ejs') %>
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+        Nav header start
+    ***********************************-->
+            <%- include('../navheader.ejs') %>
+                <!--**********************************
+        Nav header end
+    ***********************************-->
+                <!--**********************************
+            Chat box start
+        ***********************************-->
+                <%- include('../chatbox.ejs') %>
+                    <!--**********************************
+            Chat box End
+        ***********************************-->
+                    <!--**********************************
+            Header start
+        ***********************************-->
+                    <%- include('../header.ejs') %>
+                        <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+                        <!--**********************************
+        Sidebar start
+    ***********************************-->
+                        <%- include('../dlanav.ejs') %>
+                            <!--**********************************
+        Sidebar end
+    ***********************************-->
+                            <!--**********************************
+            Content body start
+        ***********************************-->
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="default-tab">
+                                                <ul class="nav nav-tabs" role="tablist">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" data-bs-toggle="tab"
+                                                            href="#sukientucthoi"><i
+                                                                class="flaticon-381-calendar-1 me-2"></i> Sự kiện tức
+                                                            thời</a>
+                                                    </li>
+
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-bs-toggle="tab" href="#sukiencongto"><i
+                                                                class="flaticon-381-calendar-1 me-2"></i>Sự kiện công
+                                                            tơ</a>
+                                                    </li>
+
+                                                </ul>
+                                                <div class="tab-content">
+                                                    <div class="tab-pane tab_giamsat fade  show active"
+                                                        id="sukientucthoi">
+                                                        <div class="row" style="margin-top: 25px;">
+                                                            <table id="tbl_sukientucthoi"
+                                                                class="table table-sk table-bordered table-striped table-hover table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="text-center">STT</th>
+                                                                        <th class="text-center">Tên</th>
+                                                                        <th class="text-center">ID</th>
+                                                                        <th class="text-center">Sự kiện</th>
+                                                                        <th class="text-center">Thời gian bắt đầu
+                                                                        </th>
+                                                                        <th class="text-center">Tên Trạm</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                                <tfoot>
+                                                                    <tr></tr>
+                                                                </tfoot>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade tab_giamsat" id="sukiencongto"
+                                                        role="tabpanel">
+                                                        <div class="pt-4">
+                                                            <div class="row">
+
+                                                                <div class="col-lg-4 col-xl-3 ngay"
+                                                                    style="padding: 10px; ">
+                                                                    <div class="input-group input-primary">
+                                                                        <span class="input-group-text"> Từ ngày</span>
+                                                                        <input name="datepicker"
+                                                                            class="datepicker-default form-control"
+                                                                            id="txttungay">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4 col-xl-3" style="padding: 10px; ">
+                                                                    <div class="input-group input-primary">
+                                                                        <span class="input-group-text"> Đến ngày</span>
+                                                                        <input name="datepicker"
+                                                                            class="datepicker-default form-control"
+                                                                            id="txtdenngay">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-8 col-xl-6" style="padding: 10px; ">
+                                                                    <div class="input-group input-primary">
+                                                                        <span class="input-group-text">Chọn loại cảnh
+                                                                            báo</span>
+                                                                        <select class="js-example-disabled-multi"
+                                                                            id="cbloaicanhbao" multiple="multiple">
+                                                                            <option value="-1">Lựa chọn</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-3 col-xl-2" style="padding: 10px; ">
+                                                                    <div class="input-group">
+                                                                        <button class="btn btn-primary" type="button"
+                                                                            id="btnthuchien_skct"><i
+                                                                                class="flaticon-013-checkmark"></i>
+                                                                            Thực hiện</button>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="row">
+                                                                <table id="tbl_chitietsukienct"
+                                                                    class="table table-sk table-bordered table-striped table-hover table-bordered">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th class="text-center">STT</th>
+                                                                            <th class="text-center">Mã điểm đo</th>
+                                                                            <th class="text-center">Tên điểm đo</th>
+                                                                            <th class="text-center">Số công tơ</th>
+                                                                            <th class="text-center">Sự kiện</th>
+                                                                            <th class="text-center">Pha</th>
+                                                                            <th class="text-center">Thời gian bắt đầu
+                                                                            </th>
+                                                                            <th class="text-center">Thời gian kết thúc
+                                                                            </th>
+                                                                            <th class="text-center">Số lần</th>
+                                                                            <th class="text-center">Tên Trạm</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody></tbody>
+                                                                    <tfoot>
+                                                                        <tr></tr>
+                                                                    </tfoot>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+        </div>
+        <!--**********************************
+        Content body end
+    ***********************************-->
+        <%- include('../footer.ejs') %>
+            </div>
+            <%- include('../script.ejs') %>
+                <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                <script src="./vendor/select2/js/select2.full.min.js"></script>
+                <script src="./javascripts/plugins-init/select2-init.js"></script>
+                <script src="./vendor/pickadate/picker.js"></script>
+                <script src="./vendor/pickadate/picker.time.js"></script>
+                <script src="./vendor/pickadate/picker.date.js"></script>
+                <script src="./vendor/toastr/js/toastr.min.js"></script>
+                <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                <script src="../javascripts/fnTime.js"></script>
+                <!-- DataTables Buttons JS -->
+                <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+                <script src="./vendor/datatables/js/jszip.min.js"></script>
+                <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+                <script src="../javascripts/giamsat/sukiencongto.js"></script>
+
+                <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+                <style type="text/css">
+                    .table-container {
+                        width: 100%;
+                        overflow-x: auto;
+                    }
+
+                    table.dataTable {
+                        width: 100% !important;
+                    }
+
+                    .dataTables_scroll {
+                        overflow: auto;
+                        width: 100%;
+                    }
+
+
+                    .select2-container {
+                        width: 66% !important;
+                    }
+
+                    .select2-container .select2-selection--multiple {
+                        border-radius: 0;
+                    }
+
+                    .table-sk thead th,
+                    .table-sk thead td {
+                        border: 1px solid #242121 !important;
+                        /* border-top: 1px solid #111; */
+                        text-align: center;
+                        vertical-align: middle;
+                        /* background-color: #111 !important */
+                    }
+
+                    .table-sk tbody th,
+                    .table-sk tbody td {
+                        border-bottom: 1px solid #242121;
+                    }
+
+                    .table-sk> :not(:first-child) {
+                        border-top: none !important;
+                    }
+
+                    .table-sk tbody tr {
+                        background-color: transparent !important
+                    }
+                </style>

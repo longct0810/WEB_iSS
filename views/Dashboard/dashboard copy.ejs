@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="vi">
+<!--
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    <link rel='stylesheet' href='./stylesheets/style.css' />
+
+ <link rel="stylesheet" href="./vendor/select2/css/select2.min.css">
+<link rel="stylesheet" href="/vendor/jquery-nice-select/css/nice-select.css">
+<link rel="stylesheet" href="/vendor/nouislider/nouislider.min.css">
+ 
+<link rel='stylesheet' href='./stylesheets/style.css' />
+<link rel="stylesheet" href="./stylesheets/style.app.css" />
+<link rel="stylesheet" href="./stylesheets/menu-style.css" />
+<link rel="stylesheet" href="./vendor/pickadate/themes/default.css">
+<link rel="stylesheet" href="./vendor/pickadate/themes/default.date.css">
+<link rel="stylesheet" href="./vendor/zTree/css/zTreeStyle/zTreeStyle.css" />
+<link rel="stylesheet" href="./vendor/zTree/css/awesomeStyle/awesome.css" />
+<link rel="stylesheet" href="./vendor/datatables/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css"> -->
+
+
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="/css/dashboard.css" />
+</head>
+
+
+
+<body>
+  <div class="app-shell">
+    <%- include('../menu_form/sidebar') %>
+      <main class="main">
+    <%- include('../menu_form/topbar') %>
+          <section class="metric-grid">
+            <article class="metric green"><span>ĐIỆN ÁP (V)</span>
+              <table class="voltage-table" style="width: 100%; text-align: center; margin-top: 8px;">
+                <tr>
+                  <td><span class="phase_header phaseA">UA</span> </td>
+                  <td><span class="phase_header phaseB">UB</span> </td>
+                  <td><span class="phase_header phaseC">UC</span> </td>
+                </tr>
+                <tr>
+                  <td><span id="CONGTOTONG_UA" class="phase phaseA blink-glow"></span> </td>
+                  <td><span id="CONGTOTONG_UB" class="phase phaseB blink-glow"></span> </td>
+                  <td><span id="CONGTOTONG_UC" class="phase phaseC blink-glow"></span> </td>
+                </tr>
+              </table>
+            </article>
+            <article class="metric purple"><span>DÒNG ĐIỆN(A)</span>
+              <table class="voltage-table" style="width: 100%; text-align: center; margin-top: 8px;">
+                <tr>
+                  <td><span class="phase_header phaseA">IA</span> </td>
+                  <td><span class="phase_header phaseB">IB</span> </td>
+                  <td><span class="phase_header phaseC">IC</span> </td>
+                </tr>
+                <tr>
+                  <td><span id="CONGTOTONG_IA" class="phase phaseA blink-glow"></span> </td>
+                  <td><span id="CONGTOTONG_IB" class="phase phaseB blink-glow"></span> </td>
+                  <td><span id="CONGTOTONG_IC" class="phase phaseC blink-glow"></span> </td>
+                </tr>
+              </table>
+            </article>
+            <article class="metric blue"><span>CÔNG SUẤT TÁC DỤNG</span>
+              <table class="voltage-table" style="width: 100%; text-align: center; margin-top: 8px;">
+                <tr>
+                  <td><span class="phase_header phaseA">UA</span> </td>
+                  <td><span class="phase_header phaseB">UB</span> </td>
+                  <td><span class="phase_header phaseC">UC</span> </td>
+                </tr> 
+                <tr>
+                  <td><span id="CONGTOTONG_PA" class="phase phaseA blink-glow"></span> </td>
+                  <td><span id="CONGTOTONG_PB" class="phase phaseB blink-glow"></span> </td>
+                  <td><span id="CONGTOTONG_PC" class="phase phaseC blink-glow"></span> </td>
+                </tr> 
+              </table>
+            </article>
+            <article class="metric amber"><span>TẦN SỐ</span> 
+              
+            </article>
+            <article class="metric cyan"><span>HỆ SỐ CÔNG SUẤT</span>
+              <table class="voltage-table" style="width: 100%; text-align: center; margin-top: 8px;">
+                <tr>
+                  <td><span class="phase_header phaseA">A</span> </td>
+                  <td><span class="phase_header phaseB">B</span> </td>
+                  <td><span class="phase_header phaseC">C</span> </td>
+                </tr> 
+                <tr>
+                  <td><span id="CONGTOTONG_COSA" class="phase phaseA blink-glow"></span> </td>
+                  <td><span id="CONGTOTONG_COSB" class="phase phaseB blink-glow"></span> </td>
+                  <td><span id="CONGTOTONG_COSC" class="phase phaseC blink-glow"></span> </td>
+                </tr> 
+              </table>
+            </article>
+          </section>
+
+          <section class="content-grid">
+            <div class="panel diagram-panel">
+              <div class="panel-head">
+                <h3>SƠ ĐỒ MỘT SỢI <span class="live-pill">IEC104 LIVE</span></h3>
+                <!-- <div class="diagram-tools">
+                  <button type="button" id="zoomOut">−</button>
+                  <button type="button" id="zoomReset">100%</button>
+                  <button type="button" id="zoomIn">+</button>
+                  <button type="button" id="fitDiagram">Fit</button>
+                  <button type="button" id="fullScreen">⛶</button>
+                </div> -->
+              </div>
+              <!-- <div class="single-line svg-stage" id="diagramViewport">
+                <div class="grid-glow"></div>
+                <img id="diagramImage" class="single-line-svg" src="/assets/001001002-tu-t2.svg" alt="Sơ đồ một sợi trạm biến áp" draggable="false" />
+                <div class="zoom-hint">Cuộn chuột để zoom · Giữ chuột trái để pan</div>
+              </div> -->
+              <div id="SVGViewport" style="margin-top: 5px;">
+                <div class="svg-float-toolbar collapsed" id="svgFloatToolbar">
+                  <button id="btnToggleToolbar" class="toolbar-toggle" title="Mở/ẩn công cụ">
+                    <i class="fa fa-cog"></i>
+                  </button>
+
+                  <div class="toolbar-actions">
+                    <button id="btnSvgZoomIn" title="Phóng to">
+                      <i class="fa fa-plus"></i>
+                    </button>
+
+                    <button id="btnSvgZoomOut" title="Thu nhỏ">
+                      <i class="fa fa-minus"></i>
+                    </button>
+
+                    <button id="btnSvgReset" title="Reset">
+                      <i class="fa fa-retweet"></i>
+                    </button>
+
+                    <button id="btnSvgFit" title="Vừa màn hình">
+                      <i class="fa fa-expand"></i>
+                    </button>
+
+                    <button id="btnSvgBack" title="Quay lại">
+                      <i class="fa fa-arrow-left"></i>
+                    </button>
+
+                    <button id="btnSvgBg" title="Đổi nền">
+                      <i class="fa fa-adjust"></i>
+                    </button>
+
+                    <button id="btnSvgTheme" title="Tùy chỉnh màu">
+                      <i class="fa fa-paint-brush"></i>
+                    </button>
+                  </div>
+                </div>
+                <div id="svgThemePanel" class="svg-theme-panel hidden">
+                  <div class="theme-panel-title">Tùy chỉnh màu SVG</div>
+
+                  <div class="theme-row">
+                    <label>Dây điện</label>
+                    <input type="color" data-svg-group="daydien" value="#8b0000">
+                  </div>
+
+                  <div class="theme-row">
+                    <label>Text</label>
+                    <input type="color" data-svg-group="gtext" value="#006d77">
+                  </div>
+
+                  <div class="theme-row">
+                    <label>Khung</label>
+                    <input type="color" data-svg-group="khung" value="#006d77">
+                  </div>
+
+                  <div class="theme-row">
+                    <label>Bảng tên</label>
+                    <input type="color" data-svg-group="bangten" value="#ffffff">
+                  </div>
+
+                  <button type="button" id="btnResetSvgTheme">Reset màu</button>
+                </div>
+                <div id="SVGContainer"></div>
+              </div>
+
+
+
+
+            </div>
+
+            <aside class="right-stack">
+              <div class="panel alarms">
+                <div class="panel-head">
+                  <h3>CẢNH BÁO - SỰ KIỆN <b>(5)</b></h3><a>Xem tất cả</a>
+                </div>
+                <div class="alarm"><i>
+
+                  </i><time>
+
+                  </time>
+                  <p>
+                  </p>
+                </div>
+              </div>
+              <div class="panel device-state">
+                <div class="panel-head">
+                  <h3>TRẠNG THÁI THIẾT BỊ</h3><a>Xem tất cả</a>
+                </div>
+                <div class="donut"><span>Tổng số<br><b>38</b></span></div>
+                <ul>
+                  <li>Hoạt động <b>32 (84%)</b></li>
+                  <li>Cảnh báo <b>3 (8%)</b></li>
+                  <li>Sự cố <b>1 (3%)</b></li>
+                  <li>Ngoại tuyến <b>2 (5%)</b></li>
+                </ul>
+              </div>
+              <div class="panel env">
+                <h3>ĐIỀU KIỆN MÔI TRƯỜNG</h3>
+                <div><b>28.7°C</b><span>Nhiệt độ</span></div>
+                <div><b>65%</b><span>Độ ẩm</span></div>
+                <div><b>1.2 m/s</b><span>Tốc độ gió</span></div>
+              </div>
+            </aside>
+          </section>
+
+          <section class="bottom-grid">
+            <div class="panel chart-card">
+              <h3>BIỂU ĐỒ ĐIỆN ÁP 110kV</h3><canvas id="voltageChart"></canvas>
+            </div>
+            <div class="panel chart-card">
+              <h3>BIỂU ĐỒ DÒNG ĐIỆN</h3><canvas id="currentChart"></canvas>
+            </div>
+            <div class="panel table-card">
+              <h3>BẢNG THỐNG KÊ PHỤ TẢI 22kV</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>Tên phụ tải</th>
+                    <th>U(kV)</th>
+                    <th>I(A)</th>
+                    <th>P(MW)</th>
+                    <th>Trạng thái</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+              </table>
+            </div>
+            <div class="panel quality">
+              <h3>CHẤT LƯỢNG ĐIỆN NĂNG</h3>
+              <div class="gauge"><b>THD-U</b><span>1.32%</span><em>Tốt</em></div>
+              <div class="gauge"><b>THD-I</b><span>2.18%</span><em>Tốt</em></div>
+              <div class="gauge"><b>Mất cân bằng</b><span>0.85%</span><em>Tốt</em></div>
+            </div>
+          </section>
+      </main>
+  </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="../javascripts/dashboard/dashboard.js"></script>
+  <script src="./javascripts/dashboard/dashboard_sodomotsoi copy.js"></script>
+
+
+
+</body>
+
+</html>
+
+
+<style type="text/css">
+  html,
+  /* body {
+    height: 100%;
+    overflow: hidden !important;
+  } */
+  body {
+    min-height: 100%;
+    height: auto;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  .app-shell {
+    min-height: 100vh;
+  }
+
+  #SVGWrapper {
+    height: calc(100vh - 70px);
+    overflow: hidden;
+    padding: 0 10px 10px;
+  }
+
+  #SVGViewport {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden !important;
+    border-radius: 8px;
+    background: #f8f9fa;
+  }
+
+  #SVGViewport.bg-dark-svg {
+    background: #1e1e1e;
+  }
+
+  #SVGViewport.bg-blue-svg {
+    background: #eaf4ff;
+  }
+
+  #SVGViewport.bg-black-svg {
+    background: #000;
+  }
+
+  #SVGViewport.bg-dark-svg svg #khung rect {
+    stroke: #fff !important;
+  }
+
+
+  #SVGViewport.bg-dark-svg svg #khung #bangten rect {
+    fill: #0283fc !important;
+    stroke: #fff !important;
+  }
+
+  #SVGViewport.bg-dark-svg svg #gtext path {
+    stroke: #fff !important;
+  }
+
+
+  #SVGViewport.bg-dark-svg svg #daydien path {
+    stroke: #06ebdf !important;
+    /* stroke-width: 1 !important;
+                    stroke-dasharray: 5, 10 !important;
+                    animation: electricFlow .5s linear infinite;
+                    filter: drop-shadow(0 0 1px #d30be6) drop-shadow(0 0 1px #d80bac); */
+  }
+
+  #SVGViewport.bg-dark-svg svg #daydien rect {
+    fill: #06ebdf !important;
+    stroke: #06ebdf !important;
+  }
+
+  @keyframes electricFlow {
+    from {
+      stroke-dashoffset: 0;
+    }
+
+    to {
+      stroke-dashoffset: -40;
+    }
+  }
+
+  #SVGContainer {
+    width: 100%;
+    height: 100%;
+  }
+
+  #SVGContainer svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: grab;
+  }
+
+  #SVGContainer svg:active {
+    cursor: grabbing;
+  }
+
+  /* ===== Floating toolbar góc trái SVG ===== */
+  .svg-float-toolbar {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 6px;
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  }
+
+  .svg-float-toolbar button {
+    width: 34px;
+    height: 34px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: #f3f4f6;
+    color: #111827;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    transition: all 0.18s ease;
+  }
+
+  .svg-float-toolbar button:hover {
+    background: #14b8a6;
+    color: #fff;
+  }
+
+  .svg-float-toolbar button:active {
+    transform: scale(0.95);
+  }
+
+  .svg-float-toolbar i {
+    pointer-events: none;
+  }
+
+  .svg-float-toolbar .toolbar-toggle {
+    background: #14b8a6;
+    color: #fff;
+  }
+
+  .svg-float-toolbar .toolbar-actions {
+    display: flex;
+    gap: 6px;
+
+    max-width: 260px;
+    opacity: 1;
+    overflow: hidden;
+
+    transition: max-width 0.22s ease, opacity 0.18s ease;
+  }
+
+  .svg-float-toolbar.collapsed .toolbar-actions {
+    max-width: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  #SVGViewport.bg-dark-svg .svg-float-toolbar,
+  #SVGViewport.bg-black-svg .svg-float-toolbar {
+    background: rgba(25, 25, 25, 0.9);
+  }
+
+  #SVGViewport.bg-dark-svg .svg-float-toolbar button,
+  #SVGViewport.bg-black-svg .svg-float-toolbar button {
+    background: #333;
+    color: #eee;
+  }
+
+  #SVGViewport.bg-dark-svg .svg-float-toolbar .toolbar-toggle,
+  #SVGViewport.bg-black-svg .svg-float-toolbar .toolbar-toggle {
+    background: #14b8a6;
+    color: #fff;
+  }
+
+  #SVGViewport:fullscreen {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  #SVGViewport:-webkit-full-screen {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* nền trong fullscreen */
+  #SVGViewport.bg-dark-svg:fullscreen,
+  #SVGViewport.bg-dark-svg:-webkit-full-screen {
+    background: #1e1e1e !important;
+  }
+
+  #SVGViewport.bg-blue-svg:fullscreen,
+  #SVGViewport.bg-blue-svg:-webkit-full-screen {
+    background: #eaf4ff !important;
+  }
+
+  #SVGViewport.bg-black-svg:fullscreen,
+  #SVGViewport.bg-black-svg:-webkit-full-screen {
+    background: #000 !important;
+  }
+
+  #SVGViewport:not(.bg-dark-svg):not(.bg-blue-svg):not(.bg-black-svg):fullscreen,
+  #SVGViewport:not(.bg-dark-svg):not(.bg-blue-svg):not(.bg-black-svg):-webkit-full-screen {
+    background: #f8f9fa !important;
+  }
+
+  #line-layer>path {
+    stroke: #fff;
+  }
+
+  .bg-green {
+    fill: #00c853 !important;
+  }
+
+  .bg-red {
+    fill: #ff3d00 !important;
+  }
+
+  .bg-yellow {
+    fill: #ffab00 !important;
+  }
+
+  @keyframes blink {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.2;
+    }
+  }
+
+  .blink {
+    animation: blink 1s linear infinite;
+  }
+
+  .blink-glow {
+    animation: blink-glow 3s linear infinite;
+    filter: drop-shadow(0 0 1px currentColor);
+  }
+
+  @keyframes blink-glow {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  /* CPANEL */
+  .svg-theme-panel {
+    position: absolute;
+    top: 58px;
+    left: 12px;
+    z-index: 35;
+
+    width: 245px;
+    padding: 12px;
+
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.18);
+  }
+
+  .svg-theme-panel.hidden {
+    display: none;
+  }
+
+  .theme-panel-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: #1f2937;
+    margin-bottom: 10px;
+  }
+
+  .theme-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .theme-row label {
+    font-size: 13px;
+    color: #374151;
+  }
+
+  .theme-row input[type="color"] {
+    width: 42px;
+    height: 30px;
+    padding: 0;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  #btnResetSvgTheme {
+    width: 100%;
+    margin-top: 8px;
+    height: 34px;
+    border: 0;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  #btnResetSvgTheme:hover {
+    background: #1d4ed8;
+  }
+
+  #btnSvgTheme.active {
+    background: #2563eb;
+    color: #fff;
+  }
+
+  .phase {
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    color: #111827;
+    font-size: 25px !important;
+  }
+
+  .phase_header {
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    color: #111827;
+    font-size: 20px !important;
+    font-weight: normal;
+  }
+
+  .phase.phaseA, .phase_header.phaseA {
+    color: #ffb020;
+  }
+
+  .phase.phaseB, .phase_header.phaseB {
+    color: #10b981;
+  }
+
+  .phase.phaseC, .phase_header.phaseC {
+    color: #ef4444;
+  }
+</style>

@@ -1,0 +1,139 @@
+<%- include('../head.ejs') %>
+
+    <%- include('../preloader.ejs') %>
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+        Nav header start
+    ***********************************-->
+            <%- include('../navheader.ejs') %>
+                <!--**********************************
+        Nav header end
+    ***********************************-->
+                <!--**********************************
+            Chat box start
+        ***********************************-->
+                <%- include('../chatbox.ejs') %>
+                    <!--**********************************
+            Chat box End
+        ***********************************-->
+                    <!--**********************************
+            Header start
+        ***********************************-->
+                    <%- include('../header.ejs') %>
+                        <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+                        <!--**********************************
+        Sidebar start
+    ***********************************-->
+                        <%- include('../dlanav.ejs') %>
+                            <!--**********************************
+        Sidebar end
+    ***********************************-->
+                            <!--**********************************
+            Content body start
+        ***********************************-->
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+
+                                    <div class="row">
+                                        <div class="col-lg-12 card">
+                                            <div class="profile card-body px-3 pt-3 pb-0">
+                                                <div class="row">
+                                                    <div class="tab-content">
+                                                        <div id="type_nhadat-1" class="tab-pane active">
+
+                                                            <div class="row">
+
+                                                                <div class="col-lg-3 col-xl-3 ngay"
+                                                                    style="padding: 10px; ">
+                                                                    <div class="input-group input-primary">
+                                                                        <span class="input-group-text"> Ngày</span>
+                                                                        <input name="datepicker"
+                                                                            class="datepicker-default form-control"
+                                                                            id="txtngay">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-3" style="padding: 10px; ">
+                                                                    <div class="input-group">
+                                                                        <button class="btn btn-primary" type="button"
+                                                                            id="btnthuchien_sh"><i
+                                                                                class="flaticon-013-checkmark"></i>
+                                                                            Thực hiện</button>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xl-12 col-lg-12 col-sm-12">
+                                                                    <div class="card">
+                                                                        <div class="card-header">
+                                                                            <h4 class="card-title">THD Điện áp</h4>
+                                                                        </div>
+                                                                        <div class="card-body" id="chartLineChart">
+                                                                            <canvas id="myLineChart"
+                                                                                style="height: 300px;"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-xl-12 col-lg-12 col-sm-12">
+                                                                    <div class="card">
+                                                                        <div class="card-header">
+                                                                            <h4 class="card-title">THD Dòng điện</h4>
+                                                                        </div>
+                                                                        <div class="card-body" id="chartLineChart_I">
+                                                                            <canvas id="myLineChart_I"
+                                                                                style="height: 300px;"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+        </div>
+        <!--**********************************
+        Content body end
+    ***********************************-->
+        <%- include('../footer.ejs') %>
+            </div>
+            <%- include('../script.ejs') %>
+                <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                <script src="./vendor/select2/js/select2.full.min.js"></script>
+                <script src="./javascripts/plugins-init/select2-init.js"></script>
+                <script src="./vendor/pickadate/picker.js"></script>
+                <script src="./vendor/pickadate/picker.time.js"></script>
+                <script src="./vendor/pickadate/picker.date.js"></script>
+                <script src="./vendor/toastr/js/toastr.min.js"></script>
+                <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                <script src="../javascripts/fnTime.js"></script>
+                <script src="vendor/chart.js/Chart.bundle.min.js"></script>
+
+                <script src="../javascripts/giamsat/songhai.js"></script>
+
+                <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+
+                <style type="text/css">
+                    .table thead th {
+                        color: #ffffff;
+                    }
+
+                    .chartjs-tooltip {
+                        max-height: none !important;
+                        overflow: visible !important;
+                        white-space: pre-line !important;
+                    }
+                </style>

@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="box-default">
+        <div class="box-body">
+            <div class="row align-items-center">
+                <div class="col-lg-2" style="padding: 10px; ">
+                    <div class="input-group input-primary">
+                        <span class="input-group-text">Từ ngày</span>
+                        <input name="datepicker" class="datepicker-default form-control" id="txttungay_pmax">
+
+                    </div>
+                </div>
+                <div class="col-lg-2" style="padding: 10px; ">
+                    <div class="input-group input-primary">
+                        <span class="input-group-text">Đến ngày</span>
+                        <input name="datepicker" class="datepicker-default form-control" id="txtdenngay_pmax">
+
+                    </div>
+                </div>
+                <div class="col-lg-2" style="padding: 10px; ">
+                    <div class="input-group input-primary">
+                        <span class="input-group-text"> Số công tơ</span>
+                        <select class="form-control" id="slsocongto_pmax">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-2" style="padding: 10px; ">
+                    <div class="input-group input-primary">
+                        <span class="input-group-text">Xem</span>
+                        <select class="form-control" id="slloaichiso_ct_pmax">
+                            <option value="1">Theo giá trị tức thời</option>
+                            <option value="2">Theo giá trị chốt ngày</option>
+                            <option value="3">Theo giá trị chốt tháng</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-lg-2">
+                    <input type="hidden" id="hdMeterid_pmax" />
+                    <input type="hidden" id="hdloaicongto_pmax" />
+                    <div class="input-group">
+                        <button class="btn btn-primary" type="button" id="btnthuchien_ct_pmax"><i
+                                class="flaticon-013-checkmark"></i>
+                            Thực hiện</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+                <table class="table table-bordered table-striped table-hover table-bordered dataTable"
+                    id="tbl_xemchitiet_pmax">
+                    <thead class="bg-gray-active">
+                        <tr>
+                            <th class="text-center">STT</th>
+                            <th class="text-center" style="display:none">Mã khách hàng</th>
+                            <th class="text-center" style="display:none">Tên khách hàng</th>
+                            <th class="text-center">Loại công tơ</th>
+                            <th class="text-center">Số công tơ</th>
+                            <th class="text-center">Loại công tơ</th>
+                            <th class="text-center">P Max giao (kW)</th>
+                            <th class="text-center">Thời điểm P Max giao</th>
+                            <th class="text-center">P Max nhận (kW)</th>
+                            <th class="text-center">Thời điểm P Max nhận</th>
+                            <th class="text-center">Ngày</th>
+                        </tr>
+
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.box-body -->
+    </div>
+</div>

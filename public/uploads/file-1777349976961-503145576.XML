@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?><NewDataSet>
+  <xs:schema xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema" id="NewDataSet">
+    <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="NewDataSet">
+      <xs:complexType>
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+          <xs:element name="Table1">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" name="MA_NVGCS" type="xs:string"/>
+                <xs:element minOccurs="0" name="MA_KHANG" type="xs:string"/>
+                <xs:element minOccurs="0" name="MA_DDO" type="xs:string"/>
+                <xs:element minOccurs="0" name="MA_DVIQLY" type="xs:string"/>
+                <xs:element minOccurs="0" name="MA_GC" type="xs:string"/>
+                <xs:element minOccurs="0" name="MA_QUYEN" type="xs:string"/>
+                <xs:element minOccurs="0" name="MA_TRAM" type="xs:string"/>
+                <xs:element minOccurs="0" name="BOCSO_ID" type="xs:long"/>
+                <xs:element minOccurs="0" name="LOAI_BCS" type="xs:string"/>
+                <xs:element minOccurs="0" name="LOAI_CS" type="xs:string"/>
+                <xs:element minOccurs="0" name="TEN_KHANG" type="xs:string"/>
+                <xs:element minOccurs="0" name="DIA_CHI" type="xs:string"/>
+                <xs:element minOccurs="0" name="MA_NN" type="xs:string"/>
+                <xs:element minOccurs="0" name="SO_HO" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="MA_CTO" type="xs:string"/>
+                <xs:element minOccurs="0" name="SERY_CTO" type="xs:string"/>
+                <xs:element minOccurs="0" name="HSN" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="CS_CU" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="TTR_CU" type="xs:string"/>
+                <xs:element minOccurs="0" name="SL_CU" type="xs:long"/>
+                <xs:element minOccurs="0" name="SL_TTIEP" type="xs:int"/>
+                <xs:element minOccurs="0" msdata:DateTimeMode="Unspecified" name="NGAY_CU" type="xs:dateTime"/>
+                <xs:element minOccurs="0" name="CS_MOI" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="TTR_MOI" type="xs:string"/>
+                <xs:element minOccurs="0" name="SL_MOI" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="CHUOI_GIA" type="xs:string"/>
+                <xs:element minOccurs="0" name="KY" type="xs:int"/>
+                <xs:element minOccurs="0" name="THANG" type="xs:int"/>
+                <xs:element minOccurs="0" name="NAM" type="xs:int"/>
+                <xs:element minOccurs="0" msdata:DateTimeMode="Unspecified" name="NGAY_MOI" type="xs:dateTime"/>
+                <xs:element minOccurs="0" name="NGUOI_GCS" type="xs:string"/>
+                <xs:element minOccurs="0" name="SL_THAO" type="xs:decimal"/>
+                <xs:element minOccurs="0" name="KIMUA_CSPK" type="xs:short"/>
+                <xs:element minOccurs="0" name="MA_COT" type="xs:string"/>
+                <xs:element minOccurs="0" name="SLUONG_1" type="xs:long"/>
+                <xs:element minOccurs="0" name="SLUONG_2" type="xs:long"/>
+                <xs:element minOccurs="0" name="SLUONG_3" type="xs:long"/>
+                <xs:element minOccurs="0" name="SO_HOM" type="xs:string"/>
+                <xs:element minOccurs="0" name="PMAX" type="xs:decimal"/>
+                <xs:element minOccurs="0" msdata:DateTimeMode="Unspecified" name="NGAY_PMAX" type="xs:dateTime"/>
+		<xs:element minOccurs="0" name="X" type="xs:string"/>
+		<xs:element minOccurs="0" name="Y" type="xs:string"/>
+		<xs:element minOccurs="0" name="Z" type="xs:string"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+<Table1>
+<MA_NVGCS>689</MA_NVGCS>
+<MA_KHANG>PA23HYHY38051</MA_KHANG>
+<MA_DDO>1E2-110</MA_DDO>
+<MA_DVIQLY>PA23HY</MA_DVIQLY>
+<MA_GC>001</MA_GC>
+<MA_QUYEN>HY380</MA_QUYEN>
+<MA_TRAM>PA23HYU40380</MA_TRAM>
+<BOCSO_ID>10017230289</BOCSO_ID>
+<LOAI_BCS>BT</LOAI_BCS>
+<LOAI_CS>DDK</LOAI_CS>
+<TEN_KHANG>Vũ Thị Hoa</TEN_KHANG>
+<DIA_CHI>Tập thể C.ty Đay, Phường Phố Hiến, Tỉnh Hưng Yên</DIA_CHI>
+<MA_NN/>
+<SO_HO>1.0</SO_HO>
+<MA_CTO>CP820262211996045</MA_CTO>
+<SERY_CTO>2211996045</SERY_CTO>
+<HSN>1.0</HSN>
+<CS_CU>0</CS_CU>
+<TTR_CU/>
+<SL_CU>104</SL_CU>
+<SL_TTIEP>0</SL_TTIEP>
+<NGAY_CU>2026-04-16T00:00:00</NGAY_CU>
+<CS_MOI>0</CS_MOI>
+<TTR_MOI> </TTR_MOI>
+<SL_MOI>0</SL_MOI>
+<CHUOI_GIA>BT: 100%*0-SHBT-A;CD: 100%*0-SHBT-A;TD: 100%*0-SHBT-A</CHUOI_GIA>
+<KY>1</KY>
+<THANG>4</THANG>
+<NAM>2026</NAM>
+<NGAY_MOI>2026-04-28T00:00:00</NGAY_MOI>
+<NGUOI_GCS>689 - Phạm Thị Hải Chiều</NGUOI_GCS>
+<SL_THAO>62</SL_THAO>
+<KIMUA_CSPK>0</KIMUA_CSPK>
+<MA_COT>1.1</MA_COT>
+<SLUONG_1>104</SLUONG_1>
+<SLUONG_2>71</SLUONG_2>
+<SLUONG_3>113</SLUONG_3>
+<SO_HOM>B010141</SO_HOM>
+<GIA_TRI_1>0</GIA_TRI_1>
+<GIA_TRI_2>0</GIA_TRI_2>
+<GIA_TRI_3>0</GIA_TRI_3>
+<PMAX>0</PMAX>
+<NGAY_PMAX>1900-01-01T00:00:00</NGAY_PMAX>
+<X/>
+<Y/>
+<Z/>
+</Table1>
+<Table1>
+<MA_NVGCS>689</MA_NVGCS>
+<MA_KHANG>PA23HYHY38051</MA_KHANG>
+<MA_DDO>1E2-110</MA_DDO>
+<MA_DVIQLY>PA23HY</MA_DVIQLY>
+<MA_GC>001</MA_GC>
+<MA_QUYEN>HY380</MA_QUYEN>
+<MA_TRAM>PA23HYU40380</MA_TRAM>
+<BOCSO_ID>10017230290</BOCSO_ID>
+<LOAI_BCS>CD</LOAI_BCS>
+<LOAI_CS>DDK</LOAI_CS>
+<TEN_KHANG>Vũ Thị Hoa</TEN_KHANG>
+<DIA_CHI>Tập thể C.ty Đay, Phường Phố Hiến, Tỉnh Hưng Yên</DIA_CHI>
+<MA_NN/>
+<SO_HO>1.0</SO_HO>
+<MA_CTO>CP820262211996045</MA_CTO>
+<SERY_CTO>2211996045</SERY_CTO>
+<HSN>1.0</HSN>
+<CS_CU>1</CS_CU>
+<TTR_CU/>
+<SL_CU>0</SL_CU>
+<SL_TTIEP>0</SL_TTIEP>
+<NGAY_CU>2026-04-16T00:00:00</NGAY_CU>
+<CS_MOI>0</CS_MOI>
+<TTR_MOI> </TTR_MOI>
+<SL_MOI>0</SL_MOI>
+<CHUOI_GIA>BT: 100%*0-SHBT-A;CD: 100%*0-SHBT-A;TD: 100%*0-SHBT-A</CHUOI_GIA>
+<KY>1</KY>
+<THANG>4</THANG>
+<NAM>2026</NAM>
+<NGAY_MOI>2026-04-28T00:00:00</NGAY_MOI>
+<NGUOI_GCS>689 - Phạm Thị Hải Chiều</NGUOI_GCS>
+<SL_THAO>0</SL_THAO>
+<KIMUA_CSPK>0</KIMUA_CSPK>
+<MA_COT>1.1</MA_COT>
+<SLUONG_1>0</SLUONG_1>
+<SLUONG_2>0</SLUONG_2>
+<SLUONG_3>0</SLUONG_3>
+<SO_HOM>B010141</SO_HOM>
+<GIA_TRI_1>0</GIA_TRI_1>
+<GIA_TRI_2>0</GIA_TRI_2>
+<GIA_TRI_3>0</GIA_TRI_3>
+<PMAX>0</PMAX>
+<NGAY_PMAX>1900-01-01T00:00:00</NGAY_PMAX>
+<X/>
+<Y/>
+<Z/>
+</Table1>
+<Table1>
+<MA_NVGCS>689</MA_NVGCS>
+<MA_KHANG>PA23HYHY38051</MA_KHANG>
+<MA_DDO>1E2-110</MA_DDO>
+<MA_DVIQLY>PA23HY</MA_DVIQLY>
+<MA_GC>001</MA_GC>
+<MA_QUYEN>HY380</MA_QUYEN>
+<MA_TRAM>PA23HYU40380</MA_TRAM>
+<BOCSO_ID>10017230291</BOCSO_ID>
+<LOAI_BCS>TD</LOAI_BCS>
+<LOAI_CS>DDK</LOAI_CS>
+<TEN_KHANG>Vũ Thị Hoa</TEN_KHANG>
+<DIA_CHI>Tập thể C.ty Đay, Phường Phố Hiến, Tỉnh Hưng Yên</DIA_CHI>
+<MA_NN/>
+<SO_HO>1.0</SO_HO>
+<MA_CTO>CP820262211996045</MA_CTO>
+<SERY_CTO>2211996045</SERY_CTO>
+<HSN>1.0</HSN>
+<CS_CU>0</CS_CU>
+<TTR_CU/>
+<SL_CU>0</SL_CU>
+<SL_TTIEP>0</SL_TTIEP>
+<NGAY_CU>2026-04-16T00:00:00</NGAY_CU>
+<CS_MOI>0</CS_MOI>
+<TTR_MOI> </TTR_MOI>
+<SL_MOI>0</SL_MOI>
+<CHUOI_GIA>BT: 100%*0-SHBT-A;CD: 100%*0-SHBT-A;TD: 100%*0-SHBT-A</CHUOI_GIA>
+<KY>1</KY>
+<THANG>4</THANG>
+<NAM>2026</NAM>
+<NGAY_MOI>2026-04-28T00:00:00</NGAY_MOI>
+<NGUOI_GCS>689 - Phạm Thị Hải Chiều</NGUOI_GCS>
+<SL_THAO>0</SL_THAO>
+<KIMUA_CSPK>0</KIMUA_CSPK>
+<MA_COT>1.1</MA_COT>
+<SLUONG_1>0</SLUONG_1>
+<SLUONG_2>0</SLUONG_2>
+<SLUONG_3>0</SLUONG_3>
+<SO_HOM>B010141</SO_HOM>
+<GIA_TRI_1>0</GIA_TRI_1>
+<GIA_TRI_2>0</GIA_TRI_2>
+<GIA_TRI_3>0</GIA_TRI_3>
+<PMAX>0</PMAX>
+<NGAY_PMAX>1900-01-01T00:00:00</NGAY_PMAX>
+<X/>
+<Y/>
+<Z/>
+</Table1>
+<Table1>
+<MA_NVGCS>689</MA_NVGCS>
+<MA_KHANG>PA23HYHY38051</MA_KHANG>
+<MA_DDO>1E2-110</MA_DDO>
+<MA_DVIQLY>PA23HY</MA_DVIQLY>
+<MA_GC>001</MA_GC>
+<MA_QUYEN>HY380</MA_QUYEN>
+<MA_TRAM>PA23HYU40380</MA_TRAM>
+<BOCSO_ID>10017230292</BOCSO_ID>
+<LOAI_BCS>SG</LOAI_BCS>
+<LOAI_CS>DDK</LOAI_CS>
+<TEN_KHANG>Vũ Thị Hoa</TEN_KHANG>
+<DIA_CHI>Tập thể C.ty Đay, Phường Phố Hiến, Tỉnh Hưng Yên</DIA_CHI>
+<MA_NN/>
+<SO_HO>1.0</SO_HO>
+<MA_CTO>CP820262211996045</MA_CTO>
+<SERY_CTO>2211996045</SERY_CTO>
+<HSN>1.0</HSN>
+<CS_CU>1</CS_CU>
+<TTR_CU/>
+<SL_CU>0</SL_CU>
+<SL_TTIEP>0</SL_TTIEP>
+<NGAY_CU>2026-04-16T00:00:00</NGAY_CU>
+<CS_MOI>0</CS_MOI>
+<TTR_MOI> </TTR_MOI>
+<SL_MOI>0</SL_MOI>
+<CHUOI_GIA>BT: 100%*0-SHBT-A;CD: 100%*0-SHBT-A;TD: 100%*0-SHBT-A</CHUOI_GIA>
+<KY>1</KY>
+<THANG>4</THANG>
+<NAM>2026</NAM>
+<NGAY_MOI>2026-04-28T00:00:00</NGAY_MOI>
+<NGUOI_GCS>689 - Phạm Thị Hải Chiều</NGUOI_GCS>
+<SL_THAO>0</SL_THAO>
+<KIMUA_CSPK>0</KIMUA_CSPK>
+<MA_COT>1.1</MA_COT>
+<SLUONG_1>0</SLUONG_1>
+<SLUONG_2>0</SLUONG_2>
+<SLUONG_3>0</SLUONG_3>
+<SO_HOM>B010141</SO_HOM>
+<GIA_TRI_1>0</GIA_TRI_1>
+<GIA_TRI_2>0</GIA_TRI_2>
+<GIA_TRI_3>0</GIA_TRI_3>
+<PMAX>0</PMAX>
+<NGAY_PMAX>1900-01-01T00:00:00</NGAY_PMAX>
+<X/>
+<Y/>
+<Z/>
+</Table1>
+<Table1>
+<MA_NVGCS>689</MA_NVGCS>
+<MA_KHANG>PA23HYHY38051</MA_KHANG>
+<MA_DDO>1E2-110</MA_DDO>
+<MA_DVIQLY>PA23HY</MA_DVIQLY>
+<MA_GC>001</MA_GC>
+<MA_QUYEN>HY380</MA_QUYEN>
+<MA_TRAM>PA23HYU40380</MA_TRAM>
+<BOCSO_ID>10017230293</BOCSO_ID>
+<LOAI_BCS>VC</LOAI_BCS>
+<LOAI_CS>DDK</LOAI_CS>
+<TEN_KHANG>Vũ Thị Hoa</TEN_KHANG>
+<DIA_CHI>Tập thể C.ty Đay, Phường Phố Hiến, Tỉnh Hưng Yên</DIA_CHI>
+<MA_NN/>
+<SO_HO>1.0</SO_HO>
+<MA_CTO>CP820262211996045</MA_CTO>
+<SERY_CTO>2211996045</SERY_CTO>
+<HSN>1.0</HSN>
+<CS_CU>0</CS_CU>
+<TTR_CU/>
+<SL_CU>0</SL_CU>
+<SL_TTIEP>0</SL_TTIEP>
+<NGAY_CU>2026-04-16T00:00:00</NGAY_CU>
+<CS_MOI>0</CS_MOI>
+<TTR_MOI> </TTR_MOI>
+<SL_MOI>0</SL_MOI>
+<CHUOI_GIA>BT: 100%*0-SHBT-A;CD: 100%*0-SHBT-A;TD: 100%*0-SHBT-A</CHUOI_GIA>
+<KY>1</KY>
+<THANG>4</THANG>
+<NAM>2026</NAM>
+<NGAY_MOI>2026-04-28T00:00:00</NGAY_MOI>
+<NGUOI_GCS>689 - Phạm Thị Hải Chiều</NGUOI_GCS>
+<SL_THAO>0</SL_THAO>
+<KIMUA_CSPK>0</KIMUA_CSPK>
+<MA_COT>1.1</MA_COT>
+<SLUONG_1>0</SLUONG_1>
+<SLUONG_2>0</SLUONG_2>
+<SLUONG_3>0</SLUONG_3>
+<SO_HOM>B010141</SO_HOM>
+<GIA_TRI_1>0</GIA_TRI_1>
+<GIA_TRI_2>0</GIA_TRI_2>
+<GIA_TRI_3>0</GIA_TRI_3>
+<PMAX>0</PMAX>
+<NGAY_PMAX>1900-01-01T00:00:00</NGAY_PMAX>
+<X/>
+<Y/>
+<Z/>
+</Table1>
+
+</NewDataSet>

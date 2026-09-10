@@ -1,0 +1,205 @@
+<%- include('../head.ejs') %>
+
+  <%- include('../preloader.ejs') %>
+    <div id="main-wrapper" class=" ">
+
+      <!--**********************************
+        Nav header start
+    ***********************************-->
+      <%- include('../navheader.ejs') %>
+        <!--**********************************
+        Nav header end
+    ***********************************-->
+        <!--**********************************
+            Chat box start
+        ***********************************-->
+        <%- include('../chatbox.ejs') %>
+          <!--**********************************
+            Chat box End
+        ***********************************-->
+          <!--**********************************
+            Header start
+        ***********************************-->
+          <%- include('../header.ejs') %>
+            <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+            <!--**********************************
+        Sidebar start
+    ***********************************-->
+            <%- include('../dlanav.ejs') %>
+              <!--**********************************
+        Sidebar end
+    ***********************************-->
+              <!--**********************************
+            Content body start
+        ***********************************-->
+              <div class="content-body">
+                <!-- row -->
+                <div class="container-fluid">
+
+                  <!-- Main content -->
+                  <section class="content mt-2">
+
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="card card-primary card-outline">
+                          <div class="card-header">
+                            <div class="row">
+                              <div class="col-md-6 col-lg-6 col-6 col-xl-6">
+                                <label>Loại IOA </label>
+                                <select class="form-control" style="width: 100%;" id="cb_loaiIOA">
+                                  <option value="-1">--Chọn loại IOA--</option>
+                                  <option value="1">Trạng thái vận hành</option>
+                                  <option value="2">Cảnh báo</option>
+                                  <option value="3">Thông số vận hành</option>
+                                </select>
+                              </div>
+
+                              <!-- /.form-group -->
+                              <div class="col-md-6 col-lg-6 col-6 col-xl-6" style="margin-top: 31px;">
+                                <button type="button" class="btn btn-primary" id="btnSave_LoaiIOA">
+                                  Cập nhật loại IOA
+                                </button>
+                              </div>
+                            </div>
+
+                          </div>
+
+
+                        </div>
+                        <!-- /.col -->
+                      </div>
+                      <div class="col-md-4">
+                        <div class="card card-primary card-outline">
+                          <div class="card-header">
+                            <div class="row">
+                              <div class="col-md-6 col-lg-6 col-6 col-xl-6">
+                                <label>View IOA </label>
+                                <select class="form-control" style="width: 100%;" id="cb_view">
+                                  <option value="-1">--Chọn loại hiển thị--</option>
+                                  <option value="1">Hiển thị</option>
+                                  <option value="0">Không hiển thị</option>
+                                </select>
+                              </div>
+
+                              <!-- /.form-group -->
+                              <div class="col-md-6 col-lg-6 col-6 col-xl-6" style="margin-top: 31px;">
+                                <button type="button" class="btn btn-primary" id="btnSave_View">
+                                  Cập nhật View
+                                </button>
+                              </div>
+                            </div>
+
+                          </div>
+
+
+                        </div>
+                        <!-- /.col -->
+                      </div>
+                      <div class="col-md-4">
+                        <div class="card card-primary card-outline">
+                          <div class="card-header">
+                            <div class="row">
+                              <div class="col-md-6 col-lg-6 col-6 col-xl-6">
+                                <label>Link IOA </label>
+                                <select class="select2 form-control" style="width: 100%;" id="cb_link">
+                                </select>
+                              </div>
+
+                              <!-- /.form-group -->
+                              <div class="col-md-6 col-lg-6 col-6 col-xl-6" style="margin-top: 31px;">
+                                <button type="button" class="btn btn-primary" id="btnSave_link">
+                                  Cập nhật Link
+                                </button>
+                              </div>
+                            </div>
+
+                          </div>
+
+
+                        </div>
+                        <!-- /.col -->
+                      </div>
+                      <!-- ./row -->
+                    </div><!-- /.container-fluid -->
+                    <!-- Default box -->
+                    <div class="card card-info">
+                      <div class="card-header">
+                        <h3 class="card-title">Danh sách IOA</h3>
+                      </div>
+                      <!-- /.card-header -->
+                      <div class="card-body">
+
+                        <div class="row">
+                          <table id="content_advc"
+                            class="table table-bordered table-hover stripe row-border order-column dataTable no-footer">
+                            <thead>
+                              <tr>
+                                <th><input type="checkbox" name="checkll" id="checkall" /></th>
+                                <th> IOA </th>
+                                <th> Tên </th>
+                                <th> Đơn vị </th>
+                                <th> Thời gian </th>
+
+                              </tr>
+                            </thead>
+                            <tbody></tbody>
+                          </table>
+
+                        </div>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                  </section>
+                  <!-- /.content -->
+
+                </div>
+              </div>
+    </div>
+    <!--**********************************
+        Content body end
+    ***********************************-->
+    <%- include('../footer.ejs') %>
+      </div>
+      <%- include('../script.ejs') %>
+        <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+        <script src="./vendor/select2/js/select2.full.min.js"></script>
+        <script src="./javascripts/plugins-init/select2-init.js"></script>
+        <script src="./vendor/pickadate/picker.js"></script>
+        <script src="./vendor/pickadate/picker.time.js"></script>
+        <script src="./vendor/pickadate/picker.date.js"></script>
+        <script src="./vendor/toastr/js/toastr.min.js"></script>
+        <script src="./javascripts/plugins-init/toastr-init.js"></script>
+        <script src="../javascripts/fnTime.js"></script>
+        <!-- DataTables Buttons JS -->
+        <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+        <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+        <script src="./vendor/datatables/js/jszip.min.js"></script>
+        <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+        <!-- Chartist -->
+        <script src="../javascripts/jstree.min.js"></script>
+        <script src="../javascripts/quanly/quanlyioa.js"></script>
+
+        <link rel="stylesheet" href="./stylesheets/jstree.min.css">
+
+        <!-- <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css"> -->
+        <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+        <style type="text/css">
+          button.dt-button,
+          div.dt-button,
+          a.dt-button,
+          input.dt-button {
+            color: var(--bs-white);
+            background: var(--primary) !important;
+            border: 1px solid var(--primary);
+
+          }
+
+          .text-right {
+            text-align: right;
+          }
+        </style>

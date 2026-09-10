@@ -1,0 +1,58 @@
+<div class="modal fade" id="modal_DIEUKHIEN_NAPTIEN">
+    <div class="modal-dialog" style="width:80%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    NẠP TIỀN ĐIỆN
+                    <span id="id_overlay_nt"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div id="canhbao_box"></div>
+                </div>
+                <div class="row">
+
+
+                    <div class="form-group col-lg-5">
+                        <label>
+                            Sản lượng
+                            <span class="text-danger">(*)</span>
+                        </label>
+
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="id_sanluong" maxlength="5">
+                            <!--onkeypress="return isNumber(event)"-->
+                            <span class="input-group-addon"><i class="text-blue">kWh</i> </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group col-lg-12" id="ketqua">
+
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" onclick="ThucHien_LayMaToKen()" id="btnlaymatoken">Lấy
+                        mã token</button>
+                    <button type="button" class="btn btn-primary" onclick="ThucHien_NapTien()" id="btnNapTien"
+                        disabled>Nạp tiền</button>
+                    <button type="button" class="btn btn-primary" onclick="ThucHien_DocKetQua()" id="btndocketqua">Đọc
+                        kết quả</button>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+
+</div>

@@ -1,0 +1,131 @@
+<%- include('../head.ejs') %>
+
+    <%- include('../preloader.ejs') %>
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+        Nav header start
+    ***********************************-->
+            <%- include('../navheader.ejs') %>
+                <!--**********************************
+        Nav header end
+    ***********************************-->
+                <!--**********************************
+            Chat box start
+        ***********************************-->
+                <%- include('../chatbox.ejs') %>
+                    <!--**********************************
+            Chat box End
+        ***********************************-->
+                    <!--**********************************
+            Header start
+        ***********************************-->
+                    <%- include('../header.ejs') %>
+                        <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+                        <!--**********************************
+        Sidebar start
+    ***********************************-->
+                        <%- include('../dlanav.ejs') %>
+                            <!--**********************************
+        Sidebar end
+    ***********************************-->
+                            <!--**********************************
+            Content body start
+        ***********************************-->
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+
+                                    <div class="row">
+                                        <div class="col-lg-12 card">
+                                            <div class="profile card-body px-3 pt-3 pb-0">
+                                                <div class="row">
+                                                    <div class="col-lg-4  col-xl-3 ngay" style="padding: 10px; ">
+                                                        <div class="input-group input-primary">
+                                                            <span class="input-group-text"> Từ ngày </span>
+                                                            <input name="datepicker"
+                                                                class="datepicker-default form-control"
+                                                                id="txttungaydate">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-xl-3 ngay" style="padding: 10px; ">
+                                                        <div class="input-group input-primary">
+                                                            <span class="input-group-text"> Đến ngày</span>
+                                                            <input name="datepicker"
+                                                                class="datepicker-default form-control"
+                                                                id="txtdenngaydate">
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 " style="padding: 10px;">
+                                                        <div class="input-group input-primary">
+                                                            <span class="input-group-text">Chọn IOA</span>
+                                                            <select class="multi-select" id="cb_ioa"
+                                                                multiple="multiple">
+                                                                <option value="-1">Lựa chọn</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-2" style="padding: 10px; ">
+                                                        <div class="input-group">
+                                                            <button class="btn btn-primary" type="button"
+                                                                id="btnthuchien_bdpt"><i
+                                                                    class="flaticon-013-checkmark"></i>
+                                                                Thực hiện</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row" id="thongkesolieu">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+        </div>
+
+        <!--**********************************
+        Content body end
+    ***********************************-->
+        <%- include('../footer.ejs') %>
+            </div>
+            <%- include('../script.ejs') %>
+                <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                <script src="./vendor/select2/js/select2.full.min.js"></script>
+                <script src="./javascripts/plugins-init/select2-init.js"></script>
+                <script src="./vendor/pickadate/picker.js"></script>
+                <script src="./vendor/pickadate/picker.time.js"></script>
+                <script src="./vendor/pickadate/picker.date.js"></script>
+                <script src="./vendor/toastr/js/toastr.min.js"></script>
+                <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                <script src="../javascripts/fnTime.js"></script>
+                <!-- DataTables Buttons JS -->
+                <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+                <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+                <script src="./vendor/datatables/js/jszip.min.js"></script>
+                <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+                <script src="../javascripts/scada/scada_thongkesolieu.js"></script>
+                <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+                <style type="text/css">
+                    .select2-container {
+                        width: 78% !important;
+                    }
+
+                    .select2-container .select2-selection--multiple {
+                        border-radius: 0rem;
+                    }
+
+
+                    .text-right {
+                        text-align: right;
+                    }
+                </style>

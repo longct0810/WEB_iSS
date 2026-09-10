@@ -1,0 +1,154 @@
+<div class="header">
+    <div class="header-content">
+        <nav class="navbar navbar-expand">
+            <div class="collapse navbar-collapse">
+                <div class="header-left">
+                    <!-- Mobile header -->
+                    <div class="mobile-header-bar d-flex d-lg-none">
+                        <button type="button" id="btnMobileSidebar" class="mobile-sidebar-btn"
+                            aria-label="Mở sidebar trái">
+                            <i class="fas fa-bars"></i>
+                        </button>
+
+                        <div class="mobile-title"><%- title %></div>
+
+                        <button type="button" id="btnMobileMenu" class="mobile-menu-btn" aria-label="Mở menu phải">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                    </div>
+
+                    <!-- Desktop title -->
+                    <div class="dashboard_bar d-none d-lg-block">
+                        <%- title %>
+                    </div>
+                </div>
+
+                <!-- Desktop menu -->
+                <ul class="menu cf navbar-nav d-none d-lg-flex">
+                    <li class="pmsion-menu">
+                        <a href="#" class="has-arrow"><i class="flaticon-041-graph"></i> Giám sát</a>
+                        <ul class="submenu">
+                            <li><a href="/giamsat" class="pmsion-menu" data-machucnang="1">Sơ đồ 1 sợi</a></li>
+                            <li><a href="/giamsat_tba" class="pmsion-menu" data-machucnang="1">Giám sát TBA</a></li>
+                            <li><a href="/dienapthap" class="pmsion-menu" data-machucnang="1">Điện áp thấp</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="pmsion-menu">
+                        <a href="#" class="has-arrow"><i class="flaticon-025-dashboard"></i> Khai thác dữ liệu</a>
+                        <ul class="submenu">
+                            <li><a href="/chisocongto" class="pmsion-menu" data-machucnang="2">Chỉ số công tơ</a></li>
+                            <li><a href="/chisopmax" class="pmsion-menu" data-machucnang="3">Chỉ số PMAX</a></li>
+                            <li><a href="/thongsovanhanh" class="pmsion-menu" data-machucnang="4">Thông số vận hành</a>
+                            </li>
+                            <li><a href="/bieudophutai" class="pmsion-menu" data-machucnang="5">Biểu đồ phụ tải</a></li>
+                            <li><a href="/dulieusonghai" class="pmsion-menu" data-machucnang="6">Dữ liệu sóng hài</a>
+                            </li>
+                            <li><a href="/dieukhiendongcat" class="pmsion-menu" data-machucnang="7">Điều khiển đóng
+                                    cắt</a></li>
+                            <li><a href="/dieukhiendongcatdin" class="pmsion-menu" data-machucnang="26">Điều khiển đóng
+                                    cắt DIN</a></li>
+                            <li><a href="/ungtruocsanluong" class="pmsion-menu" data-machucnang="25">Ứng trước sản
+                                    lượng</a></li>
+                            <li><a href="/sukiencongto" class="pmsion-menu" data-machucnang="8">Sự kiện công tơ</a></li>
+                            <li><a href="/doctucthoi" class="pmsion-menu" data-machucnang="28">Đọc tức thời</a></li>
+                            <li><a href="/dongbocmis" class="pmsion-menu" data-machucnang="33">Đồng bộ CMIS</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="pmsion-menu">
+                        <a href="#" class="has-arrow"><i class="flaticon-086-star"></i> Dữ liệu SCADA</a>
+                        <ul class="submenu">
+                            <li><a href="/khaibaoioa" class="pmsion-menu" data-machucnang="27">Khai báo IOA</a></li>
+                            <li><a href="/thongkesolieu" class="pmsion-menu" data-machucnang="24">Thống kê số liệu</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="pmsion-menu">
+                        <a href="#" class="has-arrow"><i class="flaticon-013-checkmark"></i> Quản lý</a>
+                        <ul class="submenu">
+                            <li><a href="/quanlymodemdcu" class="pmsion-menu" data-machucnang="29">Quản lý Modem/DCU</a>
+                            </li>
+                            <li><a href="/thongkedangnhap" class="pmsion-menu" data-machucnang="30">Thống kê đăng
+                                    nhập</a></li>
+                            <li><a href="/quanlydanhmuc" class="pmsion-menu" data-machucnang="11">Quản lý danh mục</a>
+                            </li>
+                            <li><a href="/quanlydiemdo" class="pmsion-menu" data-machucnang="12">Quản lý điểm đo</a>
+                            </li>
+                            <li><a href="/khaibaokhachhang" class="pmsion-menu" data-machucnang="13">Khai báo khách
+                                    hàng</a></li>
+                            <li><a href="/cauhinhthietbitruyenthong" class="pmsion-menu" data-machucnang="14">Cấu hình
+                                    thiết bị truyền thông(DCU/MODEM)</a></li>
+                            <li><a href="/cauhinhdienapthap" class="pmsion-menu" data-machucnang="31">Cấu hình điện áp
+                                    thấp</a></li>
+                            <li><a href="/quanlynguoidung" class="pmsion-menu" data-machucnang="15">Quản lý người
+                                    dùng</a></li>
+                            <li><a href="/quanlyioa" class="pmsion-menu" data-machucnang="16">Quản lý IOA</a></li>
+                            <li><a href="/phanquyen" class="pmsion-menu" data-machucnang="17">Phân quyền chức năng</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="pmsion-menu">
+                        <a href="#" class="has-arrow"><i class="flaticon-022-copy"></i> Cảnh báo</a>
+                        <ul class="submenu">
+                            <li><a href="/cauhinhcanhbao" class="pmsion-menu" data-machucnang="18">Cấu hình cảnh báo</a>
+                            </li>
+                            <li><a href="/danhsachcanhbao" class="pmsion-menu" data-machucnang="19">Danh sách cảnh
+                                    báo</a></li>
+                            <li><a href="/canhbaomatdien" class="pmsion-menu" data-machucnang="21">Cảnh báo mất điện</a>
+                            </li>
+                            <li><a href="/cauhinhcanhbaosukiencongto" class="pmsion-menu" data-machucnang="32">Cấu hình
+                                cảnh báo sự kiện công tơ</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="pmsion-menu">
+                        <a href="#" class="has-arrow"><i class="flaticon-022-copy"></i> Báo cáo</a>
+                        <ul class="submenu">
+                            <li><a href="/uoctinhtonthat" class="pmsion-menu" data-machucnang="22">Ước tính tổn thất</a>
+                            </li>
+                            <li><a href="/baocaoloduongday" class="pmsion-menu" data-machucnang="20">Báo cáo lộ đường
+                                    dây</a></li>
+                            <li><a href="/thongkemangtai" class="pmsion-menu" data-machucnang="21">Báo cáo thống kê mang
+                                    tải</a></li>
+                            <li><a href="/thongkechatluong" class="pmsion-menu" data-machucnang="23">Thống kê chất
+                                    lượng</a></li>
+                        </ul>
+                    </li>
+
+                    <li id="logout" style="margin-left: 30px;">
+                        <a class="nav-link" role="button">
+                            <i class="fas fa-sign-out-alt" style="font-size:28px;color:red" title="Đăng xuất"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<!-- Mobile right drawer -->
+<div id="mobileMenuDrawer" class="mobile-menu-drawer d-lg-none">
+    <div class="mobile-menu-header">
+        <span>Menu</span>
+        <button type="button" id="btnCloseMobileMenu" class="mobile-drawer-close" aria-label="Đóng menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <div class="mobile-menu-body">
+        <a href="/giamsat" class="mobile-menu-link">Giám sát</a>
+        <a href="/chisocongto" class="mobile-menu-link">Khai thác dữ liệu</a>
+        <a href="/khaibaoioa" class="mobile-menu-link">Dữ liệu SCADA</a>
+        <a href="/quanlydanhmuc" class="mobile-menu-link">Quản lý</a>
+        <a href="/danhsachcanhbao" class="mobile-menu-link">Cảnh báo</a>
+        <a href="/thongkechatluong" class="mobile-menu-link">Báo cáo</a>
+
+        <button type="button" id="btnMobileLogout" class="mobile-menu-logout">
+            <i class="fas fa-sign-out-alt"></i>&nbsp;Đăng xuất
+        </button>
+    </div>
+</div>

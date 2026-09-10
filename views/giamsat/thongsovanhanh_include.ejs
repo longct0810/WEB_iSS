@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-lg-12 card">
+        <div class="profile card-body px-3 pt-3 pb-0">
+            <div class="row">
+                <div class="row pb-2">
+                    <div class="col-lg-2" style="padding-bottom: 5px;">
+                        <div class="input-group input-primary">
+                            <select id="slloaicongto_tsvh" class="form-control">
+                                <option value="1">1 Pha</option>
+                                <option value="3">3 Pha</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" style="padding-bottom: 5px;">
+                        <div class="input-group input-primary">
+                            <select class="form-control" id="sllocdulieu_tsvh">
+                                <option value="0">Điểm đo có dữ liệu
+                                </option>
+                                <option value="1">Điểm đo không có dữ liệu
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 ngay" style="padding-bottom: 5px;">
+                        <div class="input-group input-primary">
+                            <span class="input-group-text"> Ngày</span>
+                            <input name="datepicker" class="datepicker-default form-control" id="txtngay_tsvh">
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 gio" style="display:none" style="padding-bottom: 5px;">
+                        <div class="input-group input-primary">
+
+                            <select class="form-control" id="cbogio_tsvh">
+                                <option value="">Tất cả</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-xl-4" style="padding-bottom: 5px;">
+                        <div class="gap-2">
+                            <button class="btn btn-primary" type="button" id="btnthuchien_tsvh">
+                                <i class="flaticon-013-checkmark"></i> Thực hiện
+                            </button>
+                            <button class="btn btn-success" type="button" id="btnExportExceTSVH">
+                                <i class="fa fa-file-excel-o"></i> Xuất Excel
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <table id="tbltsvh" class="table table-bordered table-striped"
+                        style="margin-bottom: 10px !important;">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Số công tơ</th>
+                                <th>Loại công tơ</th>
+                                <th>Thời điểm</th>
+                                <th>U (V)</th>
+                                <th>I (A)</th>
+                                <th>Cos φ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot>
+                            <tr></tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

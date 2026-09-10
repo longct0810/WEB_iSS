@@ -1,0 +1,172 @@
+<%- include('../head.ejs') %>
+
+    <%- include('../preloader.ejs') %>
+        <div id="main-wrapper" class=" ">
+
+            <!--**********************************
+      Nav header start
+  ***********************************-->
+            <%- include('../navheader.ejs') %>
+                <!--**********************************
+      Nav header end
+  ***********************************-->
+                <!--**********************************
+          Chat box start
+      ***********************************-->
+                <%- include('../chatbox.ejs') %>
+                    <!--**********************************
+          Chat box End
+      ***********************************-->
+                    <!--**********************************
+          Header start
+      ***********************************-->
+                    <%- include('../header.ejs') %>
+                        <!--**********************************
+      Header end ti-comment-alt
+  ***********************************-->
+                        <!--**********************************
+      Sidebar start
+  ***********************************-->
+                        <%- include('../dlanav.ejs') %>
+                            <!--**********************************
+      Sidebar end
+  ***********************************-->
+                            <!--**********************************
+          Content body start
+      ***********************************-->
+                            <div class="content-body">
+                                <!-- row -->
+                                <div class="container-fluid">
+                                    <section class="content">
+
+                                        <div class="row">
+                                            <div class="col-lg-12 thongbaokbkh">
+                                                <div class="alert alert-danger alert-dismissible fade"
+                                                    id="thongbaokbkh">
+                                                    Vui lòng chọn trạm ở cây thư mục
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                        aria-label="btn-close">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 basic-form khaibaokh">
+                                                <form>
+                                                    <div class="mb-3">
+                                                        <div class="form-check form-check-inline">
+                                                            <label class="form-check-label">
+                                                                <input type="radio" class="form-check-input"
+                                                                    name="checkfile" value="xml" checked>
+                                                                <span style="line-height: 27px;">XML</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <label class="form-check-label">
+                                                                <input type="radio" class="form-check-input"
+                                                                    name="checkfile" value="excel">
+                                                                <span style="line-height: 27px;">EXCEL</span>
+                                                            </label>
+                                                        </div>
+                                                        <div style="float: right; display: none;"
+                                                            class="downloadfilemau">
+                                                            <a href="./download/tempKHCmis.xlsx" id="downloadfilemau"><i
+                                                                    class="fa fa-download"></i> Download file
+                                                                mẫu</a>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="row khaibaokh" style="margin: 20px 0;">
+                                                <div class="col-5" style="padding-left: 0;">
+                                                    <div class="input-group">
+                                                        <div class="form-file">
+                                                            <input type="file" name="uploadfile"
+                                                                class="form-file-input form-control"
+                                                                style="padding-left: 0px;">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-5">
+                                                    <button class="btn btn-primary  mb-2" id="check_file"
+                                                        style="margin: 0 10px">Kiểm tra</button>
+                                                    <button class="btn btn-primary disabled  mb-2"
+                                                        id="thuc_hien_khaibao" style="margin: 0 10px">Thực hiện</button>
+                                                    <a href="/quanlymodemdcu" target="_blank"
+                                                        class="btn btn-danger  mb-2" style="margin: 0 10px">Cập
+                                                        nhật công tơ vào DCU</a>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12" id="print_section">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-lg-12 khaibaokh">
+                                                    <table class="table table-striped table-bordered hidden"
+                                                        id="data_table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>STT</th>
+                                                                <th>Mã Khách hàng</th>
+                                                                <th>Mã Điểm đo</th>
+                                                                <th>Số công tơ</th>
+                                                                <th>IMEI</th>
+                                                                <th>Tên khách hàng</th>
+                                                                <th>Loại công tơ</th>
+                                                                <th>Mật khẩu công tơ</th>
+                                                                <th>Mã quyển</th>
+                                                                <th>Mã trạm</th>
+                                                                <th>Mã cột</th>
+                                                                <th>Số hòm</th>
+                                                                <th>Sắp xếp</th>
+                                                                <th>Hệ số nhân</th>
+                                                                <th>Địa chỉ</th>
+                                                                <th>Chức năng thực hiện</th>
+                                                                <th>Kết quả</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                        <tfoot>
+                                                            <tr></tr>
+                                                        </tfoot>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+
+                            <!--***********************************-->
+                            <%- include('../footer.ejs') %>
+        </div>
+        <%- include('../script.ejs') %>
+            <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+            <script src="./vendor/select2/js/select2.full.min.js"></script>
+            <script src="./javascripts/plugins-init/select2-init.js"></script>
+            <script src="./vendor/pickadate/picker.js"></script>
+            <script src="./vendor/pickadate/picker.time.js"></script>
+            <script src="./vendor/pickadate/picker.date.js"></script>
+            <script src="./vendor/toastr/js/toastr.min.js"></script>
+            <script src="./javascripts/plugins-init/toastr-init.js"></script>
+            <script src="../javascripts/fnTime.js"></script>
+            <!-- DataTables Buttons JS -->
+            <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+            <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+            <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+            <script src="./vendor/datatables/js/jszip.min.js"></script>
+            <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+            <!-- Chartist -->
+            <script src="../javascripts/jstree.min.js"></script>
+            <script src="../javascripts/quanly/khaibaokhachhang.js"></script>
+
+            <link rel="stylesheet" href="./stylesheets/jstree.min.css">
+
+            <!-- <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css"> -->
+            <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+            <style type="text/css">
+                label {
+                    font-weight: normal
+                }
+            </style>

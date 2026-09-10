@@ -1,0 +1,594 @@
+<div class="modal fade col-lg-12" id="modal_them_diemdo">
+    <div class="modal-dialog col-lg-12" style="max-width: 90%;">
+        <div class="modal-content col-lg-12">
+            <div class="modal-header">
+                <h4 class="modal-title">Thêm mới điểm đo</h4>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="box box-default" style="border-top-style:none">
+                    <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-lg-4 col-xl-3">
+                                <div class="form-group">
+                                    <label for="">Đơn vị <span class="text-danger">(*)</span></label>
+                                    <div class="tree-filter-qldm">
+                                        <div class="easy-tree-qldm" id="tree_left_qldmdl">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-xl-9" style="border-left: 1px dashed #808080">
+
+                                <div class="row">
+                                    <div class="col-lg-12"
+                                        style="text-align:center; font-weight:bold; margin:0px 10px 0px 0px">
+                                        THÔNG TIN KHÁCH HÀNG</div>
+                                </div>
+                                <div class="row" style="margin: 10px 0;">
+                                    <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12"
+                                        style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text"> Mã khách hàng (*)</span>
+                                            <input type="text" class="form-control" id="add_makhachhang" maxlength="50">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12"
+                                        style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text"> Tên khách hàng</span>
+                                            <input type="text" class="form-control" id="add_tenkhachhang"
+                                                maxlength="255">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12"
+                                        style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text"> Đối tượng</span>
+                                            <select class="form-control" id="add_doituongkh">
+                                                <option value="">Chọn đối tượng </option>
+                                                <option value="KHTT">Khách hàng trả trước</option>
+                                                <option value="KHTS">Khách hàng trả sau </option>
+                                                <option value="KHDMT">Khách hàng sử dụng điện mặt trời</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12"
+                                        style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text"> Loại khách hàng</span>
+                                            <select id="add_LoaiKH" class="form-control">
+                                                <option value="SX110KV">Ngành sản xuất cấp điện áp từ 110kV trở lên
+                                                </option>
+                                                <option value="SX22_110KV">Ngành sản xuất cấp điện áp từ 22kV đến
+                                                    dưới 110kV
+                                                </option>
+                                                <option value="SX6_22KV">Ngành sản xuất cấp điện áp dưới 6kV
+                                                </option>
+                                                <option value="SX6KV">Khối hành chính sự nghiệp bệnh viện, nhà trẻ,
+                                                    mẫu
+                                                    giáo,
+                                                    trường PT cấp điện áp từ 6kV trở lên</option>
+                                                <option value="HCNSD6KV">Khối hành chính sự nghiệp bệnh viện, nhà
+                                                    trẻ, mẫu
+                                                    giáo,
+                                                    trường PT cấp điện áp dưới 6kV</option>
+                                                <option value="HCSNCS6KV">Khối hành chính sự nghiệp chiếu sáng công
+                                                    cộng,
+                                                    đơn vị
+                                                    HCSN cấp điện áp từ 6 kV trở lên</option>
+                                                <option value="HCSNCSD6KV">Khối hành chính sự nghiệp chiếu sáng công
+                                                    cộng,
+                                                    đơn
+                                                    vị HCSN cấp điện áp dưới 6 kV</option>
+                                                <option value="SHBL">Đối tượng sinh hoạt: giá bán lẻ điện sinh hoạt
+                                                </option>
+                                                <option value="SHBLTT">Giá bán lẻ điện sinh hoạt dùng công tơ thẻ
+                                                    trả trước
+                                                </option>
+                                                <option value="KD6_22KV">Ngành kinh doanh cấp điện áp từ 6kV đến
+                                                    dưới 22kV
+                                                </option>
+                                                <option value="KD6KV">Ngành kinh doanh cấp điện áp dưới 6kV</option>
+                                                <option value="DMTN">Dự án điện mặt trời nổi</option>
+                                                <option value="DMTD">Dự án điện mặt trời đất</option>
+                                                <option value="DMTMN">Hệ thống điện mặt trời mái nhà</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr
+                                    style="border-top: dashed 1px;margin-bottom:5px !important; margin-top:5px !important" />
+                                <div class="row">
+                                    <div class="col-lg-12"
+                                        style="text-align:center; font-weight:bold; margin:0px 10px 0px 0px">
+                                        THÔNG TIN ĐIỂM ĐO</div>
+                                </div>
+                                <div class="row" style="margin: 10px 0;">
+                                    <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12"
+                                        style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text"> Mã điểm đo (*)</span>
+                                            <input type="text" pattern="^[a-zA-Z0-9_.-]*$" trim class="form-control"
+                                                id="add_MaDiemDo" maxlength="50">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12" style="margin:5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 120px;">Loại pha</span>
+                                            <select id="add_LoaiPha" class="form-control">
+                                                <option value="1">1 pha 1 giá</option>
+                                                <option value="13">1 pha 3 giá</option>
+                                                <option value="31">3 pha 1 giá</option>
+                                                <option value="3">3 pha 3 giá</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12"
+                                        style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 120px;">Mã trạm</span>
+                                            <input type="text" class="form-control" id="add_matram" maxlength="100">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12"
+                                        style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 120px;">Mã cột</span>
+                                            <input type="text" class="form-control" id="add_macot" maxlength="500">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 10px 0;">
+                                    <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12"
+                                        style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 120px;">Sổ ghi</span>
+                                            <input type="text" class="form-control" id="add_soghi" maxlength="100">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-xl-6 col-md-12 col-sm-12"
+                                        style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 120px;">Ghi chú</span>
+                                            <input type="text" class="form-control" id="add_ghichu_kh" maxlength="255">
+                                        </div>
+                                    </div>
+                                </div> <!-- /.row -->
+
+                                <!-- /.row THÔNG TIN CÔNG TƠ -->
+
+                                <hr
+                                    style="border-top: dashed 1px;margin-bottom:10px !important; margin-top:50px !important" />
+                                <div class="row">
+                                    <div class="col-lg-12"
+                                        style="text-align:center; font-weight:bold; margin:0px 10px 0px 0px">
+                                        THÔNG TIN CÔNG TƠ</div>
+                                </div>
+
+                                <!-- /.row SỐ CÔNG TƠ -->
+                                <div class="row" style="margin: 10px 0;">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;"> Số công tơ
+                                                (*)</span>
+                                            <input type="text" class="form-control" id="add_SCT"
+                                                onkeypress="return isNumber(event)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;">Chủng loại công
+                                                tơ</span>
+                                            <select id="add_chungloaictkh" class="form-control"> </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;"> Mật khẩu công
+                                                tơ</span>
+                                            <input type="text" class="form-control" id="add_makhauctkh">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;"> Outstation</span>
+                                            <input type="text" class="form-control" id="add_Outstation" maxlength="5">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12 kh_1pha" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;">Chỉ số giao</span>
+                                            <input type="text" class="form-control" id="add_cstreo_giao"
+                                                onpaste="return false" onkeypress="return isNumber(event)">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12 kh_1pha" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;">Chỉ số nhận</span>
+                                            <input type="text" class="form-control" id="add_cstreo_nhan"
+                                                onpaste="return false" onkeypress="return isNumber(event)">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12 kh_3pha" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;"> Chỉ số BT</span>
+                                            <input type="text" class="form-control" id="add_chiso_bt"
+                                                onpaste="return false" onkeypress="return isNumber(event)">
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12 kh_3pha" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;"> Chỉ số CD</span>
+                                            <input type="text" class="form-control" id="add_chiso_cd"
+                                                onpaste="return false" onkeypress="return isNumber(event)">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12 kh_3pha" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;"> Chỉ số TD</span>
+                                            <input type="text" class="form-control" id="add_chiso_td"
+                                                onpaste="return false" onkeypress="return isNumber(event)">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12 kh_3pha" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;"> Chỉ số SG</span>
+                                            <input type="text" class="form-control" id="add_chiso_sg"
+                                                onpaste="return false" onkeypress="return isNumber(event)">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12 kh_3pha" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;"> Chỉ số VC</span>
+                                            <input type="text" class="form-control" id="add_chiso_vc"
+                                                onpaste="return false" onkeypress="return isNumber(event)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12 kh_3pha" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;"> Chỉ số BN</span>
+                                            <input type="text" class="form-control" id="add_chiso_bn"
+                                                onpaste="return false" onkeypress="return isNumber(event)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12 kh_3pha" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;"> Chỉ số CN</span>
+                                            <input type="text" class="form-control" id="add_chiso_cn"
+                                                onpaste="return false" onkeypress="return isNumber(event)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12 kh_3pha" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;">Chỉ số TN</span>
+                                            <input type="text" class="form-control" id="add_chiso_tn"
+                                                onpaste="return false" onkeypress="return isNumber(event)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12 kh_3pha" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;"> Chỉ số SN</span>
+                                            <input type="text" class="form-control" id="add_chiso_sn"
+                                                onpaste="return false" onkeypress="return isNumber(event)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12 kh_3pha" style="margin: 5px 0;">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text" style="width: 150px;"> Chỉ số VN</span>
+                                            <input type="text" class="form-control" id="add_chiso_vn"
+                                                onpaste="return false" onkeypress="return isNumber(event)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.row KH 3 Pha-->
+                                <div class="row">
+
+                                    <div class="form-group col-lg-12" style="padding:10px">
+                                        <div class="row"
+                                            style="border:1px solid #e6e6e6;margin: 0px;padding: 10px 0;border-radius:5px">
+                                            <div class="form-group col-lg-12">
+                                                <input type="radio" value="0" id="rdhsntrong" name="hsn"> Sử
+                                                dụng hệ số nhân trong
+                                            </div>
+                                            <div class="form-group col-lg-12">
+                                                <label>
+                                                    Hệ số trong công tơ đọc về
+                                                    (TU|TI|HSN)
+                                                </label>
+                                                <input disabled class="form-control input input-ttct" type="text"
+                                                    name="tuTrong" maxlength="50" value="1/1"> |
+
+                                                <input disabled class="form-control input input-ttct" type="text"
+                                                    name="tiTrong" maxlength="50" value="1/1"> |
+
+                                                <input disabled class="form-control input input-ttct" type="text"
+                                                    name="hsnTrong" maxlength="50" value="1">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group col-lg-12" style="padding:10px">
+                                        <div class="row"
+                                            style="border:1px solid #e6e6e6;margin: 0px;padding: 10px 0;border-radius:5px">
+                                            <div class="form-group col-lg-12">
+                                                <input type="radio" value="1" id="rdhsnngoai" name="hsn"> Sử
+                                                dụng hệ số nhân ngoài
+                                            </div>
+
+                                            <!-- /.row THÔNG TIN TUUUUU -->
+                                            <div class="form-group col-lg-12">
+                                                <div class="row" style="padding-left: 10px;">
+                                                    <div class="form-check custom-checkbox checkbox-primary ">
+                                                        <input type="checkbox" class="form-check-input" id="checkbox_TU"
+                                                            required="">
+                                                        <label class="pt-1 form-check-label">TU</label>
+                                                    </div>
+
+                                                </div>
+                                                <!-- /.row IS TU TU TU -->
+                                                <div class="row is_TU">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-6 col-sm-12"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text">TU No (*)</span>
+                                                                <input type="text" class="form-control" id="add_tu_no"
+                                                                    placeholder="">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-12"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text">Năm SX</span>
+                                                                <input type="text" class="form-control datepicker_year"
+                                                                    id="add_nam_SX_tu" placeholder="">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-12"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text">Ngày KĐ</span>
+                                                                <input type="text" class="form-control datepicker"
+                                                                    id="add_ngay_kd_tu">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-12"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text">Loại</span>
+                                                                <input type="text" class="form-control datepicker"
+                                                                    id="add_loai_tu">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-12"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text">Tỷ số biến (*)</span>
+                                                                <input type="text" class="form-control datepicker"
+                                                                    id="add_tysobien_tu" onchange="tysobienTu()">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="border-top: 1px dotted;"></div>
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-6 col-sm-12"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text"> Mã chì</span>
+                                                                <input type="text" class="form-control"
+                                                                    id="add_ma_chi_tu">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-12"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text"> Số viên</span>
+                                                                <input type="text" class="form-control"
+                                                                    id="add_sovien_chi_tu">
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col-lg-4 col-md-6 col-sm-12 form-group"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text"> Mã tem </span>
+                                                                <input type="text" class="form-control"
+                                                                    id="add_matem_tu">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-12 form-group"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text"> Số viên </span>
+                                                                <input type="text" class="form-control"
+                                                                    id="add_sovien_tem_tu">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!--------------------------------------->
+                                            </div>
+
+                                            <!-- /.row THÔNG TIN TIIIIII ----->
+                                            <div class="form-group col-lg-12">
+
+                                                <div class="row" style="padding-left: 10px;">
+                                                    <div class="form-check custom-checkbox checkbox-primary ">
+                                                        <input type="checkbox" class="form-check-input" id="checkbox_TI"
+                                                            required="">
+                                                        <label class="pt-1 form-check-label">TI</label>
+                                                    </div>
+
+                                                </div>
+                                                <!-- /.row IS TI -->
+
+                                                <div class="row is_TI">
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-6 col-sm-12"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text">TI No (*)</span>
+                                                                <input type="text" class="form-control" id="add_ti_no"
+                                                                    placeholder="">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-12"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text">Năm SX</span>
+                                                                <input type="text" class="form-control datepicker_year"
+                                                                    id="add_nam_SX_ti" placeholder="">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-12"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text">Ngày KĐ</span>
+                                                                <input type="text" class="form-control datepicker"
+                                                                    id="add_ngay_kd_ti">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-12"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text">Loại</span>
+                                                                <input type="text" class="form-control datepicker"
+                                                                    id="add_loai_ti">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-12"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text">Tỷ số biến (*)</span>
+                                                                <input type="text" class="form-control datepicker"
+                                                                    id="add_tysobien_ti" onchange="tysobienTI()">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="border-top: 1px dotted;"></div>
+                                                    <div class="row">
+                                                        <div class="col-lg-4 col-md-6 col-sm-12"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text"> Mã chì</span>
+                                                                <input type="text" class="form-control"
+                                                                    id="add_ma_chi_ti">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-12"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text"> Số viên</span>
+                                                                <input type="text" class="form-control"
+                                                                    id="add_sovien_chi_ti">
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col-lg-4 col-md-6 col-sm-12 form-group"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text"> Mã tem </span>
+                                                                <input type="text" class="form-control"
+                                                                    id="add_matem_ti">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-6 col-sm-12 form-group"
+                                                            style="padding: 10px;float: left; ">
+                                                            <div class="input-group input-primary">
+                                                                <span class="input-group-text"> Số viên </span>
+                                                                <input type="text" class="form-control"
+                                                                    id="add_sovien_tem_ti">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- /.row THÔNG TIN DCU -->
+                                <hr
+                                    style="border-top: dashed 1px;margin-bottom:10px !important; margin-top:50px !important" />
+                                <div class="row">
+                                    <div class="col-lg-12"
+                                        style="text-align:center; font-weight:bold; margin:0px 10px 0px 0px">
+                                        THÔNG TIN DCU</div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text"> Imei (*)</span>
+                                            <input type="text" class="form-control" id="add_Imei" placeholder="Imei"
+                                                maxlength="16">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                        <div class="input-group input-primary">
+                                            <span class="input-group-text"> DIN điều khiển</span>
+                                            <input type="text" class="form-control" id="add_din_dk"
+                                                placeholder="Nhập imei" maxlength="16">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-bs-dismiss="modal">Đóng</button>
+
+
+                <button class="btn btn-primary" type="button" id="btnthemmoidiemdo"><i
+                        class="flaticon-013-checkmark"></i>
+                    Lưu</button>
+
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>

@@ -1,0 +1,222 @@
+<%- include('../head.ejs') %>
+
+  <%- include('../preloader.ejs') %>
+    <div id="main-wrapper" class=" ">
+
+      <!--**********************************
+        Nav header start
+    ***********************************-->
+      <%- include('../navheader.ejs') %>
+        <!--**********************************
+        Nav header end
+    ***********************************-->
+        <!--**********************************
+            Chat box start
+        ***********************************-->
+        <%- include('../chatbox.ejs') %>
+          <!--**********************************
+            Chat box End
+        ***********************************-->
+          <!--**********************************
+            Header start
+        ***********************************-->
+          <%- include('../header.ejs') %>
+            <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+            <!--**********************************
+        Sidebar start
+    ***********************************-->
+            <%- include('../dlanav.ejs') %>
+              <!--**********************************
+        Sidebar end
+    ***********************************-->
+              <!--**********************************
+            Content body start
+        ***********************************-->
+              <div class="content-body">
+                <!-- row -->
+                <div class="container-fluid">
+
+                  <!-- Main content -->
+                  <section class="content mt-2">
+
+                    <!-- Default box -->
+                    <div class="card card-info">
+                      <div class="card-header">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                          data-bs-target="#modal_them_diemdo" onclick="ThemMoi()">
+                          Nhập tay
+                        </button>
+                      </div>
+                      <!-- /.card-header -->
+                      <div class="card-body">
+
+                        <div class="row">
+                          <table id="tbl_danhsachnguoidung"
+                            class="table  table-sk table-bordered table-striped table-hover table-bordered">
+                            <thead>
+                              <tr>
+                                <th>STT</th>
+                                <th class="text-center">Mã điểm đo</th>
+                                <th class="text-center">Tên khách hàng</th>
+                                <th class="text-center">Số công tơ</th>
+                                <th class="text-center">Imei</th>
+                                <th class="text-center">Trạng thái</th>
+                                <th class="text-center">Thời điểm có DL</th>
+                                <th class="text-center">TT điểm đo</th>
+                                <th class="text-center">TT Công tơ</th>
+                                <th class="text-center">TT Thiết bị</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+
+                          </table>
+                        </div>
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </section>
+                </div>
+
+              </div>
+
+    </div>
+
+    <%- include('../modal/modal_view_quanly_themoidiemdo.ejs') %>
+      <%- include('../modal/modal_view_quanly_suacongto.ejs') %>
+        <%- include('../modal/modal_view_quanly_suadiemdo.ejs') %>
+          <%- include('../modal/modal_view_quanly_thaycongto.ejs') %>
+            <%- include('../modal/modal_view_quanly_thaydcu.ejs') %>
+              </div>
+              <!-- /.modal -->
+              </section>
+              <!-- /.content -->
+
+              </div>
+              </div>
+              </div>
+              <!--**********************************
+        Content body end
+    ***********************************-->
+              <%- include('../footer.ejs') %>
+                </div>
+                <%- include('../script.ejs') %>
+                  <script src="./vendor/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+                  <script src="./vendor/select2/js/select2.full.min.js"></script>
+                  <script src="./javascripts/plugins-init/select2-init.js"></script>
+                  <script src="./vendor/pickadate/picker.js"></script>
+                  <script src="./vendor/pickadate/picker.time.js"></script>
+                  <script src="./vendor/pickadate/picker.date.js"></script>
+                  <script src="./vendor/toastr/js/toastr.min.js"></script>
+                  <script src="./javascripts/plugins-init/toastr-init.js"></script>
+                  <script src="../javascripts/fnTime.js"></script>
+                  <!-- DataTables Buttons JS -->
+                  <script src="./vendor/datatables/js/jquery.dataTables.min.js"></script>
+                  <script src="./vendor/datatables/js/dataTables.buttons.min.js"></script>
+                  <script src="./vendor/datatables/js/dataTables.rowGroup.js"></script>
+                  <script src="./vendor/datatables/js/jszip.min.js"></script>
+                  <script src="./vendor/datatables/js/buttons.html5.min.js"></script>
+                  <!-- Chartist -->
+                  <script src="../javascripts/jstree.min.js"></script>
+                  <script src="../javascripts/quanly/quanlydiemdo.js"></script>
+
+                  <link rel="stylesheet" href="./stylesheets/jstree.min.css">
+
+                  <!-- <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css"> -->
+                  <link rel="stylesheet" href="./vendor/toastr/css/toastr.min.css">
+                  <style type="text/css">
+                    label {
+                      font-weight: normal
+                    }
+
+                    .input-ttct {
+                      width: 120px;
+                      padding: 0.375rem 0.75rem;
+                      line-height: 1.5;
+                      color: #3e515b;
+                      background-color: #fff;
+                      background-clip: padding-box;
+                      border: 1px solid #c2cfd6;
+                      border-radius: 0;
+                      display: inline-block;
+                    }
+
+                    .kh_3pha {
+                      display: none
+                    }
+
+                    .is_TU {
+                      display: none
+                    }
+
+                    .is_TI {
+                      display: none
+                    }
+
+                    .is_TU_edit {
+                      display: none
+                    }
+
+                    .is_TI_edit {
+                      display: none
+                    }
+
+                    .is_TU_tct {
+                      display: none
+                    }
+
+                    .is_TI_tct {
+                      display: none
+                    }
+
+                    .is_CTO_tct {
+                      display: none
+                    }
+
+                    .is_1gia {
+                      display: none
+                    }
+
+                    .is_3gia {
+                      display: none
+                    }
+
+                    #tbl_dskhachhang th {
+                      text-align: center
+                    }
+
+                    #tbl_hsnhanngoai_suacts,
+                    #tbl_hsnhanngoai_suati {
+                      border-bottom: none;
+                    }
+
+                    .select2-container .select2-selection--single {
+                      height: 34px !important;
+                    }
+
+                    table.dataTable thead .sorting_asc::after {
+                      display: none
+                    }
+
+
+                    .jstree-node {
+                      white-space: nowrap;
+                      overflow: hidden;
+                    }
+
+                    .dataTables_wrapper.no-footer .dataTables_scrollBody {
+                      border-bottom: none
+                    }
+
+                    .form-control:disabled,
+                    .form-control[readonly] {
+                      background-color: #e9ecef;
+                      /* xám chuẩn Bootstrap */
+                      opacity: 1;
+                      /* tránh bị mờ chữ */
+                      cursor: not-allowed;
+                    }
+                  </style>

@@ -1,0 +1,440 @@
+<div class="modal fade col-lg-12" id="modal-thayctkh">
+    <div class="modal-dialog col-lg-12" style="max-width: 90%;">
+        <div class="modal-content col-lg-12">
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Thay công tơ</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="box-default">
+                    <div class="box-body">
+                        <div class="row">
+                            <table
+                                class="table table-sk table-bordered table-striped table-hover table-bordered dataTable"
+                                id="tbl_thongtincongto">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Số công tơ</th>
+                                        <th>Chủng loại</th>
+                                        <th>Công tơ 2/3 phần tử</th>
+                                        <th>Ngày treo</th>
+                                        <th>Ngày tháo</th>
+                                        <th>Sử dụng HSN ngoài</th>
+                                        <th>Hệ số TU ngoài</th>
+                                        <th>Hệ số TI ngoài</th>
+                                        <th>Chu kỳ chốt thiết lập</th>
+                                        <th>Trạng thái treo</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-default">
+                    <hr style="border-top: dashed 1px;margin-bottom:5px !important; margin-top:5px !important" />
+                    <div class="row">
+                        <div class="col-lg-12" style="text-align:center; font-weight:bold; margin:0px 10px 0px 0px">---
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-left: 10px;">
+                        <div class="col-lg-12" style="text-align:center; font-weight:bold; margin:0px 10px 0px 0px">
+                            THÔNG TIN CÔNG TƠ THAY THẾ</div>
+                        <div class="form-check custom-checkbox checkbox-primary ">
+                            <input type="checkbox" class="form-check-input" id="checkbox_CTO_tct" required="">
+                            <label class="pt-1 form-check-label">THAY CÔNG TƠ</label>
+                        </div>
+
+                        <div class="row is_CTO_tct">
+
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> Số công tơ (*)</span>
+                                    <input maxlength="12" type="text" class="form-control" id="txtsocongto_thayct"
+                                        onkeypress="return isNumber(event)">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> Chủng loại công tơ</span>
+                                    <select id="cbochungloaicongto_thayct" class="form-control"> </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> Mật khẩu công tơ</span>
+                                    <input type="text" class="form-control" id="txtmatkhaucongto_thayct">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> Outstation</span>
+                                    <input type="text" class="form-control" id="txtOutstation_thayct" maxlength="5">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> Ngày treo</span>
+                                    <input type="text" class="form-control datepicker" id="txtngaytreo_thayct">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> Chỉ số giao treo</span>
+                                    <input type="text" class="form-control" id="txtcs_giaotreo_thayct"
+                                        onpaste="return false" onkeypress="return isNumber(event)">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> Chỉ số nhận treo</span>
+                                    <input type="text" class="form-control" id="txtcs_nhantreo_thayct"
+                                        onpaste="return false" onkeypress="return isNumber(event)">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 is_1giazzzz" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> Chỉ số giao tháo</span>
+                                    <input type="text" class="form-control" id="txtcs_giaothao_thayct"
+                                        onpaste="return false" onkeypress="return isNumber(event)">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 is_1giazzzz" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> Chỉ số nhận tháo</span>
+                                    <input type="text" class="form-control" id="txtcs_nhanthao_thayct"
+                                        onpaste="return false" onkeypress="return isNumber(event)">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> BT Treo</span>
+                                    <input type="text" class="form-control" id="BT_treo" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> CD Treo</span>
+                                    <input type="text" class="form-control" id="CD_treo" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> TD Treo</span>
+                                    <input type="text" class="form-control" id="TD_treo" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> SG Treo</span>
+                                    <input type="text" class="form-control" id="SG_treo" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> VC Treo</span>
+                                    <input type="text" class="form-control" id="VC_treo" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> BN Treo</span>
+                                    <input type="text" class="form-control" id="BN_treo" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> CN Treo</span>
+                                    <input type="text" class="form-control" id="CN_treo" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> TN Treo</span>
+                                    <input type="text" class="form-control" id="TN_treo" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> SN Treo</span>
+                                    <input type="text" class="form-control" id="SN_treo" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> VN Treo</span>
+                                    <input type="text" class="form-control" id="VN_treo" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> BT Tháo</span>
+                                    <input type="text" class="form-control" id="BT_thao" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> CD Tháo</span>
+                                    <input type="text" class="form-control" id="CD_thao" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> TD Tháo</span>
+                                    <input type="text" class="form-control" id="TD_thao" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> SG Tháo</span>
+                                    <input type="text" class="form-control" id="SG_thao" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> VC Tháo</span>
+                                    <input type="text" class="form-control" id="VC_thao" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> BN Tháo</span>
+                                    <input type="text" class="form-control" id="BN_thao" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> CN Tháo</span>
+                                    <input type="text" class="form-control" id="CN_thao" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> TN Tháo</span>
+                                    <input type="text" class="form-control" id="TN_thao" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> SN Tháo</span>
+                                    <input type="text" class="form-control" id="SN_thao" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> VN Tháo</span>
+                                    <input type="text" class="form-control" id="VN_thao" onpaste="return false"
+                                        onkeypress="return isNumber(event)" value="0">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.--------------------------------------------------------------------- -->
+                <!-- /.row THÔNG TIN thay TUUUUU -->
+                <hr style="border-top: dashed 1px;margin-bottom:5px !important; margin-top:5px !important"
+                    class="is_header_TU_tct" />
+                <div class="box-default">
+                    <div class="row is_header_TU_tct" style="padding-left: 10px;">
+                        <div class="col-lg-12" style="text-align:center; font-weight:bold; margin:0px 10px 0px 0px">
+                            THÔNG TIN TU THAY THẾ</div>
+                        <div class="form-check custom-checkbox checkbox-primary ">
+                            <input type="checkbox" class="form-check-input" id="checkbox_TU_tct" required="">
+                            <label class="pt-1 form-check-label">THAY TU</label>
+                        </div>
+                        <!-- /.row IS TU TU TU -->
+                        <div class="row is_TU_tct">
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text">TU No (*)</span>
+                                    <input type="text" class="form-control" id="edit_tu_no_tct" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text">Năm SX</span>
+                                    <input type="text" class="form-control datepicker_year" id="edit_nam_SX_tu_tct"
+                                        placeholder="">
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text">Ngày KĐ</span>
+                                    <input type="text" class="form-control datepicker" id="edit_ngay_kd_tu_tct">
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text">Loại</span>
+                                    <input type="text" class="form-control datepicker" id="edit_loai_tu_tct">
+
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text">Tỷ số biến (*)</span>
+                                    <input type="text" class="form-control datepicker" id="edit_tysobien_tu_tct"
+                                        onchange="tysobienTu_ThayCT()">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row is_TU_tct">
+
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> Mã chì</span>
+                                    <input type="text" class="form-control" id="edit_machi_tu_tct">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> Số viên</span>
+                                    <input type="text" class="form-control" id="edit_sovien_chi_tu_tct">
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 form-group" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> Mã tem </span>
+                                    <input type="text" class="form-control" id="edit_matem_tu_tct">
+                                </div>
+
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-12 form-group" style="padding: 10px;float: left; ">
+                                <div class="input-group input-primary">
+                                    <span class="input-group-text"> Số viên </span>
+                                    <input type="text" class="form-control" id="edit_sovien_tem_tu_tct">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--------------------------------------->
+                <!-- /.row THÔNG TIN edit TIIIIII ----->
+                <hr style="border-top: dashed 1px;margin-bottom:5px !important; margin-top:5px !important"
+                    class="is_header_TI_tct" />
+
+                <div class="row is_header_TI_tct" style="padding-left: 10px;">
+                    <div class="col-lg-12" style="text-align:center; font-weight:bold; margin:0px 10px 0px 0px">
+                        THÔNG TIN TI THAY THẾ</div>
+                    <div class="form-check custom-checkbox checkbox-primary ">
+                        <input type="checkbox" class="form-check-input" id="checkbox_TI_tct" required="">
+                        <label class="pt-1 form-check-label">THAY TI</label>
+                    </div>
+                    <!-- /.row IS TI -->
+                    <div class="row is_TI_tct">
+
+                        <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                            <div class="input-group input-primary">
+                                <span class="input-group-text">TI No (*)</span>
+                                <input type="text" class="form-control" id="edit_ti_no_tct" placeholder="">
+
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                            <div class="input-group input-primary">
+                                <span class="input-group-text">Năm SX</span>
+                                <input type="text" class="form-control datepicker_year" id="edit_namsx_ti_tct"
+                                    placeholder="">
+
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                            <div class="input-group input-primary">
+                                <span class="input-group-text">Ngày KĐ</span>
+                                <input type="text" class="form-control datepicker" id="edit_ngay_kd_ti_tct">
+
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                            <div class="input-group input-primary">
+                                <span class="input-group-text">Loại</span>
+                                <input type="text" class="form-control datepicker" id="edit_loai_ti_tct">
+
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                            <div class="input-group input-primary">
+                                <span class="input-group-text">Tỷ số biến (*)</span>
+                                <input type="text" class="form-control datepicker" id="edit_tysobien_ti_tct"
+                                    onchange="tysobienTi_ThayCT()">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row is_TI_tct">
+
+
+                        <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                            <div class="input-group input-primary">
+                                <span class="input-group-text"> Mã chì</span>
+                                <input type="text" class="form-control" id="edit_machi_ti_tct">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12" style="padding: 10px;float: left; ">
+                            <div class="input-group input-primary">
+                                <span class="input-group-text"> Số viên</span>
+                                <input type="text" class="form-control" id="edit_sovien_chi_ti_tct">
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 form-group" style="padding: 10px;float: left; ">
+                            <div class="input-group input-primary">
+                                <span class="input-group-text"> Mã tem </span>
+                                <input type="text" class="form-control" id="edit_matem_ti_tct">
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-12 form-group" style="padding: 10px;float: left; ">
+                            <div class="input-group input-primary">
+                                <span class="input-group-text"> Số viên </span>
+                                <input type="text" class="form-control" id="edit_sovien_tem_ti_tct">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--------------------------------------->
+                <!-- /.row -->
+            </div>
+            <!-- /.box-body -->
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="SaveThaycongTo()" id="btnthaycongto">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>

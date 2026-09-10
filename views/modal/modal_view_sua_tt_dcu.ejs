@@ -1,0 +1,67 @@
+<!--Sửa thiết bị-->
+<div class="modal fade " id="modal_sua_tt_dcu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+                <h4 class="modal-title_dm">Sửa modem/dcu</h4>
+            </div>
+            <div class="modal-body">
+                <div id="messinfo_sua_thietbi">
+                </div>
+                <table class="table table-hover" style="width:100%;border:none" id="tbl_themtk">
+                    <tr id="trdanhmuccha">
+                        <td>Tên thiết bị</td>
+                        <td><input type="text" class="form-control" id="txt_tenthietbi" style="width:100% !important">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdten">IP</td>
+                        <td>
+                            <input type="text" class="form-control" id="txt_ip_thietbi" maxlength="20"
+                                style="width:100% !important">
+                        </td>
+                    </tr>
+                    <tr id="trtenthietbi">
+                        <td class="tdten">Port</td>
+                        <td>
+                            <input type="number" class="form-control" id="txt_ip_port" style="width:100% !important">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdten">Kinh độ</td>
+                        <td>
+                            <input type="text" class="form-control" id="txt_kinhdo_thietbi" maxlength="20"
+                                style="width:100% !important">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdten">Vĩ độ</td>
+                        <td>
+                            <input type="text" class="form-control" id="txt_vido_thietbi" maxlength="20"
+                                style="width:100% !important">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdten">Số sim</td>
+                        <td>
+                            <input type="text" class="form-control" id="txt_sosim_thietbi" maxlength="20"
+                                style="width:100% !important">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button data-bs-dismiss="modal" class="btn btn-default" type="button"
+                                id="btn_thoat_tk">Thoát</button>
+                            <button class="btn btn-primary" data-toggle='modal' id="btn_luu_thietbi"><i
+                                    class="fa fa-save"></i> Lưu</button>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

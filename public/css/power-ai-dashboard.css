@@ -1,0 +1,2343 @@
+  .power-ai-workspace {
+    position: relative;
+    margin-top: 12px;
+    padding: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(44, 106, 156, .65);
+    border-radius: 16px;
+    background:
+      radial-gradient(circle at 90% 0, rgba(14, 165, 233, .11), transparent 32%),
+      linear-gradient(180deg, rgba(8, 35, 61, .96), rgba(5, 23, 43, .96));
+    box-shadow: 0 18px 48px rgba(0, 0, 0, .28);
+  }
+
+  .power-ai-workspace::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #0ea5e9, #22d3ee 35%, transparent 78%);
+  }
+
+  .power-ai-workspace-head {
+    margin-bottom: 14px;
+  }
+
+  .power-ai-eyebrow {
+    display: block;
+    margin-bottom: 4px;
+    color: #38bdf8;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .16em;
+  }
+
+  .power-ai-workspace-head h2 {
+    margin: 0;
+    color: #f4f9ff;
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  .power-ai-workspace-head p {
+    margin: 5px 0 0;
+    color: #8fa9c1;
+    font-size: 12px;
+  }
+
+  .power-ai-sidebar-workspace {
+    margin: 14px 0 0;
+    padding: 12px;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 769px) {
+    .sidebar {
+      height: auto;
+      min-height: 100vh;
+      max-height: none;
+      align-self: flex-start;
+      overflow-x: hidden;
+      overflow-y: visible;
+    }
+
+    .power-ai-sidebar-workspace,
+    .power-ai-sidebar-sections,
+    .power-ai-sidebar-section,
+    .power-ai-sidebar-section-body,
+    .power-ai-sidebar-workspace #powerAiHealth,
+    .power-ai-sidebar-workspace #powerAiForecast {
+      max-height: none;
+      overflow: visible;
+    }
+  }
+
+  .power-ai-sidebar-workspace .power-ai-workspace-head h2 {
+    font-size: 15px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-workspace-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .power-ai-sidebar-refresh {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #28547f;
+    border-radius: 8px;
+    background: #0e2b4b;
+    color: #bde8ff;
+    cursor: pointer;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-system-status {
+    position: relative;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 9px;
+    padding: 10px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-system-items {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-system-items > span {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-system-items button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .power-ai-sidebar-sections {
+    display: grid;
+    gap: 8px;
+    margin-top: 9px;
+  }
+
+  .power-ai-lv-analysis {
+    margin-top: 8px;
+    padding-top: 9px;
+    border-top: 1px solid rgba(125, 211, 252, .16);
+  }
+
+  .power-ai-lv-analysis-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #dff6ff;
+    font-size: 10px;
+    letter-spacing: .04em;
+  }
+
+  .power-ai-lv-analysis-title i {
+    color: #22d3ee;
+  }
+
+  .power-ai-lv-analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px;
+    margin-top: 7px;
+  }
+
+  .power-ai-lv-analysis-item {
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    gap: 5px;
+    align-items: center;
+    min-width: 0;
+    padding: 7px 8px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: rgba(3, 21, 38, .48);
+  }
+
+  .power-ai-lv-analysis-item > i {
+    color: #38bdf8;
+    text-align: center;
+  }
+
+  .power-ai-lv-analysis-item div {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .power-ai-lv-analysis-item small {
+    color: #7897b2;
+    font-size: 9px;
+    text-transform: uppercase;
+  }
+
+  .power-ai-lv-analysis-item b {
+    color: #d7ebf8;
+    font-size: 10px;
+    line-height: 1.25;
+  }
+
+  .power-ai-lv-analysis-item strong {
+    color: #67e8f9;
+    font-size: 12px;
+    text-align: right;
+  }
+
+  .power-ai-lv-analysis-item.warning strong { color: #fbbf24; }
+  .power-ai-lv-analysis-item.critical strong { color: #fb7185; }
+
+  .power-ai-lv-assessment {
+    grid-template-columns: 18px minmax(0, 1fr) auto;
+  }
+
+  .power-ai-lv-assessment strong {
+    white-space: nowrap;
+  }
+
+  .power-ai-lv-diagnosis {
+    grid-column: 1 / -1;
+  }
+
+  .power-ai-lv-diagnosis b {
+    white-space: normal;
+  }
+
+  .power-ai-lv-recommendation {
+    margin: 7px 0 0;
+    padding: 5px 7px;
+    border-left: 2px solid #22d3ee;
+    color: #9fc3da;
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  .low-voltage-panel .low-voltage-status-panel {
+    margin-top: 7px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid rgba(125, 211, 252, .13);
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .low-voltage-panel .low-voltage-status-table {
+    table-layout: fixed;
+  }
+
+  .low-voltage-panel .low-voltage-status-table tbody {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .low-voltage-panel .low-voltage-status-table tr {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-width: 0;
+  }
+
+  .low-voltage-panel .low-voltage-status-table tr + tr {
+    border-top: 0;
+    border-left: 1px solid rgba(125, 211, 252, .13);
+  }
+
+  .low-voltage-panel .low-voltage-status-table th,
+  .low-voltage-panel .low-voltage-status-table td {
+    width: auto;
+    padding: 6px 4px;
+    text-align: center;
+  }
+
+  .low-voltage-panel .status-label {
+    width: 100%;
+    justify-content: center;
+    gap: 5px;
+    font-size: 8px;
+    line-height: 1.2;
+  }
+
+  .low-voltage-panel .status-label > i {
+    width: 13px;
+    flex: 0 0 13px;
+    transform: translateY(-1px);
+  }
+
+  .low-voltage-panel .status-value {
+    min-height: 30px;
+  }
+
+  .low-voltage-panel .door-status {
+    margin-inline: auto;
+  }
+
+  .low-voltage-panel .door-status > i {
+    position: relative;
+    left: 1px;
+    top: 5px;
+  }
+
+  .low-voltage-panel [data-ioa],
+  .metric [data-ioa],
+  .thd-stats b,
+  .realtime-phase-stats b,
+  .power-ai-health-score strong,
+  .power-ai-risk-value strong,
+  #powerAiAlertCount,
+  #aiScore {
+    display: inline-block;
+    transition: color .2s ease, text-shadow .2s ease, transform .2s ease;
+  }
+
+  #dashboardMain .power-ai-value-changed {
+    animation: powerAiValuePulse .9s ease-out;
+  }
+
+  #dashboardMain .power-ai-value-up {
+    color: #67e8f9 !important;
+    text-shadow: 0 0 10px rgba(103, 232, 249, .75);
+  }
+
+  #dashboardMain .power-ai-value-down {
+    color: #a78bfa !important;
+    text-shadow: 0 0 10px rgba(167, 139, 250, .72);
+  }
+
+  #dashboardMain .power-ai-row-updated {
+    animation: powerAiRowSweep .9s ease-out;
+  }
+
+  .power-ai-lv-analysis-item.power-ai-analysis-updated {
+    animation: powerAiAnalysisPulse 1s ease-out;
+  }
+
+  @keyframes powerAiValuePulse {
+    0% { transform: scale(1); }
+    35% { transform: scale(1.09); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes powerAiRowSweep {
+    0% { box-shadow: inset 0 0 0 rgba(34, 211, 238, 0); }
+    35% { box-shadow: inset 0 0 18px rgba(34, 211, 238, .14); }
+    100% { box-shadow: inset 0 0 0 rgba(34, 211, 238, 0); }
+  }
+
+  @keyframes powerAiAnalysisPulse {
+    0% { border-color: transparent; }
+    35% {
+      border-color: rgba(34, 211, 238, .65);
+      box-shadow: 0 0 14px rgba(34, 211, 238, .14);
+    }
+    100% {
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #dashboardMain .power-ai-value-changed,
+    #dashboardMain .power-ai-row-updated,
+    .power-ai-lv-analysis-item.power-ai-analysis-updated {
+      animation: none;
+    }
+
+    .low-voltage-panel [data-ioa],
+    .metric [data-ioa],
+    .thd-stats b,
+    .realtime-phase-stats b,
+    .power-ai-health-score strong,
+    .power-ai-risk-value strong,
+    #powerAiAlertCount,
+    #aiScore {
+      transition: none;
+    }
+  }
+
+  .power-ai-sidebar-section {
+    overflow: hidden;
+    border: 1px solid rgba(44, 106, 156, .55);
+    border-radius: 9px;
+    background: linear-gradient(145deg, rgba(14, 48, 79, .88), rgba(7, 29, 52, .9));
+  }
+
+  .power-ai-sidebar-section summary {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 9px 10px;
+    color: #dcecff;
+    cursor: default;
+    list-style: none;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    user-select: none;
+  }
+
+  .power-ai-sidebar-section summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .power-ai-sidebar-section summary > span:first-child {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .power-ai-sidebar-section summary > span:first-child i {
+    width: 14px;
+    color: #38bdf8;
+    text-align: center;
+  }
+
+  .power-ai-summary-end {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .power-ai-chevron {
+    color: #7897b2;
+    font-size: 9px;
+    transition: transform .18s ease;
+  }
+
+  .power-ai-sidebar-section[open] .power-ai-chevron {
+    transform: rotate(180deg);
+  }
+
+  .power-ai-sidebar-section[open] summary {
+    color: #fff;
+    background: rgba(14, 116, 144, .13);
+    border-bottom: 1px solid rgba(44, 106, 156, .4);
+  }
+
+  .power-ai-sidebar-section-body {
+    position: relative;
+    padding: 11px;
+  }
+
+  .power-ai-section-refresh {
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid #28547f;
+    border-radius: 6px;
+    background: #0e2b4b;
+    color: #9fc9e8;
+    cursor: pointer;
+    font-size: 9px;
+  }
+
+  .power-ai-section-refresh:hover {
+    border-color: #38bdf8;
+    color: #e0f2fe;
+  }
+
+  .power-ai-sidebar-workspace #powerAiHealth {
+    min-height: 72px;
+    display: grid;
+    gap: 11px;
+    padding-top: 6px;
+  }
+
+  .power-ai-health-overview {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 0;
+  }
+
+  .power-ai-sidebar-workspace #powerAiForecast {
+    min-height: 72px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-operations-grid {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    margin-top: 9px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-operations-grid > .panel {
+    min-height: 0;
+    padding: 11px;
+    border-radius: 9px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-alerts-card {
+    grid-column: auto;
+  }
+
+  .power-ai-sidebar-workspace .panel-head {
+    margin-bottom: 9px;
+  }
+
+  .power-ai-sidebar-workspace .panel-head h3 {
+    font-size: 11px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-health-card #powerAiHealth,
+  .power-ai-sidebar-workspace .power-ai-forecast-pending,
+  .power-ai-sidebar-workspace .power-ai-risk {
+    min-height: 0;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-health-score,
+  .power-ai-sidebar-workspace .power-ai-risk-value {
+    width: 68px;
+    height: 68px;
+    flex-basis: 68px;
+    padding-top: 19px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-health-score strong,
+  .power-ai-sidebar-workspace .power-ai-risk-value strong {
+    font-size: 20px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-health-detail,
+  .power-ai-sidebar-workspace .power-ai-risk-content {
+    gap: 4px;
+    font-size: 11px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-health-detail > b,
+  .power-ai-sidebar-workspace .power-ai-risk-content > b,
+  .power-ai-sidebar-workspace .power-ai-forecast-pending b {
+    font-size: 13px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-health-detail > span,
+  .power-ai-sidebar-workspace .power-ai-health-detail small,
+  .power-ai-sidebar-workspace .power-ai-risk-content small {
+    font-size: 10px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-health-kpis {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-health-kpis > span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    min-width: 0;
+    padding: 3px 5px;
+    border-radius: 5px;
+    background: rgba(3, 21, 38, .38);
+  }
+
+  .power-ai-sidebar-workspace .power-ai-health-kpis > span:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-table-wrap {
+    max-height: 190px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-alert-table thead {
+    display: none;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-alert-table,
+  .power-ai-sidebar-workspace .power-ai-alert-table tbody,
+  .power-ai-sidebar-workspace .power-ai-alert-table tr,
+  .power-ai-sidebar-workspace .power-ai-alert-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-alert-table tr {
+    padding: 8px;
+    border-bottom: 1px solid rgba(120, 170, 210, .18);
+  }
+
+  .power-ai-sidebar-workspace .power-ai-alert-table td {
+    padding: 3px 0;
+    border: 0;
+    white-space: normal;
+    font-size: 10px;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-alert-table td:nth-child(1)::before {
+    content: "Thời gian: ";
+  }
+
+  .power-ai-sidebar-workspace .power-ai-alert-table td:nth-child(2)::before {
+    content: "Mức độ: ";
+  }
+
+  .power-ai-sidebar-workspace .power-ai-alert-table td:nth-child(3)::before {
+    content: "Nguồn: ";
+  }
+
+  .power-ai-sidebar-workspace .power-ai-alert-table td::before {
+    color: #7897b2;
+    font-weight: 600;
+  }
+
+  .power-ai-sidebar-workspace .power-ai-alert-table .power-ai-empty::before {
+    content: none;
+  }
+
+  .power-ai-alert-row {
+    cursor: pointer;
+    transition: background .15s;
+  }
+
+  .power-ai-alert-row:hover,
+  .power-ai-alert-row:focus {
+    outline: none;
+    background: rgba(14, 165, 233, .1);
+  }
+
+  .recent-alerts-panel {
+    min-width: 0;
+    margin-top: 12px;
+    padding: 14px 16px;
+    border-color: rgba(239, 68, 68, .24);
+    background:
+      radial-gradient(circle at 100% 0, rgba(239, 68, 68, .08), transparent 38%),
+      linear-gradient(145deg, rgba(7, 29, 50, .97), rgba(4, 18, 34, .97));
+  }
+
+  .recent-alerts-head {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(248, 113, 113, .14);
+  }
+
+  .recent-alerts-head h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: .04em;
+  }
+
+  .recent-alerts-head h3 i {
+    color: #fb7185;
+  }
+
+  .recent-alerts-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .power-ai-alert-history-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border: 1px solid rgba(56, 189, 248, .3);
+    border-radius: 8px;
+    background: rgba(14, 116, 144, .12);
+    color: #bae6fd;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .power-ai-alert-history-toggle:hover,
+  .power-ai-alert-history-toggle[aria-pressed="true"] {
+    border-color: rgba(56, 189, 248, .6);
+    background: rgba(14, 116, 144, .28);
+    color: #fff;
+  }
+
+  .recent-alerts-panel .power-ai-table-wrap {
+    max-height: 260px;
+  }
+
+  .recent-alerts-panel .power-ai-alert-table th:nth-child(1) {
+    width: 170px;
+  }
+
+  .recent-alerts-panel .power-ai-alert-table th:nth-child(2) {
+    width: 110px;
+  }
+
+  .recent-alerts-panel .power-ai-alert-table th:nth-child(3) {
+    width: 120px;
+  }
+
+  .recent-alerts-panel .power-ai-alert-table td {
+    font-size: 11px;
+  }
+
+  .power-ai-alert-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 10020;
+    visibility: hidden;
+    opacity: 0;
+    background: rgba(0, 8, 18, .72);
+    backdrop-filter: blur(5px);
+    transition: opacity .2s, visibility .2s;
+  }
+
+  .power-ai-alert-backdrop.open {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .power-ai-alert-detail {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10021;
+    width: min(620px, calc(100vw - 32px));
+    max-height: min(760px, calc(100vh - 40px));
+    overflow-y: auto;
+    padding: 20px;
+    border: 1px solid #28547f;
+    border-radius: 16px;
+    background:
+      radial-gradient(circle at 100% 0, rgba(14, 165, 233, .12), transparent 30%),
+      #071d33;
+    box-shadow:
+      0 24px 80px rgba(0, 0, 0, .58),
+      0 0 0 1px rgba(56, 189, 248, .08);
+    visibility: hidden;
+    opacity: 0;
+    transform: translate(-50%, -46%) scale(.96);
+    transition: opacity .2s ease, transform .2s ease, visibility .2s;
+  }
+
+  .power-ai-alert-detail.open {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  body.power-ai-modal-open {
+    overflow: hidden;
+  }
+
+  .power-ai-alert-detail-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(120, 170, 210, .16);
+  }
+
+  .power-ai-alert-detail-head h3 {
+    margin: 0;
+    color: #f4f9ff;
+    font-size: 18px;
+  }
+
+  .power-ai-alert-detail-head button {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #28547f;
+    border-radius: 50%;
+    background: #0e2b4b;
+    color: #fff;
+    cursor: pointer;
+    font-size: 22px;
+  }
+
+  .power-ai-alert-detail-body {
+    display: grid;
+    gap: 14px;
+    margin-top: 15px;
+  }
+
+  .power-ai-alert-detail-meta,
+  .power-ai-reading-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+  }
+
+  .power-ai-alert-detail-meta span,
+  .power-ai-reading-grid span {
+    display: grid;
+    gap: 4px;
+    padding: 10px;
+    border: 1px solid rgba(120, 170, 210, .15);
+    border-radius: 8px;
+    background: rgba(4, 23, 42, .48);
+    color: #7897b2;
+    font-size: 10px;
+  }
+
+  .power-ai-alert-detail-meta small {
+    color: #7897b2;
+  }
+
+  .power-ai-alert-detail-meta b,
+  .power-ai-reading-grid b {
+    color: #eaf4ff;
+    font-size: 12px;
+  }
+
+  .power-ai-alert-detail-meta .power-ai-detail-warning {
+    color: #fcd34d;
+  }
+
+  .power-ai-alert-detail-meta .power-ai-detail-critical {
+    color: #fca5a5;
+  }
+
+  .power-ai-alert-detail-section {
+    padding: 12px;
+    border: 1px solid rgba(120, 170, 210, .15);
+    border-radius: 9px;
+    background: rgba(4, 23, 42, .38);
+  }
+
+  .power-ai-alert-detail-section h4 {
+    margin: 0 0 10px;
+    color: #bfdbfe;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .power-ai-alert-detail-section p {
+    margin: 6px 0;
+    color: #dcecff;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .power-ai-alert-detail-section p i {
+    margin-right: 5px;
+    color: #f59e0b;
+  }
+
+  .power-ai-evaluation-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0 16px 12px;
+  }
+
+  .power-ai-evaluation-summary > span {
+    display: grid;
+    gap: 3px;
+    padding: 8px 10px;
+    border: 1px solid rgba(56, 189, 248, .16);
+    border-radius: 8px;
+    background: rgba(4, 23, 42, .45);
+  }
+
+  .power-ai-evaluation-summary small {
+    color: #7897b2;
+    font-size: 9px;
+    text-transform: uppercase;
+  }
+
+  .power-ai-evaluation-summary b {
+    color: #dff5ff;
+    font-size: 12px;
+  }
+
+  .power-ai-feedback-help {
+    color: #8fa9c1 !important;
+  }
+
+  .power-ai-occurrence-badge {
+    display: inline-flex;
+    margin-right: 6px;
+    padding: 2px 7px;
+    border: 1px solid rgba(56, 189, 248, .32);
+    border-radius: 999px;
+    background: rgba(14, 116, 144, .2);
+    color: #7dd3fc;
+    font-size: 9px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .power-ai-occurrence-summary {
+    display: grid;
+    grid-template-columns: .7fr 1.4fr 1.4fr;
+    gap: 8px;
+  }
+
+  .power-ai-occurrence-summary span {
+    display: grid;
+    gap: 4px;
+    padding: 9px;
+    border: 1px solid rgba(120, 170, 210, .15);
+    border-radius: 7px;
+    background: rgba(4, 23, 42, .45);
+  }
+
+  .power-ai-occurrence-summary small {
+    color: #7897b2;
+    font-size: 9px;
+  }
+
+  .power-ai-occurrence-summary b {
+    color: #eaf4ff;
+    font-size: 11px;
+  }
+
+  .power-ai-occurrence-list {
+    margin-top: 9px;
+    color: #9fc1dc;
+    font-size: 11px;
+  }
+
+  .power-ai-occurrence-list summary {
+    cursor: pointer;
+    color: #7dd3fc;
+    font-weight: 700;
+  }
+
+  .power-ai-occurrence-list ol {
+    max-height: 180px;
+    margin: 8px 0 0;
+    padding: 0 0 0 24px;
+    overflow-y: auto;
+  }
+
+  .power-ai-occurrence-list li {
+    padding: 6px 4px;
+    border-bottom: 1px solid rgba(120, 170, 210, .1);
+  }
+
+  .power-ai-occurrence-list li small {
+    display: block;
+    margin-top: 2px;
+    color: #587793;
+    font-size: 8px;
+    overflow-wrap: anywhere;
+  }
+
+  .power-ai-group-review-note {
+    padding: 8px 9px;
+    border: 1px solid rgba(56, 189, 248, .22);
+    border-radius: 7px;
+    background: rgba(14, 116, 144, .12);
+    color: #bae6fd !important;
+  }
+
+  .power-ai-verdict-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    margin-bottom: 12px;
+  }
+
+  .power-ai-verdict-options button {
+    min-height: 42px;
+    padding: 8px;
+    border: 1px solid #28547f;
+    border-radius: 8px;
+    background: #0a2947;
+    color: #b9d6ed;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .power-ai-verdict-options button:hover,
+  .power-ai-verdict-options button.selected {
+    border-color: #38bdf8;
+    background: #0e4f70;
+    color: #fff;
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, .12);
+  }
+
+  .power-ai-field {
+    display: grid;
+    gap: 5px;
+    color: #9fc1dc;
+    font-size: 11px;
+  }
+
+  .power-ai-field input,
+  .power-ai-field select,
+  .power-ai-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 9px 10px;
+    border: 1px solid #28547f;
+    border-radius: 7px;
+    outline: none;
+    background: #061a2e;
+    color: #edf7ff;
+    font: inherit;
+  }
+
+  .power-ai-field textarea {
+    min-height: 66px;
+    resize: vertical;
+  }
+
+  .power-ai-field input:focus,
+  .power-ai-field select:focus,
+  .power-ai-field textarea:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, .12);
+  }
+
+  .power-ai-incident-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0;
+    color: #dcecff;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .power-ai-incident-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid rgba(245, 158, 11, .3);
+    border-radius: 8px;
+    background: rgba(120, 53, 15, .1);
+  }
+
+  .power-ai-incident-fields[hidden] {
+    display: none;
+  }
+
+  .power-ai-field-wide {
+    grid-column: 1 / -1;
+  }
+
+  .power-ai-feedback-save {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #059669, #0e7490);
+    color: #fff;
+    cursor: pointer;
+    font-weight: 800;
+  }
+
+  .power-ai-feedback-save:disabled {
+    cursor: wait;
+    opacity: .65;
+  }
+
+  .power-ai-feedback-message {
+    min-height: 18px;
+    margin-top: 9px;
+    font-size: 11px;
+  }
+
+  .power-ai-feedback-message.success {
+    color: #6ee7b7;
+  }
+
+  .power-ai-feedback-message.error {
+    color: #fca5a5;
+  }
+
+  .power-ai-alert-locate {
+    width: 100%;
+    padding: 11px 14px;
+    border: 0;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #0284c7, #0e7490);
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  @media (max-width: 640px) {
+    .power-ai-alert-detail {
+      width: calc(100vw - 20px);
+      max-height: calc(100vh - 20px);
+      padding: 16px;
+      border-radius: 13px;
+    }
+
+    .power-ai-alert-detail-meta,
+    .power-ai-reading-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .power-ai-evaluation-summary,
+    .power-ai-verdict-options,
+    .power-ai-incident-fields,
+    .power-ai-occurrence-summary {
+      grid-template-columns: 1fr;
+    }
+
+    .power-ai-field-wide {
+      grid-column: auto;
+    }
+  }
+
+  .power-ai-context-focus {
+    animation: powerAiContextFocus 1s ease-in-out 3;
+  }
+
+  @keyframes powerAiContextFocus {
+    50% {
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, .2), 0 0 24px rgba(245, 158, 11, .2);
+    }
+  }
+
+  .power-ai-svg-focus {
+    filter: drop-shadow(0 0 5px #f59e0b);
+    animation: powerAiSvgFocus .8s ease-in-out 4;
+  }
+
+  @keyframes powerAiSvgFocus {
+    50% { opacity: .35; }
+  }
+
+  .sidebar.collapsed .power-ai-sidebar-workspace {
+    display: none;
+  }
+
+  .power-ai-operations-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .power-ai-system-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 11px 14px;
+    border: 1px solid rgba(44, 106, 156, .52);
+    border-radius: 10px;
+    background: rgba(4, 23, 42, .58);
+  }
+
+  .power-ai-system-main,
+  .power-ai-system-items {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .power-ai-system-main > div,
+  .power-ai-system-items > span {
+    display: grid;
+    gap: 2px;
+  }
+
+  .power-ai-system-main b,
+  .power-ai-system-items b {
+    color: #eaf4ff;
+    font-size: 12px;
+  }
+
+  .power-ai-system-main small,
+  .power-ai-system-items small {
+    color: #8fa9c1;
+    font-size: 10px;
+  }
+
+  .power-ai-system-dot {
+    width: 11px;
+    height: 11px;
+    flex: 0 0 11px;
+    border-radius: 50%;
+    background: #94a3b8;
+    box-shadow: 0 0 0 4px rgba(148, 163, 184, .12);
+  }
+
+  .power-ai-system-status.is-online .power-ai-system-dot {
+    background: #22c55e;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, .13), 0 0 12px #22c55e;
+  }
+
+  .power-ai-system-status.is-degraded .power-ai-system-dot {
+    background: #f59e0b;
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, .13);
+  }
+
+  .power-ai-system-status.is-offline .power-ai-system-dot {
+    background: #ef4444;
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, .13);
+  }
+
+  .power-ai-system-status.is-loading .power-ai-system-dot {
+    animation: powerAiStatusPulse 1s infinite alternate;
+  }
+
+  @keyframes powerAiStatusPulse {
+    to { opacity: .35; }
+  }
+
+  .power-ai-system-items > span {
+    min-width: 66px;
+    padding-left: 12px;
+    border-left: 1px solid rgba(143, 169, 193, .16);
+  }
+
+  .power-ai-system-items button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #28547f;
+    border-radius: 8px;
+    background: #0e2b4b;
+    color: #bde8ff;
+    cursor: pointer;
+  }
+
+  @media (max-width: 850px) {
+    .power-ai-system-status {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .power-ai-system-items {
+      width: 100%;
+      overflow-x: auto;
+    }
+  }
+
+  .power-ai-alerts-card {
+    grid-column: 1 / -1;
+  }
+
+  .power-ai-operations-grid > .panel {
+    min-width: 0;
+    min-height: 178px;
+    border-color: rgba(44, 106, 156, .55);
+    background: linear-gradient(145deg, rgba(14, 48, 79, .88), rgba(7, 29, 52, .9));
+    box-shadow: none;
+  }
+
+  .power-ai-operations-grid .panel-head {
+    margin-bottom: 14px;
+  }
+
+  .power-ai-operations-grid .panel-head h3 i {
+    color: #38bdf8;
+    margin-right: 6px;
+  }
+
+  .power-ai-loading,
+  .power-ai-empty {
+    color: #8fa9c1;
+    font-size: 13px;
+  }
+
+  .power-ai-health-card #powerAiHealth {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-height: 112px;
+  }
+
+  .power-ai-health-score {
+    width: 98px;
+    height: 98px;
+    flex: 0 0 98px;
+    border-radius: 50%;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    padding-top: 28px;
+    background: rgba(56, 189, 248, .1);
+    border: 5px solid #38bdf8;
+    box-sizing: border-box;
+  }
+
+  .power-ai-health-score strong {
+    color: #fff;
+    font-size: 27px;
+  }
+
+  .power-ai-health-score span {
+    color: #8fa9c1;
+    font-size: 11px;
+  }
+
+  .power-ai-health-score.level-excellent,
+  .power-ai-health-score.level-good {
+    border-color: #22c55e;
+  }
+
+  .power-ai-health-score.level-attention {
+    border-color: #f59e0b;
+  }
+
+  .power-ai-health-score.level-critical {
+    border-color: #ef4444;
+  }
+
+  .power-ai-health-detail {
+    display: grid;
+    gap: 7px;
+    min-width: 0;
+    color: #dcecff;
+    font-size: 13px;
+  }
+
+  .power-ai-health-detail > b {
+    color: #fff;
+    font-size: 18px;
+  }
+
+  .power-ai-health-detail > span,
+  .power-ai-health-detail small {
+    color: #8fa9c1;
+  }
+
+  .power-ai-health-kpis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 14px;
+  }
+
+  .power-ai-health-kpis b {
+    color: #f8fafc;
+  }
+
+  .power-ai-history-assessment {
+    display: grid;
+    gap: 7px;
+    margin-top: 0;
+    padding: 10px;
+    border: 1px solid rgba(56, 189, 248, .18);
+    border-radius: 9px;
+    background: rgba(3, 21, 38, .42);
+  }
+
+  .power-ai-history-assessment > b {
+    color: #7dd3fc;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+
+  .power-ai-history-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .power-ai-history-head b {
+    color: #7dd3fc;
+    font-size: 10px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  .power-ai-history-head i {
+    color: #38bdf8;
+    font-size: 11px;
+  }
+
+  .power-ai-history-assessment > span {
+    color: #c9e5f8;
+    font-size: 10px;
+    line-height: 1.35;
+  }
+
+  .power-ai-history-metrics {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .power-ai-history-metrics small {
+    display: grid;
+    grid-template-columns: 15px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 6px;
+    border-radius: 6px;
+    background: rgba(3, 21, 38, .5);
+  }
+
+  .power-ai-history-metrics i {
+    color: #38bdf8;
+    text-align: center;
+  }
+
+  .power-ai-history-metrics span {
+    color: #8fa9c1;
+  }
+
+  .power-ai-history-assessment strong {
+    color: #f8fafc;
+  }
+
+  .power-ai-history-assessment.level-attention {
+    border-color: rgba(245, 158, 11, .3);
+  }
+
+  .power-ai-history-assessment.level-warning {
+    border-color: rgba(239, 68, 68, .35);
+  }
+
+  .power-ai-forecast-card #powerAiForecast {
+    min-height: 112px;
+  }
+
+  #powerAiForecast[data-forecast-clickable="true"] {
+    cursor: pointer;
+    border-radius: 9px;
+    transition: background .16s, box-shadow .16s;
+  }
+
+  #powerAiHealth[data-health-clickable="true"] {
+    cursor: pointer;
+    border-radius: 9px;
+    transition: background .16s, box-shadow .16s;
+  }
+
+  #powerAiHealth[data-health-clickable="true"]:hover,
+  #powerAiHealth[data-health-clickable="true"]:focus-visible {
+    background: rgba(14, 165, 233, .06);
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, .28);
+    outline: none;
+  }
+
+  .power-ai-health-explain-score {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .power-ai-health-explain-main {
+    display: grid;
+    place-items: center;
+    min-height: 115px;
+    padding: 12px;
+    border: 1px solid rgba(120, 170, 210, .16);
+    border-radius: 10px;
+    background: rgba(4, 23, 42, .48);
+  }
+
+  .power-ai-health-explain-main strong {
+    color: #f0f9ff;
+    font-size: 30px;
+  }
+
+  .power-ai-health-explain-main small {
+    color: #8fa9c1;
+  }
+
+  .power-ai-health-explain-kpis {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .power-ai-health-explain-kpis span {
+    display: grid;
+    gap: 3px;
+    padding: 10px;
+    border: 1px solid rgba(120, 170, 210, .14);
+    border-radius: 8px;
+    background: rgba(4, 23, 42, .42);
+    color: #7897b2;
+    font-size: 10px;
+  }
+
+  .power-ai-health-explain-kpis b {
+    color: #eaf4ff;
+    font-size: 14px;
+  }
+
+  .power-ai-deduction-list {
+    display: grid;
+    gap: 7px;
+  }
+
+  .power-ai-deduction-list span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 10px;
+    border-radius: 7px;
+    background: rgba(239, 68, 68, .08);
+    color: #dcecff;
+    font-size: 11px;
+  }
+
+  .power-ai-deduction-list b {
+    flex: 0 0 auto;
+    color: #fca5a5;
+  }
+
+  @media (max-width: 520px) {
+    .power-ai-health-explain-score {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  #powerAiForecast[data-forecast-clickable="true"]:hover,
+  #powerAiForecast[data-forecast-clickable="true"]:focus-visible {
+    background: rgba(14, 165, 233, .06);
+    box-shadow: 0 0 0 1px rgba(56, 189, 248, .28);
+    outline: none;
+  }
+
+  .power-ai-forecast-explain-score {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
+  }
+
+  .power-ai-forecast-explain-score > span {
+    display: grid;
+    gap: 4px;
+    padding: 12px;
+    border: 1px solid rgba(120, 170, 210, .16);
+    border-radius: 9px;
+    background: rgba(4, 23, 42, .48);
+    color: #7897b2;
+    font-size: 10px;
+  }
+
+  .power-ai-forecast-explain-score strong {
+    color: #f0f9ff;
+    font-size: 19px;
+  }
+
+  .power-ai-risk-scale {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    overflow: hidden;
+    border-radius: 7px;
+  }
+
+  .power-ai-risk-scale span {
+    padding: 8px 4px;
+    color: #fff;
+    font-size: 9px;
+    text-align: center;
+  }
+
+  .power-ai-risk-scale span:nth-child(1) { background: #047857; }
+  .power-ai-risk-scale span:nth-child(2) { background: #b7791f; }
+  .power-ai-risk-scale span:nth-child(3) { background: #c2410c; }
+  .power-ai-risk-scale span:nth-child(4) { background: #b91c1c; }
+
+  @media (max-width: 520px) {
+    .power-ai-forecast-explain-score {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .power-ai-forecast-pending,
+  .power-ai-risk {
+    min-height: 112px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .power-ai-forecast-pending > i {
+    color: #38bdf8;
+    font-size: 34px;
+  }
+
+  .power-ai-forecast-pending > div {
+    flex: 1;
+    display: grid;
+    gap: 7px;
+  }
+
+  .power-ai-forecast-pending b,
+  .power-ai-risk-content > b {
+    color: #fff;
+    font-size: 17px;
+  }
+
+  .power-ai-forecast-pending span,
+  .power-ai-forecast-pending small,
+  .power-ai-risk-content span,
+  .power-ai-risk-content small {
+    color: #8fa9c1;
+    font-size: 12px;
+  }
+
+  .power-ai-progress {
+    height: 7px;
+    overflow: hidden;
+    border-radius: 5px;
+    background: rgba(143, 169, 193, .18);
+  }
+
+  .power-ai-progress i {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #0ea5e9, #22d3ee);
+  }
+
+  .power-ai-risk-value {
+    width: 94px;
+    height: 94px;
+    flex: 0 0 94px;
+    border-radius: 14px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    padding-top: 28px;
+    border: 2px solid #22c55e;
+    background: rgba(34, 197, 94, .1);
+    box-sizing: border-box;
+  }
+
+  .power-ai-risk-value strong {
+    color: #fff;
+    font-size: 26px;
+  }
+
+  .power-ai-risk-value span {
+    color: #8fa9c1;
+    font-size: 11px;
+  }
+
+  .power-ai-risk-content {
+    display: grid;
+    gap: 7px;
+  }
+
+  .power-ai-risk.risk-moderate .power-ai-risk-value {
+    border-color: #f59e0b;
+    background: rgba(245, 158, 11, .1);
+  }
+
+  .power-ai-risk.risk-high .power-ai-risk-value,
+  .power-ai-risk.risk-critical .power-ai-risk-value {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, .1);
+  }
+
+  .power-ai-count {
+    min-width: 28px;
+    padding: 3px 9px;
+    border-radius: 14px;
+    background: rgba(239, 68, 68, .18);
+    color: #fca5a5;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .power-ai-table-wrap {
+    max-height: 214px;
+    overflow: auto;
+    border: 1px solid rgba(120, 170, 210, .12);
+    border-radius: 9px;
+  }
+
+  .power-ai-alert-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 12px;
+  }
+
+  .power-ai-alert-table th,
+  .power-ai-alert-table td {
+    padding: 9px 7px;
+    border-bottom: 1px solid rgba(120, 170, 210, .18);
+    color: #dcecff;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .power-ai-alert-table th {
+    color: #8fbfe6;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: rgba(4, 23, 42, .94);
+  }
+
+  .power-ai-alert-table th:nth-child(1) { width: 145px; }
+  .power-ai-alert-table th:nth-child(2) { width: 90px; }
+  .power-ai-alert-table th:nth-child(3) { width: 105px; }
+
+  .power-ai-severity {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: 700;
+  }
+
+  .power-ai-severity.warning {
+    color: #fcd34d;
+    background: rgba(245, 158, 11, .15);
+  }
+
+  .power-ai-severity.critical {
+    color: #fca5a5;
+    background: rgba(239, 68, 68, .15);
+  }
+
+  @media (max-width: 1100px) {
+    .power-ai-operations-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .power-ai-alerts-card {
+      grid-column: auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .power-ai-workspace {
+      padding: 13px;
+      border-radius: 12px;
+    }
+
+    .power-ai-workspace-head h2 {
+      font-size: 17px;
+    }
+
+    .power-ai-health-card #powerAiHealth {
+      align-items: flex-start;
+    }
+
+    .power-ai-alert-table thead {
+      display: none;
+    }
+
+    .power-ai-alert-table,
+    .power-ai-alert-table tbody,
+    .power-ai-alert-table tr,
+    .power-ai-alert-table td {
+      display: block;
+      width: 100%;
+    }
+
+    .power-ai-alert-table tr {
+      padding: 10px 11px;
+      border-bottom: 1px solid rgba(120, 170, 210, .18);
+    }
+
+    .power-ai-alert-table td {
+      padding: 4px 0;
+      border: 0;
+      white-space: normal;
+    }
+
+    .power-ai-alert-table td:nth-child(1)::before { content: "Thời gian: "; }
+    .power-ai-alert-table td:nth-child(2)::before { content: "Mức độ: "; }
+    .power-ai-alert-table td:nth-child(3)::before { content: "Nguồn: "; }
+
+    .power-ai-alert-table td::before {
+      color: #7897b2;
+      font-weight: 600;
+    }
+
+    .power-ai-alert-table .power-ai-empty::before {
+      content: none;
+    }
+  }
+
+  .power-ai-chat-toggle {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 17px;
+    border: 1px solid rgba(56, 189, 248, .55);
+    border-radius: 28px;
+    background: linear-gradient(135deg, #0369a1, #0e7490);
+    box-shadow: 0 12px 35px rgba(2, 132, 199, .35);
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .power-ai-chat-toggle:hover {
+    transform: translateY(-1px);
+  }
+
+  .power-ai-chat-panel {
+    position: fixed;
+    right: 22px;
+    bottom: 82px;
+    z-index: 9001;
+    width: min(440px, calc(100vw - 28px));
+    height: min(680px, calc(100vh - 110px));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #1d4f78;
+    border-radius: 16px;
+    background: #071d33;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .55);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(14px) scale(.98);
+    transform-origin: bottom right;
+    transition: opacity .18s, transform .18s, visibility .18s;
+  }
+
+  .power-ai-chat-panel.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+
+  .power-ai-chat-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, #0b3a61, #075985);
+    border-bottom: 1px solid rgba(125, 211, 252, .2);
+  }
+
+  .power-ai-chat-head > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+  }
+
+  .power-ai-chat-head > div > i {
+    color: #67e8f9;
+    font-size: 23px;
+  }
+
+  .power-ai-chat-head span {
+    display: grid;
+    gap: 2px;
+  }
+
+  .power-ai-chat-head small {
+    color: #bae6fd;
+    font-size: 11px;
+  }
+
+  .power-ai-chat-head button {
+    width: 31px;
+    height: 31px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .1);
+    color: #fff;
+    cursor: pointer;
+    font-size: 22px;
+  }
+
+  .power-ai-chat-messages {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-gutter: stable;
+    padding: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: #1d5d87 transparent;
+  }
+
+  .power-ai-chat-messages::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  .power-ai-chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .power-ai-chat-messages::-webkit-scrollbar-thumb {
+    border: 2px solid #071d33;
+    border-radius: 8px;
+    background: #28678f;
+  }
+
+  .power-ai-chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #38bdf8;
+  }
+
+  .power-ai-message {
+    flex: 0 0 auto;
+    max-width: 90%;
+    padding: 12px 14px;
+    border-radius: 13px;
+    color: #dcecff;
+    background: #103554;
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .power-ai-message.user {
+    align-self: flex-end;
+    color: #fff;
+    background: #0369a1;
+    border-bottom-right-radius: 4px;
+  }
+
+  .power-ai-message.assistant {
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+
+  .power-ai-chat-welcome {
+    display: grid;
+    gap: 5px;
+    width: 100%;
+    max-width: 100%;
+    background: linear-gradient(135deg, #103b5c, #0c304d);
+  }
+
+  .power-ai-chat-message-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #67e8f9;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .power-ai-chat-result {
+    flex-shrink: 0;
+    align-self: stretch;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(56, 189, 248, .2);
+    background: #0b2a45;
+  }
+
+  .power-ai-chat-result-head {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 13px;
+    border-bottom: 1px solid rgba(125, 211, 252, .12);
+    color: #e0f2fe;
+    font-weight: 700;
+  }
+
+  .power-ai-chat-result-head i {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border-radius: 8px;
+    background: rgba(14, 165, 233, .14);
+    color: #67e8f9;
+  }
+
+  .power-ai-chat-result-body {
+    padding: 12px 13px;
+  }
+
+  .power-ai-chat-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .power-ai-chat-metric {
+    min-width: 0;
+    padding: 9px 10px;
+    border: 1px solid rgba(125, 211, 252, .1);
+    border-radius: 9px;
+    background: rgba(3, 21, 38, .48);
+  }
+
+  .power-ai-chat-metric small {
+    display: block;
+    margin-bottom: 3px;
+    color: #7fa6c3;
+    font-size: 10px;
+  }
+
+  .power-ai-chat-metric b {
+    color: #f0f9ff;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .power-ai-chat-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 11px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(3, 21, 38, .48);
+  }
+
+  .power-ai-chat-score {
+    color: #e0f2fe;
+    font-size: 25px;
+    font-weight: 800;
+  }
+
+  .power-ai-chat-score small {
+    color: #7fa6c3;
+    font-size: 11px;
+  }
+
+  .power-ai-chat-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    background: rgba(34, 197, 94, .13);
+    color: #86efac;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .power-ai-chat-badge.warning {
+    background: rgba(245, 158, 11, .15);
+    color: #fcd34d;
+  }
+
+  .power-ai-chat-badge.critical {
+    background: rgba(239, 68, 68, .15);
+    color: #fca5a5;
+  }
+
+  .power-ai-chat-note {
+    margin-top: 10px;
+    color: #8fb0c9;
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  .power-ai-message.typing {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    color: #bae6fd;
+  }
+
+  .power-ai-thinking-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(56, 189, 248, .12);
+    animation: powerAiThinkingPulse 1.15s ease-in-out infinite;
+  }
+
+  .power-ai-thinking-text {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .power-ai-thinking-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    min-width: 24px;
+  }
+
+  .power-ai-thinking-dots i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #7dd3fc;
+    animation: powerAiTyping 1s infinite ease-in-out;
+  }
+
+  .power-ai-thinking-dots i:nth-child(2) { animation-delay: .16s; }
+  .power-ai-thinking-dots i:nth-child(3) { animation-delay: .32s; }
+
+  @keyframes powerAiTyping {
+    0%, 80%, 100% { opacity: .25; transform: translateY(0); }
+    40% { opacity: 1; transform: translateY(-3px); }
+  }
+
+  @keyframes powerAiThinkingPulse {
+    0%, 100% { opacity: .55; transform: scale(.92); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+
+  .power-ai-chat-suggestions {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 8px 12px;
+    border-top: 1px solid rgba(125, 211, 252, .12);
+  }
+
+  .power-ai-chat-suggestions button {
+    flex: 0 0 auto;
+    padding: 6px 9px;
+    border: 1px solid #1d5d87;
+    border-radius: 14px;
+    background: #0b2a45;
+    color: #bae6fd;
+    cursor: pointer;
+    font-size: 11px;
+  }
+
+  .power-ai-chat-suggestions button i {
+    margin-right: 4px;
+    color: #38bdf8;
+  }
+
+  .power-ai-chat-form {
+    display: flex;
+    gap: 8px;
+    padding: 11px 12px;
+    border-top: 1px solid rgba(125, 211, 252, .15);
+    background: #081a2c;
+  }
+
+  .power-ai-chat-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #1d4f78;
+    border-radius: 10px;
+    outline: none;
+    background: #0b2843;
+    color: #fff;
+  }
+
+  .power-ai-chat-form input:focus {
+    border-color: #38bdf8;
+  }
+
+  .power-ai-chat-form button {
+    width: 40px;
+    border: 0;
+    border-radius: 10px;
+    background: #0284c7;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .power-ai-chat-form button:disabled,
+  .power-ai-chat-form input:disabled {
+    opacity: .6;
+  }
+
+  @media (max-width: 640px) {
+    .power-ai-chat-toggle {
+      right: 14px;
+      bottom: 14px;
+    }
+
+    .power-ai-chat-toggle span {
+      display: none;
+    }
+
+    .power-ai-chat-panel {
+      right: 14px;
+      bottom: 70px;
+      height: calc(100vh - 90px);
+    }
+  }
+
+
+/* PowerAI Client 1.1.0 */
+.power-ai-mode-badge,
+#powerAiClientMode {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+.power-ai-mode-badge.active, #powerAiClientMode.active { color: #86efac; background: rgba(34,197,94,.14); }
+.power-ai-mode-badge.shadow, #powerAiClientMode.shadow { color: #fde68a; background: rgba(245,158,11,.14); }
+.power-ai-mode-badge.maintenance, #powerAiClientMode.maintenance { color: #cbd5e1; background: rgba(148,163,184,.14); }
+.power-ai-alert-table th:nth-child(1) { width: 145px; }
+.power-ai-alert-table th:nth-child(2) { width: 150px; }
+.power-ai-alert-table th:nth-child(3) { width: 105px; }
+.power-ai-alert-table th:nth-child(4) { width: 105px; }
+.power-ai-alert-table th:nth-child(5) { width: 150px; }
+.power-ai-incident-type { color: #dff6ff; font-size: 11px; }
+.power-ai-confidence { color: #67e8f9; font-weight: 800; white-space: nowrap; }
+.power-ai-alert-table td:last-child { min-width: 300px; }
+.power-ai-alert-table td:last-child b,
+.power-ai-alert-table td:last-child small,
+.power-ai-alert-table td:last-child em { display: block; }
+.power-ai-alert-table td:last-child small { margin-top: 3px; color: #a8bfd2; }
+.power-ai-alert-table td:last-child em { margin-top: 4px; color: #7dd3fc; font-size: 10px; font-style: normal; }
+.power-ai-alert-detail-meta { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.power-ai-alert-operator-card { overflow: hidden; border: 1px solid rgba(245,158,11,.38); border-radius: 12px; background: rgba(4,23,42,.62); }
+.power-ai-alert-primary-meta, .power-ai-technical-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; background: rgba(120,170,210,.16); }
+.power-ai-alert-primary-meta span, .power-ai-technical-grid span { display: grid; grid-template-columns: 90px minmax(0,1fr); gap: 10px; padding: 11px 12px; background: #071d33; }
+.power-ai-alert-primary-meta small, .power-ai-technical-grid small { color: #7897b2; }
+.power-ai-alert-primary-meta b, .power-ai-technical-grid b { color: #eaf4ff; font-size: 12px; }
+.power-ai-alert-primary-meta .power-ai-detail-warning { color: #fcd34d; }
+.power-ai-alert-primary-meta .power-ai-detail-critical { color: #fca5a5; }
+.power-ai-alert-action-copy { padding: 14px; }
+.power-ai-alert-action-copy h4, .power-ai-advanced-details h4 { margin: 0 0 7px; color: #bfdbfe; font-size: 11px; text-transform: uppercase; }
+.power-ai-alert-action-copy h4:not(:first-child) { margin-top: 14px; }
+.power-ai-alert-action-copy p { margin: 4px 0; color: #eaf4ff; font-size: 13px; line-height: 1.5; }
+.power-ai-advanced-details { padding: 12px; border: 1px solid rgba(120,170,210,.15); border-radius: 9px; background: rgba(4,23,42,.38); }
+.power-ai-advanced-details summary { color: #93c5fd; cursor: pointer; font-size: 12px; font-weight: 700; }
+.power-ai-advanced-details summary i { margin-right: 6px; }
+.power-ai-advanced-details[open] summary { margin-bottom: 12px; }
+.power-ai-advanced-details h4 { margin-top: 14px; }
+@media (max-width: 1100px) {
+  .power-ai-table-wrap { overflow-x: auto; }
+  .power-ai-alert-table { min-width: 980px; }
+}
+@media (max-width: 700px) {
+  .power-ai-alert-detail-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .power-ai-alert-primary-meta, .power-ai-technical-grid { grid-template-columns: 1fr; }
+}
+
+/* PowerAI Client 1.2.0 */
+#powerAiScoreDrift[data-status="normal"] { color: #1f9d55; }
+#powerAiScoreDrift[data-status="warning"] { color: #d97706; }
+#powerAiScoreDrift[data-status="critical"] { color: #dc2626; }
+#powerAiScoreDrift[data-status="insufficient_data"] { color: #64748b; }
+
+/* PowerAI Client 1.3.0: non-actionable engineering observations */
+.power-ai-severity.observation {
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.13);
+  border: 1px solid rgba(59, 130, 246, 0.38);
+}
+.power-ai-alert-row:has(.power-ai-severity.observation) {
+  opacity: 0.88;
+}
+
+
+/* Patch: cảnh báo mất dữ liệu socket sau 2 phút */
+.socket-data-timeout-banner {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  z-index: 99999;
+  display: none;
+  width: min(720px, calc(100vw - 32px));
+  transform: translateX(-50%);
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(127, 29, 29, .98), rgba(190, 24, 93, .96));
+  border: 1px solid rgba(254, 202, 202, .55);
+  border-radius: 12px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, .45);
+}
+.socket-data-timeout-banner.active { display: flex; }
+.socket-data-timeout-banner > i { font-size: 22px; }
+.socket-data-timeout-banner div { display: grid; gap: 3px; flex: 1; }
+.socket-data-timeout-banner strong { font-size: 13px; letter-spacing: .04em; }
+.socket-data-timeout-banner span,
+.socket-data-timeout-banner small { font-size: 11px; opacity: .92; }
+.socket-data-timeout-row { background: rgba(127, 29, 29, .22); }
+.socket-data-timeout-row td { border-color: rgba(248, 113, 113, .24) !important; }
+@media (max-width: 768px) {
+  .socket-data-timeout-banner { top: 8px; align-items: flex-start; }
+  .socket-data-timeout-banner small { display: none; }
+}
+
+/* iSS 1.4.0 - Ollama chatbot */
+.ollama-chat-status { display:inline-flex; align-items:center; gap:5px; font-weight:600; }
+.ollama-chat-status::before { content:""; width:7px; height:7px; border-radius:50%; background:#94a3b8; box-shadow:0 0 0 3px rgba(148,163,184,.12); }
+.ollama-chat-status.online { color:#86efac; }
+.ollama-chat-status.online::before { background:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,.16); }
+.ollama-chat-status.offline { color:#fca5a5; }
+.ollama-chat-status.offline::before { background:#ef4444; box-shadow:0 0 0 3px rgba(239,68,68,.16); }
+.ollama-chat-status.checking { color:#fde68a; }
+.ollama-chat-status.checking::before { background:#f59e0b; animation:ollamaPulse 1s infinite alternate; }
+@keyframes ollamaPulse { to { opacity:.35; transform:scale(.8); } }
+.power-ai-chat-head-actions { display:flex; align-items:center; gap:4px; }
+.power-ai-chat-head-actions button { position:static !important; }
+#powerAiChatReset { font-size:13px; }
+.power-ai-message.assistant { white-space:pre-wrap; line-height:1.55; }
+
+/* iSS v1.5.0 - Ollama assistant answer presentation */
+.power-ai-message.assistant { position: relative; padding-right: 34px; }
+.power-ai-message-content { white-space: normal; }
+.power-ai-message-content h3,
+.power-ai-message-content h4,
+.power-ai-message-content h5 { margin: 2px 0 8px; color: #e0f2fe; line-height: 1.35; }
+.power-ai-message-content h3 { font-size: 15px; }
+.power-ai-message-content h4 { font-size: 14px; }
+.power-ai-message-content h5 { font-size: 13px; }
+.power-ai-message-content ul { margin: 7px 0 7px 18px; padding: 0; }
+.power-ai-message-content li { margin: 3px 0; }
+.power-ai-message-content code { padding: 1px 4px; border-radius: 4px; background: rgba(2, 17, 31, .65); color: #a5f3fc; }
+.power-ai-message-content pre { overflow-x: auto; margin: 8px 0; padding: 9px; border-radius: 8px; background: #031525; }
+.power-ai-message-content pre code { padding: 0; background: transparent; }
+.power-ai-copy-answer { position: absolute; top: 7px; right: 7px; width: 25px; height: 25px; border: 0; border-radius: 7px; color: #8fbad5; background: rgba(3, 21, 38, .6); cursor: pointer; }
+.power-ai-copy-answer:hover { color: #fff; background: rgba(14, 165, 233, .24); }
+.power-ai-answer-meta { display: flex; flex-wrap: wrap; gap: 5px 10px; margin-top: 9px; padding-top: 7px; border-top: 1px solid rgba(125, 211, 252, .12); color: #7fa6c3; font-size: 9px; }
+
+
+/* iSS v1.5.1: bong bóng câu hỏi gọn theo nội dung */
+.power-ai-chat-messages .power-ai-message.user {
+  display: inline-block !important;
+  align-self: flex-end !important;
+  width: fit-content !important;
+  min-width: 0 !important;
+  max-width: 78% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 10px 13px !important;
+  margin-left: auto !important;
+  border-radius: 14px 14px 4px 14px !important;
+  line-height: 1.45 !important;
+  white-space: normal !important;
+  text-align: left !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+}
+
+.power-ai-chat-messages .power-ai-message.user .power-ai-message-content {
+  display: block !important;
+  width: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: normal !important;
+}
+
+@media (max-width: 640px) {
+  .power-ai-chat-messages .power-ai-message.user {
+    max-width: 84% !important;
+  }
+}

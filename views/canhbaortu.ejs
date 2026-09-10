@@ -1,0 +1,359 @@
+<div class="row invoice-card-row canhbaortu d-none">
+    <div class="card col-xl-6 col-lg-6 col-md-12 float-left  tabcb">
+        <div class="card-header pb-0">
+            <h4 class="card-title">Cảnh báo Vận hành</h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <div class="card warning-card float-left" id="warning-qtt" onclick="showDetailWarning('qtt');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/quatai.png"
+                                alt="Quá tải tổng"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>QUÁ TẢI TỔNG</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card float-left" id="warning-qtn" onclick="showDetailWarning('qtn');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/quatai.png"
+                                alt="Quá tải nhánh"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>QUÁ TẢI NHÁNH</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card warning-card float-left" id="warning-lpt" onclick="showDetailWarning('lpt');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/lechpha.png"
+                                alt="Lệch pha tổng"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>LỆCH PHA TỔNG</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card float-left" id="warning-lpn" onclick="showDetailWarning('lpn');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/lechpha.png"
+                                alt="Lệch pha nhánh"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>LỆCH PHA NHÁNH</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card warning-card float-left" id="warning-ndtxc" onclick="showDetailWarning('ndtxc');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/quanhiet.png"
+                                alt="Nhiệt độ tiếp xúc cao"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>NHIỆT ĐỘ CAO</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card warning-card float-left" id="warning-mnt" onclick="showDetailWarning('mnt');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/matdien.png"
+                                alt="Mất nguồn tổng"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>MẤT ĐIỆN TỔNG</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card float-left" id="warning-mnn" onclick="showDetailWarning('mnn');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/matdien.png"
+                                alt="Mất nguồn nhánh"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>MẤT ĐIỆN NHÁNH</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card warning-card float-left" id="warning-dac" onclick="showDetailWarning('dac');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/quaap.png"
+                                alt="Điện áp cao"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>ĐIỆN ÁP CAO</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card float-left" id="warning-dat" onclick="showDetailWarning('dat');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/thapap.png"
+                                alt="Điện áp thấp"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>ĐIỆN ÁP THẤP</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card warning-card float-left" id="warning-ctt" onclick="showDetailWarning('ctt');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/costhap.png"
+                                alt="Cos thấp tổng"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>COSφ TỔNG THẤP</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card float-left" id="warning-ctn" onclick="showDetailWarning('ctn');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/costhap.png"
+                                alt="Cos thấp nhánh"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>COSφ NHÁNH THẤP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card col-xl-6 col-lg-6 col-md-12 float-left">
+        <div class="card-header pb-0">
+            <h4 class="card-title">Cảnh báo Trạng thái</h4>
+        </div>
+        <div class="card-content">
+            <div class="card-body">
+                <div class="card warning-card incident-card float-left d-none" id="warning-rmu"
+                    onclick="showDetailWarning('rmu');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="https://stm.ses-tech.vn/theme/1.3/assets/images/icon-matdienrmu.png"
+                                alt="Mất điện RMU"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>FI TỦ RMU</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card incident-card float-left" id="warning-rmu"
+                    onclick="showDetailWarning('tbcspk');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="https://stm.ses-tech.vn/theme/1.3/assets/images/icon-tubu-cspk.png"
+                                alt="Tụ bù CSPK">
+                        </h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>TỤ BÙ CSPK</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card incident-card float-left" id="warning-htt"
+                    onclick="showDetailWarning('htt');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="https://stm.ses-tech.vn/theme/1.3/assets/images/icon-homtonthat.png"
+                                alt="Hòm tổn thất"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>KHOANG TỔN THẤT</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card incident-card float-left" id="warning-dmc"
+                    onclick="showDetailWarning('dmc');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/dongmohom.png"
+                                alt="Đóng mở cửa">
+                        </h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>ĐÓNG MỞ CỬA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card incident-card float-left" id="warning-mdt"
+                    onclick="showDetailWarning('mdt');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="https://stm.ses-tech.vn/theme/1.3/assets/images/icon-mucdauthap.png"
+                                alt="Mức dầu thấp"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>MỨC DẦU THẤP</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card warning-card incident-card float-left" id="warning-rlg"
+                    onclick="showDetailWarning('rlg');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="https://stm.ses-tech.vn/theme/1.3/assets/images/icon-rolegas.png" alt="Rơle gas">
+                        </h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>RƠLE GAS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card incident-card float-left" id="warning-alk"
+                    onclick="showDetailWarning('alk');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="img/rodien.png" alt="Chạm vỏ">
+                        </h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>CHẠM VỎ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card warning-card incident-card float-left" id="warning-mdc"
+                    onclick="showDetailWarning('mdc');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="https://stm.ses-tech.vn/theme/1.3/assets/images/icon-mucdaucao.png"
+                                alt="Mức dầu cao">
+                        </h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>MỨC DẦU CAO</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card incident-card float-left" id="warning-hn"
+                    onclick="showDetailWarning('hn');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="https://stm.ses-tech.vn/theme/1.3/assets/images/icon-hongngoai.png"
+                                alt="Hồng ngoại">
+                        </h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>CẢM BIẾN HỒNG NGOẠI</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card warning-card incident-card float-left" id="warning-asnmba"
+                    onclick="showDetailWarning('asnmba');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="https://stm.ses-tech.vn/theme/1.3/assets/images/icon-apsuatnoimba.png"
+                                alt="Áp suất nội bộ MBA"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>ÁP SUẤT NỘI BỘ MBA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card incident-card float-left" id="warning-ndd"
+                    onclick="showDetailWarning('ndd');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="https://stm.ses-tech.vn/theme/1.3/assets/images/icon-nhietdodau.png"
+                                alt="Nhiệt độ dầu"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>RƠLE NHIỆT ĐỘ DẦU</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card warning-card incident-card float-left" id="warning-ndcd"
+                    onclick="showDetailWarning('ndcd');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="https://stm.ses-tech.vn/theme/1.3/assets/images/icon-nhietdocuonday.png"
+                                alt="Nhiệt độ cuộn dây"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>NHIỆT ĐỘ CUỘN DÂY</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card warning-card incident-card float-left" id="warning-kgmba"
+                    onclick="showDetailWarning('kgmba');">
+                    <div class="card-header">
+                        <h4 class="card-title"><img
+                                src="https://stm.ses-tech.vn/theme/1.3/assets/images/icon-khigatrongmba.png"
+                                alt="Khí gas trong MBA"></h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="numberCircle">0</div>
+                            <p>KHÍ GAS MBA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

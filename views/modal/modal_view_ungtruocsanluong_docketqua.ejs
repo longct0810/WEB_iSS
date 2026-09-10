@@ -1,0 +1,130 @@
+<div class="modal fade" id="modal_DIEUKHIEN_Doc">
+    <div class="modal-dialog" style="width: 50%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    KIỂM TRA KẾT QUẢ SẢN LƯỢNG <label><span class="text-blue" id="laber_imei_cat"> </span> </label>
+                    <span id="id_overlay_dkq"><i class="fa fa-circle-o-notch fa-spin"></i></span>
+                </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+
+
+            <div class="modal-body">
+
+                <div class="row">
+                    <div id="thongbao_doc" style="text-align:center; margin:10px; font-size: 17px;" class="text-blue">
+                    </div>
+                </div>
+                <div class="row docketqua" style="display: none;">
+                    <div class="form-group col-lg-12">
+                        <label>
+                            Tổng sản lượng đã nạp:
+                        </label>
+                        <label>
+                            <span class="text-success" id="tongsanluong"> </span>
+                        </label>
+                    </div>
+
+
+                    <div class="form-group col-lg-12" hidden>
+                        <label>
+                            Thời gian sử dụng:
+                        </label>
+                        <label>
+                            <span class="text-success" id="thoigiansudung"> </span>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-lg-12" hidden>
+                        <label>
+                            Mức thấu chi:
+                        </label>
+                        <label>
+                            <span class="text-success" id="mucthauchi"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label>
+                            Ngưỡng cảnh báo sản lượng còn lại lần 1:
+                        </label>
+                        <label>
+                            <span class="text-success" id="nguong_1"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label>
+                            Ngưỡng cảnh báo sản lượng còn lại lần 2:
+                        </label>
+                        <label>
+                            <span class="text-success" id="nguong_2"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label>
+                            Ngưỡng cảnh báo sản lượng còn lại lần 3:
+                        </label>
+                        <label>
+                            <span class="text-success" id="nguong_3"></span>
+                        </label>
+                    </div>
+
+
+                    <div class="form-group col-lg-12" hidden>
+                        <label>
+                            Ngưỡng thời gian 1:
+                        </label>
+                        <label>
+                            <span class="text-success" id="thoigian_1"></span>
+                        </label>
+                    </div>
+                    <div class="form-group col-lg-12" hidden>
+                        <label>
+                            Ngưỡng thời gian 2:
+                        </label>
+                        <label>
+                            <span class="text-success" id="thoigian_2"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-lg-12" hidden>
+                        <label>
+                            Ngưỡng thời gian 3:
+                        </label>
+                        <label>
+                            <span class="text-success" id="thoigian_3"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group col-lg-12">
+                        <label>
+                            Sản lượng đã dùng:
+                        </label>
+                        <label>
+                            <span class="text-success" id="sanluong_conlai"></span>
+                        </label>
+                    </div>
+                    <!-- <div class="form-group col-lg-12" hidden>
+                        <label>
+                            Thời gian đã dùng:
+                        </label>
+                        <label>
+                            <span class="text-success" id="thoigian_conlai"></span>
+                        </label>
+                    </div> -->
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="ThucHien_DocKQ()" id="btnDockq">Thực
+                    hiện</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

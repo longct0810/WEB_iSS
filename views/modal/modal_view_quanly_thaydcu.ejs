@@ -1,0 +1,54 @@
+<div class="modal fade" id="modal-sua_MODEM_DCU">
+    <div class="modal-dialog" style="max-width: 70%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">THAY MODEM/DCU</h4>
+            </div>
+            <div class="modal-body">
+                <div class="box-default">
+                    <div class="box-body">
+
+                        <div class="row">
+
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    IMEI mới
+                                    <span class="text-danger">(*)</span>
+                                </label>
+                                <input type="text" class="form-control" id="edit_imei_moi"
+                                    onkeypress="return isNumber(event)" maxlength="16">
+                            </div>
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    IMEI cũ
+                                    <span class="text-danger">(*)</span>
+                                </label>
+                                <input type="text" class="form-control" id="edit_imei_cu" disabled>
+                            </div>
+
+
+                            <div class="form-group col-lg-3">
+                                <label>
+                                    Số công tơ
+                                    <span class="text-danger">(*)</span>
+                                </label>
+                                <input maxlength="12" type="text" class="form-control" isRequired id="edit_socongto"
+                                    disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="Save_Thay_MODEM_DCU()"
+                    id="btnthayDCU">Lưu</button>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>

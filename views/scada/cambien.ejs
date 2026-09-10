@@ -1,0 +1,62 @@
+<div class="cambien" style="margin-top: 20px;">
+    <div class="default-tab">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item" id="tab_cambien_coday">
+                <a class="nav-link active" data-bs-toggle="tab" href="#scada_cambiencoday">
+                    <i class="fas fa-temperature-low  me-2"></i> Cảm biến có dây</a>
+            </li>
+            <li class="nav-item" id="tab_cambien_khongday">
+                <a class="nav-link" data-bs-toggle="tab" href="#scada_khongday">
+                    <i class="fas fa-water  me-2"></i> Cảm biến không dây</a>
+            </li>
+            <li class="nav-item" id="tab_giamsat_trangthai">
+                <a class="nav-link" data-bs-toggle="tab" href="#scada_canhbao">
+                    <i class="fas fa-water  me-2"></i> Giám sát trạng thái</a>
+            </li>
+
+        </ul>
+        <div class="tab-content">
+
+            <div class="tab-pane tab_giamsat fade  show active" id="scada_cambiencoday">
+
+                <div class="table-responsive">
+                    <table id="lst_cambiennhiet"
+                        class="table table-bordered table-hover stripe row-border order-column scada">
+                        <thead>
+                            <tr>
+                                <th>Tên</th>
+                                <th>Nhiệt độ (°C)</th>
+                                <th>Thời gian</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane tab_giamsat fade" id="scada_khongday">
+
+                <div class="table-responsive">
+                    <table id="lst_cambiendoam"
+                        class="table table-bordered table-hover stripe row-border order-column scada">
+                        <thead>
+                            <tr>
+                                <th>Tên</th>
+                                <th>Nhiệt độ (°C)</th>
+                                <th>Thời gian</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane tab_giamsat fade" id="scada_canhbao">
+                <div class="table-responsive">
+                    <div id="box_trangthai_canhbao"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,41 @@
+<div class="modal fade" id="modal-map_doc_congto" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl" style="max-width: 95%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title mb-0">
+                    <i class="fa fa-exchange"></i>
+                    Danh sách công tơ trong DCU
+                </h3>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Thanh trạng thái -->
+                <div class="alert alert-info d-flex justify-content-between align-items-center" id="doc_status_box">
+                    <div>
+                        <i class="fa fa-info-circle"></i>
+                        <span id="doc_status_text">Sẵn sàng đọc danh sách công tơ </span>
+                    </div>
+
+                </div>
+
+                <!-- Bảng dữ liệu -->
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered align-middle" id="tbl_docds_congto"
+                        style="width: 100%; margin-bottom: 10px;">
+                        <thead>
+                            <tr>
+                                <th style="width: 70px;">STT</th>
+                                <th>IMEI</th>
+                                <th>Số công tơ</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
