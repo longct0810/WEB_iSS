@@ -128,6 +128,8 @@ function initialize() {
     // Combines logging info from request and response
     app.use(morgan('combined'));
 
+    app.use('/enms', require('../routes/enms').pages);
+    app.use('/api/enms/v1', require('../routes/enms').api);
     app.use('/', routes);
     // Mount the router at /api so all its routes start with /api
     app.use('/api', router);

@@ -1,7 +1,7 @@
 {
-  "name": "hr_app",
-  "version": "2.0.0",
-  "description": "iSS AI Agent 2.0 with Qwen planning and PowerAI tool execution",
+  "name": "lam-thach-enms",
+  "version": "1.0.0",
+  "description": "Hệ thống quản lý năng lượng nhà máy Lam Thạch II – EnMS",
   "main": "index.js",
   "scripts": {
     "test": "node --test tests/*.test.js",
@@ -11,7 +11,8 @@
     "restart:pm2": "pm2 restart smartgrid --update-env",
     "stop:pm2": "pm2 stop smartgrid",
     "status:pm2": "pm2 status smartgrid",
-    "logs:pm2": "pm2 logs smartgrid"
+    "logs:pm2": "pm2 logs smartgrid",
+    "preview:enms": "node scripts/enms-preview.js"
   },
   "keywords": [],
   "license": "Apache-2.0",

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#082c4c"><title><%= title %> · Lam Thạch II EnMS</title>
+  <link rel="stylesheet" href="/icons/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/enms/enms.css">
+</head>
+<body data-page="<%= page %>" data-preview="<%= preview %>">
+  <a class="skip-link" href="#main">Đến nội dung chính</a>
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="/enms/<%= preview ? 'preview/' : '' %>overview" aria-label="Lam Thạch II · Tổng quan">
+      <svg viewBox="0 0 76 42" aria-hidden="true"><path fill="currentColor" d="M0 39 24 13l12 13L24 26 12 39zm26-27L38 0l13 13-12 13zm13 17 13-14 24 24H62L51 28l-6 7z"/></svg>
+      <span><b>LAM THẠCH II</b><small>CEMENT PLANT</small></span>
+    </a>
+    <nav aria-label="Menu chính"><% menu.forEach(item => { %>
+      <a href="/enms/<%= preview ? 'preview/' : '' %><%= item.id %>" class="nav-item <%= item.id === page ? 'active' : '' %>" <%- item.id === page ? 'aria-current="page"' : '' %>><i class="bi bi-<%= item.icon %>"></i><span><%= item.title %></span><% if(item.id==='alerts'){ %><b class="notification">3</b><% } %></a>
+    <% }) %></nav>
+    <div class="sidebar-bottom"><i class="bi bi-tree-fill"></i><span>Tiết kiệm năng lượng<br>Vì phát triển bền vững</span></div>
+    <div class="version">EnMS <span>v1.0.0</span></div>
+  </aside>
+  <header class="topbar">
+    <button class="icon-button mobile-toggle" aria-label="Mở menu" aria-expanded="false" id="menu-toggle"><i class="bi bi-list"></i></button>
+    <div class="system-title"><strong>HỆ THỐNG QUẢN LÝ NĂNG LƯỢNG <span>(EnMS)</span></strong><small>Nhà máy Xi măng Lam Thạch II</small></div>
+    <div class="topbar-right"><div class="date"><i class="bi bi-calendar3"></i><span id="clock"></span></div><span class="demo-indicator">DỮ LIỆU MẪU</span><a class="header-bell" href="/enms/<%= preview ? 'preview/' : '' %>alerts" aria-label="Cảnh báo"><i class="bi bi-bell"></i><b class="notification">3</b></a><button class="user-button" id="user-menu"><span class="avatar"><i class="bi bi-person-fill"></i></span><span><b id="user-name">Nguyễn Văn A</b><small id="user-role">Chế độ xem trước</small></span><i class="bi bi-chevron-down"></i></button></div>
+  </header>
+  <main id="main" tabindex="-1"><div class="page-heading"><div><div class="eyebrow">LAM THẠCH II <span>/</span> ENERGY MANAGEMENT</div><h1><%= title %></h1><p id="page-description"></p></div><div id="page-actions" class="toolbar"></div></div><div id="error-banner" role="alert" hidden></div><div id="content" aria-busy="true"><div class="loading">Đang tải dữ liệu năng lượng…</div></div></main>
+  <footer class="statusbar"><span><i class="dot"></i><span id="connection-state">Dữ liệu minh họa · Chưa kết nối nguồn thực</span></span><span id="last-update">Kỳ dữ liệu: 01–10/06/2025</span><span><i class="bi bi-diagram-3"></i> 16 trạm điện <i class="bi bi-speedometer2"></i> 71 điểm đo <i class="bi bi-hdd-network"></i> 3 gateway</span></footer>
+  <dialog id="detail-dialog"><div class="dialog-heading"><h2 id="dialog-title">Chi tiết</h2><button class="icon-button" id="close-dialog" aria-label="Đóng"><i class="bi bi-x-lg"></i></button></div><div id="dialog-content"></div></dialog>
+  <div id="toast" role="status" hidden></div>
+  <% if(preview) { %><script src="/enms/mock.js"></script><% } %>
+  <script src="/vendor/apexchart/apexchart.js"></script><script src="/enms/vendor/xlsx.js"></script><script src="/enms/api.js"></script><script src="/enms/realtime.js"></script><script src="/enms/app.js"></script>
+</body>
+</html>

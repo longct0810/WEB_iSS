@@ -32,7 +32,7 @@ async function startup() {
     console.log('Starting application...');
     console.log('===================================');
 
-    process.title = 'BDS_V1.2';
+    process.title = 'ENMS_V1.0.0';
 
     try {
         console.log('Connecting PostgreSQL...');

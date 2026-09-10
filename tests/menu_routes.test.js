@@ -29,9 +29,11 @@ test('mọi chức năng đang hiển thị trên menu đều có route và temp
 
   const routerSource = read('services/router_View.js');
   const routes = new Map();
-  const routePattern = /router\.get\('(\/[^']*)',[\s\S]*?res\.render\('([^']+)'/g;
+  const routePattern = /router\.get\('(\/[^']*)',([\s\S]*?)(?=\nrouter\.get|\nmodule\.exports)/g;
   for (const match of routerSource.matchAll(routePattern)) {
-    routes.set(match[1], match[2]);
+    const template = match[2].match(/res\.render\('([^']+)'/);
+    const enmsRedirect = match[2].includes("res.redirect('/enms/overview')");
+    if (template || enmsRedirect) routes.set(match[1], template ? template[1] : 'enms/index');
   }
 
   assert.ok(hrefs.size >= 30, 'Số chức năng menu được phát hiện thấp bất thường');

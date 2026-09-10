@@ -133,18 +133,7 @@ router.get('/dongbocmis', function (req, res, next) {
     res.render('giamsat/dongbocmis', { title: 'Đồng bộ cmiss' });
 });
 router.get('/dashboard', function (req, res, next) {
-    const alarms = [
-        { level: 'danger', time: '10:21:15', title: 'Quá dòng pha A tại D01', note: 'Ngưỡng: 150 A' },
-        { level: 'warning', time: '10:18:42', title: 'Nhiệt độ MBA T1 cao', note: 'Ngưỡng: 85 °C' },
-        { level: 'warning', time: '10:12:05', title: 'Điện áp pha B thấp', note: 'Ngưỡng < 110 kV' },
-        { level: 'info', time: '09:45:33', title: 'Đóng điện DZ 110kV 173', note: 'Thông tin' },
-        { level: 'info', time: '09:30:12', title: 'Tụ bù 22kV đóng', note: 'Thông tin' }
-    ];
-    res.render('Dashboard/dashboard', {
-        title: 'Dashboard SCADA',
-        alarms,
-        id_thietbi: 9999999
-    });
+    res.redirect('/enms/overview');
 });
 
 router.get('/dashboard2', function (req, res, next) {
@@ -154,11 +143,7 @@ router.get('/dashboard2', function (req, res, next) {
 });
 
 router.get('/', function (req, res, next) {
-
-    res.render('Dashboard/dashboard', {
-        title: 'Dashboard SCADA'
-        
-    });
+    res.redirect('/enms/overview');
 });
 router.get('/ioa', function (req, res, next) {
     res.render('scada/khaibaoioa_dash', { title: 'Khai báo IOA',  alarms: [] });
