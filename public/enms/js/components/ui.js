@@ -25,7 +25,15 @@ export function icon(name) {
     'device-hdd': 'hdd',
     'device-ssd': 'hdd',
     'filetype-csv': 'file-earmark-spreadsheet',
-    'filetype-pdf': 'file-earmark-richtext'
+    'filetype-pdf': 'file-earmark-richtext',
+    activity: 'graph-up',
+    boxes: 'grid-3x3-gap',
+    'cash-coin': 'cash',
+    coin: 'cash',
+    'database-check': 'hdd-stack',
+    fire: 'lightning',
+    recycle: 'arrow-repeat',
+    robot: 'gear-wide-connected'
   })[name] || name;
   return `<i class="bi bi-${mapped}" aria-hidden="true"></i>`;
 }
@@ -83,6 +91,17 @@ export function energyStats(kind = 'default') {
     stat('Tổng số điểm đo', summary.meters, 'điểm đo', 'speedometer2', '', '69 hoạt động', ' · 2 lỗi'),
     stat('Tổng số trạm điện', summary.stations, 'trạm', 'diagram-3', 'purple', '16 hoạt động', ' · 0 lỗi')
   ];
+
+  if (kind === 'executive') {
+    cards = [
+      stat('Tổng tiêu thụ điện năng', fmt(summary.energy), 'kWh', 'lightning-charge-fill'),
+      stat('Tổng sản lượng clinker', fmt(summary.clinker), 'tấn', 'fire', 'green', '↓ 1.8%', 'so với tháng trước'),
+      stat('Tổng chi phí năng lượng', fmt(summary.cost), 'triệu VNĐ', 'coin', 'orange', '↓ 2.1%'),
+      stat('Phát thải CO₂ (ước tính)', summary.co2, 'tCO₂e', 'cloud', 'purple', '↓ 3.1%'),
+      stat('Chỉ số EnPI (Clinker)', fmt(summary.enpi), 'kWh/tấn', 'gear', 'green', '↓ 2.5%'),
+      stat('Tỷ lệ hoàn thành mục tiêu', '96', '%', 'bullseye', 'green', 'Đạt kế hoạch', '')
+    ];
+  }
 
   if (kind === 'realtime') {
     cards = [

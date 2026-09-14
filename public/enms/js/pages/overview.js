@@ -6,7 +6,7 @@ import { badge, distribution, energyStats, recentAlerts, row, stationTable, tabl
 import { factoryMap } from '../components/factory.js';
 
 export async function mount() {
-  render('#overview-summary', energyStats());
+  render('#overview-summary', energyStats('executive')); 
   render('#overview-factory', factoryMap());
   render('#station-list', stationTable());
   render('#overview-load-tabs', tabs(['Công suất (MW)', 'Điện năng (kWh)'], 'load'));

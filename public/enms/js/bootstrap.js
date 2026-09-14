@@ -1,11 +1,12 @@
 import { base, descriptions, page, preview } from './core/config.js';
 import { state } from './core/state.js';
-import { $, $$, clearError, esc, fmt, render, showDialog, showError, toast } from './core/dom.js';
+import { $, clearError, esc, fmt, render, showDialog, showError, toast } from './core/dom.js';
 import { request } from './core/api.js';
 import { destroyAllCharts } from './core/charts.js';
 import { badge, button, dateInput, icon, levelNames, row, select, stationSelect, stationTable, table } from './components/ui.js';
 
 let activePage;
+const modulePage = !['map','settings'].includes(page);
 
 function setupHeading() {
   $('#page-description').textContent = descriptions[page] || '';
@@ -13,21 +14,24 @@ function setupHeading() {
 
   if (page === 'realtime') {
     tools += select('refresh-interval','Tần suất cập nhật',[['0','Tạm dừng'],['5','5 giây'],['15','15 giây'],['30','30 giây']],'5');
-  }
-  if (page === 'map') {
+  } else if (page === 'map') {
     tools = select('map-mode','Chế độ xem',[['sld','Sơ đồ một sợi'],['factory','Bản đồ nhà máy']]) + button(`${icon('arrow-clockwise')} Làm mới`,'refresh',true);
-  }
-  if (page === 'reports') {
+  } else if (page === 'reports') {
     tools = dateInput('report-from','Từ ngày','2025-06-01') + dateInput('report-to','Đến ngày','2025-06-10') + select('report-type','Loại báo cáo',['Tổng hợp','EnPI','Phát thải','So sánh']) + button(`${icon('file-earmark-plus')} Tạo báo cáo`,'create-report',true);
-  }
-  if (page === 'alerts') {
+  } else if (page === 'alerts') {
     tools = select('alert-period','Khoảng thời gian',[['7','7 ngày qua'],['1','Hôm nay'],['30','30 ngày qua']]) + select('alert-severity','Mức độ',[['','Tất cả'],...Object.entries(levelNames)]) + button(`${icon('arrow-clockwise')} Làm mới`,'refresh',true);
-  }
-  if (page === 'overview' || page === 'seu') {
-    tools += button(`${icon('arrow-clockwise')} Làm mới`,'refresh');
-  }
-  if (page === 'data') {
+  } else if (page === 'data') {
     tools += stationSelect('data-station');
+  } else if (page === 'forecast') {
+    tools += select('forecast-horizon','Kỳ dự báo',[['7','7 ngày'],['30','30 ngày'],['90','90 ngày']],'30') + button(`${icon('arrow-repeat')} Chạy dự báo`,'run-analysis',true);
+  } else if (page === 'digital-twin') {
+    tools += select('twin-mode','Kịch bản',[['live','Trạng thái hiện tại'],['efficient','Tối ưu hiệu suất'],['peak','Giờ cao điểm']]) + button(`${icon('play-circle')} Mô phỏng`,'run-analysis',true);
+  } else if (['analytics','ai-decision','autonomous','optimization'].includes(page)) {
+    tools += select('analysis-period','Thời gian',[['today','Hôm nay'],['7d','7 ngày'],['30d','30 ngày']],'7d') + button(`${icon('stars')} Chạy phân tích`,'run-analysis',true);
+  } else if (['balance','targets','savings','emissions','iso50001'].includes(page)) {
+    tools += select('period','Thời gian',[['2025-06','Tháng 06/2025'],['2025-Q2','Quý II/2025'],['2025','Năm 2025']]) + button(`${icon('download')} Xuất dữ liệu`,'export-module');
+  } else if (page === 'overview' || page === 'seu') {
+    tools += button(`${icon('arrow-clockwise')} Làm mới`,'refresh');
   }
   render('#page-actions', tools);
 }
@@ -38,24 +42,27 @@ async function refreshPage() {
   destroyAllCharts();
   $('#content').setAttribute('aria-busy','true');
 
-  const results = await Promise.all([
+  const requests = [
     request('summary'),
     request('stations'),
     request('meters'),
     request('alerts',{pageSize:100}),
     request('seu')
-  ]);
+  ];
+  if (modulePage) requests.push(request(`modules/${page}`));
+  const results = await Promise.all(requests);
 
   state.summary = results[0].data;
   state.stations = results[1].data;
   state.meters = results[2].data;
   state.alerts = results[3].data.items;
   state.seu = results[4].data;
+  state.module = modulePage ? results[5].data : null;
 
   const source = results[0].meta.source;
   $('.demo-indicator').textContent = source === 'mock' ? 'DỮ LIỆU MẪU' : 'DỮ LIỆU THỰC';
   $('#connection-state').textContent = source === 'mock' ? 'Dữ liệu minh họa · Chưa kết nối nguồn thực' : `Dữ liệu API · ${source}`;
-  $('#last-update').textContent = `Cập nhật: ${new Date().toLocaleTimeString('vi-VN')} · Kỳ mẫu 06/2025`;
+  $('#last-update').textContent = `Cập nhật: ${new Date().toLocaleTimeString('vi-VN')} · Kỳ mẫu 06/2025 · EnMS v1.1.0`;
   await activePage.mount();
   $('#content').setAttribute('aria-busy','false');
 }
@@ -89,7 +96,16 @@ async function commonAction(name, target) {
   }
   if (name === 'refresh') {
     await refreshPage();
-    toast('Đã tải lại dữ liệu mẫu.');
+    toast('Đã tải lại dữ liệu.');
+    return true;
+  }
+  if (name === 'export-module') {
+    toast('Đã chuẩn bị dữ liệu xuất. API export sẽ kết nối nguồn dữ liệu thực ở bước tích hợp DB.');
+    return true;
+  }
+  if (name === 'run-analysis') {
+    toast('Đã chạy lại mô phỏng/phân tích với dữ liệu mẫu.');
+    await refreshPage();
     return true;
   }
   return false;

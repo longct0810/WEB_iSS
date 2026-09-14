@@ -5,6 +5,8 @@ export const state = {
   alerts: [],
   seu: [],
   reports: [],
+  module: null,
+  modules: [],
   charts: [],
   alertPage: 1,
   readingPage: 1,
