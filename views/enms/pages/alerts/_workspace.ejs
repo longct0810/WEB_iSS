@@ -1,5 +1,60 @@
-<div id="alert-analysis" hidden></div>
-<div class="grid alert-grid" id="alert-workspace">
-  <section class="panel"><div class="panel-head"><h2>Danh sách sự kiện</h2></div><div class="toolbar"><input id="alert-search" type="search" placeholder="Tìm kiếm sự kiện, thiết bị…" aria-label="Tìm kiếm sự kiện"><span id="alert-status-filter"></span><span id="alert-station-filter"></span><button class="btn primary" data-action="export-alerts"><i class="bi bi-download"></i> Xuất CSV</button></div><div id="alert-table"></div></section>
-  <section class="panel"><div class="panel-head"><h2>Chi tiết sự kiện</h2></div><div id="alert-detail"></div></section>
+<div class="m6-top-grid">
+  <section class="panel m6-map-panel">
+    <div class="panel-head"><h2>Bản đồ cảnh báo theo khu vực</h2></div>
+    <div class="m6-alert-map" id="m6-alert-map">
+      <img src="/enms/assets/factory.png" alt="Bản đồ minh họa nhà máy Lam Thạch II">
+      <div class="m6-map-legend" id="m6-map-legend"></div>
+      <div id="m6-map-markers"></div>
+    </div>
+  </section>
+
+  <section class="panel m6-latest-panel">
+    <div class="panel-head"><h2>Danh sách cảnh báo mới nhất</h2><button class="m6-link-button" data-action="m6-show-all-alerts">Xem tất cả <i class="bi bi-chevron-right"></i></button></div>
+    <div id="m6-latest-alerts"></div>
+  </section>
+</div>
+
+<div class="m6-middle-grid">
+  <section class="panel m6-rca-panel">
+    <div class="panel-head"><h2>Phân tích nguyên nhân gốc rễ (RCA)</h2></div>
+    <div class="m6-rca-controls">
+      <label>Chọn cảnh báo<select id="m6-rca-alert"></select></label>
+      <label>Phương pháp<select id="m6-rca-method"><option value="5why">5 Why</option><option value="fishbone">Fishbone</option></select></label>
+    </div>
+    <div class="m6-rca-content">
+      <div id="m6-rca-table"></div>
+      <aside class="m6-recommendation" id="m6-rca-recommendation"></aside>
+    </div>
+  </section>
+
+  <section class="panel m6-trend-panel">
+    <div class="panel-head">
+      <h2>Phân tích xu hướng & Dự báo bất thường</h2>
+      <div class="m6-period-switch" id="m6-trend-periods"></div>
+    </div>
+    <div class="m6-chart-filter"><label>Chỉ số<select id="m6-trend-metric"></select></label></div>
+    <div class="panel-body"><div id="m6-trend-chart"></div></div>
+  </section>
+</div>
+
+<div class="m6-bottom-grid">
+  <section class="panel m6-benchmark-panel">
+    <div class="panel-head"><h2>So sánh Benchmark</h2></div>
+    <div class="m6-benchmark-filters">
+      <label>Chỉ số<select id="m6-benchmark-metric"><option>SEC – Nghiền xi (kWh/tấn)</option></select></label>
+      <label>Đơn vị so sánh<select id="m6-benchmark-scope"><option>Các nhà máy xi măng VN</option></select></label>
+    </div>
+    <div class="m6-benchmark-body"><div id="m6-benchmark-chart"></div><div id="m6-benchmark-note"></div></div>
+  </section>
+
+  <section class="panel m6-correlation-panel">
+    <div class="panel-head"><h2>Phân tích tương quan đa biến</h2></div>
+    <div class="m6-correlation-filter"><label>Biến phụ thuộc<select id="m6-correlation-target"><option>SEC</option></select></label></div>
+    <div class="panel-body" id="m6-correlation"></div>
+  </section>
+
+  <section class="panel m6-ai-panel">
+    <div class="panel-head"><h2>Cảnh báo AI & Khuyến nghị tự động</h2><span class="m6-beta">BETA</span></div>
+    <div class="panel-body" id="m6-ai-recommendations"></div>
+  </section>
 </div>

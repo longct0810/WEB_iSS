@@ -1,5 +1,50 @@
-<div class="grid data-grid" data-component="data-workspace">
-  <section class="panel"><div class="panel-head"><h2>Cây trạm / điểm đo</h2></div><div class="panel-body"><input type="search" id="meter-search" placeholder="Tìm trạm hoặc điểm đo…" aria-label="Tìm điểm đo" style="width:100%;min-width:0"></div><div class="tree" id="meter-tree"></div></section>
-  <section class="panel"><div class="panel-head"><h2>Dữ liệu đo đếm</h2></div><div class="panel-body"><h3 id="meter-title"></h3><span class="status" id="meter-status"></span></div><div id="readings-table"></div><div id="readings-large-chart" hidden></div></section>
-  <section class="panel data-charts"><div class="panel-head"><h2>Thông tin & Biểu đồ điểm đo</h2></div><div class="panel-body"><div><h3>Công suất tác dụng P (MW)</h3><div id="meter-power-chart"></div></div><div><div class="grid equal"><div><h3>Điện năng tích lũy (kWh)</h3><div id="meter-energy-chart"></div></div><div><h3>Cosφ</h3><div id="meter-pf-chart"></div></div></div><div id="meter-current"></div></div></div></section>
+<div class="m10-top-grid">
+  <section class="panel m10-architecture-panel">
+    <div class="panel-head"><h2>Kiến trúc hệ thống thu thập và quản lý dữ liệu</h2></div>
+    <div class="panel-body"><div id="m10-architecture"></div></div>
+  </section>
+  <section class="panel m10-flow-panel">
+    <div class="panel-head"><h2>Luồng dữ liệu chính</h2></div>
+    <div class="panel-body"><div id="m10-data-flow"></div></div>
+  </section>
+</div>
+
+<div class="m10-middle-grid">
+  <section class="panel m10-integrations-panel">
+    <div class="panel-head"><h2>Tích hợp hệ thống</h2></div>
+    <div id="m10-integrations"></div>
+  </section>
+  <div class="m10-right-stack">
+    <div class="m10-quality-storage-grid">
+      <section class="panel m10-quality-panel">
+        <div class="panel-head"><h2>Chất lượng dữ liệu</h2></div>
+        <div class="panel-body"><div id="m10-data-quality"></div></div>
+      </section>
+      <section class="panel m10-storage-panel">
+        <div class="panel-head"><h2>Dung lượng &amp; Tăng trưởng dữ liệu</h2></div>
+        <div class="panel-body"><div id="m10-storage-growth"></div></div>
+      </section>
+    </div>
+    <div class="m10-security-ops-grid">
+      <section class="panel m10-security-panel">
+        <div class="panel-head"><h2>Bảo mật &amp; An toàn thông tin</h2></div>
+        <div class="panel-body" id="m10-security"></div>
+      </section>
+      <section class="panel m10-operations-panel">
+        <div class="panel-head"><h2>Vận hành hệ thống</h2></div>
+        <div class="panel-body" id="m10-operations"></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="m10-bottom-grid">
+  <section class="panel m10-roadmap-panel">
+    <div class="panel-head"><h2>Kế hoạch phát triển 2025 – 2030</h2></div>
+    <div class="panel-body"><div id="m10-roadmap"></div></div>
+  </section>
+  <section class="panel m10-docs-panel">
+    <div class="panel-head"><h2>Tài liệu &amp; Biểu mẫu</h2></div>
+    <div class="panel-body" id="m10-documents"></div>
+  </section>
 </div>

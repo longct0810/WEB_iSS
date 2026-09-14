@@ -1,7 +1,22 @@
-import { mountModuleDashboard } from '../components/module-page.js';
+import { state } from '../core/state.js';
+import { esc, render, toast, download } from '../core/dom.js';
+import { chart, replaceChart } from '../core/charts.js';
+import { icon } from '../components/ui.js';
+const data=()=>state.module||{};
+function tabs(id,group,items,active){render(id,`<div class="tabs" role="tablist">${(items||[]).map(x=>`<button class="tab ${x===active?'active':''}" data-tab="${group}" data-value="${esc(x)}">${esc(x)}</button>`).join('')}</div>`)}
+function kpis(id,items,prefix){render(id,(items||[]).map(x=>`<article class="${prefix}-kpi ${esc(x.tone||'blue')}"><span class="${prefix}-kpi-icon">${icon(x.icon||'bar-chart')}</span><div><div class="${prefix}-kpi-label">${esc(x.label)}</div><div class="${prefix}-kpi-value">${esc(x.value)}${x.unit?` <small>${esc(x.unit)}</small>`:''}</div><div class="${prefix}-kpi-note">${x.delta?`<b class="${String(x.delta).includes('▲')||String(x.delta).includes('+')?'up':''}">${esc(x.delta)}</b>`:''}${x.context?` <span>${esc(x.context)}</span>`:''}</div></div></article>`).join(''))}
+function docs(id,items,action){render(id,`<div class="adv-doc-list">${(items||[]).map((x,i)=>`<div class="adv-doc"><span>${icon(x.type==='xlsx'?'file-earmark-spreadsheet':'file-earmark-richtext')} ${esc(x.name)}</span><button data-action="${action}" data-index="${i}">${icon('download')}</button></div>`).join('')}</div>`)}
+function dlDoc(items,target,prefix){const x=(items||[])[Number(target.dataset.index)];download(`${x?.id||prefix+'-document'}.txt`,`${x?.name||'Tài liệu EnMS'}\nEnMS v1.1.9`, 'text/plain;charset=utf-8');toast('Đã tạo tài liệu mẫu.');}
 
-export async function mount() {
-  await mountModuleDashboard('autonomous');
-}
-
-export async function onAction() { return false; }
+let active='Tổng quan';
+function loop(){const l=data().closedLoop||{};render('#m17-loop',`<div class="m17-loop"><div class="m17-loop-core"><span>${icon('cpu')}</span><b>AI Agent</b><small>Energy Operating Brain</small></div>${(l.nodes||[]).map((x,i)=>`<article class="n${i+1}"><b>${esc(x.title)}</b><small>${esc(x.note)}</small><em>${i+1}</em></article>`).join('')}<div class="m17-loop-ring">Vòng lặp tự học liên tục<br><small>Continuous Learning</small></div></div>`)}
+function levels(){render('#m17-levels',`<div class="m17-levels">${(data().levels||[]).map(x=>`<article class="${esc(x.tone)}"><strong>${esc(x.code)}</strong><div><b>${esc(x.title)}</b><small>${esc(x.note)}</small></div><em>${esc(x.stage)}</em></article>`).join('')}</div>`)}
+function process(){render('#m17-process',`<div class="m17-ai-process">${(data().process||[]).map((x,i)=>`<article><span>${i+1}</span><i>${icon(x.icon)}</i><div><b>${esc(x.title)}</b><small>${esc(x.note)}</small></div></article>`).join('')}</div>`)}
+function safety(){render('#m17-safety',`<h3>Nguyên tắc an toàn</h3><div class="adv-check-list compact">${(data().safety||[]).map(x=>`<div>${icon('check-circle-fill')}<span>${esc(x)}</span></div>`).join('')}</div><h3 class="red-text" style="margin-top:12px">Cơ chế bảo vệ (Safety Guardrails)</h3><div class="adv-check-list compact danger">${(data().guardrails||[]).map(x=>`<div>${icon('exclamation-triangle-fill')}<span>${esc(x)}</span></div>`).join('')}</div>`)}
+function pilot(){const s=data().pilot||{};replaceChart('m17-pilot-chart');chart('m17-pilot-chart','area',s.series||[],{height:205,categories:s.categories||[],colors:['#657d92','#0ca874','#e94456'],stroke:{width:[2,2,1.5],curve:'smooth',dashArray:[0,0,6]},fill:{opacity:[.05,.16,0]},annotations:{points:[{x:'25/06',y:55,marker:{size:0},label:{text:'Giảm 12.5 MW (-20.8%)',borderColor:'#86d4aa',style:{background:'#e7f8ef',color:'#0e7650',fontSize:'8px'}}}]}})}
+function impact(){const s=data().impact||{};replaceChart('m17-impact-chart');chart('m17-impact-chart','bar',s.series||[],{height:205,categories:s.categories||[],colors:['#63798c','#11a875'],plotOptions:{bar:{columnWidth:'45%',borderRadius:1}},legend:{position:'top',horizontalAlign:'center',fontSize:'8px'}})}
+function log(){render('#m17-log',`<div class="table-wrap"><table class="adv-table"><thead><tr><th>Thời gian</th><th>Nội dung quyết định</th><th>Nguồn</th><th>Trạng thái</th></tr></thead><tbody>${(data().decisionLog||[]).map(x=>`<tr><td>${esc(x.time)}</td><td>${esc(x.decision)}</td><td>${esc(x.source)}</td><td><span class="pill ${x.status==='Đã thực thi'?'good':x.status==='Đã duyệt'?'warn':''}">${esc(x.status)}</span></td></tr>`).join('')}</tbody></table></div>`)}
+export async function mount(){document.querySelector('.page-heading h1').textContent='M17 – AUTONOMOUS ENERGY MANAGEMENT';tabs('#m17-tabs','m17-view',data().viewTabs,active);kpis('#m17-kpis',data().kpis,'m17');loop();levels();process();safety();pilot();impact();log()}
+export async function onTab(group,value){if(group!=='m17-view')return false;active=value;toast(`Đã chuyển sang ${value}.`);return true}
+export async function onChange(target){if(['m17-mode','m17-period'].includes(target.id)){toast('Đã cập nhật chế độ vận hành preview.');return true}return false}
+export async function onAction(name,target){if(name==='m17-switch-mode'){window.EnmsCommon?.showDialog('Chuyển chế độ vận hành','<p>Thao tác chuyển cấp tự động hóa trong môi trường thật phải qua RBAC, safety interlock và xác nhận vận hành.</p>');return true}if(name==='m17-all-log'){window.EnmsCommon?.showDialog('Nhật ký quyết định','<p>Nhật ký đầy đủ sẽ lấy từ audit store, bao gồm input, policy, constraint, người duyệt và kết quả thực thi.</p>');return true}return false}

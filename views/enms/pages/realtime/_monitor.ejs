@@ -1,0 +1,27 @@
+<div class="m2-monitor-grid" data-component="m2-monitor">
+  <section class="panel m2-flow-panel" id="m2-flow-panel">
+    <div id="m2-energy-flow"></div>
+  </section>
+
+  <div class="m2-monitor-side">
+    <section class="panel m2-chart-panel">
+      <div class="panel-head">
+        <h2>Biểu đồ công suất tổng theo thời gian thực</h2>
+        <select id="m2-power-range" class="m2-inline-select" aria-label="Khoảng thời gian biểu đồ">
+          <option value="24h">24 giờ</option>
+          <option value="8h">8 giờ</option>
+          <option value="4h">4 giờ</option>
+        </select>
+      </div>
+      <div class="panel-body"><div id="m2-power-chart" class="chart"></div></div>
+    </section>
+
+    <section class="panel m2-chart-panel">
+      <div class="panel-head">
+        <h2>Sản lượng theo ca</h2>
+        <div id="m2-shift-tabs" class="m2-shift-tabs"></div>
+      </div>
+      <div class="panel-body"><div id="m2-shift-chart" class="chart"></div></div>
+    </section>
+  </div>
+</div>

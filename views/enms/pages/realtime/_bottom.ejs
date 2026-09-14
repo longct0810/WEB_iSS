@@ -1,0 +1,25 @@
+<div class="m2-bottom-grid" data-component="m2-detail-grid">
+  <section class="panel m2-station-panel">
+    <div class="panel-head"><h2>Danh sách trạm điện (16 trạm)</h2></div>
+    <div class="m2-filterbar">
+      <label class="m2-search"><i class="bi bi-search"></i><input id="m2-station-search" type="search" placeholder="Tìm kiếm trạm điện..." aria-label="Tìm kiếm trạm điện"></label>
+      <select id="m2-station-status" aria-label="Lọc trạng thái trạm"><option value="">Tất cả trạng thái</option><option value="Hoạt động">Hoạt động</option><option value="Cảnh báo">Cảnh báo</option><option value="Sự cố">Sự cố</option></select>
+    </div>
+    <div id="m2-stations"></div>
+  </section>
+
+  <section class="panel m2-parameter-panel">
+    <div class="panel-head"><h2>Các thông số năng lượng khác</h2></div>
+    <div id="m2-parameters"></div>
+  </section>
+
+  <section class="panel m2-alert-panel">
+    <div class="panel-head"><h2>Cảnh báo &amp; Sự kiện thời gian thực</h2><a href="/enms/<%= preview ? 'preview/' : '' %>alerts">Xem tất cả →</a></div>
+    <div id="m2-alerts"></div>
+    <div class="m2-alert-actions">
+      <button class="btn" type="button" data-action="m2-history"><i class="bi bi-clock-history"></i> Xem lịch sử dữ liệu</button>
+      <button class="btn" type="button" data-action="m2-quick-report"><i class="bi bi-file-earmark-text"></i> Xuất báo cáo nhanh</button>
+      <button class="btn" type="button" data-action="m2-alert-config"><i class="bi bi-gear"></i> Cấu hình cảnh báo</button>
+    </div>
+  </section>
+</div>

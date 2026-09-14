@@ -19,3 +19,35 @@ test('All 17 EnMS Advanced modules and utility pages render; unknown pages retur
 
 test('Module API exposes all 17 module contracts and detailed payloads',async()=>withServer(async base=>{let r=await fetch(base+'/api/enms/v1/modules',{headers:headers(1)});let result=await r.json();assert.equal(r.status,200);assert.equal(result.data.length,17);for(const id of ['balance','forecast','digital-twin','autonomous']){r=await fetch(base+'/api/enms/v1/modules/'+id,{headers:headers(1)});result=await r.json();assert.equal(r.status,200);assert.equal(result.data.id,id);assert.ok(result.data.kpis.length>=5);assert.ok(result.data.primary.kind);assert.ok(result.data.table.rows.length>0);}}));
 test('Live source fails closed instead of exposing mock as real data',async()=>withServer(async base=>{process.env.ENMS_DATA_SOURCE='database';try{const response=await fetch(base+'/api/enms/v1/summary',{headers:headers(1)});assert.equal(response.status,503);}finally{delete process.env.ENMS_DATA_SOURCE;}}));
+
+
+test('M1 Executive Dashboard exposes the detailed visual contract',()=>{
+  const overview=createStore().request('GET','modules/overview');
+  assert.equal(overview.id,'overview');
+  assert.equal(overview.kpis.length,6);
+  assert.equal(overview.plant.stations,16);
+  assert.equal(overview.plant.meters,71);
+  assert.equal(overview.production.categories.length,6);
+  assert.equal(overview.energyMix.energy.values.length,5);
+  assert.equal(overview.energyTrend.categories.length,30);
+  assert.equal(overview.efficiency.length,6);
+  assert.equal(overview.alertHighlights.length,3);
+  assert.equal(overview.targets.length,4);
+  assert.equal(overview.impacts.length,4);
+});
+
+
+test('M2 Realtime exposes the detailed visual contract',()=>{
+  const realtime=createStore().request('GET','modules/realtime');
+  assert.equal(realtime.id,'realtime');
+  assert.equal(realtime.kpis.length,6);
+  assert.deepEqual(realtime.systemStatus,{normal:69,warning:5,fault:2});
+  assert.equal(realtime.flow.sources.length,5);
+  assert.equal(realtime.flow.processes.length,4);
+  assert.equal(realtime.flow.utilities.length,6);
+  assert.equal(realtime.realtimeTrend.series.length,4);
+  assert.equal(realtime.shiftProduction.today.series.length,3);
+  assert.equal(realtime.stations.length,16);
+  assert.ok(realtime.parameters.length >= 10);
+  assert.equal(realtime.realtimeAlerts.length,5);
+});

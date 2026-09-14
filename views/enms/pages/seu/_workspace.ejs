@@ -1,0 +1,31 @@
+<div class="m4-workspace">
+  <section class="panel m4-tree-panel">
+    <div class="panel-head"><h2>Cấu trúc SEU của nhà máy</h2></div>
+    <div class="m4-tree-search"><i class="bi bi-search"></i><input id="m4-tree-search" type="search" placeholder="Tìm kiếm SEU..." aria-label="Tìm kiếm SEU"></div>
+    <div id="m4-seu-tree" class="m4-seu-tree"></div>
+  </section>
+
+  <section class="panel m4-enpi-panel">
+    <div class="panel-head"><h2 id="m4-enpi-title">Chỉ số EnPI theo SEU (Tháng 06/2025)</h2></div>
+    <div class="m4-enpi-toolbar">
+      <label>Chọn EnPI
+        <select id="m4-enpi-metric"></select>
+      </label>
+      <div class="m4-unit-chip">Đơn vị: <strong id="m4-enpi-unit">kWh/tấn</strong></div>
+    </div>
+    <div id="m4-enpi-table"></div>
+  </section>
+
+  <section class="panel m4-trend-panel">
+    <div class="panel-head"><h2 id="m4-trend-title">Xu hướng EnPI</h2></div>
+    <div class="m4-trend-toolbar">
+      <label>EnPI<select id="m4-trend-metric"></select></label>
+      <label>Thời gian<select id="m4-trend-period"><option value="6m">6 tháng gần nhất</option><option value="12m">12 tháng gần nhất</option></select></label>
+    </div>
+    <div id="m4-trend-chart" class="m4-trend-chart"></div>
+    <div class="m4-analysis">
+      <h3>Phân tích biến động EnPI</h3>
+      <div id="m4-analysis-summary"></div>
+    </div>
+  </section>
+</div>

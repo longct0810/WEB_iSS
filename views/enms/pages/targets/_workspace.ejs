@@ -1,0 +1,52 @@
+<div class="m5-layout">
+  <div class="m5-main-column">
+    <section class="panel m5-goals-panel">
+      <div class="panel-head">
+        <h2>Mục tiêu năng lượng năm 2025</h2>
+        <div class="m5-inline-tools">
+          <label class="m5-search"><i class="bi bi-search"></i><input id="m5-goal-search" type="search" placeholder="Tìm kiếm mục tiêu..." aria-label="Tìm kiếm mục tiêu"></label>
+          <button class="btn" data-action="m5-export-goals"><i class="bi bi-download"></i> Xuất Excel</button>
+        </div>
+      </div>
+      <div id="m5-goals-table"></div>
+    </section>
+
+    <div class="m5-bottom-grid">
+      <section class="panel m5-trend-panel">
+        <div class="panel-head m5-panel-head-stack">
+          <h2>Xu hướng thực hiện mục tiêu trọng yếu</h2>
+          <label class="m5-mini-field">Chọn chỉ số<select id="m5-trend-metric"></select></label>
+        </div>
+        <div class="panel-body"><div id="m5-target-trend"></div></div>
+      </section>
+
+      <section class="panel m5-actions-panel">
+        <div class="panel-head"><h2>Kế hoạch hành động nổi bật</h2></div>
+        <div id="m5-actions-table"></div>
+        <div class="m5-panel-footer"><button class="m5-link-button" data-action="m5-show-actions">Xem tất cả hành động <i class="bi bi-arrow-right"></i></button></div>
+      </section>
+    </div>
+  </div>
+
+  <aside class="m5-side-column">
+    <section class="panel m5-progress-panel">
+      <div class="panel-head"><h2>Tiến độ thực hiện mục tiêu</h2></div>
+      <div class="panel-body"><div id="m5-progress"></div></div>
+    </section>
+
+    <section class="panel m5-saving-panel">
+      <div class="panel-head"><h2>Tổng tiềm năng tiết kiệm năng lượng</h2></div>
+      <div class="panel-body" id="m5-savings"></div>
+    </section>
+
+    <section class="panel m5-iso-panel">
+      <div class="panel-head"><h2>Liên kết chiến lược & ISO 50001</h2></div>
+      <div class="panel-body" id="m5-iso-links"></div>
+    </section>
+
+    <section class="panel m5-docs-panel">
+      <div class="panel-head"><h2><i class="bi bi-cloud-arrow-down"></i> Tài liệu & Biểu mẫu</h2></div>
+      <div class="panel-body" id="m5-docs"></div>
+    </section>
+  </aside>
+</div>

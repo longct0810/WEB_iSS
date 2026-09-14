@@ -30,6 +30,8 @@ export function chart(id, type, series, options = {}) {
   const safeOptions = Object.fromEntries(
     Object.entries(options || {}).filter(([, value]) => value !== undefined)
   );
+  const chartOverrides = safeOptions.chart || {};
+  delete safeOptions.chart;
 
   const config = {
     chart: {
@@ -38,7 +40,8 @@ export function chart(id, type, series, options = {}) {
       fontFamily: 'Segoe UI, Arial, sans-serif',
       toolbar: { show: false },
       animations: { enabled: false },
-      parentHeightOffset: 0
+      parentHeightOffset: 0,
+      ...chartOverrides
     },
     series,
     colors: options.colors || colors,

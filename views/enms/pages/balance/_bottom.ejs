@@ -1,0 +1,31 @@
+<div class="m3-bottom-grid">
+  <section class="panel m3-table-panel" id="m3-table-section">
+    <div class="panel-head">
+      <h2>Bảng cân đối năng lượng chi tiết</h2>
+      <button type="button" class="btn small" data-action="m3-export-excel"><i class="bi bi-file-earmark-spreadsheet"></i>Xuất Excel</button>
+    </div>
+    <div id="m3-table-tabs" class="m3-subtabs"></div>
+    <div id="m3-balance-table"></div>
+  </section>
+
+  <section class="panel m3-distribution-panel" id="m3-distribution-section">
+    <div class="panel-head"><h2>Biểu đồ phân bổ năng lượng</h2></div>
+    <div id="m3-distribution-tabs" class="m3-subtabs"></div>
+    <div class="panel-body m3-distribution-body">
+      <div id="m3-distribution-chart"></div>
+      <div id="m3-distribution-legend" class="m3-distribution-legend"></div>
+    </div>
+  </section>
+
+  <section class="panel m3-trend-panel" id="m3-trend-section">
+    <div class="panel-head">
+      <h2>Xu hướng Energy Balance</h2>
+      <select id="m3-trend-metric" class="m3-trend-select">
+        <option value="lossRate">Tỷ lệ tổn thất năng lượng</option>
+        <option value="usefulRate">Tỷ lệ năng lượng hữu ích</option>
+        <option value="sec">SEC (điện + nhiệt)</option>
+      </select>
+    </div>
+    <div class="panel-body"><div id="m3-trend-chart"></div></div>
+  </section>
+</div>

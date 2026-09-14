@@ -1,0 +1,34 @@
+<div class="m3-main-grid">
+  <section class="panel m3-balance-panel" id="m3-balance-section">
+    <div class="panel-head m3-balance-head">
+      <h2>Energy Balance tổng thể nhà máy <span>(Tháng 06/2025)</span></h2>
+      <div class="m3-balance-tools">
+        <span>Đơn vị hiển thị:</span>
+        <div id="m3-unit-tabs"></div>
+        <button type="button" class="btn small" data-action="m3-recalculate"><i class="bi bi-camera"></i>Tái tính</button>
+      </div>
+    </div>
+    <div class="m3-balance-canvas" id="m3-energy-balance"></div>
+  </section>
+
+  <div class="m3-side-stack">
+    <section class="panel m3-map-panel" id="m3-map-section">
+      <div class="panel-head">
+        <h2>Bản đồ năng lượng theo khu vực</h2>
+        <label class="m3-inline-field">Chế độ xem
+          <select id="m3-map-mode">
+            <option value="area">Sơ đồ khu vực</option>
+            <option value="intensity">Cường độ năng lượng</option>
+            <option value="loss">Tổn thất</option>
+          </select>
+        </label>
+      </div>
+      <div id="m3-energy-map" class="m3-energy-map"></div>
+    </section>
+
+    <section class="panel m3-efficiency-panel">
+      <div class="panel-head"><h2>Hiệu suất năng lượng tổng thể</h2><a href="#" data-action="m3-efficiency-detail">Xem chi tiết ›</a></div>
+      <div id="m3-efficiency" class="m3-efficiency-grid"></div>
+    </section>
+  </div>
+</div>

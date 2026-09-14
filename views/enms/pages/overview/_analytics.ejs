@@ -1,5 +1,21 @@
-<div class="grid three" data-component="overview-analytics">
-  <section class="panel"><div class="panel-head"><h2>Xu hướng tiêu thụ điện năng</h2><a href="/enms/<%= preview ? 'preview/' : '' %>realtime">Giám sát chi tiết ›</a></div><div class="panel-body"><div id="overview-load-tabs"></div><div id="load-chart" class="chart"></div></div></section>
-  <section class="panel"><div class="panel-head"><h2>Cơ cấu tiêu thụ điện năng</h2></div><div class="panel-body"><div id="overview-distribution"></div></div></section>
-  <section class="panel"><div class="panel-head"><h2>Mục tiêu năng lượng năm 2025</h2></div><div class="panel-body" id="overview-goal"></div></section>
+<div class="m1-analytics-grid" data-component="m1-energy-analytics">
+  <section class="panel m1-mix-card">
+    <div class="panel-head"><h2>Cơ cấu tiêu thụ năng lượng <span class="m1-title-period">(Tháng 06/2025)</span></h2></div>
+    <div class="m1-panel-tabs" id="m1-mix-tabs"></div>
+    <div class="panel-body m1-mix-body">
+      <div id="m1-mix-chart"></div>
+      <div id="m1-mix-legend" class="m1-mix-legend"></div>
+    </div>
+  </section>
+
+  <section class="panel m1-trend-card">
+    <div class="panel-head"><h2>Xu hướng tiêu thụ năng lượng</h2></div>
+    <div class="m1-panel-tabs m1-panel-tabs-wide" id="m1-trend-tabs"></div>
+    <div class="panel-body"><div id="m1-energy-trend" class="chart"></div></div>
+  </section>
+
+  <section class="panel m1-efficiency-card">
+    <div class="panel-head"><h2>Hiệu suất theo khu vực (EnPI - kWh/tấn)</h2><a href="/enms/<%= preview ? 'preview/' : '' %>seu">Xem chi tiết →</a></div>
+    <div class="panel-body" id="m1-efficiency"></div>
+  </section>
 </div>

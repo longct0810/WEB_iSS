@@ -3,7 +3,7 @@ import { state } from './core/state.js';
 import { $, clearError, esc, fmt, render, showDialog, showError, toast } from './core/dom.js';
 import { request } from './core/api.js';
 import { destroyAllCharts } from './core/charts.js';
-import { badge, button, dateInput, icon, levelNames, row, select, stationSelect, stationTable, table } from './components/ui.js';
+import { badge, button, icon, row, select, stationTable, table } from './components/ui.js';
 
 let activePage;
 const modulePage = !['map','settings'].includes(page);
@@ -13,25 +13,75 @@ function setupHeading() {
   let tools = select('plant', 'Nhà máy', [['lt2', 'Nhà máy Xi măng Lam Thạch II']]);
 
   if (page === 'realtime') {
-    tools += select('refresh-interval','Tần suất cập nhật',[['0','Tạm dừng'],['5','5 giây'],['15','15 giây'],['30','30 giây']],'5');
+    tools += select('realtime-period','Khoảng thời gian',[['realtime','Thời gian thực'],['today','Hôm nay'],['24h','24 giờ gần nhất']],'realtime')
+      + select('realtime-display','Chế độ hiển thị',[['overview','Sơ đồ tổng thể'],['electricity','Điện'],['thermal','Nhiệt (Than/Dầu/Khí)'],['steam','Hơi'],['water','Nước']],'overview')
+      + button(`${icon('fullscreen')} Toàn màn hình`,'m2-fullscreen',true);
   } else if (page === 'map') {
     tools = select('map-mode','Chế độ xem',[['sld','Sơ đồ một sợi'],['factory','Bản đồ nhà máy']]) + button(`${icon('arrow-clockwise')} Làm mới`,'refresh',true);
   } else if (page === 'reports') {
-    tools = dateInput('report-from','Từ ngày','2025-06-01') + dateInput('report-to','Đến ngày','2025-06-10') + select('report-type','Loại báo cáo',['Tổng hợp','EnPI','Phát thải','So sánh']) + button(`${icon('file-earmark-plus')} Tạo báo cáo`,'create-report',true);
+    tools += select('m9-period','Khoảng thời gian',[['2025-06','Tháng 06/2025'],['2025-Q2','Quý II/2025'],['2025','Năm 2025']],'2025-06')
+      + select('m9-compare','So sánh',[['2024-same','So với cùng kỳ 2024'],['previous','So với kỳ trước'],['plan','So với kế hoạch']],'2024-same')
+      + button(`${icon('plus')} Tạo báo cáo mới`,'m9-create-report',true);
   } else if (page === 'alerts') {
-    tools = select('alert-period','Khoảng thời gian',[['7','7 ngày qua'],['1','Hôm nay'],['30','30 ngày qua']]) + select('alert-severity','Mức độ',[['','Tất cả'],...Object.entries(levelNames)]) + button(`${icon('arrow-clockwise')} Làm mới`,'refresh',true);
+    tools += select('m6-period','Khoảng thời gian',[['7','7 ngày qua'],['1','Hôm nay'],['30','30 ngày qua'],['90','90 ngày qua']],'7')
+      + select('m6-scope','Phạm vi',[['all','Toàn nhà máy'],['raw','Nghiền liệu'],['kiln','Lò nung'],['cement','Nghiền xi'],['packing','Đóng bao']],'all')
+      + button(`${icon('download')} Xuất báo cáo`,'m6-export-report',true);
   } else if (page === 'data') {
-    tools += stationSelect('data-station');
+    tools += select('m10-year','Năm',[['2025','2025'],['2024','2024']],'2025')
+      + select('m10-system-status','Trạng thái hệ thống',[['healthy','🟢 Đang vận hành tốt'],['warning','🟠 Cần theo dõi'],['all','Tất cả trạng thái']],'healthy')
+      + button(`${icon('download')} Báo cáo hệ thống`,'m10-system-report',true);
   } else if (page === 'forecast') {
-    tools += select('forecast-horizon','Kỳ dự báo',[['7','7 ngày'],['30','30 ngày'],['90','90 ngày']],'30') + button(`${icon('arrow-repeat')} Chạy dự báo`,'run-analysis',true);
+    tools += select('m11-year','Năm',[['2025','2025'],['2024','2024']],'2025')
+      + select('m11-period','Khoảng thời gian',[['2025-06','Tháng 06/2025'],['2025-Q2','Quý II/2025'],['2025','Năm 2025']],'2025-06')
+      + button(`${icon('plus')} Tạo kịch bản mới`,'m11-create-scenario',true);
   } else if (page === 'digital-twin') {
-    tools += select('twin-mode','Kịch bản',[['live','Trạng thái hiện tại'],['efficient','Tối ưu hiệu suất'],['peak','Giờ cao điểm']]) + button(`${icon('play-circle')} Mô phỏng`,'run-analysis',true);
-  } else if (['analytics','ai-decision','autonomous','optimization'].includes(page)) {
-    tools += select('analysis-period','Thời gian',[['today','Hôm nay'],['7d','7 ngày'],['30d','30 ngày']],'7d') + button(`${icon('stars')} Chạy phân tích`,'run-analysis',true);
-  } else if (['balance','targets','savings','emissions','iso50001'].includes(page)) {
-    tools += select('period','Thời gian',[['2025-06','Tháng 06/2025'],['2025-Q2','Quý II/2025'],['2025','Năm 2025']]) + button(`${icon('download')} Xuất dữ liệu`,'export-module');
-  } else if (page === 'overview' || page === 'seu') {
-    tools += button(`${icon('arrow-clockwise')} Làm mới`,'refresh');
+    tools += select('m15-scenario','Kịch bản',[['live','Hiện tại (As-is)'],['production','Tăng sản lượng clinker 10%'],['efficient','Tối ưu vận hành'],['afr','Tăng AFR 30%']],'live')
+      + select('m15-period','Thời gian mô phỏng',[['2025-06','Tháng 06/2025'],['2025-Q2','Quý II/2025'],['2025','Năm 2025']],'2025-06')
+      + button(`${icon('plus')} Tạo kịch bản mới`,'m15-run-sim',true);
+  } else if (page === 'optimization') {
+    tools += select('m12-period','Khoảng thời gian',[['2025-06','Tháng 06/2025'],['2025-Q2','Quý II/2025'],['2025','Năm 2025']],'2025-06')
+      + select('m12-scenario','Kịch bản hiển thị',[['optimized','Kịch bản tối ưu'],['base','Hiện tại'],['fuel','Thay thế nhiên liệu'],['bess','Tích hợp BESS']],'optimized')
+      + button(`${icon('play-circle')} Chạy mô phỏng mới`,'m12-run-simulation',true);
+  } else if (page === 'analytics') {
+    tools += select('m14-period','Khoảng thời gian',[['2025-06','Tháng 06/2025'],['7d','7 ngày gần nhất'],['30d','30 ngày gần nhất']],'2025-06')
+      + select('m14-model','Mô hình AI',[['v2.1','Phiên bản v2.1'],['v2.0','Phiên bản v2.0']],'v2.1')
+      + button(`${icon('play-circle')} Chạy phân tích mới`,'m14-run-analysis',true);
+  } else if (page === 'ai-decision') {
+    tools += select('m16-period','Thời gian',[['2025-06','Tháng 06/2025'],['2025-Q2','Quý II/2025']],'2025-06')
+      + select('m16-scenario','Kịch bản',[['cost','Tối ưu chi phí'],['co2','Tối ưu CO₂'],['peak','Tối ưu phụ tải đỉnh'],['balanced','Tối ưu kết hợp']],'cost')
+      + button(`${icon('play-circle')} Chạy tối ưu mới`,'m16-run-opt',true);
+  } else if (page === 'autonomous') {
+    tools += select('m17-mode','Chế độ vận hành',[['l3','Tự động có giám sát (L3)'],['l2','Đề xuất & Phê duyệt (L2)'],['l1','Tư vấn thông minh (L1)']],'l3')
+      + select('m17-period','Thời gian',[['2025-06','Tháng 06/2025'],['30d','30 ngày gần nhất']],'2025-06')
+      + button(`${icon('play-circle')} Chuyển chế độ`,'m17-switch-mode',true);
+  } else if (page === 'balance') {
+    tools += select('period','Thời gian',[['2025-06','Tháng 06/2025'],['2025-05','Tháng 05/2025'],['2025-Q2','Quý II/2025']],'2025-06')
+      + select('balance-scenario','Kịch bản',[['actual','Thực tế'],['plan','Kế hoạch'],['optimized','Tối ưu']],'actual')
+      + button(`${icon('download')} Xuất báo cáo`,'export-module',true);
+  } else if (page === 'targets') {
+    tools += select('m5-year','Năm',[['2025','2025'],['2024','2024']],'2025')
+      + select('m5-status','Trạng thái',[['all','Tất cả'],['good','Đúng tiến độ / Vượt kế hoạch'],['warning','Nguy cơ chậm'],['critical','Chậm tiến độ']],'all')
+      + button(`${icon('plus')} Tạo mục tiêu mới`,'m5-create-target',true);
+  } else if (page === 'savings') {
+    tools += select('m7-year','Năm',[['2025','2025'],['2024','2024']],'2025')
+      + select('m7-status','Trạng thái',[['all','Tất cả'],['done','Đã triển khai'],['ongoing','Đang triển khai'],['prep','Chuẩn bị đầu tư'],['proposed','Đề xuất mới']],'all')
+      + button(`${icon('plus')} Đề xuất giải pháp`,'m7-create-solution',true);
+  } else if (page === 'emissions') {
+    tools += select('m8-year','Năm',[['2025','2025'],['2024','2024']],'2025')
+      + select('m8-period','Khoảng thời gian',[['2025-06','Tháng 06/2025'],['2025-Q2','Quý II/2025'],['2025','Năm 2025']],'2025-06')
+      + button(`${icon('download')} Xuất báo cáo ESG`,'m8-export-esg',true);
+  } else if (page === 'iso50001') {
+    tools += select('m13-year','Năm',[['2025','2025'],['2024','2024']],'2025')
+      + select('m13-cycle','Chu kỳ đánh giá',[['iso2024','Chu kỳ ISO 50001:2024'],['internal','Đánh giá nội bộ'],['external','Kiểm toán bên ngoài']],'iso2024')
+      + button(`${icon('plus')} Tạo hồ sơ mới`,'m13-create-record',true);
+  } else if (page === 'overview') {
+    tools += select('overview-period','Thời gian',[['2025-06','Tháng 06/2025'],['2025-05','Tháng 05/2025'],['2025-Q2','Quý II/2025']],'2025-06')
+      + select('overview-compare','So sánh với',[['2025-05','Tháng 05/2025'],['2024-06','Cùng kỳ 2024'],['target','Mục tiêu']],'2025-05')
+      + button(`${icon('download')} Xuất báo cáo`,'export-module',true);
+  } else if (page === 'seu') {
+    tools += select('m4-period','Thời gian',[['2025-06','Tháng 06/2025'],['2025-05','Tháng 05/2025'],['2025-Q2','Quý II/2025']],'2025-06')
+      + select('m4-unit-filter','Đơn vị',[['all','Tất cả SEU'],['raw','Khai thác & Nghiền liệu'],['kiln','Lò nung & Hệ thống nung'],['cement','Nghiền xi măng'],['packing','Đóng bao & Vận chuyển'],['aux','Hệ thống phụ trợ'],['other','Khác']],'all')
+      + button(`${icon('download')} Xuất báo cáo`,'export-module',true);
   }
   render('#page-actions', tools);
 }
@@ -62,7 +112,7 @@ async function refreshPage() {
   const source = results[0].meta.source;
   $('.demo-indicator').textContent = source === 'mock' ? 'DỮ LIỆU MẪU' : 'DỮ LIỆU THỰC';
   $('#connection-state').textContent = source === 'mock' ? 'Dữ liệu minh họa · Chưa kết nối nguồn thực' : `Dữ liệu API · ${source}`;
-  $('#last-update').textContent = `Cập nhật: ${new Date().toLocaleTimeString('vi-VN')} · Kỳ mẫu 06/2025 · EnMS v1.1.1`;
+  $('#last-update').textContent = `Cập nhật: ${new Date().toLocaleTimeString('vi-VN')} · Kỳ mẫu 06/2025 · EnMS v1.1.9`;
   await activePage.mount();
   $('#content').setAttribute('aria-busy','false');
 }

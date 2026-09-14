@@ -11,7 +11,7 @@ const utilityPages = ['map','settings'];
 function exists(relative) { return fs.existsSync(path.join(root, relative)); }
 function read(relative) { return fs.readFileSync(path.join(root, relative), 'utf8'); }
 
-test('EnMS 1.1.1 giữ shell EJS thành partial dùng chung', () => {
+test('EnMS 1.1.9 giữ shell EJS thành partial dùng chung', () => {
   for (const name of ['head','sidebar','topbar','page-header','statusbar','dialogs','scripts','module-dashboard']) {
     assert.ok(exists(`views/enms/partials/${name}.ejs`), name);
   }
@@ -31,7 +31,7 @@ test('17 module EnMS Advanced và utility pages có view/js/css phù hợp', () 
 test('advanced module renderer dùng component dùng chung thay vì nhân bản code', () => {
   assert.ok(exists('public/enms/js/components/module-page.js'));
   assert.ok(exists('public/enms/css/module-dashboard.css'));
-  for (const page of ['balance','targets','savings','emissions','forecast','optimization','iso50001','analytics','digital-twin','ai-decision','autonomous']) {
+  for (const page of ['analytics','digital-twin','ai-decision','autonomous']) {
     assert.match(read(`public/enms/js/pages/${page}.js`), /mountModuleDashboard/);
     assert.match(read(`views/enms/pages/${page}/index.ejs`), /module-dashboard/);
   }
@@ -47,12 +47,12 @@ test('core và component dùng chung đã được tách khỏi app.js nguyên k
   assert.equal(exists('public/enms/realtime.js'), false);
 });
 
-test('route truyền đúng page module và package đã lên 1.1.1', () => {
+test('route truyền đúng page module và package đã lên 1.1.9', () => {
   const route = read('routes/enms.js');
   assert.match(route, /viewPage: `pages\/\$\{page\}\/index`/);
   assert.match(route, /modules\/:id/);
   const pkg = JSON.parse(read('package.json'));
-  assert.equal(pkg.version, '1.1.1');
+  assert.equal(pkg.version, '1.1.9');
 });
 
 test('login JWT và HES ticket trust boundary vẫn được giữ', () => {

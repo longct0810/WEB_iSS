@@ -1,128 +1,31 @@
 import { state } from '../core/state.js';
-import { $, csv, render, toast } from '../core/dom.js';
-import { allRows, request } from '../core/api.js';
+import { esc, render, toast, download } from '../core/dom.js';
 import { chart, replaceChart } from '../core/charts.js';
-import { badge, button, dateInput, icon, pagination, row, select, stat, table, tabs } from '../components/ui.js';
+import { icon } from '../components/ui.js';
 
-function meterTree(search = '') {
-  const query = search.toLocaleLowerCase('vi');
-  const html = state.stations.map(station => {
-    const meters = state.meters.filter(meter => meter.stationId === station.id && `${meter.name} ${meter.id} ${station.name}`.toLocaleLowerCase('vi').includes(query));
-    if (!meters.length) return '';
-    return `<details ${meters.some(meter=>meter.id===state.selectedMeter)||search?'open':''}><summary>${icon('building')} ${station.id}. ${station.name} (${meters.length})</summary>${meters.map(meter=>`<button class="meter ${meter.id===state.selectedMeter?'active':''}" data-action="select-meter" data-id="${meter.id}">${icon('check-square-fill')} ${meter.id} · ${meter.name}</button>`).join('')}</details>`;
-  }).join('');
-  return html || '<div class="empty">Không tìm thấy điểm đo</div>';
-}
+let activeTab='Tổng quan';
+const data=()=>state.module||{};
 
-function readingParams() {
-  return {
-    meterId: state.selectedMeter,
-    from: $('#data-from').value,
-    to: $('#data-to').value,
-    interval: $('#data-interval').value,
-    page: state.readingPage,
-    pageSize: 11
-  };
-}
+function renderTabs(){render('#m10-tabs',`<div class="tabs" role="tablist">${(data().viewTabs||[]).map(item=>`<button class="tab ${item===activeTab?'active':''}" role="tab" aria-selected="${item===activeTab}" data-tab="m10-view" data-value="${esc(item)}">${esc(item)}</button>`).join('')}</div>`);}
+function renderKpis(){render('#m10-kpis',(data().kpis||[]).map(item=>`<article class="m10-kpi ${esc(item.tone||'blue')}"><span class="m10-kpi-icon">${icon(item.icon)}</span><div><div class="m10-kpi-label">${esc(item.label)}</div><div class="m10-kpi-value">${esc(item.value)}${item.unit?` <small>${esc(item.unit)}</small>`:''}</div><div class="m10-kpi-note">${item.delta?`<b>${esc(item.delta)}</b>`:''}${item.context?` <span>${esc(item.context)}</span>`:''}</div></div></article>`).join(''));}
 
-async function loadReadings() {
-  if (!state.meters.some(meter=>meter.id===state.selectedMeter)) state.selectedMeter = state.meters[0].id;
-  const data = (await request('readings', readingParams())).data;
-  state.readings = data;
-  const meter = state.meters.find(item=>item.id===state.selectedMeter);
-  $('#meter-title').textContent = `${meter.id} · ${meter.name} (${meter.station})`;
-  $('#meter-status').textContent = meter.status;
-  $('#meter-status').className = `status ${meter.status==='Lỗi'?'critical':''}`;
-  render('#readings-table', table(
-    ['Thời gian','P (MW)','Q (MVar)','S (MVA)','U (kV)','IA (A)','IB (A)','IC (A)','Cosφ','Tần số (Hz)','Điện năng (kWh)'],
-    data.items.map(item=>row([item.time.slice(0,16).replace('T',' '),item.p.toFixed(2),item.q.toFixed(2),item.s.toFixed(2),item.u.toFixed(2),Math.round(item.ia),Math.round(item.ib),Math.round(item.ic),item.pf.toFixed(2),item.hz.toFixed(2),Math.round(item.energy)]))
-  ) + pagination(data,'reading'));
+function renderArchitecture(){render('#m10-architecture',`<div class="m10-architecture">${(data().architecture||[]).map(layer=>`<article class="m10-layer ${esc(layer.tone||'')}"><div class="m10-layer-head">${esc(layer.title)}<small>${esc(layer.subtitle)}</small></div><div class="m10-layer-items">${layer.items.map(([glyph,label])=>`<div class="m10-layer-item">${icon(glyph)}<span>${esc(label)}</span></div>`).join('')}</div></article>`).join('')}</div>`);}
+function renderDataFlow(){const items=data().dataFlow||[];render('#m10-data-flow',`<div class="m10-flow">${items.map((item,index)=>`${index?'<span class="m10-flow-arrow">→</span>':''}<div class="m10-flow-node"><div class="m10-flow-icon">${icon(item.icon)}</div><span>${esc(item.label).replace(/\n/g,'<br>')}</span></div>`).join('')}</div>`);}
+function status(item){const glyph=item.statusKey==='done'?'check-circle-fill':item.statusKey==='progress'?'clock-fill':'circle-fill';return `<span class="m10-integration-status ${esc(item.statusKey)}">${icon(glyph)} ${esc(item.status)}</span>`;}
+function renderIntegrations(){render('#m10-integrations',`<div class="table-wrap"><table class="m10-integrations-table"><thead><tr><th>Hệ thống</th><th>Mục đích tích hợp</th><th>Trạng thái</th><th>Ghi chú</th></tr></thead><tbody>${(data().integrations||[]).map((item,index)=>`<tr data-action="m10-integration" data-index="${index}"><td><b>${esc(item.system)}</b></td><td>${esc(item.purpose)}</td><td>${status(item)}</td><td>${esc(item.note)}</td></tr>`).join('')}</tbody></table></div>`);}
+function renderQuality(){const items=data().dataQuality||[];render('#m10-data-quality',`<div class="m10-quality-layout"><div id="m10-quality-chart"></div><div class="m10-quality-legend">${items.map(item=>`<div><i style="background:${esc(item.color)}"></i><span>${esc(item.label)}</span><b>${item.value}%</b></div>`).join('')}</div></div>`);replaceChart('m10-quality-chart');chart('m10-quality-chart','donut',items.map(x=>x.value),{height:180,labels:items.map(x=>x.label),colors:items.map(x=>x.color),legend:{show:false},stroke:{width:1,colors:['#fff']},dataLabels:{enabled:false},plotOptions:{pie:{donut:{size:'68%',labels:{show:true,name:{show:true,fontSize:'8px',offsetY:18,formatter:()=> 'Dữ liệu hợp lệ'},value:{show:true,fontSize:'19px',fontWeight:700,offsetY:-12,formatter:()=>`${items[0]?.value||0}%`},total:{show:false}}}}}});}
+function renderStorage(){const spec=data().storageGrowth||{};replaceChart('m10-storage-growth');chart('m10-storage-growth','bar',[{name:'Dung lượng (GB)',data:spec.values||[]}],{height:176,categories:spec.categories||[],colors:['#0cac79','#11a987','#147fde','#6a879b'],plotOptions:{bar:{columnWidth:'48%',borderRadius:2,distributed:true}},legend:{show:false},dataLabels:{enabled:true,offsetY:-13,style:{fontSize:'8px',colors:['#174e75']}}});const el=document.querySelector('#m10-storage-growth');el?.insertAdjacentHTML('afterend',`<div class="m10-storage-note">${esc(spec.growth||'')} <small>${esc(spec.average||'')}</small></div>`);}
+function renderChecks(selector,items){render(selector,`<ul class="m10-check-list">${(items||[]).map(x=>`<li>${icon('check-circle-fill')}<span>${esc(x)}</span></li>`).join('')}</ul>`);}
+function renderRoadmap(){render('#m10-roadmap',`<div class="m10-roadmap">${(data().roadmap||[]).map(item=>`<div class="m10-roadmap-step"><b>${esc(item.year)}</b>${esc(item.text).replace(/\n/g,'<br>')}</div>`).join('')}</div>`);}
+function renderDocuments(){render('#m10-documents',`<div class="m10-doc-list">${(data().documents||[]).map((item,index)=>`<div class="m10-doc"><span>${icon('file-earmark-text-fill')} ${esc(item.name)}</span><button data-action="m10-download-doc" data-index="${index}" title="Tải xuống">${icon('download')}</button></div>`).join('')}</div>`);}
+function focusTab(value){const map={'Kiến trúc hệ thống':'.m10-architecture-panel','Quản lý dữ liệu':'.m10-quality-panel','Bảo mật & An toàn thông tin':'.m10-security-panel','Tích hợp hệ thống':'.m10-integrations-panel','Vận hành & Hỗ trợ':'.m10-operations-panel','Kế hoạch phát triển':'.m10-roadmap-panel'};document.querySelector(map[value]||'.m10-architecture-panel')?.scrollIntoView({behavior:'smooth',block:'start'});}
 
-  const readings=[...data.items].reverse();
-  const categories=readings.map(item=>item.time.slice(11,16));
-  ['meter-power-chart','meter-energy-chart','meter-pf-chart','readings-large-chart'].forEach(replaceChart);
-  chart('meter-power-chart','area',[{name:'P (MW)',data:readings.map(item=>item.p)}],{height:220,categories,decimals:2});
-  chart('meter-energy-chart','area',[{name:'kWh',data:readings.map(item=>item.energy)}],{height:160,categories,colors:['#08b489']});
-  chart('meter-pf-chart','line',[{name:'Cosφ',data:readings.map(item=>item.pf)}],{height:160,categories,decimals:2,colors:['#8a62d7'],yaxis:{min:.8,max:1,labels:{formatter:value=>value.toFixed(2)}}});
-  const current=data.items[0];
-  render('#meter-current', current ? `<h3>Giá trị tại ${current.time.slice(11,16)}</h3><div class="mini-stats"><div class="mini-stat">P (MW)<b>${current.p}</b></div><div class="mini-stat">Q (MVar)<b>${current.q}</b></div><div class="mini-stat">Cosφ<b>${current.pf}</b></div></div>` : '<p>Không có dữ liệu</p>');
-  if ($('#data-display').value === 'chart') {
-    $('#readings-table').hidden = true;
-    $('#readings-large-chart').hidden = false;
-    chart('readings-large-chart','area',[{name:'P (MW)',data:readings.map(item=>item.p)}],{height:430,categories,decimals:2});
-  } else {
-    $('#readings-table').hidden = false;
-    $('#readings-large-chart').hidden = true;
-  }
-}
-
-function renderNotice(value) {
-  const notes={
-    'Dữ liệu thời gian thực':'Đang xem giá trị mẫu. Chưa có nguồn telemetry thực được ánh xạ vào điểm đo EnMS.',
-    'Dữ liệu lịch sử':'',
-    'Hiệu chỉnh dữ liệu':'Dữ liệu gốc được giữ nguyên. Hiệu chỉnh cần quy trình phê duyệt và API ghi dữ liệu thực; chưa bật trong bản mock.',
-    'Nhật ký hệ thống':'Phiên preview không ghi nhật ký lên database. Thao tác xử lý cảnh báo chỉ lưu trong bộ nhớ phiên.',
-    'Import/Export':'Chọn điểm đo và khoảng thời gian, bấm Xuất dữ liệu để tải CSV. Import chưa bật khi chưa xác nhận cấu trúc database.',
-    'Cấu hình điểm đo':'Chọn điểm đo trong cây để xem thông tin. Khai báo thiết bị thực tại Cài đặt hệ thống → Quản lý điểm đo.'
-  };
-  render('#data-notice', notes[value] ? `<div class="notice">${notes[value]}</div>` : '');
-}
-
-export async function mount() {
-  render('#data-summary', [
-    stat('Tổng số điểm đo','71','','database','','69 hoạt động',' · 2 lỗi'),
-    stat('Dữ liệu hôm nay','100','%','check-circle-fill','green','Đã thu thập','thành công'),
-    stat('Thời gian dữ liệu mới nhất','10:24','10/06/2025','calendar3','purple','Mẫu lịch sử',''),
-    stat('Dung lượng lưu trữ','245','GB / 1 TB','bar-chart','orange','25%','dung lượng'),
-    stat('Thời gian lưu trữ','3','năm','clock','','Từ 01/01/2023','')
-  ].join(''));
-  render('#data-tabs', tabs(['Dữ liệu thời gian thực','Dữ liệu lịch sử','Hiệu chỉnh dữ liệu','Nhật ký hệ thống','Import/Export','Cấu hình điểm đo'],'data',state.dataTab));
-  renderNotice(state.dataTab);
-  render('#data-toolbar', `${dateInput('data-from','Từ ngày','2025-06-10')}${dateInput('data-to','Đến ngày','2025-06-10')}${select('data-interval','Khoảng thời gian hiển thị',[['60','1 giờ'],['15','15 phút'],['1440','1 ngày']])}${select('data-display','Dạng hiển thị',[['table','Bảng dữ liệu'],['chart','Biểu đồ']])}${button(`${icon('search')} Tìm kiếm`,'search-readings',true)}${button(`${icon('download')} Xuất dữ liệu`,'export-readings')}`);
-  render('#meter-tree', meterTree());
-  await loadReadings();
-}
-
-export async function onAction(name, target) {
-  if (name === 'reading-page') { state.readingPage=+target.dataset.page; await loadReadings(); return true; }
-  if (name === 'search-readings') { state.readingPage=1; await loadReadings(); toast('Đã cập nhật dữ liệu theo bộ lọc.'); return true; }
-  if (name === 'select-meter') {
-    state.selectedMeter=target.dataset.id;
-    state.readingPage=1;
-    document.querySelectorAll('.meter').forEach(item=>item.classList.toggle('active',item.dataset.id===state.selectedMeter));
-    await loadReadings();
-    return true;
-  }
-  if (name === 'export-readings') {
-    const rows=await allRows('readings',readingParams());
-    csv(`enms-${state.selectedMeter}`,['Thời gian','Điểm đo','P (MW)','Q (MVar)','S (MVA)','U (kV)','IA (A)','IB (A)','IC (A)','Cosφ','Hz','kWh'],rows.map(item=>[item.time,item.meterId,item.p,item.q,item.s,item.u,item.ia,item.ib,item.ic,item.pf,item.hz,item.energy]));
-    return true;
-  }
-  return false;
-}
-
-export async function onTab(group, value) {
-  if (group !== 'data') return false;
-  state.dataTab=value;
-  renderNotice(value);
-  return true;
-}
-
-export async function onInput(target) {
-  if (target.id !== 'meter-search') return false;
-  render('#meter-tree', meterTree(target.value));
-  return true;
-}
-
-export async function onChange(target) {
-  if (target.id === 'data-display') { await loadReadings(); return true; }
-  if (target.id === 'data-station') {
-    const meter=state.meters.find(item=>!target.value||item.stationId===target.value);
-    if (meter) state.selectedMeter=meter.id;
-    state.readingPage=1;
-    render('#meter-tree',meterTree());
-    await loadReadings();
-    return true;
-  }
+export async function mount(){document.querySelector('.page-heading h1').textContent='M10 - QUẢN LÝ DỮ LIỆU & HỆ THỐNG (DATA MANAGEMENT & IT/OT)';renderTabs();renderKpis();renderArchitecture();renderDataFlow();renderIntegrations();renderQuality();renderStorage();renderChecks('#m10-security',data().security);renderChecks('#m10-operations',data().operations);renderRoadmap();renderDocuments();}
+export async function onTab(group,value){if(group!=='m10-view')return false;activeTab=value;focusTab(value);return true;}
+export async function onChange(target){if(['m10-year','m10-system-status'].includes(target.id)){toast('Đã cập nhật bộ lọc hệ thống trên dữ liệu preview.');return true;}return false;}
+export async function onAction(name,target){
+  if(name==='m10-system-report'){const XLSX=window.XLSX;if(XLSX){const rows=data().integrations||[];const ws=XLSX.utils.aoa_to_sheet([['M10 - BÁO CÁO HỆ THỐNG'],['Nhà máy','Nhà máy Xi măng Lam Thạch II'],['Năm','2025'],[],['Hệ thống','Mục đích','Trạng thái','Ghi chú'],...rows.map(x=>[x.system,x.purpose,x.status,x.note])]);ws['!cols']=[{wch:22},{wch:50},{wch:20},{wch:24}];const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'He thong');XLSX.writeFile(wb,'ENMS_M10_Bao_cao_he_thong.xlsx');toast('Đã xuất báo cáo hệ thống.');}else toast('Thư viện XLSX chưa được tải.');return true;}
+  if(name==='m10-download-doc'){const item=(data().documents||[])[Number(target.dataset.index)];download(`${item?.id||'system-document'}.txt`,`${item?.name||'Tài liệu hệ thống'}\nNhà máy Xi măng Lam Thạch II\nEnMS v1.1.9`, 'text/plain;charset=utf-8');toast('Đã tạo tài liệu mẫu.');return true;}
+  if(name==='m10-integration'){const item=(data().integrations||[])[Number(target.dataset.index)];window.EnmsCommon?.showDialog(item?.system||'Tích hợp hệ thống',`<p>${esc(item?.purpose||'')}</p><p>Trạng thái: <b>${esc(item?.status||'')}</b></p><p>Ghi chú: ${esc(item?.note||'')}</p><div class="notice">Điểm tích hợp đã sẵn sàng để ánh xạ API/database thật.</div>`);return true;}
   return false;
 }

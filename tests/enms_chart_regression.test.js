@@ -18,3 +18,10 @@ test('chart helper strips undefined top-level options before ApexCharts config m
   assert.match(source, /value !== undefined/);
   assert.match(source, /\.\.\.safeOptions/);
 });
+
+test('chart helper deep-merges chart overrides so stacked charts keep base type/height', () => {
+  const helper = require('node:fs').readFileSync(require('node:path').resolve(__dirname, '../public/enms/js/core/charts.js'), 'utf8');
+  assert.match(helper, /const chartOverrides = safeOptions\.chart \|\| \{\}/);
+  assert.match(helper, /\.\.\.chartOverrides/);
+  assert.match(helper, /delete safeOptions\.chart/);
+});

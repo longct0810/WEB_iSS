@@ -1,4 +1,19 @@
-<div class="grid two" data-component="overview-lists">
-  <section class="panel"><div class="panel-head"><h2>Danh sách điểm đo</h2><a href="/enms/<%= preview ? 'preview/' : '' %>data">Quản lý dữ liệu ›</a></div><div id="overview-meters"></div></section>
-  <section class="panel"><div class="panel-head"><h2>Cảnh báo & Sự kiện mới nhất</h2><a href="/enms/<%= preview ? 'preview/' : '' %>alerts">Xem tất cả ›</a></div><div id="overview-alerts"></div></section>
+<div class="m1-bottom-grid" data-component="m1-management-summary">
+  <section class="panel m1-alert-card">
+    <div class="panel-head">
+      <h2>Cảnh báo / Sự kiện nổi bật <span class="m1-alert-count"><i class="bi bi-exclamation-circle-fill"></i> 3 cảnh báo cần xử lý</span></h2>
+      <a href="/enms/<%= preview ? 'preview/' : '' %>alerts">Xem tất cả →</a>
+    </div>
+    <div id="m1-alerts"></div>
+  </section>
+
+  <section class="panel m1-target-card">
+    <div class="panel-head"><h2>Tiến độ mục tiêu năng lượng năm 2025</h2><a href="/enms/<%= preview ? 'preview/' : '' %>targets">Xem chi tiết →</a></div>
+    <div class="panel-body" id="m1-targets"></div>
+  </section>
+
+  <section class="panel m1-impact-card">
+    <div class="panel-head"><h2>Chỉ số tài chính &amp; môi trường <span class="m1-title-period">(Lũy kế năm)</span></h2></div>
+    <div class="panel-body" id="m1-impact"></div>
+  </section>
 </div>
