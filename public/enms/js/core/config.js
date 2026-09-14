@@ -1,7 +1,7 @@
 export const page = document.body.dataset.page;
 export const preview = document.body.dataset.preview === 'true';
 export const base = `/enms/${preview ? 'preview/' : ''}`;
-export const VERSION = '1.1.0';
+export const VERSION = '1.1.1';
 
 export const descriptions = Object.freeze({
   overview: 'Bức tranh điều hành toàn nhà máy: năng lượng, sản lượng, EnPI, phát thải, cảnh báo và tiến độ mục tiêu.',

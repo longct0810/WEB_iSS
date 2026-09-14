@@ -1,8 +1,8 @@
 # Lam Thạch II EnMS
 
-Phiên bản hiện tại: **1.1.0**
+Phiên bản hiện tại: **1.1.1**
 
-EnMS v1.1.0 mở rộng bản v1.0.1 thành **EnMS Advanced gồm 17 module**, dựa trên bộ giao diện tham chiếu ngày 14/09/2026. Kiến trúc gốc vẫn giữ nguyên: Node.js + Express + EJS + PostgreSQL, login JWT hiện tại và HES WebSocket ticket/ACL hiện tại.
+EnMS v1.1.1 mở rộng bản v1.0.1 thành **EnMS Advanced gồm 17 module**, dựa trên bộ giao diện tham chiếu ngày 14/09/2026. Kiến trúc gốc vẫn giữ nguyên: Node.js + Express + EJS + PostgreSQL, login JWT hiện tại và HES WebSocket ticket/ACL hiện tại.
 
 ## 17 module EnMS Advanced
 
@@ -40,7 +40,7 @@ Các module M3, M5, M7, M8 và M11–M17 sử dụng renderer dùng chung để 
 
 ## API EnMS
 
-Các API cũ được giữ nguyên. v1.1.0 bổ sung:
+Các API cũ được giữ nguyên. v1.1.1 bổ sung:
 
 ```text
 GET /api/enms/v1/modules
@@ -94,4 +94,4 @@ Khi tích hợp dữ liệu thực, giữ nguyên cấu hình `DB_*` hiện tạ
 - HES WebSocket vẫn dùng endpoint cấp ticket, subprotocol `hes104-v1`, device ACL và `SUBSCRIBE` như bản hiện tại.
 - Không chuyển ID mock sang HES.
 
-Xem thêm `docs/ENMS_V1.1.0.md` và `CHANGELOG_ENMS.md`.
+Xem thêm `docs/ENMS_V1.1.1.md` và `CHANGELOG_ENMS.md`.

@@ -1,5 +1,15 @@
 # Changelog EnMS
 
+## 1.1.1 - 2026-09-14
+
+- Sửa lỗi M8 `Phát thải CO₂ & ESG` hiển thị `Cannot read properties of undefined (reading 'bar')`.
+- Nguyên nhân: shared renderer truyền `plotOptions: undefined` cho biểu đồ `area/line`; ApexCharts 3.x có thể làm mất nhóm default `plotOptions` và truy cập `plotOptions.bar` khi render.
+- `module-page.js` chỉ truyền `plotOptions.bar` khi loại biểu đồ thực sự là `bar`.
+- `core/charts.js` bổ sung lớp bảo vệ loại bỏ mọi option top-level có giá trị `undefined` trước khi merge cấu hình ApexCharts.
+- Bổ sung regression test cho shared chart renderer để ngăn lỗi tái diễn ở M3–M17.
+- Không thay API contract, mock data, database schema, login JWT hoặc HES WebSocket authentication.
+- Nâng package/API/UI metadata lên `1.1.1`.
+
 ## 1.1.0 - 2026-09-14
 
 - Mở rộng EnMS v1.0.1 thành EnMS Advanced với 17 module M1–M17 theo bộ giao diện tham chiếu mới.

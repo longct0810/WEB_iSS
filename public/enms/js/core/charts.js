@@ -24,6 +24,13 @@ export function chart(id, type, series, options = {}) {
   const target = $(`#${id}`);
   if (!target) return null;
 
+  // Undefined top-level properties are removed before merging with the
+  // base config. This preserves ApexCharts' internal defaults (notably
+  // plotOptions.bar) for non-bar charts.
+  const safeOptions = Object.fromEntries(
+    Object.entries(options || {}).filter(([, value]) => value !== undefined)
+  );
+
   const config = {
     chart: {
       type,
@@ -65,7 +72,7 @@ export function chart(id, type, series, options = {}) {
     },
     tooltip: { x: { show: true } },
     markers: { size: 2, strokeWidth: 0 },
-    ...options
+    ...safeOptions
   };
 
   const instance = new ApexCharts(target, config);

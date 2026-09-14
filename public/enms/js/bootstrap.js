@@ -62,7 +62,7 @@ async function refreshPage() {
   const source = results[0].meta.source;
   $('.demo-indicator').textContent = source === 'mock' ? 'DỮ LIỆU MẪU' : 'DỮ LIỆU THỰC';
   $('#connection-state').textContent = source === 'mock' ? 'Dữ liệu minh họa · Chưa kết nối nguồn thực' : `Dữ liệu API · ${source}`;
-  $('#last-update').textContent = `Cập nhật: ${new Date().toLocaleTimeString('vi-VN')} · Kỳ mẫu 06/2025 · EnMS v1.1.0`;
+  $('#last-update').textContent = `Cập nhật: ${new Date().toLocaleTimeString('vi-VN')} · Kỳ mẫu 06/2025 · EnMS v1.1.1`;
   await activePage.mount();
   $('#content').setAttribute('aria-busy','false');
 }

@@ -11,7 +11,7 @@ const utilityPages = ['map','settings'];
 function exists(relative) { return fs.existsSync(path.join(root, relative)); }
 function read(relative) { return fs.readFileSync(path.join(root, relative), 'utf8'); }
 
-test('EnMS 1.1.0 giữ shell EJS thành partial dùng chung', () => {
+test('EnMS 1.1.1 giữ shell EJS thành partial dùng chung', () => {
   for (const name of ['head','sidebar','topbar','page-header','statusbar','dialogs','scripts','module-dashboard']) {
     assert.ok(exists(`views/enms/partials/${name}.ejs`), name);
   }
@@ -47,12 +47,12 @@ test('core và component dùng chung đã được tách khỏi app.js nguyên k
   assert.equal(exists('public/enms/realtime.js'), false);
 });
 
-test('route truyền đúng page module và package đã lên 1.1.0', () => {
+test('route truyền đúng page module và package đã lên 1.1.1', () => {
   const route = read('routes/enms.js');
   assert.match(route, /viewPage: `pages\/\$\{page\}\/index`/);
   assert.match(route, /modules\/:id/);
   const pkg = JSON.parse(read('package.json'));
-  assert.equal(pkg.version, '1.1.0');
+  assert.equal(pkg.version, '1.1.1');
 });
 
 test('login JWT và HES ticket trust boundary vẫn được giữ', () => {

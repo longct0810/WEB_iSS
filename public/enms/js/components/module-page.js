@@ -41,12 +41,22 @@ function renderDonut(targetId, panel) {
 
 function renderChart(targetId, panel) {
   render(`#${targetId}`, `<div id="${targetId}-chart"></div>`);
-  chart(`${targetId}-chart`, panel.kind === 'line' ? 'area' : panel.kind, panel.series || [], {
+
+  // Do not pass undefined ApexCharts option groups.
+  // ApexCharts 3.x expects config.plotOptions.bar to exist after its internal
+  // defaults merge; an explicit `plotOptions: undefined` can overwrite that
+  // group and causes: Cannot read properties of undefined (reading 'bar').
+  const options = {
     height:255,
     categories:panel.categories || [],
-    stroke:{width:panel.kind==='bar'?0:2,curve:'smooth'},
-    plotOptions:panel.kind==='bar'?{bar:{borderRadius:3,columnWidth:'52%'}}:undefined
-  });
+    stroke:{width:panel.kind==='bar'?0:2,curve:'smooth'}
+  };
+
+  if (panel.kind === 'bar') {
+    options.plotOptions = { bar:{borderRadius:3,columnWidth:'52%'} };
+  }
+
+  chart(`${targetId}-chart`, panel.kind === 'line' ? 'area' : panel.kind, panel.series || [], options);
 }
 
 function renderPanel(targetId,panel={}) {
