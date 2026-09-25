@@ -9,5 +9,8 @@ app.use('/enms/assets',express.static(path.join(__dirname,'../public/enms/assets
 app.use(express.static(path.join(__dirname,'../public')));
 app.get('/',(req,res)=>res.redirect('/enms/preview/overview'));
 app.use('/enms',require('../routes/enms').pages);
-const port=Number(process.env.ENMS_PREVIEW_PORT||6581);
-app.listen(port,'127.0.0.1',()=>console.log(`EnMS preview: http://127.0.0.1:${port}/enms/preview/overview`));
+const port = Number(process.env.PORT) || 6581;
+
+app.listen(port, "0.0.0.0", () => {
+  console.log(`EnMS preview listening on 0.0.0.0:${port}`);
+}); 
