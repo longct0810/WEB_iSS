@@ -203,7 +203,15 @@
             <h2><b>2</b>TỔNG CÔNG SUẤT PHÁT ĐIỆN VÀ SẢN LƯỢNG ĐIỆN</h2>
             <div class="unit-cards">
               <% const units=[['Tổ máy 1','286','95%','6.812','1.234.560','Đang vận hành'],['Tổ máy 2','289','96%','6.901','1.248.320','Đang vận hành'],['Tổ máy 3','0','0%','0','980.420','Dừng bảo dưỡng'],['Tổ máy 4','296','99%','7.054','1.210.350','Đang vận hành']]; units.forEach((u,i)=> { %>
-              <div class="unit-card"><b><%= u[0] %></b><small>(300 MW)</small><span class="state <%= i===2?'stopped':'' %>"><%= u[5] %></span><small>Công suất hiện tại</small><strong><%= u[1] %> MW</strong><span class="unit-load"><%= u[2] %></span><small>Sản lượng ngày</small><strong><%= u[3] %> MWh</strong><small>Sản lượng lũy kế</small><strong><%= u[4] %> MWh</strong></div><% }) %>
+              <div class="unit-card">
+                <div class="unit-card-title"><b><%= u[0] %></b><small>300 MW</small></div>
+                <span class="state <%= i===2?'stopped':'' %>"><%= u[5] %></span>
+                <div class="unit-readings">
+                  <div class="unit-reading"><span>Công suất hiện tại</span><strong><%= u[1] %> MW <small><%= u[2] %></small></strong></div>
+                  <div class="unit-reading"><span>Sản lượng ngày</span><strong><%= u[3] %> MWh</strong></div>
+                  <div class="unit-reading"><span>Sản lượng lũy kế</span><strong><%= u[4] %> MWh</strong></div>
+                </div>
+              </div><% }) %>
             </div>
             <div class="mini-stats"><span>⚙ Tổng công suất khả dụng <b>1.200 MW</b></span><span>▥ Tổng công suất phát <b>871 MW (72,6%)</b></span><span>◷ Tổng sản lượng điện ngày <b>20.767 MWh</b></span><span>▤ Lũy kế năm <b>4.673.650 MWh</b></span></div>
           </article>
