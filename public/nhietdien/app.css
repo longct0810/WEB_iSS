@@ -117,3 +117,50 @@ linear-gradient(to top,transparent 0 31%,#b8cdd8 31% 100%) 90% 100%/12px 88% no-
  .overview{height:auto;min-height:755px;grid-template-rows:390px 220px 180px}
  .factory-banner{min-height:52px}
 }
+
+
+/* HMI schematic visual language */
+.hmi-diagram{position:relative;padding:4px 6px 7px;background:#f3f7fa}
+.hmi-flow{min-height:340px;overflow:visible}
+.hmi-flow text{font-family:Inter,"Segoe UI",Arial,sans-serif;fill:#294c66}
+.hmi-topline>text:first-child{font-size:11px;font-weight:800;letter-spacing:.04em;fill:#194c75}
+.hmi-topline>rect{fill:#eaf7ee;stroke:#b6ddc2}
+.hmi-topline>circle{fill:#24a65a}
+.hmi-topline>text:nth-of-type(2){font-size:10px;font-weight:800;fill:#23804a}
+.hmi-legend text{font-size:9px;fill:#5a7083}
+.hmi-equipment .hmi-frame{fill:#f9fcfe;stroke:#8da5b4;stroke-width:1.5}
+.hmi-equipment .hmi-frame.hmi-heavy{stroke:#55778d;stroke-width:2.2}
+.hmi-equipment .hmi-caption{font-size:9px;font-weight:800;letter-spacing:.02em;fill:#285878}
+.hmi-equipment .hmi-small,.hmi-status .hmi-small{font-size:8px;fill:#668094}
+.hmi-equipment .hmi-tiny{font-size:7px;fill:#60798b}
+.hmi-equipment .hmi-mill rect{fill:url(#hmi-metal);stroke:#7691a3;stroke-width:1.4}
+.hmi-equipment .hmi-mill path{stroke:#829aab;stroke-width:1}
+.hmi-equipment .hmi-mill circle{fill:#91aabc}
+.hmi-pipes path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.hmi-pipes .fuel-line,.hmi-legend .fuel-line{stroke:#dc8b25;stroke-width:4}
+.hmi-pipes .steam-line,.hmi-legend .steam-line{stroke:#df4945;stroke-width:4}
+.hmi-pipes .water-line,.hmi-legend .water-line{stroke:#1684c7;stroke-width:3.5}
+.hmi-pipes .power-line,.hmi-legend .power-line{stroke:#25894d;stroke-width:4}
+.hmi-pipes .ash-line,.hmi-legend .ash-line{stroke:#6d7580;stroke-width:3}
+.hmi-pipes .shaft-line{stroke:#58778d;stroke-width:4}
+.hmi-legend path{fill:none;stroke-width:3}
+.hmi-pipes .flow-animated{stroke-dasharray:9 7;animation:hmi-flow 1.15s linear infinite}
+@keyframes hmi-flow{to{stroke-dashoffset:-32}}
+.hmi-tag{fill:#f2f6f8;stroke:#cad8e1}
+.hmi-tag-green{fill:#eff9f1;stroke:#b9dec4}
+.hmi-tag-red{fill:#fff2ef;stroke:#ecc1b8}
+.hmi-tag-gold{fill:#fff8e8;stroke:#e5d09c}
+.hmi-tagtext{font-size:9px;font-weight:800;fill:#355b77}
+.hmi-tagtext-green{font-size:9px;font-weight:800;fill:#26824c}
+.hmi-tagtext-red{font-size:9px;font-weight:800;fill:#b84a41}
+.hmi-readouts .hmi-small{font-size:7px;font-weight:700;fill:#6c8394}
+.hmi-readouts .hmi-value{font-size:12px;font-weight:800;fill:#244e70}
+.hmi-readouts .hmi-value-muted{font-size:11px;font-weight:700;fill:#7e8d98}
+.hmi-readouts .hmi-value-green{font-size:12px;font-weight:800;fill:#25864e}
+.hmi-readouts .hmi-value-gold{font-size:10px;font-weight:800;fill:#9a6b1f}
+.hmi-status .hmi-on,.hmi-equipment .hmi-on{fill:#25ad62;stroke:white;stroke-width:1.5;filter:url(#hmi-glow)}
+.hmi-status text{font-size:8px;font-weight:700;fill:#bd4d43}
+.hmi-blink{animation:hmi-pulse 1.5s ease-in-out infinite}
+@keyframes hmi-pulse{50%{opacity:.35}}
+@media(prefers-reduced-motion:reduce){.hmi-pipes .flow-animated,.hmi-blink{animation:none}}
+@media(max-width:760px){.hmi-flow{min-height:320px}.hmi-diagram{overflow:auto}.hmi-flow{min-width:790px}}
