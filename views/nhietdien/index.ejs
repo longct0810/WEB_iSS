@@ -43,65 +43,162 @@
         <div class="overview-top">
           <article class="panel process-panel">
             <h2><b>1</b>SƠ ĐỒ HỆ THỐNG NĂNG LƯỢNG NHÀ MÁY</h2>
-            <div class="plant-diagram">
-              <svg class="plant-flow" viewBox="0 0 980 390" role="img" aria-label="Sơ đồ quy trình năng lượng nhà máy nhiệt điện">
+            <div class="plant-diagram hmi-diagram">
+              <svg class="plant-flow hmi-flow" viewBox="0 0 1080 440" role="img" aria-label="Sơ đồ HMI quy trình năng lượng nhà máy nhiệt điện">
                 <defs>
-                  <marker id="arrow-orange" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L0 6 L7 3 z" fill="#c67b22"/></marker>
-                  <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L0 6 L7 3 z" fill="#1679d0"/></marker>
-                  <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L0 6 L7 3 z" fill="#dd3737"/></marker>
-                  <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L0 6 L7 3 z" fill="#28854b"/></marker>
-                  <linearGradient id="boilerFire" x2="0" y2="1"><stop stop-color="#ffe36e"/><stop offset="1" stop-color="#e94717"/></linearGradient>
+                  <pattern id="hmi-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#dce8f0" stroke-width=".7"/></pattern>
+                  <linearGradient id="hmi-metal" x2="0" y2="1"><stop stop-color="#f8fcff"/><stop offset=".48" stop-color="#dce8f0"/><stop offset="1" stop-color="#b8cad6"/></linearGradient>
+                  <linearGradient id="hmi-fire" x2="0" y2="1"><stop stop-color="#fff6a9"/><stop offset=".5" stop-color="#ff9c36"/><stop offset="1" stop-color="#db382d"/></linearGradient>
+                  <linearGradient id="hmi-water" x2="0" y2="1"><stop stop-color="#caefff"/><stop offset="1" stop-color="#66bce8"/></linearGradient>
+                  <filter id="hmi-glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                  <marker id="hmi-arrow-fuel" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4 0 8z" fill="#dc8b25"/></marker>
+                  <marker id="hmi-arrow-steam" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4 0 8z" fill="#df4945"/></marker>
+                  <marker id="hmi-arrow-water" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4 0 8z" fill="#1684c7"/></marker>
+                  <marker id="hmi-arrow-power" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4 0 8z" fill="#25894d"/></marker>
+                  <marker id="hmi-arrow-ash" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4 0 8z" fill="#6d7580"/></marker>
                 </defs>
-                <g font-family="Arial,sans-serif" fill="#164b7d" font-size="12" font-weight="700">
-                  <text x="30" y="28">Hệ thống cung cấp than</text>
-                  <text x="187" y="48">Hệ thống nghiền than</text>
-                  <text x="363" y="28">Lò hơi</text><text x="465" y="56" fill="#c34d37">Hơi quá nhiệt</text><text x="465" y="72" fill="#c34d37" font-size="10">17,3 MPa / 541°C</text>
-                  <text x="564" y="49">Tuabin</text><text x="674" y="49">Máy phát</text><text x="765" y="49">Máy biến áp</text>
+                <rect x="1" y="1" width="1078" height="438" rx="8" fill="#fbfdff" stroke="#d4e1eb"/>
+                <rect x="1" y="1" width="1078" height="438" rx="8" fill="url(#hmi-grid)" opacity=".55"/>
+                <g class="hmi-topline">
+                  <text x="18" y="23">SƠ ĐỒ QUY TRÌNH NHIỆT ĐIỆN · HỆ THỐNG ĐANG VẬN HÀNH</text>
+                  <rect x="825" y="9" width="235" height="23" rx="11" fill="#e8f7ed" stroke="#b4dfc2"/>
+                  <circle cx="840" cy="20" r="4" fill="#25a65d" class="hmi-blink"/>
+                  <text x="851" y="24">TỔNG PHÁT 871 MW</text>
+                  <g transform="translate(18 42)" class="hmi-legend">
+                    <path d="M0 0h28" class="fuel-line"/><text x="34" y="4">Nhiên liệu</text>
+                    <path d="M118 0h28" class="steam-line"/><text x="152" y="4">Hơi</text>
+                    <path d="M205 0h28" class="water-line"/><text x="239" y="4">Nước</text>
+                    <path d="M296 0h28" class="power-line"/><text x="330" y="4">Điện</text>
+                    <path d="M384 0h28" class="ash-line"/><text x="418" y="4">Tro xỉ</text>
+                  </g>
                 </g>
-                <g stroke="#879daf" stroke-width="2" fill="#dce8f0">
-                  <path d="M30 173 L75 117 L122 173 Z" fill="#424a50"/><path d="M23 175h112v11H23z" fill="#9baab4"/>
-                  <rect x="147" y="120" width="24" height="60" rx="3"/><rect x="177" y="102" width="26" height="78" rx="3"/><rect x="209" y="127" width="25" height="53" rx="3"/>
-                  <rect x="354" y="83" width="66" height="125" rx="6" fill="#cad8e2"/><rect x="362" y="95" width="50" height="95" rx="4" fill="url(#boilerFire)" stroke="#738fa4"/><path d="M372 178q8-35 14-9 8-38 13 4" fill="none" stroke="#fff3a3" stroke-width="5"/>
-                  <path d="M552 112l70 21-70 22z" fill="#85b1d0"/><path d="M552 159l70 16-70 15z" fill="#aac9dd"/>
-                  <rect x="642" y="119" width="76" height="65" rx="8" fill="#e3edf4"/><circle cx="679" cy="151" r="23" fill="#f6fbff" stroke="#829daf"/><path d="M663 151h32m-16-15v30" stroke="#7a94a8"/>
-                  <rect x="756" y="116" width="45" height="75" rx="4" fill="#f4ead2" stroke="#b69c67"/><path d="M763 129h31m-31 12h31m-31 12h31m-31 12h31" stroke="#c7a96e"/>
-                  <rect x="274" y="258" width="58" height="50" rx="5" fill="#d5e6f3"/><ellipse cx="303" cy="258" rx="29" ry="8" fill="#edf7ff"/><path d="M280 270h46M280 282h46M280 294h46" stroke="#78a8ca"/>
-                  <rect x="164" y="270" width="32" height="42" rx="4"/><circle cx="180" cy="291" r="9" fill="#edf5fa"/>
-                  <circle cx="241" cy="291" r="18" fill="#d7e8f4"/><path d="M229 291h24m-12-12v24" stroke="#648da9"/>
-                  <path d="M466 273h44v35h-44z" fill="#d5e7f2"/><path d="M468 273q20-17 40 0" fill="#eaf4fa"/><path d="M523 273h44v35h-44z" fill="#d5e7f2"/><path d="M525 273q20-17 40 0" fill="#eaf4fa"/>
-                  <path d="M649 265l34 33h-68z" fill="#a9b5bd"/><path d="M689 265l34 33h-68z" fill="#a9b5bd"/>
-                  <path d="M847 111l22 83m-22-83-22 83m8-56h28m-32 19h40m-36 17h32m-38 20h44m-40-48 34 29m-30-42-37 42" fill="none" stroke="#5b7588"/>
+
+                <!-- Coal storage and fuel preparation -->
+                <g class="hmi-equipment">
+                  <rect x="18" y="93" width="122" height="122" rx="7" class="hmi-frame"/>
+                  <text x="29" y="110" class="hmi-caption">KHO THAN</text>
+                  <path d="M34 174l26-37 24 36 19-27 24 28z" fill="#303943" stroke="#66737d" stroke-width="2"/>
+                  <path d="M33 178h94v8H33z" fill="#98a8b4"/>
+                  <rect x="36" y="190" width="84" height="15" rx="3" class="hmi-tag"/>
+                  <text x="44" y="201" class="hmi-tagtext">886.000 tấn</text>
+                  <rect x="155" y="112" width="111" height="103" rx="7" class="hmi-frame"/>
+                  <text x="164" y="129" class="hmi-caption">NGHIỀN THAN</text>
+                  <g class="hmi-mill"><rect x="166" y="143" width="23" height="47" rx="4"/><path d="M170 151h15m-15 8h15m-15 8h15m-15 8h15"/><circle cx="177.5" cy="196" r="4"/></g>
+                  <g class="hmi-mill"><rect x="197" y="143" width="23" height="47" rx="4"/><path d="M201 151h15m-15 8h15m-15 8h15m-15 8h15"/><circle cx="208.5" cy="196" r="4"/></g>
+                  <g class="hmi-mill"><rect x="228" y="143" width="23" height="47" rx="4"/><path d="M232 151h15m-15 8h15m-15 8h15m-15 8h15"/><circle cx="239.5" cy="196" r="4"/></g>
+                  <circle cx="173" cy="204" r="3" class="hmi-on"/><circle cx="204" cy="204" r="3" class="hmi-on"/><circle cx="235" cy="204" r="3" class="hmi-on"/>
+                  <rect x="162" y="218" width="96" height="17" rx="8" class="hmi-tag-green"/><text x="174" y="230" class="hmi-tagtext-green">3/3 MÁY RUN</text>
+                  <rect x="282" y="128" width="67" height="86" rx="7" class="hmi-frame"/>
+                  <text x="291" y="145" class="hmi-caption">CẤP BỘT</text>
+                  <path d="M295 159h41l-7 25h-27z" fill="#e9d7b7" stroke="#9c8053" stroke-width="2"/>
+                  <path d="M300 184h30v20h-30z" fill="url(#hmi-metal)" stroke="#7d96a8"/>
+                  <text x="292" y="228" class="hmi-small">886 t/h</text>
+
+                  <!-- Boiler -->
+                  <rect x="372" y="88" width="126" height="173" rx="8" class="hmi-frame hmi-heavy"/>
+                  <rect x="384" y="105" width="102" height="136" rx="5" fill="#eff5f8" stroke="#91a7b6" stroke-width="2"/>
+                  <rect x="394" y="117" width="82" height="111" rx="3" fill="url(#hmi-fire)" stroke="#c8763f"/>
+                  <path d="M405 218q9-36 18-14 12-57 22-9 9-34 19 18" fill="none" stroke="#fff5b0" stroke-width="5" filter="url(#hmi-glow)"/>
+                  <path d="M401 129h67M401 139h67M401 149h67" stroke="#c2d0d8" stroke-width="2"/>
+                  <path d="M424 89V69h21V89" fill="url(#hmi-metal)" stroke="#7d95a5" stroke-width="2"/>
+                  <circle cx="435" cy="78" r="4" class="hmi-on"/>
+                  <text x="394" y="252" class="hmi-caption">LÒ HƠI · BLR-01</text>
+                  <rect x="382" y="266" width="107" height="27" rx="4" class="hmi-tag-red"/>
+                  <text x="392" y="278" class="hmi-tagtext-red">17,3 MPa</text><text x="392" y="288" class="hmi-tiny">Hơi quá nhiệt · 541°C</text>
                 </g>
-                <g fill="none" stroke-width="4">
-                  <path d="M127 151H144" stroke="#c67b22" marker-end="url(#arrow-orange)"/>
-                  <path d="M237 151H348" stroke="#c67b22" marker-end="url(#arrow-orange)"/>
-                  <path d="M420 110H535" stroke="#dd3737" marker-end="url(#arrow-red)"/>
-                  <path d="M420 178H535" stroke="#dd3737" marker-end="url(#arrow-red)"/>
-                  <path d="M622 145H637" stroke="#c67b22" marker-end="url(#arrow-orange)"/>
-                  <path d="M719 151H751" stroke="#c67b22" marker-end="url(#arrow-orange)"/>
-                  <path d="M802 151H831" stroke="#28854b" marker-end="url(#arrow-green)"/>
-                  <path d="M180 270V222H375V210" stroke="#1679d0" marker-end="url(#arrow-blue)"/>
-                  <path d="M303 250V219H390V210" stroke="#1679d0" marker-end="url(#arrow-blue)"/>
-                  <path d="M420 197V242H489V267" stroke="#1679d0" marker-end="url(#arrow-blue)"/>
-                  <path d="M420 196V229H545V267" stroke="#1679d0" marker-end="url(#arrow-blue)"/>
-                  <path d="M570 291H640" stroke="#c67b22" marker-end="url(#arrow-orange)"/>
-                  <path d="M122 317H645" stroke="#a86d26" marker-end="url(#arrow-orange)"/>
+
+                <!-- Turbine and generator train -->
+                <g class="hmi-equipment">
+                  <rect x="565" y="111" width="116" height="105" rx="7" class="hmi-frame"/>
+                  <text x="577" y="128" class="hmi-caption">TUABIN HƠI</text>
+                  <path d="M578 151h87l-13 16 13 16h-87l13-16z" fill="#c9dce9" stroke="#7794a8" stroke-width="2"/>
+                  <path d="M595 151l11 32m5-32 10 32m6-32 9 32m5-32 9 32" stroke="#7d9bae" stroke-width="2"/>
+                  <line x1="577" y1="198" x2="668" y2="198" stroke="#58778d" stroke-width="4"/>
+                  <text x="582" y="211" class="hmi-tiny">4 × 300 MW</text>
+                  <rect x="695" y="119" width="103" height="89" rx="9" class="hmi-frame"/>
+                  <text x="710" y="136" class="hmi-caption">MÁY PHÁT</text>
+                  <circle cx="746" cy="166" r="23" fill="#e8f1f6" stroke="#69869a" stroke-width="3"/>
+                  <circle cx="746" cy="166" r="13" fill="#d2e5ef" stroke="#8ca5b5"/>
+                  <path d="M746 143v46m-23-23h46m-39-16 32 32m0-32-32 32" stroke="#66879c" stroke-width="2"/>
+                  <text x="712" y="199" class="hmi-tiny">GEN-01 · 871 MW</text>
+                  <rect x="816" y="119" width="82" height="89" rx="7" class="hmi-frame"/>
+                  <text x="826" y="136" class="hmi-caption">MBA TĂNG ÁP</text>
+                  <path d="M835 151c15-16 15 16 30 0s15 16 24 0M835 169c15-16 15 16 30 0s15 16 24 0M835 187c15-16 15 16 30 0s15 16 24 0" fill="none" stroke="#b28742" stroke-width="3"/>
+                  <text x="835" y="201" class="hmi-tiny">400 kV</text>
+                  <rect x="917" y="111" width="142" height="116" rx="7" class="hmi-frame"/>
+                  <text x="931" y="128" class="hmi-caption">TRẠM / LƯỚI ĐIỆN</text>
+                  <path d="M957 145l22 68m-22-68-22 68m8-47h28m-32 14h40m-37 14h34m-37 14h42m-37-42 31 28m-27-41-34 41" fill="none" stroke="#617d8f" stroke-width="2"/>
+                  <path d="M1002 146v65m-11-49h23m-27 12h31m-23 12h15" fill="none" stroke="#617d8f" stroke-width="2"/>
+                  <text x="934" y="221" class="hmi-value-green">871 MW · ĐANG PHÁT</text>
                 </g>
-                <g fill="#164b7d" font-family="Arial,sans-serif" font-size="11" font-weight="700">
-                  <text x="38" y="203">Than Antraxit</text><text x="40" y="222" font-size="9" font-weight="400">Kho than</text>
-                  <text x="144" y="199" font-size="9" font-weight="400">Máy nghiền</text><text x="350" y="224" font-size="9" font-weight="400">Buồng đốt</text>
-                  <text x="464" y="192" fill="#c34d37" font-size="10">Hơi tái nhiệt 4,18 MPa / 541°C</text>
-                  <text x="552" y="208">4 × 300 MW</text><text x="552" y="224" font-size="10" font-weight="400">Tổng công suất</text><text x="552" y="240" font-size="15">1.200 MW</text>
-                  <text x="829" y="218" fill="#28854b">Điện phát lên lưới</text><text x="847" y="235" fill="#28854b" font-size="12">871 MW</text>
-                  <text x="155" y="334">Bơm nước cấp</text><text x="263" y="329">Bình ngưng</text><text x="461" y="329">Hệ thống làm mát</text><text x="636" y="329">Thải tro xỉ</text>
+
+                <!-- Boiler steam main and unit branches -->
+                <g class="hmi-pipes">
+                  <path d="M498 116H556" class="steam-line flow-animated" marker-end="url(#hmi-arrow-steam)"/>
+                  <path d="M498 176H556" class="steam-line flow-animated" marker-end="url(#hmi-arrow-steam)"/>
+                  <path d="M681 165H693" class="shaft-line"/>
+                  <path d="M798 164H813" class="power-line flow-animated" marker-end="url(#hmi-arrow-power)"/>
+                  <path d="M898 164H912" class="power-line flow-animated" marker-end="url(#hmi-arrow-power)"/>
+                  <path d="M140 167H151" class="fuel-line flow-animated" marker-end="url(#hmi-arrow-fuel)"/>
+                  <path d="M266 166H278" class="fuel-line flow-animated" marker-end="url(#hmi-arrow-fuel)"/>
+                  <path d="M349 166H367" class="fuel-line flow-animated" marker-end="url(#hmi-arrow-fuel)"/>
+                  <path d="M460 242V302H530" class="steam-line"/>
+                  <path d="M620 216V281H521V302" class="water-line flow-animated" marker-end="url(#hmi-arrow-water)"/>
                 </g>
-                <g>
-                  <rect x="835" y="13" width="125" height="63" rx="7" fill="#f0fbf1" stroke="#9bcaa3"/><text x="850" y="31" fill="#2d7747" font-size="11" font-weight="700">NLTT (nếu có)</text><circle cx="870" cy="52" r="10" fill="#d8eaff"/><path d="M870 41v22m-9-11h18m-16-7 14 14m0-14-14 14" stroke="#4280bc" stroke-width="2"/><path d="M918 61V44m0 0-11 9m11-9 11 9m-11-9V34m-7 27h14" stroke="#398a5c" stroke-width="2"/><text x="851" y="71" fill="#48845a" font-size="8">Điện NLTT</text>
-                  <rect x="746" y="243" width="214" height="74" rx="7" fill="#fff8e8" stroke="#e1bb6a"/><text x="759" y="263" fill="#8b5d18" font-size="12" font-weight="700">Điện tự dùng</text><text x="759" y="283" fill="#60778b" font-size="10">Bơm, quạt, nghiền than, FGD/ESP,</text><text x="759" y="299" fill="#60778b" font-size="10">phụ trợ và hệ thống HVAC</text>
+
+                <!-- Water, cooling, and ash systems -->
+                <g class="hmi-equipment">
+                  <rect x="380" y="309" width="165" height="57" rx="7" class="hmi-frame"/>
+                  <text x="391" y="326" class="hmi-caption">BÌNH NGƯNG · CND-01</text>
+                  <rect x="393" y="334" width="139" height="20" rx="3" fill="url(#hmi-water)" stroke="#83bad4"/>
+                  <path d="M402 344h119m-104-6v12m20-12v12m20-12v12m20-12v12m20-12v12" stroke="#fff" stroke-width="2"/>
+                  <rect x="254" y="313" width="94" height="53" rx="7" class="hmi-frame"/>
+                  <text x="265" y="329" class="hmi-caption">BƠM NƯỚC CẤP</text>
+                  <circle cx="285" cy="348" r="12" fill="#e3f4fb" stroke="#5597bb" stroke-width="2"/>
+                  <path d="M285 339v18m-9-9h18m-15-6 12 12m0-12-12 12" stroke="#4288aa" stroke-width="1.5"/>
+                  <circle cx="324" cy="348" r="12" fill="#e3f4fb" stroke="#5597bb" stroke-width="2"/>
+                  <path d="M324 339v18m-9-9h18" stroke="#4288aa" stroke-width="1.5"/>
+                  <rect x="568" y="313" width="105" height="53" rx="7" class="hmi-frame"/>
+                  <text x="578" y="329" class="hmi-caption">LÀM MÁT</text>
+                  <path d="M584 357l10-21 10 21m7 0 10-21 10 21m6 0 10-21 10 21" fill="#d7e8f1" stroke="#66869a" stroke-width="2"/>
+                  <path d="M694 348h37m-30-7q16-22 31 0v17h-31z" fill="#e3edf2" stroke="#8098a8" stroke-width="2"/>
+                  <path d="M713 339q-9-9-2-16m9 16q9-9 2-16" fill="none" stroke="#83b9d0" stroke-width="2"/>
+                  <text x="683" y="376" class="hmi-small">THÁP GIẢI NHIỆT</text>
+                  <rect x="759" y="313" width="112" height="53" rx="7" class="hmi-frame"/>
+                  <text x="770" y="329" class="hmi-caption">THẢI TRO XỈ</text>
+                  <path d="M773 350l17-16 16 16 17-13 20 13z" fill="#7d8284" stroke="#585f64" stroke-width="2"/>
+                  <path d="M774 355h78" stroke="#6d7580" stroke-width="3"/>
+                </g>
+                <g class="hmi-pipes">
+                  <path d="M348 348H375" class="water-line flow-animated" marker-end="url(#hmi-arrow-water)"/>
+                  <path d="M545 348H564" class="water-line flow-animated" marker-end="url(#hmi-arrow-water)"/>
+                  <path d="M673 348H688" class="water-line flow-animated" marker-end="url(#hmi-arrow-water)"/>
+                  <path d="M460 309V302" class="water-line"/>
+                  <path d="M871 348H885" class="ash-line flow-animated" marker-end="url(#hmi-arrow-ash)"/>
+                  <path d="M278 348H239V273H435V261" class="water-line flow-animated" marker-end="url(#hmi-arrow-water)"/>
+                </g>
+
+                <!-- Operating tags -->
+                <g class="hmi-readouts">
+                  <rect x="22" y="246" width="126" height="36" rx="5" class="hmi-tag"/>
+                  <text x="31" y="260" class="hmi-small">NHIÊN LIỆU CẤP</text><text x="31" y="275" class="hmi-value">886 t/h</text>
+                  <rect x="22" y="293" width="126" height="37" rx="5" class="hmi-tag"/>
+                  <text x="31" y="307" class="hmi-small">DẦU FO DỰ PHÒNG</text><text x="31" y="322" class="hmi-value-muted">0,0 t/h</text>
+                  <rect x="917" y="245" width="142" height="48" rx="5" class="hmi-tag-green"/>
+                  <text x="928" y="261" class="hmi-small">ĐIỆN PHÁT LÊN LƯỚI</text><text x="928" y="281" class="hmi-value-green">871 MW</text>
+                  <rect x="917" y="304" width="142" height="43" rx="5" class="hmi-tag-gold"/>
+                  <text x="928" y="320" class="hmi-small">ĐIỆN TỰ DÙNG</text><text x="928" y="337" class="hmi-value-gold">560 MWh · 2,70%</text>
+                </g>
+                <g class="hmi-status">
+                  <circle cx="505" cy="116" r="4" class="hmi-on"/><circle cx="505" cy="176" r="4" class="hmi-on"/>
+                  <circle cx="686" cy="165" r="4" class="hmi-on"/><circle cx="805" cy="164" r="4" class="hmi-on"/>
+                  <circle cx="906" cy="164" r="4" class="hmi-on"/>
+                  <text x="465" y="103" class="hmi-small">HƠI QUÁ NHIỆT 17,3 MPa / 541°C</text>
+                  <text x="466" y="192" class="hmi-small">HƠI TÁI NHIỆT 4,18 MPa / 541°C</text>
                 </g>
               </svg>
             </div>
-          </article>
+                     </article>
           <article class="panel units-panel">
             <h2><b>2</b>TỔNG CÔNG SUẤT PHÁT ĐIỆN VÀ SẢN LƯỢNG ĐIỆN</h2>
             <div class="unit-cards">
