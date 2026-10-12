@@ -230,3 +230,87 @@ linear-gradient(to top,transparent 0 31%,#b8cdd8 31% 100%) 90% 100%/12px 88% no-
  .self-breakdown>.donut:before{width:64px;height:64px}
  .self-breakdown .legend li b{white-space:normal}
 }
+
+
+/* Readability pass: increase icon and text size while preserving compact card spacing. */
+.nav-link{font-size:12px}
+.nav-link>span{font-size:17px}
+.context-bar label{font-size:11px}
+.context-bar select{font-size:11px}
+.panel h2{font-size:12px}
+.units-panel h2,.overview-bottom>.panel h2,.plan-panel h2{font-size:11.5px}
+.unit-card-title b{font-size:11.5px}
+.unit-card-title small{font-size:9px}
+.unit-card .state{font-size:8.5px}
+.unit-reading>span{font-size:9px}
+.unit-reading>strong{font-size:14px}
+.unit-reading>strong small{font-size:8px}
+.mini-stats span{font-size:8.5px}
+.mini-stats b{font-size:10px}
+.self-metric{font-size:9px}
+.self-metric i{width:28px;height:28px;flex-basis:28px;font-size:18px}
+.self-metric strong{font-size:12px}
+.self-breakdown{grid-template-columns:138px minmax(0,1fr)}
+.self-breakdown>.donut{width:108px;height:108px;flex-basis:108px}
+.self-breakdown>.donut:before{width:74px;height:74px}
+.self-breakdown>.donut span{font-size:14px}
+.self-breakdown .legend{font-size:9px}
+.self-breakdown .legend li{padding:3px 0}
+.self-breakdown .legend li b{font-size:8.5px}
+.coal-pile{font-size:29px}
+.coal-metric small{font-size:8.5px}
+.coal-metric strong{font-size:17px}
+.coal-metric em{font-size:9px}
+.coal-truck:before{font-size:24px}
+.stock-clock:before{font-size:28px}
+.coal-truck strong,.stock-clock strong{font-size:13px}
+.heat-body .flame{width:44px;flex-basis:44px;font-size:36px}
+.heat-body strong{font-size:19px}
+.heat-body small,.heat-body em{font-size:9px}
+.metric-tabs button{font-size:8.5px}
+.plan-grid .chart-title{font-size:9.5px}
+.chart-legend{font-size:8.5px}
+.compact-table{font-size:9px}
+.bar-chart i,.axis-labels{font-size:9px}
+.trend-chart{background:repeating-linear-gradient(to top,#fff 0 27px,#edf2f6 28px)}
+/* Increase HMI labels, live values and instrument glyphs. */
+.hmi-topline>text:first-child{font-size:12px}
+.hmi-topline>text:nth-of-type(2){font-size:11px}
+.hmi-legend text{font-size:10px}
+.hmi-equipment .hmi-caption{font-size:10px}
+.hmi-equipment .hmi-small,.hmi-status .hmi-small{font-size:9px}
+.hmi-equipment .hmi-tiny{font-size:8px}
+.hmi-readouts .hmi-small{font-size:8px}
+.hmi-readouts .hmi-value{font-size:14px}
+.hmi-readouts .hmi-value-muted{font-size:12px}
+.hmi-readouts .hmi-value-green{font-size:14px}
+.hmi-readouts .hmi-value-gold{font-size:11px}
+.hmi-status text{font-size:9px}
+@media(max-width:1200px){
+ .self-breakdown{grid-template-columns:128px minmax(0,1fr)}
+ .self-breakdown .legend{font-size:8.5px}
+ .self-breakdown .legend li b{font-size:8px}
+}
+@media(max-width:760px){
+ .nav-link{font-size:0}
+ .nav-link>span{font-size:18px}
+ .context-bar label{font-size:9px}
+ .context-bar select{font-size:9px}
+ .units-panel h2,.overview-bottom>.panel h2,.plan-panel h2{font-size:11px}
+ .unit-card-title b{font-size:10.5px}
+ .unit-reading>span{font-size:8.5px}
+ .unit-reading>strong{font-size:12px}
+ .mini-stats span{font-size:8px}
+ .mini-stats b{font-size:9.5px}
+ .self-metric{font-size:8px}
+ .self-metric i{width:24px;height:24px;flex-basis:24px;font-size:16px}
+ .self-metric strong{font-size:10px}
+ .self-breakdown{grid-template-columns:110px minmax(0,1fr)}
+ .self-breakdown>.donut{width:92px;height:92px;flex-basis:92px}
+ .self-breakdown>.donut:before{width:64px;height:64px}
+ .self-breakdown .legend{font-size:8px}
+ .coal-metric small{font-size:8px}
+ .coal-metric strong{font-size:15px}
+ .heat-body strong{font-size:17px}
+ .hmi-flow{min-width:790px}
+}
