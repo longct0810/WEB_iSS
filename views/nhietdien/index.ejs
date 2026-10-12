@@ -243,9 +243,76 @@
           <article class="kpi"><span class="kpi-icon purple">⚙</span><div><small>Hiệu suất nhà máy (HHV)</small><strong>41,7 <small>%</small></strong><em class="up">▲ +0,8% so với hôm qua</em></div></article>
         </div>
         <div class="realtime-main">
-          <article class="panel realtime-process"><h2>SƠ ĐỒ DÒNG NĂNG LƯỢNG NHÀ MÁY <small>(THỜI GIAN THỰC)</small><span class="live-label"><i></i> LIVE</span></h2><div class="live-flow">
-            <div class="live-node fuel"><b>▰</b><strong>Than Antraxit</strong><small>886 t/h</small><span>Kho than<br>886.000 tấn</span><span class="oil">Dầu FO<br>0,0 t/h</span></div><div class="pipe">➜</div><div class="live-node"><b>▥</b><strong>Nghiền than</strong><small><i class="signal"></i> 3/3 máy RUN</small><span>Tổng: 886 t/h<br>Điện tự dùng: 21,5 MW</span></div><div class="pipe">➜</div><div class="live-node boiler-node"><b>♨</b><strong>Lò hơi</strong><small>Hơi quá nhiệt</small><span>17,3 MPa / 541°C<br>Hơi tái nhiệt 4,18 MPa</span></div><div class="branch-lines"><div>➜ <b>Tổ máy 1</b><span>300,2 MW</span></div><div>➜ <b>Tổ máy 2</b><span>282,2 MW</span></div><div class="inactive">➜ <b>Tổ máy 3</b><span>0 MW · bảo dưỡng</span></div><div>➜ <b>Tổ máy 4</b><span>296,0 MW</span></div></div><div class="live-node gen-node"><b>⚙</b><strong>Tuabin / Máy phát</strong><small>4 × 300 MW</small><span>MBA · 871 MW</span><span class="grid">Điện lên lưới<br>871 MW</span></div>
-          </div><div class="process-utilities"><span>💧 Nước cấp <b>25,0 MPa</b></span><span>♧ Hệ thống làm mát <b>28,4°C</b></span><span>▰ Thải tro xỉ</span><span>◌ Lưu lượng hơi <b>850 t/h</b></span></div></article>
+          <article class="panel realtime-process"><h2>SƠ ĐỒ DÒNG NĂNG LƯỢNG NHÀ MÁY <small>(THỜI GIAN THỰC)</small><span class="live-label"><i></i> LIVE</span></h2><div class="live-flow rt-flow"><svg class="rt-hmi" viewBox="0 0 1080 390" role="img" aria-label="Sơ đồ HMI giám sát dòng năng lượng và bốn tổ máy">
+              <defs>
+                <pattern id="rt-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#dce8f0" stroke-width="1"/></pattern>
+                <linearGradient id="rt-metal" x2="0" y2="1"><stop stop-color="#fff"/><stop offset="1" stop-color="#cbdbe5"/></linearGradient>
+                <linearGradient id="rt-fire" x2="0" y2="1"><stop stop-color="#fff2a6"/><stop offset=".5" stop-color="#ff9d36"/><stop offset="1" stop-color="#d9412c"/></linearGradient>
+                <marker id="rt-arrow-red" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4 0 8z" fill="#d74a43"/></marker>
+                <marker id="rt-arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4 0 8z" fill="#247fca"/></marker>
+                <marker id="rt-arrow-green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4 0 8z" fill="#22a76d"/></marker>
+                <marker id="rt-arrow-gold" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4 0 8z" fill="#d58a35"/></marker>
+              </defs>
+              <rect x="1" y="1" width="1078" height="388" rx="8" fill="url(#rt-grid)" stroke="#d8e5ed"/>
+              <g font-family="Inter,Segoe UI,Arial,sans-serif" fill="#173f67">
+                <text x="18" y="25" font-size="13" font-weight="800">SƠ ĐỒ DÒNG NĂNG LƯỢNG · CẬP NHẬT TRỰC TIẾP</text>
+                <circle cx="1040" cy="21" r="5" fill="#25b56f"/><text x="1004" y="25" text-anchor="end" font-size="11" fill="#269a61">LIVE</text>
+                <!-- Fuel and milling -->
+                <path d="M108 117H155M251 117H290" fill="none" stroke="#d58a35" stroke-width="6" marker-end="url(#rt-arrow-gold)"/>
+                <path d="M22 117l34-35 31 35-15 18H37z" fill="#687178" stroke="#46545e" stroke-width="2"/>
+                <path d="M34 113l18-19 17 19-10 10H42z" fill="#899095"/>
+                <text x="61" y="151" text-anchor="middle" font-size="13" font-weight="700">THAN ANTRAXIT</text><text x="61" y="169" text-anchor="middle" font-size="15" font-weight="800">886 t/h</text>
+                <rect x="157" y="80" width="92" height="75" rx="7" fill="#f6fbfe" stroke="#a9c1d1" stroke-width="2"/>
+                <path d="M174 138V99h20v39m9 0V91h20v47" fill="url(#rt-metal)" stroke="#7899ad" stroke-width="2"/>
+                <text x="203" y="171" text-anchor="middle" font-size="13" font-weight="700">NGHIỀN THAN</text><text x="203" y="188" text-anchor="middle" font-size="11" fill="#269a61">● 3/3 máy RUN · 21,5 MW</text>
+                <!-- Boiler -->
+                <path d="M290 117H318" fill="none" stroke="#d58a35" stroke-width="6" marker-end="url(#rt-arrow-gold)"/>
+                <rect x="322" y="68" width="104" height="146" rx="9" fill="url(#rt-metal)" stroke="#809cab" stroke-width="3"/>
+                <rect x="338" y="103" width="72" height="93" rx="5" fill="url(#rt-fire)" stroke="#bc7747" stroke-width="2"/>
+                <path d="M349 182q-10-23 4-37t2-28q22 22 11 39 17-13 18-31 21 29 7 53z" fill="#fff2b2" opacity=".92"/>
+                <text x="374" y="54" text-anchor="middle" font-size="14" font-weight="800">LÒ HƠI</text>
+                <text x="374" y="231" text-anchor="middle" font-size="11" fill="#536f85">Hơi quá nhiệt · 17,3 MPa / 541°C</text>
+                <!-- Steam header / four unit branches -->
+                <path d="M426 111H450V77M450 77V237" fill="none" stroke="#d74a43" stroke-width="4"/>
+                <g stroke="#d74a43" stroke-width="4" fill="none" marker-end="url(#rt-arrow-red)">
+                  <path d="M450 77H500"/><path d="M450 130H500"/><path d="M450 183H500"/><path d="M450 236H500"/>
+                  <path d="M615 77H654"/><path d="M615 130H654"/><path d="M615 183H654"/><path d="M615 236H654"/>
+                </g>
+                <g font-size="12" font-weight="800">
+                  <text x="458" y="69">TỔ MÁY 1</text><text x="458" y="122">TỔ MÁY 2</text><text x="458" y="175">TỔ MÁY 3</text><text x="458" y="228">TỔ MÁY 4</text>
+                </g>
+                <g>
+                  <g transform="translate(505 62)"><rect width="43" height="30" rx="5" fill="#eaf3f8" stroke="#7191a5" stroke-width="2"/><path d="M6 6h31M6 12h31M6 18h31M6 24h31" stroke="#8caaba" stroke-width="2"/><path d="M44 15h22v-8l13 8-13 8v-8" fill="url(#rt-metal)" stroke="#7794a5" stroke-width="2"/></g>
+                  <g transform="translate(505 115)"><rect width="43" height="30" rx="5" fill="#eaf3f8" stroke="#7191a5" stroke-width="2"/><path d="M6 6h31M6 12h31M6 18h31M6 24h31" stroke="#8caaba" stroke-width="2"/><path d="M44 15h22v-8l13 8-13 8v-8" fill="url(#rt-metal)" stroke="#7794a5" stroke-width="2"/></g>
+                  <g transform="translate(505 168)" opacity=".45"><rect width="43" height="30" rx="5" fill="#eaf3f8" stroke="#7191a5" stroke-width="2"/><path d="M6 6h31M6 12h31M6 18h31M6 24h31" stroke="#8caaba" stroke-width="2"/><path d="M44 15h22v-8l13 8-13 8v-8" fill="url(#rt-metal)" stroke="#7794a5" stroke-width="2"/></g>
+                  <g transform="translate(505 221)"><rect width="43" height="30" rx="5" fill="#eaf3f8" stroke="#7191a5" stroke-width="2"/><path d="M6 6h31M6 12h31M6 18h31M6 24h31" stroke="#8caaba" stroke-width="2"/><path d="M44 15h22v-8l13 8-13 8v-8" fill="url(#rt-metal)" stroke="#7794a5" stroke-width="2"/></g>
+                </g>
+                <g font-size="12" font-weight="800" fill="#174d7d">
+                  <text x="660" y="72">300,2 MW</text><text x="660" y="125">282,2 MW</text><text x="660" y="178" fill="#8b989f">0 MW · BẢO DƯỠNG</text><text x="660" y="231">296,0 MW</text>
+                </g>
+                <g fill="url(#rt-metal)" stroke="#7895a7" stroke-width="2">
+                  <rect x="754" y="58" width="48" height="38" rx="6"/><rect x="754" y="111" width="48" height="38" rx="6"/><rect x="754" y="164" width="48" height="38" rx="6"/><rect x="754" y="217" width="48" height="38" rx="6"/>
+                </g>
+                <g stroke="#66879a" stroke-width="2"><path d="M763 65v24m10-24v24m10-24v24m10-24v24M763 118v24m10-24v24m10-24v24m10-24v24M763 171v24m10-24v24m10-24v24m10-24v24M763 224v24m10-24v24m10-24v24m10-24v24"/></g>
+                <g stroke="#22a76d" stroke-width="3" fill="none"><path d="M802 77H838V156M802 130H838M802 183H838M802 236H838V156H864"/></g>
+                <rect x="867" y="115" width="62" height="82" rx="6" fill="#f1f7fa" stroke="#7895a7" stroke-width="2"/>
+                <path d="M882 129l32 54m0-54-32 54m4-58v62m24-62v62" stroke="#7895a7" stroke-width="2"/>
+                <text x="898" y="108" text-anchor="middle" font-size="12" font-weight="800">MBA</text>
+                <path d="M929 156H965" stroke="#22a76d" stroke-width="5" marker-end="url(#rt-arrow-green)"/>
+                <path d="M993 135l-17 30h13l-10 24 28-34h-14l11-20z" fill="#22a76d"/>
+                <text x="1001" y="213" text-anchor="middle" font-size="12" font-weight="700" fill="#218a5c">ĐIỆN LÊN LƯỚI</text><text x="1001" y="231" text-anchor="middle" font-size="15" font-weight="800" fill="#218a5c">871 MW</text>
+                <!-- Cooling and feedwater return -->
+                <path d="M375 214V291H535M535 291H650" fill="none" stroke="#247fca" stroke-width="4" marker-end="url(#rt-arrow-blue)"/>
+                <rect x="250" y="275" width="112" height="62" rx="7" fill="#f3faff" stroke="#9ebdce" stroke-width="2"/><text x="306" y="296" text-anchor="middle" font-size="12" font-weight="800">BƠM NƯỚC CẤP</text><circle cx="288" cy="317" r="10" fill="#deeff8" stroke="#5491b0" stroke-width="2"/><circle cx="328" cy="317" r="10" fill="#deeff8" stroke="#5491b0" stroke-width="2"/>
+                <path d="M362 306H393" stroke="#247fca" stroke-width="4" marker-end="url(#rt-arrow-blue)"/>
+                <rect x="396" y="275" width="150" height="62" rx="7" fill="#eff9fd" stroke="#9ebdce" stroke-width="2"/><text x="471" y="296" text-anchor="middle" font-size="12" font-weight="800">BÌNH NGƯNG</text><path d="M411 314h120m-104-9v18m23-18v18m23-18v18m23-18v18" stroke="#58a7cc" stroke-width="2"/>
+                <path d="M546 306H576" stroke="#247fca" stroke-width="4" marker-end="url(#rt-arrow-blue)"/>
+                <rect x="579" y="275" width="140" height="62" rx="7" fill="#eff9fd" stroke="#9ebdce" stroke-width="2"/><text x="649" y="296" text-anchor="middle" font-size="12" font-weight="800">HỆ THỐNG LÀM MÁT</text><path d="M597 327l12-23 12 23m12 0 12-23 12 23m12 0 12-23 12 23" fill="#d7e8f1" stroke="#66869a" stroke-width="2"/>
+                <rect x="745" y="275" width="145" height="62" rx="7" fill="#f7f8f9" stroke="#b7c3ca" stroke-width="2"/><text x="817" y="296" text-anchor="middle" font-size="12" font-weight="800">THẢI TRO XỈ</text><path d="M770 326l24-24 21 24 21-19 29 19z" fill="#858b8f"/>
+                <path d="M719 306H741" stroke="#7b858b" stroke-width="3" marker-end="url(#rt-arrow-gold)"/>
+                <g font-size="11" fill="#54728b"><text x="268" y="359">25,0 MPa</text><text x="430" y="359">Nước tuần hoàn</text><text x="610" y="359">28,4°C</text><text x="781" y="359">Tro đáy · tro bay</text></g>
+              </g>
+            </svg></div><div class="process-utilities"><span>💧 Nước cấp <b>25,0 MPa</b></span><span>♧ Hệ thống làm mát <b>28,4°C</b></span><span>▰ Thải tro xỉ</span><span>◌ Lưu lượng hơi <b>850 t/h</b></span></div></article>
           <article class="panel unit-table-panel" id="unit-table"><h2>THÔNG SỐ VẬN HÀNH TỪNG TỔ MÁY</h2><table class="data-table"><thead><tr><th>Thông số</th><th>Tổ máy 1</th><th>Tổ máy 2</th><th>Tổ máy 3</th><th>Tổ máy 4</th></tr></thead><tbody><tr><td>Trạng thái</td><td><span class="state">Đang vận hành</span></td><td><span class="state">Đang vận hành</span></td><td><span class="state stopped">Bảo dưỡng</span></td><td><span class="state">Đang vận hành</span></td></tr><tr><td>Công suất (MW)</td><td>300,2</td><td>282,2</td><td>0</td><td>296,0</td></tr><tr><td>Tải (%)</td><td>100,1</td><td>94,1</td><td>0</td><td>98,7</td></tr><tr><td>Sản lượng hôm nay (MWh)</td><td>6.812</td><td>6.901</td><td>0</td><td>7.054</td></tr><tr><td>Áp suất hơi chính (MPa)</td><td>24,5</td><td>24,5</td><td>—</td><td>24,5</td></tr><tr><td>Nhiệt độ hơi chính (°C)</td><td>565</td><td>565</td><td>—</td><td>565</td></tr><tr><td>Áp suất tái nhiệt (MPa)</td><td>4,18</td><td>4,18</td><td>—</td><td>4,18</td></tr><tr><td>Nhiệt độ tái nhiệt (°C)</td><td>541</td><td>541</td><td>—</td><td>541</td></tr><tr><td>Chân không bình ngưng (kPa)</td><td>6,5</td><td>6,5</td><td>—</td><td>6,5</td></tr><tr><td>Nhiệt độ nước làm mát</td><td>28,4</td><td>28,1</td><td>—</td><td>28,0</td></tr></tbody></table></article>
         </div>
         <div class="realtime-lower">
