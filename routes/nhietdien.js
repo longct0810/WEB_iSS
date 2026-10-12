@@ -15,6 +15,9 @@ const pageTitles = {
   targets: 'Mục tiêu năng lượng',
   opportunities: 'Cơ hội tiết kiệm năng lượng',
   optimize: 'Tối ưu vận hành',
+  emissions: 'Phát thải và môi trường',
+  admin: 'Quản trị hệ thống',
+  settings: 'Cài đặt hệ thống',
   ai: 'Phân tích nâng cao (AI)',
   plans: 'Kế hoạch thực hiện',
   alerts: 'Cảnh báo và sự kiện'
