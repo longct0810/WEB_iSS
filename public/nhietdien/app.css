@@ -164,3 +164,69 @@ linear-gradient(to top,transparent 0 31%,#b8cdd8 31% 100%) 90% 100%/12px 88% no-
 @keyframes hmi-pulse{50%{opacity:.35}}
 @media(prefers-reduced-motion:reduce){.hmi-pipes .flow-animated,.hmi-blink{animation:none}}
 @media(max-width:760px){.hmi-flow{min-height:320px}.hmi-diagram{overflow:auto}.hmi-flow{min-width:790px}}
+
+
+/* Compact alignment pass for overview cards */
+.overview-top{grid-template-columns:minmax(0,1.63fr) minmax(405px,.97fr);gap:7px}
+.units-panel h2{font-size:10.5px;letter-spacing:-.01em;white-space:nowrap;padding-left:8px}
+.unit-cards{flex:1 1 auto;min-height:0;height:auto;padding:5px;gap:5px}
+.unit-card{min-width:0;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:5px;padding:8px 5px 6px}
+.unit-card-title{display:flex;align-items:baseline;justify-content:center;gap:4px;white-space:nowrap}
+.unit-card-title b{font-size:10px}
+.unit-card-title small{font-size:8px;color:#71869a}
+.unit-card .state{align-self:center;padding:4px 5px;font-size:7.5px}
+.unit-readings{display:grid;width:100%;min-height:0}
+.unit-reading{display:flex;flex-direction:column;justify-content:center;gap:2px;min-height:0;padding:7px 1px 5px;border-top:1px solid #e8eef3;text-align:center}
+.unit-reading>span{color:#687f94;font-size:8px;line-height:1.2}
+.unit-reading>strong{color:#174d80;font-size:12px;line-height:1.15;white-space:nowrap}
+.unit-reading>strong small{display:inline-block;padding:1px 3px;border-radius:4px;background:#edf4f8;color:#5f7587;font-size:7px;font-weight:600}
+.mini-stats{flex:0 0 auto;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;padding:6px 4px}
+.mini-stats span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:0;padding:3px 2px;color:#6b8093;font-size:7.5px;line-height:1.15}
+.mini-stats b{display:block;margin:0;color:#174c7d;font-size:9px;line-height:1.15}
+.overview-bottom>.panel h2{padding-left:8px;padding-right:7px;font-size:10.5px}
+.self-summary{grid-template-columns:repeat(3,minmax(0,1fr));padding:5px 5px 4px}
+.self-metric{gap:5px;padding:0 4px;font-size:8px;line-height:1.15}
+.self-metric i{width:24px;height:24px;flex:0 0 24px;display:grid;place-items:center;border-radius:50%;background:#fff5df;font-size:15px}
+.self-metric i.red-icon{background:#fff0ed}
+.self-metric i.green-icon{background:#eaf8f0}
+.self-metric strong{margin-top:3px;font-size:11px;white-space:nowrap}
+.self-breakdown{grid-template-columns:132px minmax(0,1fr);column-gap:5px;padding:4px 8px 6px}
+.self-breakdown>.donut{width:104px;height:104px;flex-basis:104px}
+.self-breakdown>.donut:before{width:72px;height:72px}
+.self-breakdown .legend li{gap:4px;padding:2px 0;line-height:1.15}
+.self-breakdown .legend li b{font-size:7.5px}
+.coal-metrics{padding:0 6px}
+.coal-metric{grid-template-columns:31px minmax(0,1fr) minmax(112px,.95fr);gap:5px;padding:4px 2px}
+.coal-pile{font-size:25px}
+.coal-metric small{font-size:7.5px}
+.coal-metric strong{font-size:15px;margin:2px 0}
+.coal-metric em{font-size:8px}
+.coal-truck,.stock-clock{padding-left:31px}
+.coal-truck:before{font-size:21px;top:4px}
+.stock-clock:before{font-size:25px}
+.coal-truck strong,.stock-clock strong{font-size:12px}
+.heat-body{justify-content:flex-start;gap:8px;padding:7px 10px}
+.heat-body .flame{width:39px;flex:0 0 39px;text-align:center;font-size:32px}
+.heat-body strong{margin:4px 0;font-size:17px}
+.heat-body small,.heat-body em{font-size:8px}
+.plan-panel h2{min-height:34px;font-size:10.5px}
+.metric-tabs{gap:3px}
+.metric-tabs button{padding:4px 7px;font-size:7.5px}
+.plan-grid{gap:8px;padding:4px 9px 7px}
+.plan-grid .chart-title{margin-bottom:4px;font-size:8.5px}
+.compact-table td,.compact-table th{padding:4px 3px}
+@media(max-width:1200px){
+ .unit-cards{min-height:270px}
+ .mini-stats{min-height:65px}
+ .overview-bottom>.panel{min-height:220px}
+}
+@media(max-width:760px){
+ .units-panel h2{white-space:normal}
+ .unit-cards{min-height:0}
+ .mini-stats{min-height:0}
+ .unit-reading{padding:6px 1px}
+ .self-breakdown{grid-template-columns:110px minmax(0,1fr)}
+ .self-breakdown>.donut{width:92px;height:92px;flex-basis:92px}
+ .self-breakdown>.donut:before{width:64px;height:64px}
+ .self-breakdown .legend li b{white-space:normal}
+}
