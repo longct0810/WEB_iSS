@@ -1,0 +1,26 @@
+<%
+const width = 500, height = 180, left = 39, right = 449, top = 14, bottom = 152;
+const count = chart.labels.length, step = (right-left)/count;
+const y = value => bottom - (value-chart.min)/(chart.max-chart.min)*(bottom-top);
+const colors = chart.colors || ['#087cff','#f5a124','#2ab87c','#e95353'];
+const fmt = value => Number(value).toLocaleString('vi-VN', {maximumFractionDigits: chart.decimals || 0});
+%>
+<svg class="reference-chart" viewBox="0 0 500 180" preserveAspectRatio="none" role="img" aria-label="<%= chart.title %>">
+ <title><%= chart.title %></title>
+ <% for(let tick=0;tick<=4;tick++){const value=chart.min+(chart.max-chart.min)*tick/4; %>
+ <path d="M<%= left %> <%= y(value) %>H<%= right %>" stroke="#e4eaf0" fill="none"/>
+ <text x="<%= left-5 %>" y="<%= y(value)+4 %>" text-anchor="end" class="ref-axis"><%= fmt(value) %></text>
+ <% } %>
+ <% chart.labels.forEach((label,i)=>{const x=left+step*(i+.5); %>
+ <path d="M<%= x %> <%= top %>V<%= bottom %>" stroke="#edf1f5" fill="none"/>
+ <% let stacked=chart.min; chart.series.forEach((series,j)=>{const val=series[i]; const barWidth=chart.stacked?step*.45:step*.7/chart.series.length; const bx=chart.stacked?x-barWidth/2:x-step*.35+j*barWidth; const by=chart.stacked?y(stacked+val):y(val); const bh=chart.stacked?y(stacked)-by:bottom-by;stacked+=val;%>
+ <rect x="<%= bx %>" y="<%= by %>" width="<%= barWidth-1 %>" height="<%= Math.max(0,bh) %>" fill="<%= colors[j] %>"><title><%= label %>: <%= fmt(val) %></title></rect>
+ <% }) %>
+ <text x="<%= x %>" y="170" text-anchor="middle" class="ref-axis"><%= label %></text>
+ <% }) %>
+ <% (chart.lines||[]).forEach((line,j)=>{const points=line.values.map((val,i)=>`${left+step*(i+.5)},${y(val)}`).join(' '); %>
+ <polyline points="<%= points %>" fill="none" stroke="<%= line.color || '#e94141' %>" stroke-width="2" <%- line.dashed?'stroke-dasharray="5 4"':'' %>/>
+ <% line.values.forEach((val,i)=>{ %><circle cx="<%= left+step*(i+.5) %>" cy="<%= y(val) %>" r="2.3" fill="<%= line.color || '#e94141' %>"/><% }) %>
+ <% }) %>
+ <% (chart.badges||[]).forEach((badge,j)=>{ %><rect x="454" y="<%= 15+j*24 %>" width="44" height="21" rx="3" fill="<%= badge.color || colors[j] %>"/><text x="476" y="<%= 30+j*24 %>" fill="white" font-size="12" text-anchor="middle"><%= badge.text %></text><% }) %>
+</svg>

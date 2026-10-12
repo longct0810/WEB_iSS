@@ -1,0 +1,41 @@
+<div class="ai-kpis predictive-kpis">
+ <% [['bullseye','green','Dự báo tiêu thụ điện','298','GWh','↓ 3,5% so với kỳ trước'],['exclamation-triangle','red','Phát hiện bất thường','12','sự kiện','↑ 4 so với kỳ trước'],['lightbulb','orange','Cơ hội tiết kiệm (AI)','28.500','MWh/năm','~ 3,9 triệu USD/năm'],['leaf','green','Giảm phát thải CO₂ tiềm năng','24.300','tCO₂/năm','Nếu triển khai khuyến nghị'],['chart-line','','Độ chính xác mô hình','94,2','%','MAPE']].forEach(item=>{ %>
+ <article class="kpi"><span class="kpi-icon <%= item[1] %>"><i class="fas fa-<%= item[0] %>" aria-hidden="true"></i></span><div><small><%= item[2] %></small><strong><%= item[3] %> <small><%= item[4] %></small></strong><em class="up"><%= item[5] %></em></div></article>
+ <% }) %>
+</div>
+<div class="predictive-top">
+ <article class="panel"><h2>DỰ BÁO NHU CẦU NĂNG LƯỢNG (AI)</h2><div class="chart-legend">🔵 Thực tế　<span class="legend-orange">┄ Dự báo AI</span>　▰ Khoảng tin cậy (±5%)</div><div class="predictive-chart">
+ <% const actual = Array.from({length:121},(_,i)=>[40+i*3.65,106+Math.sin(i*.35)*15+Math.cos(i*.1)*7-(i>55?15:0)]); const pathOf=arr=>arr.map((p,i)=>(i?'L':'M')+p.join(' ')).join(' '); %>
+ <svg viewBox="0 0 500 190" preserveAspectRatio="none" role="img" aria-label="Dự báo công suất tháng 10 và khoảng tin cậy">
+ <% for(let i=0;i<5;i++){ %><path d="M40 <%= 20+i*33 %>H485" stroke="#e4edf5"/><text x="5" y="<%= 25+i*33 %>" class="ref-axis"><%= 600-i*100 %></text><% } %>
+ <path d="<%= pathOf(actual.map(p=>[p[0],p[1]-20])) %> <%= pathOf(actual.slice().reverse().map(p=>[p[0],p[1]+20])).replace(/^M/,'L') %>Z" fill="#d9ebf8" opacity=".8"/>
+ <path d="<%= pathOf(actual) %>" stroke="#087cff" stroke-width="2" fill="none"/>
+ <path d="<%= pathOf(actual.map((p,i)=>[p[0],p[1]+Math.sin(i*.2)*5])) %>" stroke="#ee963b" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
+ <path d="M242 20V153" stroke="#496a84" stroke-dasharray="4 4"/><text x="253" y="31" font-size="11" fill="#285d87">Dự báo →</text>
+ <% ['01/10','05/10','10/10','15/10','20/10','25/10','31/10'].forEach((label,i)=>{ %><text x="<%= 40+i*72 %>" y="179" text-anchor="middle" class="ref-axis"><%= label %></text><% }) %>
+ </svg></div></article>
+ <article class="panel"><h2>PHÁT HIỆN BẤT THƯỜNG (AI)</h2><div class="chart-legend">🔵 Bình thường　<span class="legend-red">○ Bất thường　┄ Ngưỡng</span></div><div class="predictive-chart"><svg viewBox="0 0 500 190" preserveAspectRatio="none" role="img" aria-label="Tương quan công suất và suất tiêu hao nhiệt; các điểm bất thường vượt ngưỡng">
+ <% for(let i=0;i<5;i++){ %><path d="M35 <%= 20+i*33 %>H485" stroke="#e4edf5"/><text x="0" y="<%= 25+i*33 %>" class="ref-axis"><%= (9-i*.5).toFixed(1) %></text><% } %>
+ <% for(let i=0;i<650;i++){ const x=40+(i*73%440),noise=Math.sin(i*2.19)*16+Math.cos(i*.91)*9,y=54+x*.15+noise; %><circle cx="<%= x %>" cy="<%= y %>" r="1.1" fill="#247ce2" opacity=".7"/><% } %>
+ <path d="M35 82H485" stroke="#e95454" stroke-dasharray="5 4"/>
+ <% for(let i=0;i<12;i++){ %><circle cx="<%= 90+i*32 %>" cy="<%= 56+Math.sin(i*1.1)*22 %>" r="4" stroke="#e64848" stroke-width="2" fill="white"/><% } %>
+ <% for(let i=0;i<7;i++){ %><text x="<%= 35+i*75 %>" y="171" text-anchor="middle" class="ref-axis"><%= i*100 %></text><% } %><text x="250" y="187" text-anchor="middle" class="ref-axis">Công suất (MW)</text>
+ </svg></div></article>
+ <article class="panel"><h2>TOP BẤT THƯỜNG GẦN ĐÂY</h2><table class="data-table"><thead><tr><th>Thời gian</th><th>Thiết bị</th><th>Chỉ số</th><th>Độ lệch</th><th>Mức độ</th></tr></thead><tbody>
+ <% [['14:22','Tổ máy 1','Suất tiêu hao nhiệt','+12%','Cao'],['11:15','Quạt gió PA-1','Dòng điện','+28%','Cao'],['20:40','Băng tải than B3','Nhiệt độ ổ bi','+18%','Trung bình'],['16:12','Bơm nước ngưng','Độ rung','+45%','Cao'],['10:05','Tổ máy 2','Chân không','−15%','Trung bình']].forEach(row=>{ %><tr><% row.forEach((cell,i)=>{ %><td><% if(i===4){ %><em class="status-<%= cell==='Cao'?'red':'orange' %>"><%= cell %></em><% }else{ %><%= cell %><% } %></td><% }) %></tr><% }) %>
+ </tbody></table></article>
+</div>
+<div class="predictive-middle">
+ <article class="panel"><h2>PHÂN TÍCH NGUYÊN NHÂN GỐC (AI)</h2><label class="predictive-filter">Sự kiện <select><option>Suất tiêu hao nhiệt Tổ máy 1 tăng</option></select></label><ul class="cause-bars">
+ <% [['Nhiệt độ khí thải (Economizer)',28,'#e74646'],['Độ bẩn bề mặt trao đổi nhiệt',22,'#ee822b'],['Tải tổ máy',18,'#ecb13b'],['Chất lượng than (độ ẩm)',15,'#087cff'],['Tỷ lệ gió – than',12,'#60abe6'],['Nhiệt độ nước làm mát',8,'#a6b7c5'],['Khác',5,'#c0ccd4']].forEach(row=>{ %><li><span><%= row[0] %></span><b><i style="width:<%= row[1]*3 %>%;background:<%= row[2] %>"></i></b><strong><%= row[1] %>%</strong></li><% }) %>
+ </ul></article>
+ <article class="panel"><h2>KHUYẾN NGHỊ TỐI ƯU (AI)</h2><table class="data-table"><thead><tr><th>STT</th><th>Khuyến nghị</th><th>Tiềm năng tiết kiệm</th><th>Hoàn vốn</th><th>Ưu tiên</th></tr></thead><tbody>
+ <% [['Vệ sinh bề mặt trao đổi nhiệt','8.500','6 tháng'],['Tối ưu tỷ lệ gió – than','6.200','4 tháng'],['Điều chỉnh lịch vận hành bơm (VFD)','4.800','8 tháng'],['Tối ưu lịch dừng – khởi động tổ máy','3.900','10 tháng'],['Cải thiện chất lượng than','3.600','6 tháng']].forEach((row,i)=>{ %><tr><td><%= i+1 %></td><td><%= row[0] %></td><td><%= row[1] %> MWh/năm</td><td><%= row[2] %></td><td><em class="status-<%= i<2?'red':'orange' %>"><%= i<2?'Cao':'Trung bình' %></em></td></tr><% }) %>
+ </tbody></table></article>
+ <article class="panel"><h2>MÔ PHỎNG KỊCH BẢN (AI)</h2><label class="predictive-filter">Kịch bản <select><option>Cải thiện hiệu suất lò hơi + tua bin</option></select></label><table class="data-table"><thead><tr><th>Chỉ tiêu</th><th>Hiện tại</th><th>Kịch bản AI</th><th>Chênh lệch</th></tr></thead><tbody>
+ <% [['Công suất thuần (MW)','580','600','+3,4%'],['Suất tiêu hao nhiệt (kJ/kWh)','7.850','7.500','−4,5%'],['Điện tự dùng (%)','6,8','6,2','−0,6%'],['Phát thải CO₂ (tCO₂/năm)','1.250.000','1.200.000','−4,0%'],['Chi phí nhiên liệu (triệu USD/năm)','320','308','−3,8%']].forEach(row=>{ %><tr><% row.forEach((v,i)=>{ %><td class="<%= i===3?'positive':'' %>"><%= v %></td><% }) %></tr><% }) %>
+ </tbody></table></article>
+</div>
+<div class="predictive-bottom"><article class="panel"><h2>DIGITAL TWIN &amp; MÔ PHỎNG VẬN HÀNH</h2><%- include('diagram', { type: 'twin', label: 'Digital Twin và mô phỏng vận hành' }) %></article><article class="panel"><h2>KẾT QUẢ TỐI ƯU VẬN HÀNH (AI)</h2><div class="predictive-results">
+ <% [['Suất tiêu hao nhiệt','7.850','7.520','4,2%'],['Điện tự dùng','6,8','6,1','10,3%'],['Phát thải CO₂','1.250','1.200','4,0%'],['Chi phí nhiên liệu','320','308','3,8%']].forEach(row=>{ %><div><strong>↓ <%= row[3] %></strong><span><i><%= row[1] %></i><b><%= row[2] %></b></span><small><%= row[0] %></small></div><% }) %>
+ </div></article></div>

@@ -2,6 +2,7 @@
 
 const express = require('express');
 const pages = express.Router();
+const diagramData = require('../config/nhietdien-preview-data');
 
 const pageTitles = {
   overview: 'Tổng quan',
@@ -31,7 +32,9 @@ function render(req, res) {
   res.render('nhietdien/index', {
     page,
     title,
-    preview: req.path.startsWith('/preview')
+    preview: req.path.startsWith('/preview'),
+    aiView: req.query.view === 'predictive' ? 'predictive' : 'overview',
+    diagramData
   });
 }
 
