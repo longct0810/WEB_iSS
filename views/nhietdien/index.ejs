@@ -41,17 +41,90 @@
       <% if (page === 'overview') { %>
       <section class="dashboard overview">
         <div class="overview-top">
-          <article class="panel process-panel"><h2><b>1</b>SƠ ĐỒ HỆ THỐNG NĂNG LƯỢNG NHÀ MÁY</h2><div class="process-flow">
-            <div class="process-node coal"><strong>▰</strong><b>Than cấp</b><small>Kho than · 886.000 tấn</small></div><span class="flow-arrow">➜</span><div class="process-node"><strong>▥</strong><b>Nghiền than</b><small>3/3 máy RUN</small></div><span class="flow-arrow">➜</span><div class="process-node boiler"><strong>♨</strong><b>Lò hơi</b><small>17,3 MPa / 541°C</small></div><span class="flow-arrow">➜</span><div class="process-node"><strong>◢</strong><b>Tuabin</b><small>4 × 300 MW</small></div><span class="flow-arrow">➜</span><div class="process-node"><strong>⚙</strong><b>Máy phát</b><small>1.200 MW</small></div><span class="flow-arrow">➜</span><div class="process-node grid-node"><strong>⌁</strong><b>Điện lên lưới</b><small>871 MW</small></div>
-          </div><div class="process-subflow"><span>💧 Hệ thống nước cấp</span><span>♧ Hệ thống làm mát</span><span>▰ Hệ thống thải tro xỉ</span><span class="renewable">☀ Điện NLTT (nếu có)</span></div></article>
-          <article class="panel units-panel"><h2><b>2</b>TỔNG CÔNG SUẤT PHÁT ĐIỆN VÀ SẢN LƯỢNG ĐIỆN</h2><div class="unit-cards"><% const units=[['Tổ máy 1','286','6.812','Đang vận hành'],['Tổ máy 2','289','6.901','Đang vận hành'],['Tổ máy 3','0','0','Dừng bảo dưỡng'],['Tổ máy 4','296','7.054','Đang vận hành']]; units.forEach((u,i)=> { %><div class="unit-card"><b><%= u[0] %></b><small>(300 MW)</small><span class="state <%= i===2?'stopped':'' %>"><%= u[3] %></span><small>Công suất hiện tại</small><strong><%= u[1] %> MW</strong><small>Sản lượng ngày</small><strong><%= u[2] %> MWh</strong><small>Sản lượng lũy kế</small><strong><%= ['1.234.560','1.248.320','980.420','1.210.350'][i] %> MWh</strong></div><% }) %></div><div class="mini-stats"><span>⚡ Khả dụng <b>1.200 MW</b></span><span>▥ Sản lượng phát <b>871 MW</b></span><span>◷ Điện năng ngày <b>20.767 MWh</b></span></div></article>
+          <article class="panel process-panel">
+            <h2><b>1</b>SƠ ĐỒ HỆ THỐNG NĂNG LƯỢNG NHÀ MÁY</h2>
+            <div class="plant-diagram">
+              <svg class="plant-flow" viewBox="0 0 980 390" role="img" aria-label="Sơ đồ quy trình năng lượng nhà máy nhiệt điện">
+                <defs>
+                  <marker id="arrow-orange" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L0 6 L7 3 z" fill="#c67b22"/></marker>
+                  <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L0 6 L7 3 z" fill="#1679d0"/></marker>
+                  <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L0 6 L7 3 z" fill="#dd3737"/></marker>
+                  <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L0 6 L7 3 z" fill="#28854b"/></marker>
+                  <linearGradient id="boilerFire" x2="0" y2="1"><stop stop-color="#ffe36e"/><stop offset="1" stop-color="#e94717"/></linearGradient>
+                </defs>
+                <g font-family="Arial,sans-serif" fill="#164b7d" font-size="12" font-weight="700">
+                  <text x="30" y="28">Hệ thống cung cấp than</text>
+                  <text x="187" y="48">Hệ thống nghiền than</text>
+                  <text x="363" y="28">Lò hơi</text><text x="465" y="56" fill="#c34d37">Hơi quá nhiệt</text><text x="465" y="72" fill="#c34d37" font-size="10">17,3 MPa / 541°C</text>
+                  <text x="564" y="49">Tuabin</text><text x="674" y="49">Máy phát</text><text x="765" y="49">Máy biến áp</text>
+                </g>
+                <g stroke="#879daf" stroke-width="2" fill="#dce8f0">
+                  <path d="M30 173 L75 117 L122 173 Z" fill="#424a50"/><path d="M23 175h112v11H23z" fill="#9baab4"/>
+                  <rect x="147" y="120" width="24" height="60" rx="3"/><rect x="177" y="102" width="26" height="78" rx="3"/><rect x="209" y="127" width="25" height="53" rx="3"/>
+                  <rect x="354" y="83" width="66" height="125" rx="6" fill="#cad8e2"/><rect x="362" y="95" width="50" height="95" rx="4" fill="url(#boilerFire)" stroke="#738fa4"/><path d="M372 178q8-35 14-9 8-38 13 4" fill="none" stroke="#fff3a3" stroke-width="5"/>
+                  <path d="M552 112l70 21-70 22z" fill="#85b1d0"/><path d="M552 159l70 16-70 15z" fill="#aac9dd"/>
+                  <rect x="642" y="119" width="76" height="65" rx="8" fill="#e3edf4"/><circle cx="679" cy="151" r="23" fill="#f6fbff" stroke="#829daf"/><path d="M663 151h32m-16-15v30" stroke="#7a94a8"/>
+                  <rect x="756" y="116" width="45" height="75" rx="4" fill="#f4ead2" stroke="#b69c67"/><path d="M763 129h31m-31 12h31m-31 12h31m-31 12h31" stroke="#c7a96e"/>
+                  <rect x="274" y="258" width="58" height="50" rx="5" fill="#d5e6f3"/><ellipse cx="303" cy="258" rx="29" ry="8" fill="#edf7ff"/><path d="M280 270h46M280 282h46M280 294h46" stroke="#78a8ca"/>
+                  <rect x="164" y="270" width="32" height="42" rx="4"/><circle cx="180" cy="291" r="9" fill="#edf5fa"/>
+                  <circle cx="241" cy="291" r="18" fill="#d7e8f4"/><path d="M229 291h24m-12-12v24" stroke="#648da9"/>
+                  <path d="M466 273h44v35h-44z" fill="#d5e7f2"/><path d="M468 273q20-17 40 0" fill="#eaf4fa"/><path d="M523 273h44v35h-44z" fill="#d5e7f2"/><path d="M525 273q20-17 40 0" fill="#eaf4fa"/>
+                  <path d="M649 265l34 33h-68z" fill="#a9b5bd"/><path d="M689 265l34 33h-68z" fill="#a9b5bd"/>
+                  <path d="M847 111l22 83m-22-83-22 83m8-56h28m-32 19h40m-36 17h32m-38 20h44m-40-48 34 29m-30-42-37 42" fill="none" stroke="#5b7588"/>
+                </g>
+                <g fill="none" stroke-width="4">
+                  <path d="M127 151H144" stroke="#c67b22" marker-end="url(#arrow-orange)"/>
+                  <path d="M237 151H348" stroke="#c67b22" marker-end="url(#arrow-orange)"/>
+                  <path d="M420 110H535" stroke="#dd3737" marker-end="url(#arrow-red)"/>
+                  <path d="M420 178H535" stroke="#dd3737" marker-end="url(#arrow-red)"/>
+                  <path d="M622 145H637" stroke="#c67b22" marker-end="url(#arrow-orange)"/>
+                  <path d="M719 151H751" stroke="#c67b22" marker-end="url(#arrow-orange)"/>
+                  <path d="M802 151H831" stroke="#28854b" marker-end="url(#arrow-green)"/>
+                  <path d="M180 270V222H375V210" stroke="#1679d0" marker-end="url(#arrow-blue)"/>
+                  <path d="M303 250V219H390V210" stroke="#1679d0" marker-end="url(#arrow-blue)"/>
+                  <path d="M420 197V242H489V267" stroke="#1679d0" marker-end="url(#arrow-blue)"/>
+                  <path d="M420 196V229H545V267" stroke="#1679d0" marker-end="url(#arrow-blue)"/>
+                  <path d="M570 291H640" stroke="#c67b22" marker-end="url(#arrow-orange)"/>
+                  <path d="M122 317H645" stroke="#a86d26" marker-end="url(#arrow-orange)"/>
+                </g>
+                <g fill="#164b7d" font-family="Arial,sans-serif" font-size="11" font-weight="700">
+                  <text x="38" y="203">Than Antraxit</text><text x="40" y="222" font-size="9" font-weight="400">Kho than</text>
+                  <text x="144" y="199" font-size="9" font-weight="400">Máy nghiền</text><text x="350" y="224" font-size="9" font-weight="400">Buồng đốt</text>
+                  <text x="464" y="192" fill="#c34d37" font-size="10">Hơi tái nhiệt 4,18 MPa / 541°C</text>
+                  <text x="552" y="208">4 × 300 MW</text><text x="552" y="224" font-size="10" font-weight="400">Tổng công suất</text><text x="552" y="240" font-size="15">1.200 MW</text>
+                  <text x="829" y="218" fill="#28854b">Điện phát lên lưới</text><text x="847" y="235" fill="#28854b" font-size="12">871 MW</text>
+                  <text x="155" y="334">Bơm nước cấp</text><text x="263" y="329">Bình ngưng</text><text x="461" y="329">Hệ thống làm mát</text><text x="636" y="329">Thải tro xỉ</text>
+                </g>
+                <g>
+                  <rect x="835" y="13" width="125" height="63" rx="7" fill="#f0fbf1" stroke="#9bcaa3"/><text x="850" y="31" fill="#2d7747" font-size="11" font-weight="700">NLTT (nếu có)</text><circle cx="870" cy="52" r="10" fill="#d8eaff"/><path d="M870 41v22m-9-11h18m-16-7 14 14m0-14-14 14" stroke="#4280bc" stroke-width="2"/><path d="M918 61V44m0 0-11 9m11-9 11 9m-11-9V34m-7 27h14" stroke="#398a5c" stroke-width="2"/><text x="851" y="71" fill="#48845a" font-size="8">Điện NLTT</text>
+                  <rect x="746" y="243" width="214" height="74" rx="7" fill="#fff8e8" stroke="#e1bb6a"/><text x="759" y="263" fill="#8b5d18" font-size="12" font-weight="700">Điện tự dùng</text><text x="759" y="283" fill="#60778b" font-size="10">Bơm, quạt, nghiền than, FGD/ESP,</text><text x="759" y="299" fill="#60778b" font-size="10">phụ trợ và hệ thống HVAC</text>
+                </g>
+              </svg>
+            </div>
+          </article>
+          <article class="panel units-panel">
+            <h2><b>2</b>TỔNG CÔNG SUẤT PHÁT ĐIỆN VÀ SẢN LƯỢNG ĐIỆN</h2>
+            <div class="unit-cards">
+              <% const units=[['Tổ máy 1','286','95%','6.812','1.234.560','Đang vận hành'],['Tổ máy 2','289','96%','6.901','1.248.320','Đang vận hành'],['Tổ máy 3','0','0%','0','980.420','Dừng bảo dưỡng'],['Tổ máy 4','296','99%','7.054','1.210.350','Đang vận hành']]; units.forEach((u,i)=> { %>
+              <div class="unit-card"><b><%= u[0] %></b><small>(300 MW)</small><span class="state <%= i===2?'stopped':'' %>"><%= u[5] %></span><small>Công suất hiện tại</small><strong><%= u[1] %> MW</strong><span class="unit-load"><%= u[2] %></span><small>Sản lượng ngày</small><strong><%= u[3] %> MWh</strong><small>Sản lượng lũy kế</small><strong><%= u[4] %> MWh</strong></div><% }) %>
+            </div>
+            <div class="mini-stats"><span>⚙ Tổng công suất khả dụng <b>1.200 MW</b></span><span>▥ Tổng công suất phát <b>871 MW (72,6%)</b></span><span>◷ Tổng sản lượng điện ngày <b>20.767 MWh</b></span><span>▤ Lũy kế năm <b>4.673.650 MWh</b></span></div>
+          </article>
         </div>
         <div class="overview-bottom">
-          <article class="panel self-use"><h2><b>3</b>ĐIỆN NĂNG TỰ DÙNG TOÀN NHÀ MÁY</h2><div class="big-metric"><span class="metric-icon green">ϟ</span><div><strong>560 MWh</strong><small>Điện tự dùng hôm nay · 2,70%</small></div></div><div class="donut-wrap"><div class="donut"><span>560<br><small>MWh</small></span></div><ul class="legend"><li>Bơm nước làm mát <b>178</b></li><li>Quạt gió <b>112</b></li><li>Nghiền than <b>84</b></li><li>FGD / ESP <b>67</b></li><li>Khác <b>119</b></li></ul></div></article>
-          <article class="panel coal-stock"><h2><b>4</b>SUẤT TIÊU HAO THAN &amp; TỒN KHO</h2><div class="metric-row"><span>▰</span><div><small>Suất tiêu hao than</small><strong>304 <small>g/kWh</small></strong><em>▼ −6,2 g/kWh so với kế hoạch</em></div></div><div class="metric-row"><span>◷</span><div><small>Tồn kho than hiện tại</small><strong>886.000 <small>tấn</small></strong><em>Thời gian dự kiến: 37,9 ngày</em></div></div></article>
-          <article class="panel heat-rate"><h2><b>5</b>SUẤT TIÊU HAO NHIỆT</h2><div class="flame">♨</div><small>Suất tiêu hao nhiệt (HHV)</small><strong>8.680 <small>kJ/kWh</small></strong><em>▼ −170 kJ/kWh so với kế hoạch</em></article>
+          <article class="panel self-use"><h2><b>3</b>ĐIỆN NĂNG TỰ DÙNG TOÀN NHÀ MÁY</h2>
+            <div class="self-summary"><span class="self-metric"><i>⚡</i><span>Tổng điện năng phát<strong>20.767 MWh</strong></span></span><span class="self-metric"><i class="red-icon">♨</i><span>Điện năng tự dùng<strong>560 MWh</strong></span></span><span class="self-metric"><i class="green-icon">◷</i><span>Tỷ lệ điện tự dùng<strong>2,70%</strong></span></span></div>
+            <div class="self-breakdown"><div class="donut"><span>560 MWh<small>2,70%</small></span></div><div class="self-legend-title">Cơ cấu điện tự dùng theo phụ tải (MWh, %)</div><ul class="legend"><li><i class="c1"></i>Bơm nước làm mát (CWP)<b>178&nbsp; (31,8%)</b></li><li><i class="c2"></i>Quạt gió (IDF/FD/PA)<b>112&nbsp; (20,0%)</b></li><li><i class="c3"></i>Nghiền than<b>84&nbsp; (15,0%)</b></li><li><i class="c4"></i>Hệ thống FGD / ESP<b>67&nbsp; (12,0%)</b></li><li><i class="c5"></i>Bơm nước cấp (BFP)<b>56&nbsp; (10,0%)</b></li><li><i class="c6"></i>Phụ trợ, HVAC, chiếu sáng<b>63&nbsp; (11,2%)</b></li></ul></div>
+          </article>
+          <article class="panel coal-stock"><h2><b>4</b>SUẤT TIÊU HAO THAN VÀ TỒN KHO</h2>
+            <div class="coal-metrics"><div class="coal-metric"><span class="coal-pile">▰</span><div><small>Suất tiêu hao than</small><strong>304 <small>g/kWh</small></strong><em>▼ −6,2 g/kWh</em><small>so với kế hoạch (310)</small></div><div class="coal-truck">🚚<small>Tổng lượng than tiêu thụ ngày</small><strong>6.316 tấn</strong></div></div>
+            <div class="coal-metric"><span class="coal-pile">▰</span><div><small>Tồn kho than hiện tại</small><strong>886.000 tấn</strong></div><div class="stock-clock">◷<small>Thời gian dự kiến</small><strong>37,9 ngày</strong><small>với mức tiêu thụ TB 23.400 tấn/ngày</small></div></div></div>
+          </article>
+          <article class="panel heat-rate"><h2><b>5</b>SUẤT TIÊU HAO NHIỆT</h2><div class="heat-body"><div class="flame">♨</div><div><small>Suất tiêu hao nhiệt (HHV)</small><strong>8.680 <small>kJ/kWh</small></strong><em>▼ −170 kJ/kWh<br>so với kế hoạch (8.850)</em></div></div></article>
         </div>
-        <article class="panel plan-panel"><h2><b>6</b>SO SÁNH VỚI KẾ HOẠCH / MỤC TIÊU</h2><div class="plan-grid"><div><div class="chart-title">Sản lượng điện (MWh)</div><div class="bar-chart"><% [45,39,53,60,62,69,75,78,82,78,86,90].forEach((h,i)=> { %><span style="height:<%= h %>%"><i><%= i+1 %></i></span><% }) %></div></div><div><div class="chart-title">Sản lượng điện lũy kế</div><table class="compact-table"><tr><th>Kỳ</th><th>Thực hiện</th><th>Kế hoạch</th><th>Đạt</th></tr><tr><td>Năm</td><td>4.673.650</td><td>5.112.000</td><td class="warn">91,4%</td></tr><tr><td>Tháng 5</td><td>812.350</td><td>853.000</td><td>95,2%</td></tr><tr><td>Đến 31/5</td><td>4.673.650</td><td>5.112.000</td><td>91,4%</td></tr></table></div><div><div class="chart-title">Tỷ lệ đạt kế hoạch theo tháng (%)</div><div class="trend-chart"><svg viewBox="0 0 420 140" preserveAspectRatio="none"><path d="M0 92 L35 75 70 83 105 54 140 64 175 50 210 68 245 44 280 57 315 35 350 49 385 27 420 39" fill="none" stroke="#1683d8" stroke-width="3"/><path d="M0 48 L35 67 70 53 105 74 140 49 175 61 210 45 245 62 280 37 315 52 350 31 385 55 420 43" fill="none" stroke="#28aa74" stroke-width="3"/></svg></div></div></div></article>
+        <article class="panel plan-panel"><h2><b>6</b>SO SÁNH VỚI KẾ HOẠCH / MỤC TIÊU <span class="metric-tabs"><button class="selected">Sản lượng điện</button><button>Suất tiêu hao than</button><button>Suất tiêu hao nhiệt</button><button>Tỷ lệ điện tự dùng</button></span></h2>
+          <div class="plan-grid"><div><div class="chart-title">Sản lượng điện (MWh) <span class="chart-legend"><i></i>Thực hiện　● Kế hoạch　— Mục tiêu</span></div><div class="bar-chart"><% [45,39,53,60,62,69,75,78,82,78,86,90].forEach((h,i)=> { %><span style="height:<%= h %>%"><i><%= i+1 %></i></span><% }) %></div></div><div><div class="chart-title">Sản lượng điện (lũy kế)</div><table class="compact-table"><tr><th></th><th>Thực hiện</th><th>Kế hoạch</th><th>So sánh</th><th>Đạt (%)</th></tr><tr><td>Năm</td><td>4.673.650</td><td>5.112.000</td><td class="warn">−438.350</td><td class="warn">91,4%</td></tr><tr><td>Quý 1</td><td>1.210.320</td><td>1.280.000</td><td>−69.680</td><td>94,6%</td></tr><tr><td>Quý 2</td><td>1.560.480</td><td>1.706.000</td><td>−145.520</td><td>91,4%</td></tr><tr><td>Tháng 5</td><td>812.350</td><td>853.000</td><td>−40.650</td><td>95,2%</td></tr></table></div><div><div class="chart-title">Tỷ lệ đạt kế hoạch theo tháng (%)</div><div class="trend-chart"><svg viewBox="0 0 420 140" preserveAspectRatio="none"><path d="M0 92 L35 75 70 83 105 54 140 64 175 50 210 68 245 44 280 57 315 35 350 49 385 27 420 39" fill="none" stroke="#1683d8" stroke-width="3"/><path d="M0 48 L35 67 70 53 105 74 140 49 175 61 210 45 245 62 280 37 315 52 350 31 385 55 420 43" fill="none" stroke="#28aa74" stroke-width="3"/><path d="M0 62 L35 58 70 67 105 61 140 70 175 65 210 73 245 69 280 74 315 67 350 77 385 71 420 75" fill="none" stroke="#f0a222" stroke-width="2"/></svg></div></div></div>
+        </article>
       </section>
       <% } else { %>
       <section class="dashboard realtime">
