@@ -936,3 +936,18 @@ linear-gradient(to top,transparent 0 31%,#b8cdd8 31% 100%) 90% 100%/12px 88% no-
 @media(max-width:1000px){.data-lower,.target-lower{grid-template-columns:1fr}.data-settings{grid-template-columns:1fr 1fr}.target-side{grid-template-columns:1fr 1fr}.target-charts{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.data-metrics,.target-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.data-charts,.target-charts,.data-lower,.data-bottom,.target-lower,.target-side{grid-template-columns:minmax(0,1fr)}.data-charts>.storage-status,.target-charts>.panel:last-child{grid-column:auto}.data-settings{grid-template-columns:1fr}.target-footer>div{grid-template-columns:1fr 1fr}.target-footer span:nth-child(2){border-right:0}.target-footer span:nth-child(-n+2){border-bottom:1px solid #e6edf3}.data-page .tab-strip,.target-page .tab-strip{overflow:auto;white-space:nowrap}.target-progress{justify-content:flex-start}.data-page .table-wrap table{min-width:790px}}
 @media(max-width:420px){.data-metrics,.target-metrics{grid-template-columns:1fr}.storage-summary{padding-left:0;padding-right:0}.target-footer>div{grid-template-columns:1fr}.target-footer span{border-right:0;border-bottom:1px solid #e6edf3!important}.target-footer span:last-child{border-bottom:0!important}}
+
+/* Complete base layout for the data and target dashboards */
+.data-page .page-heading,.target-page .page-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:2px 0 12px}
+.data-page .page-heading h1,.target-page .page-heading h1{margin:0;color:#124d7e;font-size:17px;font-weight:800}
+.data-page .page-heading p,.target-page .page-heading p{margin:4px 0 0;color:#71849a;font-size:11px}
+.data-page .metric-grid,.target-page .metric-grid{display:grid;gap:10px;margin:0 0 14px}
+.data-page .metric-card,.target-page .metric-card{min-width:0;min-height:84px;padding:11px 12px;border:1px solid #dce5ed;border-radius:7px;background:#fff;box-shadow:0 1px 3px #2447670a}
+.data-page .metric-card small,.target-page .metric-card small{display:block;color:#718398;font-size:9px;font-weight:700;line-height:1.35}
+.data-page .metric-card strong,.target-page .metric-card strong{display:block;margin:6px 0 3px;color:#174f7f;font-size:22px;line-height:1.1}
+.data-page .metric-card strong i,.target-page .metric-card strong i{font-size:11px;font-style:normal;font-weight:600}
+.data-page .metric-card span,.target-page .metric-card span{display:block;color:#7d8da0;font-size:9px}
+.data-page .metric-card .good,.target-page .metric-card .good{color:#2b9b69}
+.data-page .panel,.target-page .panel{min-width:0}
+.data-page .panel h2,.target-page .panel h2{font-size:10px}
+@media(max-width:760px){.data-page .page-heading,.target-page .page-heading{align-items:flex-start;flex-direction:column}.data-page .page-heading h1,.target-page .page-heading h1{font-size:15px}}
