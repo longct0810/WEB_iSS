@@ -3,30 +3,84 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><%= title %></title>
-  <style>
-    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
-    * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; color: #eaf2fb; background: #0b1220; }
-    .shell { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
-    .card { width: min(680px, 100%); padding: 40px; border: 1px solid #26364b; border-radius: 18px; background: linear-gradient(145deg, #142238, #101a2b); box-shadow: 0 24px 70px #0005; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: #64d6bc; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 14px currentColor; }
-    h1 { margin: 18px 0 10px; font-size: clamp(28px, 5vw, 42px); letter-spacing: -.04em; }
-    p { max-width: 540px; margin: 0; color: #aab9cb; line-height: 1.7; }
-    .status { display: flex; gap: 12px; align-items: center; margin-top: 28px; padding: 14px 16px; border-radius: 12px; background: #0b1422; color: #c9d6e4; font-size: 14px; }
-    .status strong { color: #fff; }
-    @media (max-width: 520px) { .card { padding: 28px 22px; } }
-  </style>
+  <meta name="theme-color" content="#073b70">
+  <title><%= title %> | EnMS Nhiệt điện Hải Phòng</title>
+  <link rel="stylesheet" href="/nhietdien/app.css">
 </head>
 <body>
-  <main class="shell">
-    <section class="card" aria-labelledby="page-title">
-      <div class="eyebrow"><span class="dot"></span> NHIỆT ĐIỆN <%= preview ? '· PREVIEW' : '' %></div>
-      <h1 id="page-title">Không gian giao diện Nhiệt điện</h1>
-      <p>Khung preview đã sẵn sàng. Các màn hình và chức năng sẽ được bổ sung theo từng phần khi có bản giao diện yêu cầu.</p>
-      <div class="status"><span class="dot"></span><span><strong>Preview đang hoạt động</strong> · đường dẫn /nhietdien · port mặc định 6582</span></div>
-    </section>
-  </main>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/nhietdien/preview/overview" aria-label="EnMS Nhiệt điện Hải Phòng"><span class="brand-mark">⚡</span><span class="brand-name">HẢI PHÒNG<br><small>THERMAL POWER</small></span></a>
+      <div class="nav-group-title">VẬN HÀNH &amp; HIỆU SUẤT</div>
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <a class="nav-link <%= page === 'overview' ? 'active' : '' %>" href="/nhietdien/preview/overview"><span>⌂</span>Tổng quan</a>
+        <a class="nav-link <%= page === 'realtime' ? 'active' : '' %>" href="/nhietdien/preview/realtime"><span>◉</span>Giám sát thời gian thực</a>
+        <a class="nav-link disabled" href="#" aria-disabled="true"><span>⇄</span>Dòng năng lượng &amp; Quy trình</a>
+        <a class="nav-link disabled" href="#" aria-disabled="true"><span>▥</span>Hiệu suất &amp; EnPI</a>
+        <a class="nav-link disabled" href="#" aria-disabled="true"><span>⚙</span>Điện tự dùng &amp; SEU</a>
+        <a class="nav-link disabled" href="#" aria-disabled="true"><span>⌘</span>Sơ đồ điện một sợi</a>
+        <a class="nav-link disabled" href="#" aria-disabled="true"><span>♨</span>Boiler Performance</a>
+        <a class="nav-link disabled" href="#" aria-disabled="true"><span>◈</span>Turbine &amp; Condenser</a>
+        <a class="nav-link disabled" href="#" aria-disabled="true"><span>◆</span>Nhiên liệu &amp; Hệ thống than</a>
+      </nav>
+      <div class="nav-group-title">PHÂN TÍCH &amp; QUẢN TRỊ</div><nav class="main-nav"><a class="nav-link disabled" href="#" aria-disabled="true"><span>▤</span>Báo cáo</a><a class="nav-link disabled" href="#" aria-disabled="true"><span>▧</span>Quản lý dữ liệu</a><a class="nav-link disabled" href="#" aria-disabled="true"><span>⚠</span>Cảnh báo &amp; Sự kiện</a></nav>
+      <div class="nav-group-title">KẾ HOẠCH &amp; TỐI ƯU</div><nav class="main-nav"><a class="nav-link disabled" href="#" aria-disabled="true"><span>◎</span>Mục tiêu năng lượng</a><a class="nav-link disabled" href="#" aria-disabled="true"><span>✦</span>Cơ hội tiết kiệm năng lượng</a><a class="nav-link disabled" href="#" aria-disabled="true"><span>☷</span>Kế hoạch thực hiện</a></nav>
+      <div class="nav-group-title">AI &amp; TỰ ĐỘNG HÓA</div><nav class="main-nav"><a class="nav-link disabled" href="#" aria-disabled="true"><span>✣</span>Phân tích nâng cao (AI)</a><a class="nav-link disabled" href="#" aria-disabled="true"><span>◉</span>Tối ưu vận hành</a><a class="nav-link disabled" href="#" aria-disabled="true"><span>⚙</span>Quản trị hệ thống</a></nav>
+      <div class="sidebar-foot"><span class="online-dot"></span>Hệ thống preview · Dữ liệu mô phỏng</div>
+    </aside>
+
+    <main class="main-area">
+      <header class="top-header">
+        <div class="factory-banner"><div class="header-title">HỆ THỐNG QUẢN LÝ NĂNG LƯỢNG <span>(EnMS)</span><small>CÔNG TY NHIỆT ĐIỆN HẢI PHÒNG · CÔNG SUẤT 1.200 MW (4 × 300 MW)</small></div><div class="header-tools"><span class="preview-badge">PREVIEW</span><span class="clock" id="clock">15:24:36</span><button class="icon-button" aria-label="Thông báo">♧<i>3</i></button><button class="icon-button" aria-label="Tài khoản">●</button></div></div>
+        <div class="context-bar"><span class="page-context"><%= page === 'overview' ? 'BẢNG ĐIỀU KHIỂN TOÀN NHÀ MÁY' : 'M2. GIÁM SÁT THỜI GIAN THỰC' %></span>
+          <% if (page === 'overview') { %><label>Đến hết ngày <select><option>31/05/2024 (n-1)</option><option>Hôm nay</option></select></label><label>Nhà máy <select><option>Toàn nhà máy</option><option>Tổ máy 1</option></select></label>
+          <% } else { %><label>Tổ máy <select><option>Tất cả tổ máy</option><option>Tổ máy 1</option><option>Tổ máy 2</option><option>Tổ máy 3</option><option>Tổ máy 4</option></select></label><label>Chu kỳ cập nhật <select><option>5 giây</option><option>10 giây</option><option>30 giây</option></select></label><label>Thời điểm <select><option>12/10/2026 13:18:00</option><option>Thời gian thực</option></select></label><% } %>
+        </div>
+      </header>
+
+      <% if (page === 'overview') { %>
+      <section class="dashboard overview">
+        <div class="overview-top">
+          <article class="panel process-panel"><h2><b>1</b>SƠ ĐỒ HỆ THỐNG NĂNG LƯỢNG NHÀ MÁY</h2><div class="process-flow">
+            <div class="process-node coal"><strong>▰</strong><b>Than cấp</b><small>Kho than · 886.000 tấn</small></div><span class="flow-arrow">➜</span><div class="process-node"><strong>▥</strong><b>Nghiền than</b><small>3/3 máy RUN</small></div><span class="flow-arrow">➜</span><div class="process-node boiler"><strong>♨</strong><b>Lò hơi</b><small>17,3 MPa / 541°C</small></div><span class="flow-arrow">➜</span><div class="process-node"><strong>◢</strong><b>Tuabin</b><small>4 × 300 MW</small></div><span class="flow-arrow">➜</span><div class="process-node"><strong>⚙</strong><b>Máy phát</b><small>1.200 MW</small></div><span class="flow-arrow">➜</span><div class="process-node grid-node"><strong>⌁</strong><b>Điện lên lưới</b><small>871 MW</small></div>
+          </div><div class="process-subflow"><span>💧 Hệ thống nước cấp</span><span>♧ Hệ thống làm mát</span><span>▰ Hệ thống thải tro xỉ</span><span class="renewable">☀ Điện NLTT (nếu có)</span></div></article>
+          <article class="panel units-panel"><h2><b>2</b>TỔNG CÔNG SUẤT PHÁT ĐIỆN VÀ SẢN LƯỢNG ĐIỆN</h2><div class="unit-cards"><% const units=[['Tổ máy 1','286','6.812','Đang vận hành'],['Tổ máy 2','289','6.901','Đang vận hành'],['Tổ máy 3','0','0','Dừng bảo dưỡng'],['Tổ máy 4','296','7.054','Đang vận hành']]; units.forEach((u,i)=> { %><div class="unit-card"><b><%= u[0] %></b><small>(300 MW)</small><span class="state <%= i===2?'stopped':'' %>"><%= u[3] %></span><small>Công suất hiện tại</small><strong><%= u[1] %> MW</strong><small>Sản lượng ngày</small><strong><%= u[2] %> MWh</strong><small>Sản lượng lũy kế</small><strong><%= ['1.234.560','1.248.320','980.420','1.210.350'][i] %> MWh</strong></div><% }) %></div><div class="mini-stats"><span>⚡ Khả dụng <b>1.200 MW</b></span><span>▥ Sản lượng phát <b>871 MW</b></span><span>◷ Điện năng ngày <b>20.767 MWh</b></span></div></article>
+        </div>
+        <div class="overview-bottom">
+          <article class="panel self-use"><h2><b>3</b>ĐIỆN NĂNG TỰ DÙNG TOÀN NHÀ MÁY</h2><div class="big-metric"><span class="metric-icon green">ϟ</span><div><strong>560 MWh</strong><small>Điện tự dùng hôm nay · 2,70%</small></div></div><div class="donut-wrap"><div class="donut"><span>560<br><small>MWh</small></span></div><ul class="legend"><li>Bơm nước làm mát <b>178</b></li><li>Quạt gió <b>112</b></li><li>Nghiền than <b>84</b></li><li>FGD / ESP <b>67</b></li><li>Khác <b>119</b></li></ul></div></article>
+          <article class="panel coal-stock"><h2><b>4</b>SUẤT TIÊU HAO THAN &amp; TỒN KHO</h2><div class="metric-row"><span>▰</span><div><small>Suất tiêu hao than</small><strong>304 <small>g/kWh</small></strong><em>▼ −6,2 g/kWh so với kế hoạch</em></div></div><div class="metric-row"><span>◷</span><div><small>Tồn kho than hiện tại</small><strong>886.000 <small>tấn</small></strong><em>Thời gian dự kiến: 37,9 ngày</em></div></div></article>
+          <article class="panel heat-rate"><h2><b>5</b>SUẤT TIÊU HAO NHIỆT</h2><div class="flame">♨</div><small>Suất tiêu hao nhiệt (HHV)</small><strong>8.680 <small>kJ/kWh</small></strong><em>▼ −170 kJ/kWh so với kế hoạch</em></article>
+        </div>
+        <article class="panel plan-panel"><h2><b>6</b>SO SÁNH VỚI KẾ HOẠCH / MỤC TIÊU</h2><div class="plan-grid"><div><div class="chart-title">Sản lượng điện (MWh)</div><div class="bar-chart"><% [45,39,53,60,62,69,75,78,82,78,86,90].forEach((h,i)=> { %><span style="height:<%= h %>%"><i><%= i+1 %></i></span><% }) %></div></div><div><div class="chart-title">Sản lượng điện lũy kế</div><table class="compact-table"><tr><th>Kỳ</th><th>Thực hiện</th><th>Kế hoạch</th><th>Đạt</th></tr><tr><td>Năm</td><td>4.673.650</td><td>5.112.000</td><td class="warn">91,4%</td></tr><tr><td>Tháng 5</td><td>812.350</td><td>853.000</td><td>95,2%</td></tr><tr><td>Đến 31/5</td><td>4.673.650</td><td>5.112.000</td><td>91,4%</td></tr></table></div><div><div class="chart-title">Tỷ lệ đạt kế hoạch theo tháng (%)</div><div class="trend-chart"><svg viewBox="0 0 420 140" preserveAspectRatio="none"><path d="M0 92 L35 75 70 83 105 54 140 64 175 50 210 68 245 44 280 57 315 35 350 49 385 27 420 39" fill="none" stroke="#1683d8" stroke-width="3"/><path d="M0 48 L35 67 70 53 105 74 140 49 175 61 210 45 245 62 280 37 315 52 350 31 385 55 420 43" fill="none" stroke="#28aa74" stroke-width="3"/></svg></div></div></div></article>
+      </section>
+      <% } else { %>
+      <section class="dashboard realtime">
+        <div class="tabs"><a class="selected" href="/nhietdien/preview/realtime">Tổng quan</a><a href="#unit-table">Tổ máy 1</a><a href="#unit-table">Tổ máy 2</a><a href="#unit-table">Tổ máy 3</a><a href="#unit-table">Tổ máy 4</a><a href="#aux">Hệ thống phụ trợ</a><a href="#fuel">Nhiên liệu</a><a href="#aux">Nước &amp; Năng lượng</a><a href="#environment">Điện thải</a><a href="#alerts">Cảnh báo</a></div>
+        <div class="kpi-grid">
+          <article class="kpi"><span class="kpi-icon green">ϟ</span><div><small>Tổng công suất phát (tức thời)</small><strong>871 <small>MW</small></strong><em>72,6% / 1.200 MW</em></div><div class="progress"><i style="width:72.6%"></i></div></article>
+          <article class="kpi"><span class="kpi-icon orange">▥</span><div><small>Tổng sản lượng điện hôm nay</small><strong>20.767 <small>MWh</small></strong><em class="up">▲ +5,2% so với kế hoạch</em></div></article>
+          <article class="kpi"><span class="kpi-icon teal">▥</span><div><small>Điện tự dùng toàn nhà máy</small><strong>560 <small>MWh (4,96%)</small></strong><em>▼ −0,3% so với định mức</em></div></article>
+          <article class="kpi"><span class="kpi-icon coal-icon">●</span><div><small>Suất tiêu hao than (tổng)</small><strong>304 <small>g/kWh</small></strong><em>▼ −6,2 g/kWh</em></div></article>
+          <article class="kpi"><span class="kpi-icon red">♨</span><div><small>Suất tiêu hao nhiệt (HHV)</small><strong>8.680 <small>kJ/kWh</small></strong><em>▼ −170 kJ/kWh</em></div></article>
+          <article class="kpi"><span class="kpi-icon purple">⚙</span><div><small>Hiệu suất nhà máy (HHV)</small><strong>41,7 <small>%</small></strong><em class="up">▲ +0,8% so với hôm qua</em></div></article>
+        </div>
+        <div class="realtime-main">
+          <article class="panel realtime-process"><h2>SƠ ĐỒ DÒNG NĂNG LƯỢNG NHÀ MÁY <small>(THỜI GIAN THỰC)</small><span class="live-label"><i></i> LIVE</span></h2><div class="live-flow">
+            <div class="live-node fuel"><b>▰</b><strong>Than Antraxit</strong><small>886 t/h</small><span>Kho than<br>886.000 tấn</span><span class="oil">Dầu FO<br>0,0 t/h</span></div><div class="pipe">➜</div><div class="live-node"><b>▥</b><strong>Nghiền than</strong><small><i class="signal"></i> 3/3 máy RUN</small><span>Tổng: 886 t/h<br>Điện tự dùng: 21,5 MW</span></div><div class="pipe">➜</div><div class="live-node boiler-node"><b>♨</b><strong>Lò hơi</strong><small>Hơi quá nhiệt</small><span>17,3 MPa / 541°C<br>Hơi tái nhiệt 4,18 MPa</span></div><div class="branch-lines"><div>➜ <b>Tổ máy 1</b><span>300,2 MW</span></div><div>➜ <b>Tổ máy 2</b><span>282,2 MW</span></div><div class="inactive">➜ <b>Tổ máy 3</b><span>0 MW · bảo dưỡng</span></div><div>➜ <b>Tổ máy 4</b><span>296,0 MW</span></div></div><div class="live-node gen-node"><b>⚙</b><strong>Tuabin / Máy phát</strong><small>4 × 300 MW</small><span>MBA · 871 MW</span><span class="grid">Điện lên lưới<br>871 MW</span></div>
+          </div><div class="process-utilities"><span>💧 Nước cấp <b>25,0 MPa</b></span><span>♧ Hệ thống làm mát <b>28,4°C</b></span><span>▰ Thải tro xỉ</span><span>◌ Lưu lượng hơi <b>850 t/h</b></span></div></article>
+          <article class="panel unit-table-panel" id="unit-table"><h2>THÔNG SỐ VẬN HÀNH TỪNG TỔ MÁY</h2><table class="data-table"><thead><tr><th>Thông số</th><th>Tổ máy 1</th><th>Tổ máy 2</th><th>Tổ máy 3</th><th>Tổ máy 4</th></tr></thead><tbody><tr><td>Trạng thái</td><td><span class="state">Đang vận hành</span></td><td><span class="state">Đang vận hành</span></td><td><span class="state stopped">Bảo dưỡng</span></td><td><span class="state">Đang vận hành</span></td></tr><tr><td>Công suất (MW)</td><td>300,2</td><td>282,2</td><td>0</td><td>296,0</td></tr><tr><td>Tải (%)</td><td>100,1</td><td>94,1</td><td>0</td><td>98,7</td></tr><tr><td>Sản lượng hôm nay (MWh)</td><td>6.812</td><td>6.901</td><td>0</td><td>7.054</td></tr><tr><td>Áp suất hơi chính (MPa)</td><td>24,5</td><td>24,5</td><td>—</td><td>24,5</td></tr><tr><td>Nhiệt độ hơi chính (°C)</td><td>565</td><td>565</td><td>—</td><td>565</td></tr><tr><td>Áp suất tái nhiệt (MPa)</td><td>4,18</td><td>4,18</td><td>—</td><td>4,18</td></tr><tr><td>Nhiệt độ tái nhiệt (°C)</td><td>541</td><td>541</td><td>—</td><td>541</td></tr><tr><td>Chân không bình ngưng (kPa)</td><td>6,5</td><td>6,5</td><td>—</td><td>6,5</td></tr><tr><td>Nhiệt độ nước làm mát</td><td>28,4</td><td>28,1</td><td>—</td><td>28,0</td></tr></tbody></table></article>
+        </div>
+        <div class="realtime-lower">
+          <article class="panel auxiliary" id="aux"><h2>ĐIỆN TỰ DÙNG NHÀ MÁY</h2><div class="aux-content"><div class="donut"><span>560<br><small>MWh<br>4,96%</small></span></div><ul class="legend"><li>Bơm nước làm mát <b>132,5 MW</b></li><li>Quạt gió IDF <b>78,4 MW</b></li><li>Quạt gió PAF <b>62,8 MW</b></li><li>Nghiền than <b>69,1 MW</b></li><li>Bơm nước cấp <b>57,8 MW</b></li><li>FGD / ESP <b>32,1 MW</b></li></ul></div></article>
+          <article class="panel trend-panel" id="fuel"><h2>SUẤT TIÊU HAO THAN <small>(g/kWh)</small></h2><div class="chart-title">Kế hoạch: 310</div><div class="small-bars"><span style="height:78%">302</span><span style="height:82%">306</span><span style="height:5%">—</span><span style="height:75%">303</span></div><div class="axis-labels"><span>Tổ máy 1</span><span>Tổ máy 2</span><span>Tổ máy 3</span><span>Tổ máy 4</span></div></article>
+          <article class="panel trend-panel"><h2>XU HƯỚNG CÔNG SUẤT PHÁT <small>(MW)</small></h2><div class="line-chart"><svg viewBox="0 0 500 150" preserveAspectRatio="none"><path d="M0 60 C80 55 70 95 150 73 S240 43 300 62 400 55 500 40" fill="none" stroke="#1887d9" stroke-width="3"/><path d="M0 85 C100 75 95 110 180 90 S280 70 350 82 420 62 500 70" fill="none" stroke="#e89828" stroke-width="2"/><path d="M0 110 C70 92 120 100 180 105 S280 92 350 97 430 85 500 90" fill="none" stroke="#2eaa79" stroke-width="2"/></svg></div></article>
+          <article class="panel alerts-panel" id="alerts"><h2>CẢNH BÁO &amp; SỰ KIỆN GẦN ĐÂY <a href="#alerts">Xem tất cả ›</a></h2><div class="alert-row"><time>15:18</time><b class="warn-dot"></b><span>Tổ máy 2</span><strong>Vận hành</strong><em>Hơi quá nhiệt tăng 2,1°C</em></div><div class="alert-row"><time>14:56</time><b class="ok-dot"></b><span>Hệ thống than</span><strong>Thông tin</strong><em>Tồn kho còn 37,9 ngày</em></div><div class="alert-row"><time>13:42</time><b class="warn-dot"></b><span>Tổ máy 1</span><strong>Cảnh báo</strong><em>Lưu lượng CWP giảm nhẹ</em></div><div class="alert-row"><time>11:30</time><b class="ok-dot"></b><span>Tổ máy 4</span><strong>Thông tin</strong><em>Hoàn thành chuyển tải</em></div></article>
+        </div>
+      </section>
+      <% } %>
+      <footer class="page-footer">NHIỆT ĐIỆN HẢI PHÒNG · GIAO DIỆN PREVIEW · DỮ LIỆU MÔ PHỎNG</footer>
+    </main>
+  </div>
+  <script src="/nhietdien/app.js"></script>
 </body>
 </html>
