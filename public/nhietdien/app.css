@@ -314,3 +314,98 @@ linear-gradient(to top,transparent 0 31%,#b8cdd8 31% 100%) 90% 100%/12px 88% no-
  .heat-body strong{font-size:17px}
  .hmi-flow{min-width:790px}
 }
+
+
+/* Real-time dashboard: larger controls and a layout matching the supplied screen. */
+.realtime{padding:8px 10px 12px}
+.realtime .tabs{gap:4px;margin-bottom:7px}
+.realtime .tabs a{font-size:11px;padding:8px 10px;min-height:34px}
+.realtime .kpi-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin-bottom:8px}
+.realtime .kpi{min-height:88px;display:grid;grid-template-columns:40px minmax(0,1fr);align-content:center;align-items:center;column-gap:8px;padding:9px 10px}
+.realtime .kpi-icon{grid-row:1 / span 2;width:38px;height:38px;flex-basis:38px;font-size:23px;border-radius:50%}
+.realtime .kpi small{font-size:10px;line-height:1.3}
+.realtime .kpi strong{font-size:19px;margin:3px 0}
+.realtime .kpi strong small{font-size:10px}
+.realtime .kpi em{font-size:9.5px;white-space:normal}
+.realtime .kpi>.progress{grid-column:2;width:100%;margin-top:2px}
+.realtime-main{grid-template-columns:minmax(0,2fr) minmax(440px,1fr);gap:8px}
+.realtime .panel h2{min-height:34px;padding:8px 11px;font-size:12px}
+.realtime .panel h2 small{font-size:10px}
+.realtime-process h2 .live-label{font-size:10px}
+.live-flow{min-height:310px;padding:14px 12px;gap:7px}
+.live-node{max-width:120px;gap:7px}
+.live-node>b{width:54px;height:54px;font-size:28px}
+.live-node strong{font-size:11px}
+.live-node small,.live-node span{font-size:10px;line-height:1.45}
+.live-node .oil,.live-node .grid{padding:6px 8px}
+.pipe{font-size:24px}
+.branch-lines{min-width:125px;gap:15px}
+.branch-lines div{font-size:18px}
+.branch-lines b,.branch-lines span{font-size:10px}
+.signal{width:8px;height:8px}
+.process-utilities{font-size:10px;padding:9px}
+.data-table th,.data-table td{padding:7px 6px;font-size:10px}
+.data-table th{font-size:9.5px}
+.unit-table-panel .data-table{min-width:0}
+.realtime-lower{grid-template-columns:minmax(270px,1.25fr) minmax(205px,.9fr) minmax(205px,.9fr) minmax(300px,1.35fr);gap:8px;margin-top:8px}
+.realtime-lower>.panel{min-width:0;min-height:190px}
+.aux-content{gap:10px;padding:9px}
+.aux-content .donut{width:88px;height:88px;flex-basis:88px}
+.aux-content .donut:before{width:62px;height:62px}
+.aux-content .donut span{font-size:14px}
+.aux-content .legend{font-size:9px}
+.aux-content .legend li{padding:4px 0}
+.aux-content .legend b{font-size:9px}
+.trend-panel h2{font-size:11px}
+.trend-panel .chart-title{font-size:10px;margin:4px 10px}
+.target-line{float:right;color:#d45151;font-size:9px}
+.small-bars{height:112px;gap:9px;margin:5px 9px 0;padding:10px 5px 0}
+.small-bars span{min-width:25px;font-size:9px}
+.small-bars .empty-bar{background:#aebdca;color:#fff}
+.heat-bars span{background:linear-gradient(#72b4eb,#4a91d2)}
+.axis-labels{font-size:8.5px;padding:3px 4px}
+.environment-panel{overflow:hidden}
+.environment-panel .data-table th,.environment-panel .data-table td{padding:5px 4px;font-size:9px}
+.environment-panel .data-table td:first-child{font-weight:600}
+.realtime-bottom{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.1fr) minmax(0,1.35fr);gap:8px;margin-top:8px}
+.realtime-bottom>.panel{min-width:0;min-height:150px}
+.trend-legend{display:flex;justify-content:space-around;gap:6px;padding:4px 8px 0;color:#5b7288;font-size:9px}
+.trend-legend span{white-space:nowrap}
+.trend-legend i{display:inline-block;width:12px;height:3px;margin:0 4px 3px 0;background:#1887d9}
+.trend-legend .c-unit1{background:#e89828}.trend-legend .c-unit2{background:#2eaa79}.trend-legend .c-unit3{background:#677888}.trend-legend .c-unit4{background:#d84b4b}
+.realtime-bottom .line-chart{height:92px;margin:4px 10px 0}
+.realtime-bottom .time-axis{font-size:8px}
+.realtime-bottom .alerts-panel h2{justify-content:space-between}
+.realtime-bottom .alert-row{grid-template-columns:38px 9px minmax(70px,.8fr) minmax(65px,.7fr) minmax(100px,1.4fr);gap:6px;padding:7px 9px;font-size:9px}
+.realtime-bottom .alert-row strong{font-size:9px}
+.realtime-bottom .alert-row em{font-size:9px}
+@media(max-width:1400px){
+ .realtime .kpi-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .realtime-main{grid-template-columns:minmax(0,1.35fr) minmax(390px,1fr)}
+ .realtime-lower{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .realtime-bottom{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .realtime-bottom .alerts-panel{grid-column:1 / -1}
+}
+@media(max-width:900px){
+ .realtime-main{grid-template-columns:minmax(0,1fr)}
+ .realtime .live-flow{overflow:auto;justify-content:flex-start}
+ .realtime .live-node{flex:0 0 90px}
+ .realtime .branch-lines{flex:0 0 125px}
+ .realtime-lower,.realtime-bottom{grid-template-columns:minmax(0,1fr)}
+ .realtime-bottom .alerts-panel{grid-column:auto}
+ .environment-panel,.unit-table-panel{overflow:auto}
+ .environment-panel .data-table,.unit-table-panel .data-table{min-width:560px}
+}
+@media(max-width:760px){
+ .realtime .kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .realtime .kpi{min-height:82px;grid-template-columns:34px minmax(0,1fr);padding:8px 6px;column-gap:6px}
+ .realtime .kpi-icon{width:32px;height:32px;font-size:20px}
+ .realtime .kpi small{font-size:9px}
+ .realtime .kpi strong{font-size:16px}
+ .realtime .kpi em{font-size:8px}
+ .realtime .tabs a{font-size:9px}
+ .realtime .panel h2{font-size:11px}
+ .realtime-bottom .alert-row{grid-template-columns:34px 8px 1fr 1fr;gap:5px}
+ .realtime-bottom .alert-row em{grid-column:3 / -1}
+ .trend-legend{flex-wrap:wrap;font-size:8px}
+}
