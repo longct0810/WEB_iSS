@@ -7,7 +7,9 @@ const pageTitles = {
   overview: 'Tổng quan',
   realtime: 'Giám sát thời gian thực',
   performance: 'Hiệu suất, EnPI và EnB tổ máy',
-  seu: 'Điện tự dùng và SEU'
+  seu: 'Điện tự dùng và SEU',
+  boiler: 'Lò hơi, Turbine và hệ thống hơi',
+  fuel: 'Nhiên liệu và hệ thống than'
 };
 
 function render(req, res) {
