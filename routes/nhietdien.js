@@ -5,7 +5,9 @@ const pages = express.Router();
 
 const pageTitles = {
   overview: 'Tổng quan',
-  realtime: 'Giám sát thời gian thực'
+  realtime: 'Giám sát thời gian thực',
+  performance: 'Hiệu suất, EnPI và EnB tổ máy',
+  seu: 'Điện tự dùng và SEU'
 };
 
 function render(req, res) {
