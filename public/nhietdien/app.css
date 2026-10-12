@@ -859,7 +859,7 @@ linear-gradient(to top,transparent 0 31%,#b8cdd8 31% 100%) 90% 100%/12px 88% no-
 /* Data management dashboard */
 .data-metrics{grid-template-columns:repeat(6,minmax(0,1fr))}
 .data-charts{display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:14px;margin:0 0 14px}
-.data-page .data-donut{position:relative;background:conic-gradient(#247ad0 0 45%,#28a876 45% 90%,#ed8c32 90% 97%,#9baabc 97%)}
+ .data-page .data-donut{position:relative;background:conic-gradient(#247ad0 0 45%,#28a876 45% 90%,#ed8c32 90% 97%,#9baabc 97%)}
 .data-page .data-donut strong,.target-page .donut strong{position:relative;z-index:1;text-align:center;color:#174f83;font-size:14px;line-height:1.1}
 .data-page .data-donut strong small,.target-page .donut strong small{display:block;margin-top:3px;color:#71869c;font-size:8px;font-weight:600}
 .data-page .donut-wrap{justify-content:flex-start;padding:12px}
