@@ -11,6 +11,8 @@ const pageTitles = {
   boiler: 'Lò hơi, Turbine và hệ thống hơi',
   fuel: 'Nhiên liệu và hệ thống than',
   reports: 'Báo cáo',
+  data: 'Quản lý dữ liệu',
+  targets: 'Mục tiêu năng lượng',
   ai: 'Phân tích nâng cao (AI)',
   plans: 'Kế hoạch thực hiện',
   alerts: 'Cảnh báo và sự kiện'
