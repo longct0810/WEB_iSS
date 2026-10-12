@@ -13,6 +13,8 @@ const pageTitles = {
   reports: 'Báo cáo',
   data: 'Quản lý dữ liệu',
   targets: 'Mục tiêu năng lượng',
+  opportunities: 'Cơ hội tiết kiệm năng lượng',
+  optimize: 'Tối ưu vận hành',
   ai: 'Phân tích nâng cao (AI)',
   plans: 'Kế hoạch thực hiện',
   alerts: 'Cảnh báo và sự kiện'
