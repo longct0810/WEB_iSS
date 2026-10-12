@@ -1,17 +1,21 @@
 'use strict';
 
 const express = require('express');
-
 const pages = express.Router();
+
+const pageTitles = {
+  overview: 'Tổng quan',
+  realtime: 'Giám sát thời gian thực'
+};
 
 function render(req, res) {
   const page = req.params.page || 'overview';
-  if (page !== 'overview') {
-    return res.status(404).send('Không tìm thấy trang Nhiệt điện');
-  }
+  const title = pageTitles[page];
+  if (!title) return res.status(404).send('Không tìm thấy trang Nhiệt điện');
 
   res.render('nhietdien/index', {
-    title: 'Tổng quan Nhiệt điện',
+    page,
+    title,
     preview: req.path.startsWith('/preview')
   });
 }
