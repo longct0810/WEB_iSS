@@ -409,3 +409,7 @@ linear-gradient(to top,transparent 0 31%,#b8cdd8 31% 100%) 90% 100%/12px 88% no-
  .realtime-bottom .alert-row em{grid-column:3 / -1}
  .trend-legend{flex-wrap:wrap;font-size:8px}
 }
+
+.rt-flow{display:block;min-height:310px;padding:8px;background:linear-gradient(180deg,#fcfdff,#f4f9fd)}
+.rt-hmi{display:block;width:100%;height:100%;min-height:300px}
+@media(max-width:900px){.realtime .rt-flow{overflow:auto}.rt-hmi{width:900px;height:326px;min-height:326px}}
