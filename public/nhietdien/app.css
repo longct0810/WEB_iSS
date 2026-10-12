@@ -1178,3 +1178,25 @@ linear-gradient(to top,transparent 0 31%,#b8cdd8 31% 100%) 90% 100%/12px 88% no-
 @media(max-width:1000px){.emission-unit-charts{grid-template-columns:1fr 1fr}.admin-lower,.admin-bottom{grid-template-columns:1fr}.settings-middle{grid-template-columns:1fr 1fr}.settings-bottom{grid-template-columns:1fr 1fr}.settings-side{grid-column:1/-1}}
 @media(max-width:760px){.emission-page .page-heading,.admin-page .page-heading,.settings-page .page-heading{align-items:flex-start;flex-direction:column}.emission-page .page-heading h1,.admin-page .page-heading h1,.settings-page .page-heading h1{font-size:15px}.emission-metrics,.admin-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-overview,.admin-lower,.admin-bottom,.emission-overview,.emission-summary,.emission-unit-charts,.emission-bottom,.settings-top,.settings-middle,.settings-bottom,.settings-side{grid-template-columns:minmax(0,1fr)}.admin-overview>.panel:last-child,.settings-middle>.panel:last-child,.settings-side{grid-column:auto}.emission-page .tab-strip,.admin-page .tab-strip,.settings-page .tab-strip{overflow:auto;white-space:nowrap}.emission-process{min-width:760px}.emission-overview>.panel{overflow-x:auto}.admin-page .donut-wrap{justify-content:flex-start}.admin-shortcuts>div{grid-template-columns:repeat(2,1fr)}.settings-middle .table-wrap table{min-width:390px}}
 @media(max-width:420px){.emission-metrics,.admin-metrics{grid-template-columns:1fr}.process-efficiency{grid-template-columns:1fr 1fr}.setting-fields label{grid-template-columns:1fr minmax(90px,1fr)}.setting-fields label>small{grid-column:2}.admin-shortcuts>div{grid-template-columns:1fr 1fr}}
+
+/* M9 emissions layout review: align the content directly under the context title */
+.emission-page .metric-card{position:relative;padding-left:54px}
+.emission-page .metric-card:before{content:"";position:absolute;left:12px;top:17px;width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:#e7f5ed;color:#22975e;font-size:11px;font-weight:800}
+.emission-page .metric-card:nth-child(1):before{content:"CO₂"}
+.emission-page .metric-card:nth-child(2):before{content:"NOₓ";background:#edf1f5;color:#586c7e}
+.emission-page .metric-card:nth-child(3):before{content:"SO₂";background:#edf1f5;color:#586c7e}
+.emission-page .metric-card:nth-child(4):before{content:"PM";background:#edf1f5;color:#586c7e}
+.emission-page .metric-card:nth-child(5):before{content:"H₂O";background:#e7f2ff;color:#287aca}
+.emission-page .metric-card:nth-child(6):before{content:"♻";background:#e7f5ed;color:#22975e;font-size:19px}
+.process-source strong:before{content:"♨";display:block;margin:0 auto 7px;color:#de693c;font-size:30px}
+.emission-process>.process-unit:nth-of-type(2):before{content:"NOₓ";display:grid;place-items:center;width:42px;height:28px;border-radius:5px;background:#2d76a8;color:#fff;font-weight:800}
+.emission-process>.process-unit:nth-of-type(3):before{content:"PM";display:grid;place-items:center;width:42px;height:28px;border-radius:5px;background:#9aa9b5;color:#fff;font-weight:800}
+.emission-process>.process-unit:nth-of-type(4):before{content:"SO₂";display:grid;place-items:center;width:42px;height:28px;border-radius:5px;background:#377fbd;color:#fff;font-weight:800}
+.emission-line{padding-left:22px;padding-right:31px}
+.emission-line svg{left:22px;right:31px;width:calc(100% - 53px)}
+.emission-yaxis{position:absolute;left:0;top:0;bottom:15px;display:flex;flex-direction:column;justify-content:space-between;color:#708398;font-size:7px}
+.emission-current{position:absolute;right:0;top:0;bottom:15px;display:flex;flex-direction:column;justify-content:space-around;align-items:flex-end}
+.emission-current b{padding:3px 5px;border-radius:4px;background:#287ed0;color:#fff;font-size:8px}
+.emission-current b:nth-child(2){background:#ec9137}.emission-current b:nth-child(3){background:#2fa879}
+@media(min-width:1251px) and (max-width:1400px){.emission-overview{grid-template-columns:minmax(0,2.1fr) minmax(250px,.9fr)}.emission-summary{grid-template-columns:1fr}}
+@media(max-width:760px){.emission-page .metric-card{padding-left:50px}.emission-process{min-width:760px}.emission-line{padding-left:21px;padding-right:30px}}
