@@ -9,7 +9,9 @@ const pageTitles = {
   performance: 'Hiệu suất, EnPI và EnB tổ máy',
   seu: 'Điện tự dùng và SEU',
   boiler: 'Lò hơi, Turbine và hệ thống hơi',
-  fuel: 'Nhiên liệu và hệ thống than'
+  fuel: 'Nhiên liệu và hệ thống than',
+  reports: 'Báo cáo',
+  ai: 'Phân tích nâng cao (AI)'
 };
 
 function render(req, res) {
