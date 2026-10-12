@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %></title>
+  <style>
+    :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; color: #eaf2fb; background: #0b1220; }
+    .shell { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+    .card { width: min(680px, 100%); padding: 40px; border: 1px solid #26364b; border-radius: 18px; background: linear-gradient(145deg, #142238, #101a2b); box-shadow: 0 24px 70px #0005; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: #64d6bc; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 14px currentColor; }
+    h1 { margin: 18px 0 10px; font-size: clamp(28px, 5vw, 42px); letter-spacing: -.04em; }
+    p { max-width: 540px; margin: 0; color: #aab9cb; line-height: 1.7; }
+    .status { display: flex; gap: 12px; align-items: center; margin-top: 28px; padding: 14px 16px; border-radius: 12px; background: #0b1422; color: #c9d6e4; font-size: 14px; }
+    .status strong { color: #fff; }
+    @media (max-width: 520px) { .card { padding: 28px 22px; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="card" aria-labelledby="page-title">
+      <div class="eyebrow"><span class="dot"></span> NHIỆT ĐIỆN <%= preview ? '· PREVIEW' : '' %></div>
+      <h1 id="page-title">Không gian giao diện Nhiệt điện</h1>
+      <p>Khung preview đã sẵn sàng. Các màn hình và chức năng sẽ được bổ sung theo từng phần khi có bản giao diện yêu cầu.</p>
+      <div class="status"><span class="dot"></span><span><strong>Preview đang hoạt động</strong> · đường dẫn /nhietdien · port mặc định 6582</span></div>
+    </section>
+  </main>
+</body>
+</html>
