@@ -12,7 +12,8 @@
     "stop:pm2": "pm2 stop smartgrid",
     "status:pm2": "pm2 status smartgrid",
     "logs:pm2": "pm2 logs smartgrid",
-    "preview:enms": "node scripts/enms-preview.js"
+    "preview:enms": "node scripts/enms-preview.js",
+    "preview:nhietdien": "node scripts/nhietdien-preview.js"
   },
   "keywords": [],
   "license": "Apache-2.0",
