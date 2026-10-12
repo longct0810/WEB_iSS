@@ -531,3 +531,112 @@ linear-gradient(to top,transparent 0 31%,#b8cdd8 31% 100%) 90% 100%/12px 88% no-
  .seu-bottom-row .alerts-panel .alert-row{grid-template-columns:34px 8px 1fr 1fr}
  .seu-bottom-row .alerts-panel .alert-row em{grid-column:3/-1}
 }
+
+/* Boiler, turbine and steam system */
+.boiler-page,.fuel-page{padding:8px 10px 14px}
+.boiler-page .tabs,.fuel-page .tabs{margin-bottom:7px}
+.boiler-page .tabs a,.fuel-page .tabs a{font-size:10px;padding:8px 10px}
+.boiler-kpis{grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin-bottom:8px}
+.boiler-kpis .kpi,.fuel-kpis .kpi{min-height:77px;display:grid;grid-template-columns:36px minmax(0,1fr);align-items:center;gap:7px;padding:8px;background:#fff;border:1px solid #dce6ef;border-radius:7px}
+.boiler-kpis .kpi-icon,.fuel-kpis .kpi-icon{grid-row:1;width:34px;height:34px;flex-basis:34px;font-size:21px}
+.boiler-kpis .kpi small,.fuel-kpis .kpi small{font-size:9px;line-height:1.3}
+.boiler-kpis .kpi strong,.fuel-kpis .kpi strong{font-size:17px;margin:3px 0}
+.boiler-kpis .kpi strong small,.fuel-kpis .kpi strong small{font-size:9px}
+.boiler-kpis .kpi em,.fuel-kpis .kpi em{font-size:8.5px;white-space:normal}
+.boiler-flow-panel{margin-bottom:8px}
+.boiler-flow-title{display:flex;align-items:center;gap:12px;min-height:36px;padding:2px 8px;border-bottom:1px solid #e8eef3}
+.boiler-flow-title h2{flex:1;min-height:30px!important;padding:5px 2px!important;font-size:11.5px!important}
+.steam-legend{display:flex;gap:10px;flex-wrap:wrap;color:#536f87;font-size:8.5px}
+.steam-legend span{white-space:nowrap}
+.steam-main{color:#d84b43}.steam-reheat{color:#dc942f}.steam-feed{color:#2788c9}
+.boiler-svg{display:block;width:100%;height:278px;background:#fbfdff}
+.boiler-unit-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-bottom:8px}
+.boiler-unit{min-width:0}
+.boiler-unit h2{justify-content:space-between!important;font-size:10.5px!important;min-height:30px!important;padding:5px 7px!important}
+.boiler-unit .state{font-size:8px;padding:3px 5px}
+.boiler-unit-content{display:grid;grid-template-columns:36px 1fr 1fr;gap:5px;padding:6px}
+.boiler-unit-content>b{display:grid;place-items:center;align-self:start;width:32px;height:42px;border-radius:5px;background:#fff0e6;color:#ed633e;font-size:25px}
+.boiler-unit-content>div{display:grid;grid-template-columns:1fr auto;align-content:start;gap:4px 5px;color:#687f93;font-size:8px}
+.boiler-unit-content strong{color:#1c4e78;font-size:8.5px;text-align:right;white-space:nowrap}
+.stopped-unit strong{color:#89949c}
+.boiler-chart-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,1.35fr);gap:7px;margin-bottom:8px}
+.boiler-chart-grid>.panel{min-width:0;min-height:150px}
+.boiler-chart-grid .panel h2,.boiler-footer-grid .panel h2{font-size:10px!important;min-height:29px!important;padding:5px 7px!important}
+.boiler-chart-grid .chart-legend{padding:2px 4px;text-align:center;color:#607990;font-size:7.5px}
+.boiler-chart-grid .svg-chart{height:100px;padding:4px 5px}
+.boiler-chart-grid .data-table th,.boiler-chart-grid .data-table td{padding:5px 3px;font-size:7.5px}
+.boiler-footer-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:8px}
+.boiler-footer-grid .data-table th,.boiler-footer-grid .data-table td{padding:5px 5px;font-size:8.5px}
+.boiler-footer-grid .alert-row{grid-template-columns:38px 8px 68px 72px minmax(120px,1fr);font-size:8.5px;padding:8px 7px}
+
+/* Coal handling and fuel overview */
+.fuel-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:8px}
+.fuel-main{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(340px,.82fr);gap:8px}
+.fuel-process-panel,.other-fuel{min-width:0;min-height:300px}
+.fuel-process-panel h2,.other-fuel h2{min-height:34px!important;font-size:11.5px!important}
+.fuel-stage-head{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;padding:5px 10px}
+.fuel-stage-head span{padding:5px;border:1px dashed #e1a1a1;border-radius:5px;color:#25557c;text-align:center;font-size:9px;font-weight:800}
+.fuel-flow{min-height:250px;display:flex;align-items:center;justify-content:space-around;gap:4px;padding:10px 8px;background:linear-gradient(#fff,#f8fbfd)}
+.fuel-stage{min-width:0;flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:5px;padding:7px;border-radius:6px;background:#fbfdff;color:#58738b}
+.fuel-stage>strong{color:#174b78;font-size:10px}
+.fuel-stage>small{font-size:8.5px;line-height:1.3}
+.fuel-art{position:relative;width:100%;height:64px;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid #dbe6ee;color:#376c91;font-size:42px}
+.fuel-art span{position:absolute;bottom:4px;right:10px;color:#45515a;font-size:18px}
+.ship-art{background:linear-gradient(180deg,#f4fbff 0 68%,#d7eff8 68%)}
+.ship-art span{right:8px;bottom:12px}
+.pile-art{color:#555e64;font-size:50px;letter-spacing:-10px}
+.belt-art{color:#326c91;font-size:25px;letter-spacing:-4px}
+.mill-art{color:#557a94;font-size:30px}
+.fuel-arrow{flex:0 0 18px;color:#2882be;font-size:19px;font-weight:800}
+.boiler-feed-units{width:100%;height:64px;display:flex;align-items:center;justify-content:space-around;border-bottom:1px solid #dbe6ee;color:#e56f42;font-size:29px}
+.boiler-feed-units .inactive{opacity:.38}
+.other-fuel h2{justify-content:space-between!important}
+.other-fuel h2 a{color:#2477b5;text-decoration:none;font-size:9px;font-weight:500}
+.other-fuel section{padding:7px 9px;border-top:1px solid #e8eef3}
+.other-fuel h3{margin:0 0 5px;color:#22527b;font-size:10px}
+.other-fuel-row{display:grid;grid-template-columns:35px repeat(3,minmax(0,1fr));align-items:center;gap:6px;color:#71859a;font-size:8px}
+.other-fuel-row>b{display:grid;place-items:center;width:32px;height:40px;border-radius:5px;background:#eaf2f7;color:#536e83;font-size:24px}
+.other-fuel-row strong{display:block;margin:3px 0;color:#174b7c;font-size:11px}
+.other-fuel-row small{display:block;font-size:7.5px}
+.fuel-trends{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}
+.fuel-trends>.panel{min-width:0;min-height:154px}
+.fuel-trends .panel h2,.fuel-bottom .panel h2{min-height:30px!important;font-size:10.5px!important;padding:6px 8px!important}
+.fuel-trends .chart-legend{padding:2px 5px;text-align:center;color:#5d768c;font-size:7.5px}
+.fuel-trends .svg-chart{height:110px;padding:4px 7px}
+.line-purple{fill:none;stroke:#815bcc;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.fuel-bottom{display:grid;grid-template-columns:1.18fr .95fr 1.22fr;gap:8px;margin-top:8px}
+.fuel-bottom>.panel{min-width:0;min-height:160px}
+.fuel-bottom .data-table th,.fuel-bottom .data-table td{padding:6px 5px;font-size:8.5px}
+.fuel-bottom .alert-row{grid-template-columns:38px 8px 88px 65px minmax(100px,1fr);font-size:8px;padding:7px 5px}
+@media(max-width:1400px){
+ .boiler-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .boiler-chart-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .boiler-chart-grid>.panel:last-child{grid-column:1/-1}
+ .fuel-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .fuel-main{grid-template-columns:minmax(0,1fr)}
+ .fuel-process-panel{overflow:auto}
+ .fuel-flow,.fuel-stage-head{min-width:880px}
+ .other-fuel{min-height:0}
+}
+@media(max-width:900px){
+ .boiler-unit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .boiler-footer-grid,.fuel-trends,.fuel-bottom{grid-template-columns:1fr}
+ .boiler-footer-grid>.panel{overflow:auto}
+ .boiler-svg{min-width:1120px}
+ .boiler-flow-panel{overflow:auto}
+}
+@media(max-width:760px){
+ .boiler-kpis,.fuel-kpis,.boiler-chart-grid,.boiler-unit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .boiler-chart-grid>.panel:last-child{grid-column:1/-1}
+ .boiler-flow-title{align-items:flex-start;flex-direction:column;gap:0}
+ .steam-legend{padding:0 3px 6px}
+ .boiler-svg{height:240px;min-width:1080px}
+ .boiler-unit-content{grid-template-columns:27px 1fr}
+ .boiler-unit-content>b{width:25px;font-size:20px}
+ .boiler-unit-content>div:last-child{grid-column:2}
+ .fuel-stage-head{min-width:760px}
+ .fuel-flow{min-width:950px}
+ .fuel-main{overflow:hidden}
+ .other-fuel-row{grid-template-columns:30px repeat(3,minmax(0,1fr));gap:4px}
+ .fuel-bottom>.panel{overflow:auto}
+}
