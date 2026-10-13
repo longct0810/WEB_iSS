@@ -1,0 +1,11 @@
+'use strict';
+const express = require('express');
+const path = require('path');
+const app = express();
+app.set('views', path.join(__dirname, '../views'));
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, '../public')));
+app.get('/', (req, res) => res.redirect('/lbp/preview/overview'));
+app.get(['/lbp', '/lbp/preview', '/lbp/preview/overview'], (req, res) => res.render('lbp/overview'));
+const port = Number(process.env.PORT) || 6585;
+app.listen(port, '0.0.0.0', () => console.log(`LBP preview: http://localhost:${port}/lbp/preview/overview`));
